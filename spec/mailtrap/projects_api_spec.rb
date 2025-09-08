@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
 RSpec.describe Mailtrap::ProjectsAPI, :vcr do
-  subject(:project) { described_class.new(account_id, client) }
+  subject(:project_api) { described_class.new(account_id, client) }
 
   let(:account_id) { ENV.fetch('MAILTRAP_ACCOUNT_ID') }
   let(:client) { Mailtrap::Client.new(api_key: ENV.fetch('MAILTRAP_API_KEY')) }
 
   describe '#list' do
-    subject(:list) { project.list }
+    subject(:list) { project_api.list }
 
     it 'maps response data to Project objects' do
       expect(list).to all(be_a(Mailtrap::Project))
@@ -27,10 +27,10 @@ RSpec.describe Mailtrap::ProjectsAPI, :vcr do
   end
 
   describe '#get' do
-    subject(:get) { project.get(project_id) }
+    subject(:get) { project_api.get(project_id) }
 
     let!(:created_project) do
-      project.create(
+      project_api.create(
         name: 'Test Project'
       )
     end
@@ -58,7 +58,7 @@ RSpec.describe Mailtrap::ProjectsAPI, :vcr do
   end
 
   describe '#create' do
-    subject(:create) { project.create(**request) }
+    subject(:create) { project_api.create(**request) }
 
     let(:request) do
       {
@@ -105,10 +105,10 @@ RSpec.describe Mailtrap::ProjectsAPI, :vcr do
   end
 
   describe '#update' do
-    subject(:update) { project.update(project_id, **request) }
+    subject(:update) { project_api.update(project_id, **request) }
 
     let!(:created_project) do
-      project.create(
+      project_api.create(
         name: 'Original Project'
       )
     end
@@ -166,10 +166,10 @@ RSpec.describe Mailtrap::ProjectsAPI, :vcr do
   end
 
   describe '#delete' do
-    subject(:delete) { project.delete(project_id) }
+    subject(:delete) { project_api.delete(project_id) }
 
     let!(:created_project) do
-      project.create(
+      project_api.create(
         name: 'Project to Delete'
       )
     end
