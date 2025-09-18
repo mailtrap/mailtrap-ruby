@@ -41,12 +41,10 @@ module Mailtrap
       self
     end
 
-    # Converts the import request to a JSON-serializable array
     # @return [Array<Hash>] Array of contact objects ready for import
-    def as_json
+    def to_a
       @data.values
     end
-    alias to_a as_json
 
     private
 

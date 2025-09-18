@@ -61,13 +61,13 @@ RSpec.describe Mailtrap::ContactsImportRequest do
     end
   end
 
-  describe '#as_json' do
+  describe '#to_a' do
     it 'returns json array' do
       request = described_class.new
-      expect(request.as_json).to eq([])
+      expect(request.to_a).to eq([])
 
       request.upsert(email: 'one@example.com', fields: { first_name: 'John' })
-      expect(request.as_json).to contain_exactly(
+      expect(request.to_a).to contain_exactly(
         { email: 'one@example.com', fields: { first_name: 'John' }, list_ids_included: [], list_ids_excluded: [] }
       )
     end
