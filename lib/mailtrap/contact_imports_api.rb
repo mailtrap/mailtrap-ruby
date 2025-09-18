@@ -34,8 +34,8 @@ module Mailtrap
     #
     # @example Using plain hash
     #   contact_imports.create([
-    #     {email: "john@example.com", fields: { first_name: 'John' }, list_ids_included: [1], list_ids_excluded: [2]},
-    #     {email: "jane@example.com", fields: { first_name: 'Jane' }, list_ids_included: [1], list_ids_excluded: [2]}
+    #     {email: 'john@example.com', fields: { first_name: 'John' }, list_ids_included: [1], list_ids_excluded: [2]},
+    #     {email: 'jane@example.com', fields: { first_name: 'Jane' }, list_ids_included: [1], list_ids_excluded: [2]}
     #   ])
     #
     # @param contacts [Mailtrap::ContactsImportRequest, Array<Hash>] The contacts import request
