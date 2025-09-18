@@ -5,19 +5,17 @@ module Mailtrap
   # Allows you to build a collection of contacts with their associated fields and list memberships
   class ContactsImportRequest
     def initialize
-      @data = {}
+      @data = Hash.new do |h, k|
+        h[k] = { email: k, fields: {}, list_ids_included: [], list_ids_excluded: [] }
+      end
     end
 
     # Creates or updates a contact with the provided email and fields
     # @param email [String] The contact's email address
-    # @param fields [Hash] Contact fields in the format: field_merge_tag => String, Integer, Float, Boolean, or ISO-8601 date string (yyyy-mm-dd) # rubocop:disable Layout/LineLength
+    # @param fields [Hash] Contact fields in the format: field_merge_tag => String, Integer, Float, Boolean, or
+    #   ISO-8601 date string (yyyy-mm-dd)
     # @return [ContactsImportRequest] Returns self for method chaining
     def upsert(email:, fields: {})
-      unless @data[email]
-        @data[email] = { email:, fields:, list_ids_included: [], list_ids_excluded: [] }
-        return self
-      end
-
       @data[email][:fields].merge!(fields)
 
       self
@@ -28,12 +26,7 @@ module Mailtrap
     # @param list_ids [Array<Integer>] Array of list IDs to add the contact to
     # @return [ContactsImportRequest] Returns self for method chaining
     def add_to_lists(email:, list_ids:)
-      unless @data[email]
-        @data[email] = { email:, fields: {}, list_ids_included: list_ids, list_ids_excluded: [] }
-        return self
-      end
-
-      @data[email][:list_ids_included] |= list_ids
+      append_list_ids email:, list_ids:, key: :list_ids_included
 
       self
     end
@@ -43,12 +36,7 @@ module Mailtrap
     # @param list_ids [Array<Integer>] Array of list IDs to remove the contact from
     # @return [ContactsImportRequest] Returns self for method chaining
     def remove_from_lists(email:, list_ids:)
-      unless @data[email]
-        @data[email] = { email:, fields: {}, list_ids_included: [], list_ids_excluded: list_ids }
-        return self
-      end
-
-      @data[email][:list_ids_excluded] |= list_ids
+      append_list_ids email:, list_ids:, key: :list_ids_excluded
 
       self
     end
@@ -59,5 +47,13 @@ module Mailtrap
       @data.values
     end
     alias to_a as_json
+
+    private
+
+    def append_list_ids(email:, list_ids:, key:)
+      raise ArgumentError, 'list_ids must not be empty' if list_ids.empty?
+
+      @data[email][key] |= list_ids
+    end
   end
 end
