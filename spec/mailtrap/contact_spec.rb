@@ -13,29 +13,23 @@ RSpec.describe Mailtrap::Contact do
       list_ids: [1, 2],
       status: 'subscribed',
       created_at: 1_700_000_000,
-      updated_at: 1_700_000_100,
-      action:
+      updated_at: 1_700_000_100
     }
   end
-  let(:action) { 'created' }
 
   describe '#newly_created?' do
+    it { is_expected.to be_newly_created }
+
     context "when action is 'created'" do
-      let(:action) { 'created' }
+      let(:attributes) { super().merge(action: 'created') }
 
       it { is_expected.to be_newly_created }
     end
 
     context "when action is 'updated'" do
-      let(:action) { 'updated' }
+      let(:attributes) { super().merge(action: 'updated') }
 
       it { is_expected.not_to be_newly_created }
-    end
-
-    context 'when action is nil' do
-      let(:action) { nil }
-
-      it { is_expected.to be_newly_created }
     end
   end
 
