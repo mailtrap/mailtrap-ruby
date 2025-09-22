@@ -17,38 +17,38 @@ contact_imports = Mailtrap::ContactImportsAPI.new 3229, client
 
 # Create new contact list
 list = contact_lists.create(name: 'Test List')
-# => #<ContactList id=1, name="Test List">
+# => #<struct Mailtrap::ContactList id=1, name="Test List">
 
 # Get all contact lists
 contact_lists.list
-# => [#<ContactList id=1, name="Test List">]
+# => [#<struct Mailtrap::ContactList id=1, name="Test List">]
 
 # Update contact list
 contact_lists.update(list.id, name: 'Test List Updated')
-# => #<ContactList id=1, name="Test List Updated">
+# => #<struct Mailtrap::ContactList id=1, name="Test List Updated">
 
 # Get contact list
 list = contact_lists.get(list.id)
-# => #<ContactList id=1, name="Test List Updated">
+# => #<struct Mailtrap::ContactList id=1, name="Test List Updated">
 
 # Delete contact list
 contact_lists.delete(list.id)
 
 # Create new contact field
 field = contact_fields.create(name: 'Nickname', data_type: 'text', merge_tag: 'nickname')
-# => #<ContactField id=1, name="Nickname", data_type="text", merge_tag="nickname">
+# => #<struct Mailtrap::ContactField id=1, name="Nickname", data_type="text", merge_tag="nickname">
 
 # Get all contact fields
 contact_fields.list
-# => [#<ContactField id=1, name="Nickname", data_type="text", merge_tag="nickname">]
+# => [#<struct Mailtrap::ContactField id=1, name="Nickname", data_type="text", merge_tag="nickname">]
 
 # Update contact field
 contact_fields.update(field.id, name: 'Nickname 2', merge_tag: 'nickname')
-# => #<ContactField id=1, name="Nickname 2", data_type="text", merge_tag="nickname">
+# => #<struct Mailtrap::ContactField id=1, name="Nickname 2", data_type="text", merge_tag="nickname">
 
 # Get contact field
 field = contact_fields.get(field.id)
-# => #<ContactField id=1, name="Nickname 2", data_type="text", merge_tag="nickname">
+# => #<struct Mailtrap::ContactField id=1, name="Nickname 2", data_type="text", merge_tag="nickname">
 
 # Create new contact with all possible fields
 contact = contacts.create(
@@ -56,7 +56,7 @@ contact = contacts.create(
   fields: { field.merge_tag => 'John Doe' },
   list_ids: [list.id]
 )
-# => #<Contact
+# => #<struct Mailtrap::Contact
 #      id=1,
 #      email="test@example.com",
 #      fields={ "nickname" => "John Doe" },
@@ -68,7 +68,7 @@ contact.newly_created? # => true
 
 # Get contact
 contact = contacts.get(contact.id)
-# => #<Contact
+# => #<struct Mailtrap::Contact
 #      id=1,
 #      email="test@example.com",
 #      fields={ "nickname" => "John Doe" },
@@ -83,7 +83,7 @@ updated_contact = contacts.upsert(
   email: 'test2@example.com',
   fields: { field.merge_tag => 'Jane Doe' }
 )
-# => #<Contact
+# => #<struct Mailtrap::Contact
 #      id=1,
 #      email="test2@example.com",
 #      fields={ "nickname" => "Jane Doe" },
@@ -99,7 +99,7 @@ contacts.upsert(
   email: 'test3@example.com',
   fields: { field.merge_tag => 'Jane Doe' }
 )
-# => #<Contact
+# => #<struct Mailtrap::Contact
 #      id=1,
 #      email="test3@example.com",
 #      fields={ "nickname" => "Jane Doe" },
@@ -111,7 +111,7 @@ updated_contact.newly_created? # => false
 
 # Remove contact from lists
 contacts.remove_from_lists(contact.id, [list.id])
-# => #<Contact
+# => #<struct Mailtrap::Contact
 #      id=1,
 #      email="test3@example.com",
 #      fields={ "nickname" => "Jane Doe" },
@@ -122,7 +122,7 @@ contacts.remove_from_lists(contact.id, [list.id])
 
 # Add contact to lists
 contacts.add_to_lists(contact.id, [list.id])
-# => #<Contact
+# => #<struct Mailtrap::Contact
 #      id=1,
 #      email="test3@example.com",
 #      fields={ "nickname" => "Jane Doe" },
@@ -150,7 +150,7 @@ end
 
 # Execute the import
 contact_import = contact_imports.create(import_request)
-# => #<ContactImport
+# => #<struct Mailtrap::ContactImport
 #      id=1,
 #      status="created",
 #      created_contacts_count=nil,
@@ -161,13 +161,12 @@ contact_import = contact_imports.create(import_request)
 
 # Get the import status
 contact_imports.get(contact_import.id)
-# => ContactImport.new(
-#      id: 1,
-#      status: 'finished',
-#      created_contacts_count: 2,
-#      updated_contacts_count: 0,
-#      contacts_over_limit_count: 0
-#    )
+# => #<struct Mailtrap::ContactImport
+#      id=1,
+#      status="finished",
+#      created_contacts_count=2,
+#      updated_contacts_count=0,
+#      contacts_over_limit_count=0>
 
 # Import using plain hash
 contact_imports.create(
