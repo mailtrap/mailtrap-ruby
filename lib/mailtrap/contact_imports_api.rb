@@ -12,7 +12,7 @@ module Mailtrap
     self.response_class = ContactImport
 
     # Retrieves a specific contact import
-    # @param import_id [String] The contact import identifier
+    # @param import_id [Integer] The contact import identifier
     # @return [ContactImport] Contact import object
     # @!macro api_errors
     def get(import_id)
