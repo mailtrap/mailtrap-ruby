@@ -16,6 +16,8 @@ module Mailtrap
     #   ISO-8601 date string (yyyy-mm-dd)
     # @return [ContactsImportRequest] Returns self for method chaining
     def upsert(email:, fields: {})
+      validate_email!(email)
+
       @data[email][:fields].merge!(fields)
 
       self
@@ -26,6 +28,8 @@ module Mailtrap
     # @param list_ids [Array<Integer>] Array of list IDs to add the contact to
     # @return [ContactsImportRequest] Returns self for method chaining
     def add_to_lists(email:, list_ids:)
+      validate_email!(email)
+
       append_list_ids email:, list_ids:, key: :list_ids_included
 
       self
@@ -36,6 +40,8 @@ module Mailtrap
     # @param list_ids [Array<Integer>] Array of list IDs to remove the contact from
     # @return [ContactsImportRequest] Returns self for method chaining
     def remove_from_lists(email:, list_ids:)
+      validate_email!(email)
+
       append_list_ids email:, list_ids:, key: :list_ids_excluded
 
       self
@@ -48,8 +54,12 @@ module Mailtrap
 
     private
 
+    def validate_email!(email)
+      raise ArgumentError, 'email must be present' if email.nil? || email.empty?
+    end
+
     def append_list_ids(email:, list_ids:, key:)
-      raise ArgumentError, 'list_ids must not be empty' if list_ids.empty?
+      raise ArgumentError, 'list_ids must be present' if list_ids.empty?
 
       @data[email][key] |= list_ids
     end

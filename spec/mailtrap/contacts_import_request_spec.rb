@@ -2,6 +2,11 @@
 
 RSpec.describe Mailtrap::ContactsImportRequest do
   describe '#upsert' do
+    it 'validates email' do
+      expect { described_class.new.upsert(email: nil) }.to raise_error(ArgumentError)
+      expect { described_class.new.upsert(email: '') }.to raise_error(ArgumentError)
+    end
+
     it 'adds contact to the request' do
       request = described_class.new.tap do |req|
         req.upsert(email: 'one@example.com')
@@ -18,6 +23,11 @@ RSpec.describe Mailtrap::ContactsImportRequest do
   end
 
   describe '#add_to_lists' do
+    it 'validates email' do
+      expect { described_class.new.add_to_lists(email: nil, list_ids: [1]) }.to raise_error(ArgumentError)
+      expect { described_class.new.add_to_lists(email: '', list_ids: [1]) }.to raise_error(ArgumentError)
+    end
+
     it 'does not allow empty list' do
       expect { described_class.new.add_to_lists(email: 'one@example.com', list_ids: []) }.to raise_error(ArgumentError)
     end
@@ -39,6 +49,11 @@ RSpec.describe Mailtrap::ContactsImportRequest do
   end
 
   describe '#remove_from_lists' do
+    it 'validates email' do
+      expect { described_class.new.remove_from_lists(email: nil, list_ids: [1]) }.to raise_error(ArgumentError)
+      expect { described_class.new.remove_from_lists(email: '', list_ids: [1]) }.to raise_error(ArgumentError)
+    end
+
     it 'does not allow empty list' do
       expect do
         described_class.new.remove_from_lists(email: 'one@example.com', list_ids: [])
