@@ -2,7 +2,7 @@
 
 module Mailtrap
   # Data Transfer Object for Contact Import
-  # @attr_reader id [String] The contact import ID
+  # @attr_reader id [Integer] The contact import ID
   # @attr_reader status [String] The status of the import (created, started, finished, failed)
   # @attr_reader created_contacts_count [Integer, nil] Number of contacts created in this import
   # @attr_reader updated_contacts_count [Integer, nil] Number of contacts updated in this import

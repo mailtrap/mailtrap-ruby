@@ -11,13 +11,13 @@ RSpec.describe Mailtrap::ContactsImportRequest do
       request = described_class.new.tap do |req|
         req.upsert(email: 'one@example.com')
            .upsert(email: 'two@example.com', fields: { first_name: 'John', last_name: 'Doe' })
-           .upsert(email: 'trhee@example.com', fields: { first_name: 'Jack' })
-           .upsert(email: 'trhee@example.com', fields: { first_name: 'Joe', last_name: 'Blow', age: 33 })
+           .upsert(email: 'three@example.com', fields: { first_name: 'Jack' })
+           .upsert(email: 'three@example.com', fields: { first_name: 'Joe', last_name: 'Blow', age: 33 })
       end
       expect(request.to_a).to contain_exactly(
         hash_including(email: 'one@example.com', fields: {}),
         hash_including(email: 'two@example.com', fields: { first_name: 'John', last_name: 'Doe' }),
-        hash_including(email: 'trhee@example.com', fields: { first_name: 'Joe', last_name: 'Blow', age: 33 })
+        hash_including(email: 'three@example.com', fields: { first_name: 'Joe', last_name: 'Blow', age: 33 })
       )
     end
   end
@@ -37,13 +37,13 @@ RSpec.describe Mailtrap::ContactsImportRequest do
         req.add_to_lists(email: 'one@example.com', list_ids: [1])
            .add_to_lists(email: 'two@example.com', list_ids: [1])
            .add_to_lists(email: 'two@example.com', list_ids: [2])
-           .add_to_lists(email: 'trhee@example.com', list_ids: [1])
-           .add_to_lists(email: 'trhee@example.com', list_ids: [1, 2])
+           .add_to_lists(email: 'three@example.com', list_ids: [1])
+           .add_to_lists(email: 'three@example.com', list_ids: [1, 2])
       end
       expect(request.to_a).to contain_exactly(
         hash_including(email: 'one@example.com', list_ids_included: [1]),
         hash_including(email: 'two@example.com', list_ids_included: [1, 2]),
-        hash_including(email: 'trhee@example.com', list_ids_included: [1, 2])
+        hash_including(email: 'three@example.com', list_ids_included: [1, 2])
       )
     end
   end
@@ -65,13 +65,13 @@ RSpec.describe Mailtrap::ContactsImportRequest do
         req.remove_from_lists(email: 'one@example.com', list_ids: [1])
            .remove_from_lists(email: 'two@example.com', list_ids: [1])
            .remove_from_lists(email: 'two@example.com', list_ids: [2])
-           .remove_from_lists(email: 'trhee@example.com', list_ids: [1])
-           .remove_from_lists(email: 'trhee@example.com', list_ids: [1, 2])
+           .remove_from_lists(email: 'three@example.com', list_ids: [1])
+           .remove_from_lists(email: 'three@example.com', list_ids: [1, 2])
       end
       expect(request.to_a).to contain_exactly(
         hash_including(email: 'one@example.com', list_ids_excluded: [1]),
         hash_including(email: 'two@example.com', list_ids_excluded: [1, 2]),
-        hash_including(email: 'trhee@example.com', list_ids_excluded: [1, 2])
+        hash_including(email: 'three@example.com', list_ids_excluded: [1, 2])
       )
     end
   end

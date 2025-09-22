@@ -40,7 +40,7 @@ module Mailtrap
     #
     # @param contacts [Mailtrap::ContactsImportRequest, Array<Hash>] The contacts import request
     #
-    # @return [ContactImport] Created contact list object
+    # @return [ContactImport] Created contact import object
     # @!macro api_errors
     # @raise [ArgumentError] If invalid options are provided
     def create(contacts)
