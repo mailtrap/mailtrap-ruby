@@ -119,10 +119,15 @@ module Mailtrap
     # @!macro api_errors
     # @raise [Mailtrap::MailSizeError] If the message is too large.
     def send_batch(base, requests)
-      perform_request(:post, api_host, batch_request_path, {
-                        base:,
-                        requests:
-                      })
+      perform_request(
+        method: :post,
+        host: api_host,
+        path: batch_request_path,
+        body: {
+          base:,
+          requests:
+        }
+      )
     end
 
     # Sends an email
@@ -152,7 +157,12 @@ module Mailtrap
     # @!macro api_errors
     # @raise [Mailtrap::MailSizeError] If the message is too large
     def send(mail)
-      perform_request(:post, api_host, send_path, mail)
+      perform_request(
+        method: :post,
+        host: api_host,
+        path: send_path,
+        body: mail
+      )
     end
 
     # Performs a GET request to the specified path
@@ -161,7 +171,12 @@ module Mailtrap
     # @return [Hash, nil] The JSON response
     # @!macro api_errors
     def get(path, query_params = {})
-      perform_request(:get, general_api_host, path, nil, query_params)
+      perform_request(
+        method: :get,
+        host: general_api_host,
+        path:,
+        query_params:
+      )
     end
 
     # Performs a POST request to the specified path
@@ -170,7 +185,12 @@ module Mailtrap
     # @return [Hash, nil] The JSON response
     # @!macro api_errors
     def post(path, body = nil)
-      perform_request(:post, general_api_host, path, body)
+      perform_request(
+        method: :post,
+        host: general_api_host,
+        path:,
+        body:
+      )
     end
 
     # Performs a PATCH request to the specified path
@@ -179,7 +199,12 @@ module Mailtrap
     # @return [Hash, nil] The JSON response
     # @!macro api_errors
     def patch(path, body = nil)
-      perform_request(:patch, general_api_host, path, body)
+      perform_request(
+        method: :patch,
+        host: general_api_host,
+        path:,
+        body:
+      )
     end
 
     # Performs a DELETE request to the specified path
@@ -187,7 +212,11 @@ module Mailtrap
     # @return [Hash, nil] The JSON response
     # @!macro api_errors
     def delete(path)
-      perform_request(:delete, general_api_host, path)
+      perform_request(
+        method: :delete,
+        host: general_api_host,
+        path:
+      )
     end
 
     private
@@ -214,31 +243,27 @@ module Mailtrap
       "/api/batch#{"/#{inbox_id}" if sandbox}"
     end
 
-    def perform_request(method, host, path, body = nil, query_params = {})
+    def perform_request(method:, host:, path:, query_params: {}, body: nil)
       http_client = http_client_for(host)
-      path = build_path_with_query(path, query_params) if query_params.any?
 
-      request = setup_request(method, path, body)
+      uri = URI::HTTPS.build(host:, path:)
+      uri.query = URI.encode_www_form(query_params) if query_params.any?
+
+      request = setup_request(method, uri, body)
       response = http_client.request(request)
       handle_response(response)
     end
 
-    def build_path_with_query(base_path, query_params = {})
-      uri = URI(base_path)
-      uri.query = URI.encode_www_form(query_params)
-      uri.to_s
-    end
-
-    def setup_request(method, path, body = nil)
+    def setup_request(method, uri_or_path, body = nil)
       request = case method
                 when :get
-                  Net::HTTP::Get.new(path)
+                  Net::HTTP::Get.new(uri_or_path)
                 when :post
-                  Net::HTTP::Post.new(path)
+                  Net::HTTP::Post.new(uri_or_path)
                 when :patch
-                  Net::HTTP::Patch.new(path)
+                  Net::HTTP::Patch.new(uri_or_path)
                 when :delete
-                  Net::HTTP::Delete.new(path)
+                  Net::HTTP::Delete.new(uri_or_path)
                 else
                   raise ArgumentError, "Unsupported HTTP method: #{method}"
                 end
