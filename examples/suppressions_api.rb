@@ -10,7 +10,7 @@ suppressions = Mailtrap::SuppressionsAPI.new 3229, client
 # suppressions = Mailtrap::SuppressionsAPI.new
 
 # Get all suppressions
-list = suppressions.list
+suppressions.list
 # =>
 #  [
 #    #<struct Mailtrap::Suppression
@@ -31,6 +31,9 @@ list = suppressions.list
 #      message_sender_email="hello@sender.com",
 #      message_subject="Welcome!">
 #  ]
+
+# Get suppressions for the email
+list = suppressions.list(email: 'recipient@example.com')
 
 # Delete a suppression
 suppressions.delete(list.first.id)
