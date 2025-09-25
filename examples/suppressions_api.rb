@@ -1,7 +1,8 @@
 require 'mailtrap'
 
+account_id = 3229
 client = Mailtrap::Client.new(api_key: 'your-api-key')
-suppressions = Mailtrap::SuppressionsAPI.new 3229, client
+suppressions = Mailtrap::SuppressionsAPI.new(account_id, client)
 
 # Set your API credentials as environment variables
 # export MAILTRAP_API_KEY='your-api-key'
