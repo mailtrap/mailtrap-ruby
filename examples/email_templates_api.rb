@@ -1,7 +1,8 @@
 require 'mailtrap'
 
+account_id = 3229
 client = Mailtrap::Client.new(api_key: 'your-api-key')
-templates = Mailtrap::EmailTemplatesAPI.new 3229, client
+templates = Mailtrap::EmailTemplatesAPI.new(account_id, client)
 
 # Set your API credentials as environment variables
 # export MAILTRAP_API_KEY='your-api-key'
