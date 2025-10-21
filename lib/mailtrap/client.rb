@@ -271,7 +271,7 @@ module Mailtrap
       request.body = body.to_json if body
       request['Authorization'] = "Bearer #{api_key}"
       request['Content-Type'] = 'application/json'
-      request['User-Agent'] = 'mailtrap-ruby (https://github.com/railsware/mailtrap-ruby)'
+      request['User-Agent'] = 'mailtrap-ruby (https://github.com/mailtrap/mailtrap-ruby)'
 
       request
     end
