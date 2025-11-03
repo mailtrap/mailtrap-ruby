@@ -28,13 +28,17 @@ VCR.configure do |config|
 
     case body
     when Hash
-      body["share_links"].transform_values! { |e| e.gsub(/\/share\/.+/, '/share/REDACTED') } if body.key?("share_links")
+      body['share_links'].transform_values! { |e| e.gsub(%r{/share/.+}, '/share/REDACTED') } if body.key?('share_links')
     when Array
       body.map do |item|
-        item["share_links"].transform_values! { |e| e.gsub(/\/share\/.+/, '/share/REDACTED') } if item.key?("share_links")
+        if item.key?('share_links')
+          item['share_links'].transform_values! do |e|
+            e.gsub(%r{/share/.+}, '/share/REDACTED')
+          end
+        end
         item
       end
-    else
+    else # rubocop:disable Style/EmptyElse
       # noop
     end
 
