@@ -12,7 +12,9 @@ http_interactions:
       Accept:
       - "*/*"
       User-Agent:
-      - mailtrap-ruby (https://github.com/railsware/mailtrap-ruby)
+      - mailtrap-ruby (https://github.com/mailtrap/mailtrap-ruby)
+      Host:
+      - mailtrap.io
       Authorization:
       - Bearer <BEARER_TOKEN>
       Content-Type:
@@ -23,7 +25,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 20 Aug 2025 19:39:49 GMT
+      - Thu, 06 Nov 2025 17:22:47 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -51,9 +53,9 @@ http_interactions:
       X-Ratelimit-Limit:
       - '150'
       X-Ratelimit-Remaining:
-      - '128'
+      - '146'
       Etag:
-      - W/"e89b2eeb1bac0e0011505117e024bac7"
+      - W/"7ffa4657748461ef12280122fe6a8858"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Content-Security-Policy:
@@ -66,7 +68,7 @@ http_interactions:
         beacon-v2.helpscout.net js.hs-analytics.net js.hs-banner.com js.hs-scripts.com
         cdn.firstpromoter.com connect.facebook.net www.recaptcha.net www.gstatic.cn
         www.gstatic.com *.quora.com static.ads-twitter.com snap.licdn.com *.growthbook.io
-        translate.google.com ''nonce-js-/tDOd6NZq9TQ3z1wWEHA1A==''; connect-src ''self''
+        translate.google.com ''nonce-js-VX2Dcy0hW9sA6H2LBbCvDQ==''; connect-src ''self''
         assets.mailtrap.io wss://mailtrap.io *.google.com *.google.ad *.google.ae
         *.google.com.af *.google.com.ag *.google.al *.google.am *.google.co.ao *.google.com.ar
         *.google.as *.google.at *.google.com.au *.google.az *.google.ba *.google.com.bd
@@ -146,23 +148,23 @@ http_interactions:
         ''self''; media-src ''self'' data: blob: beacon-v2.helpscout.net ssl.gstatic.com;
         object-src ''self'' beacon-v2.helpscout.net; report-uri https://errors.rw.rw/api/37/security/?sentry_key=5a0cc8a2cb4f49a8b9043c602e4ec0ab'
       X-Request-Id:
-      - a63eb7e9-60b8-4800-8654-b2184428d998
+      - 02d2f921-3856-4037-9a87-062e0b4d54f5
       X-Runtime:
-      - '0.056160'
+      - '0.081251'
       X-Cloud-Trace-Context:
-      - 93973da93a10427f81fd9c4ad0f17650;o=0
+      - 37ed80ca4c4145808aa554b32a4374d7;o=0
       Strict-Transport-Security:
       - max-age=0
       Cf-Cache-Status:
       - DYNAMIC
       Cf-Ray:
-      - 97245be3bdba2991-WAW
+      - 99a6466338b2bf47-WAW
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: UTF-8
-      string: '{"id":2487011,"name":"Test Project","share_links":{"admin":"https://mailtrap.io/projects/2487011/share/REDACTED","viewer":"https://mailtrap.io/projects/2487011/share/REDACTED"},"inboxes":[],"permissions":{"can_read":true,"can_update":true,"can_destroy":true,"can_leave":false}}'
-  recorded_at: Wed, 20 Aug 2025 19:39:49 GMT
+      string: '{"id":2568505,"name":"Test Project","share_links":{"admin":"https://mailtrap.io/projects/2568505/share/REDACTED","viewer":"https://mailtrap.io/projects/2568505/share/REDACTED"},"inboxes":[],"permissions":{"can_read":true,"can_update":true,"can_destroy":true,"can_leave":false}}'
+  recorded_at: Thu, 06 Nov 2025 17:22:47 GMT
 - request:
     method: get
     uri: https://mailtrap.io/api/accounts/ACCOUNT_ID/projects/999999
@@ -175,7 +177,9 @@ http_interactions:
       Accept:
       - "*/*"
       User-Agent:
-      - mailtrap-ruby (https://github.com/railsware/mailtrap-ruby)
+      - mailtrap-ruby (https://github.com/mailtrap/mailtrap-ruby)
+      Host:
+      - mailtrap.io
       Authorization:
       - Bearer <BEARER_TOKEN>
       Content-Type:
@@ -186,7 +190,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Wed, 20 Aug 2025 19:39:50 GMT
+      - Thu, 06 Nov 2025 17:22:47 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -214,7 +218,7 @@ http_interactions:
       X-Ratelimit-Limit:
       - '150'
       X-Ratelimit-Remaining:
-      - '149'
+      - '145'
       Cache-Control:
       - no-cache
       Content-Security-Policy:
@@ -227,7 +231,7 @@ http_interactions:
         beacon-v2.helpscout.net js.hs-analytics.net js.hs-banner.com js.hs-scripts.com
         cdn.firstpromoter.com connect.facebook.net www.recaptcha.net www.gstatic.cn
         www.gstatic.com *.quora.com static.ads-twitter.com snap.licdn.com *.growthbook.io
-        translate.google.com ''nonce-js-9v/XYrwLyO/bIPOZPziYUQ==''; connect-src ''self''
+        translate.google.com ''nonce-js-C/GUQkCCApVLg4vBe/aSXg==''; connect-src ''self''
         assets.mailtrap.io wss://mailtrap.io *.google.com *.google.ad *.google.ae
         *.google.com.af *.google.com.ag *.google.al *.google.am *.google.co.ao *.google.com.ar
         *.google.as *.google.at *.google.com.au *.google.az *.google.ba *.google.com.bd
@@ -307,21 +311,21 @@ http_interactions:
         ''self''; media-src ''self'' data: blob: beacon-v2.helpscout.net ssl.gstatic.com;
         object-src ''self'' beacon-v2.helpscout.net; report-uri https://errors.rw.rw/api/37/security/?sentry_key=5a0cc8a2cb4f49a8b9043c602e4ec0ab'
       X-Request-Id:
-      - 0aa12f07-7542-4546-8b4c-60ef59721a8e
+      - d0e27b3b-02a4-49bf-8664-a96dd7399e61
       X-Runtime:
-      - '0.009126'
+      - '0.027993'
       X-Cloud-Trace-Context:
-      - 90f0d433ef4d4023c7a12474f2d58a6a;o=0
+      - 9209d38c155f4fbbcdf8d0345c9054ab;o=0
       Strict-Transport-Security:
       - max-age=0
       Cf-Cache-Status:
       - DYNAMIC
       Cf-Ray:
-      - 97245be56a6e5ad5-VIE
+      - 99a646670987b617-WAW
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: UTF-8
       string: '{"error":"Not Found"}'
-  recorded_at: Wed, 20 Aug 2025 19:39:50 GMT
+  recorded_at: Thu, 06 Nov 2025 17:22:47 GMT
 recorded_with: VCR 6.2.0

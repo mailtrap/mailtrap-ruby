@@ -12,7 +12,9 @@ http_interactions:
       Accept:
       - "*/*"
       User-Agent:
-      - mailtrap-ruby (https://github.com/railsware/mailtrap-ruby)
+      - mailtrap-ruby (https://github.com/mailtrap/mailtrap-ruby)
+      Host:
+      - mailtrap.io
       Authorization:
       - Bearer <BEARER_TOKEN>
       Content-Type:
@@ -23,7 +25,7 @@ http_interactions:
       message: Unauthorized
     headers:
       Date:
-      - Wed, 20 Aug 2025 19:34:29 GMT
+      - Thu, 06 Nov 2025 17:22:45 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -66,7 +68,7 @@ http_interactions:
         beacon-v2.helpscout.net js.hs-analytics.net js.hs-banner.com js.hs-scripts.com
         cdn.firstpromoter.com connect.facebook.net www.recaptcha.net www.gstatic.cn
         www.gstatic.com *.quora.com static.ads-twitter.com snap.licdn.com *.growthbook.io
-        translate.google.com ''nonce-js-otVGIcbpi7G0uncJ65LG4Q==''; connect-src ''self''
+        translate.google.com ''nonce-js-I/u42/bdH8vv7BfJJkQAtg==''; connect-src ''self''
         assets.mailtrap.io wss://mailtrap.io *.google.com *.google.ad *.google.ae
         *.google.com.af *.google.com.ag *.google.al *.google.am *.google.co.ao *.google.com.ar
         *.google.as *.google.at *.google.com.au *.google.az *.google.ba *.google.com.bd
@@ -146,21 +148,21 @@ http_interactions:
         ''self''; media-src ''self'' data: blob: beacon-v2.helpscout.net ssl.gstatic.com;
         object-src ''self'' beacon-v2.helpscout.net; report-uri https://errors.rw.rw/api/37/security/?sentry_key=5a0cc8a2cb4f49a8b9043c602e4ec0ab'
       X-Request-Id:
-      - d8e3f660-02be-4499-8fc8-40d8b218ef9e
+      - c915c8f6-0966-401b-a5c7-7b9425e41a1c
       X-Runtime:
-      - '0.007333'
+      - '0.010076'
       X-Cloud-Trace-Context:
-      - b5b8ab9948384605815663f803232cc8;o=0
+      - 753aadc0a1104487c20e9ea64a70697e;o=0
       Strict-Transport-Security:
       - max-age=0
       Cf-Cache-Status:
       - DYNAMIC
       Cf-Ray:
-      - 97245412ca3c28ff-WAW
+      - 99a64658cdd8028d-WAW
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: UTF-8
       string: '{"error":"Incorrect API token"}'
-  recorded_at: Wed, 20 Aug 2025 19:34:29 GMT
+  recorded_at: Thu, 06 Nov 2025 17:22:45 GMT
 recorded_with: VCR 6.2.0

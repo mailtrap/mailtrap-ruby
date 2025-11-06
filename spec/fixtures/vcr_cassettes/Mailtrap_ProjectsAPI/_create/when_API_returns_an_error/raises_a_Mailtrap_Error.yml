@@ -12,7 +12,9 @@ http_interactions:
       Accept:
       - "*/*"
       User-Agent:
-      - mailtrap-ruby (https://github.com/railsware/mailtrap-ruby)
+      - mailtrap-ruby (https://github.com/mailtrap/mailtrap-ruby)
+      Host:
+      - mailtrap.io
       Authorization:
       - Bearer <BEARER_TOKEN>
       Content-Type:
@@ -23,7 +25,7 @@ http_interactions:
       message: Unprocessable Entity
     headers:
       Date:
-      - Wed, 20 Aug 2025 19:39:51 GMT
+      - Thu, 06 Nov 2025 17:22:48 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -51,7 +53,7 @@ http_interactions:
       X-Ratelimit-Limit:
       - '150'
       X-Ratelimit-Remaining:
-      - '146'
+      - '142'
       Cache-Control:
       - no-cache
       Content-Security-Policy:
@@ -64,7 +66,7 @@ http_interactions:
         beacon-v2.helpscout.net js.hs-analytics.net js.hs-banner.com js.hs-scripts.com
         cdn.firstpromoter.com connect.facebook.net www.recaptcha.net www.gstatic.cn
         www.gstatic.com *.quora.com static.ads-twitter.com snap.licdn.com *.growthbook.io
-        translate.google.com ''nonce-js-wafEjkRHwFXgS3+UFItvDw==''; connect-src ''self''
+        translate.google.com ''nonce-js-BWGcN9hcn2TkDTEK96tpow==''; connect-src ''self''
         assets.mailtrap.io wss://mailtrap.io *.google.com *.google.ad *.google.ae
         *.google.com.af *.google.com.ag *.google.al *.google.am *.google.co.ao *.google.com.ar
         *.google.as *.google.at *.google.com.au *.google.az *.google.ba *.google.com.bd
@@ -144,21 +146,21 @@ http_interactions:
         ''self''; media-src ''self'' data: blob: beacon-v2.helpscout.net ssl.gstatic.com;
         object-src ''self'' beacon-v2.helpscout.net; report-uri https://errors.rw.rw/api/37/security/?sentry_key=5a0cc8a2cb4f49a8b9043c602e4ec0ab'
       X-Request-Id:
-      - 87b7d3f5-9366-4a00-b233-cf43bce3b4a8
+      - 67ba748d-d8b7-451b-9831-d6cf9ca60321
       X-Runtime:
-      - '0.019241'
+      - '0.019134'
       X-Cloud-Trace-Context:
-      - f21ed46461a542d7ca7849179425977c;o=0
+      - 202ae565c50b43798fc2ab188e7ad5ac;o=0
       Strict-Transport-Security:
       - max-age=0
       Cf-Cache-Status:
       - DYNAMIC
       Cf-Ray:
-      - 97245becea3cbbca-WAW
+      - 99a6466c4ba670dc-WAW
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: UTF-8
       string: '{"errors":{"name":["can''t be blank","is too short (minimum is 2 characters)"]}}'
-  recorded_at: Wed, 20 Aug 2025 19:39:51 GMT
+  recorded_at: Thu, 06 Nov 2025 17:22:48 GMT
 recorded_with: VCR 6.2.0

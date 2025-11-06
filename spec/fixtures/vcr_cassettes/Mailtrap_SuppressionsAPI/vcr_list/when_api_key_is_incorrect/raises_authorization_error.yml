@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://mailtrap.io/api/accounts/1111111/suppressions
+    uri: https://mailtrap.io/api/accounts/ACCOUNT_ID/suppressions
     body:
       encoding: US-ASCII
       string: ''
@@ -13,6 +13,8 @@ http_interactions:
       - "*/*"
       User-Agent:
       - mailtrap-ruby (https://github.com/mailtrap/mailtrap-ruby)
+      Host:
+      - mailtrap.io
       Authorization:
       - Bearer <BEARER_TOKEN>
       Content-Type:
@@ -23,7 +25,7 @@ http_interactions:
       message: Unauthorized
     headers:
       Date:
-      - Fri, 27 Jun 2025 07:56:23 GMT
+      - Thu, 06 Nov 2025 17:24:15 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -66,7 +68,7 @@ http_interactions:
         beacon-v2.helpscout.net js.hs-analytics.net js.hs-banner.com js.hs-scripts.com
         cdn.firstpromoter.com connect.facebook.net www.recaptcha.net www.gstatic.cn
         www.gstatic.com *.quora.com static.ads-twitter.com snap.licdn.com *.growthbook.io
-        translate.google.com ''nonce-js-0jfLtIMAiuTVrlyqJ7/btA==''; connect-src ''self''
+        translate.google.com ''nonce-js-MZZtgbPV+pagZe9w3ZlABg==''; connect-src ''self''
         assets.mailtrap.io wss://mailtrap.io *.google.com *.google.ad *.google.ae
         *.google.com.af *.google.com.ag *.google.al *.google.am *.google.co.ao *.google.com.ar
         *.google.as *.google.at *.google.com.au *.google.az *.google.ba *.google.com.bd
@@ -146,21 +148,21 @@ http_interactions:
         ''self''; media-src ''self'' data: blob: beacon-v2.helpscout.net ssl.gstatic.com;
         object-src ''self'' beacon-v2.helpscout.net; report-uri https://errors.rw.rw/api/37/security/?sentry_key=5a0cc8a2cb4f49a8b9043c602e4ec0ab'
       X-Request-Id:
-      - 378759fd-0ab0-468c-be7e-b1b4c4d2f972
+      - b1c60d99-f395-41d0-8bb7-e61d246b28a8
       X-Runtime:
-      - '0.009793'
+      - '0.009553'
       X-Cloud-Trace-Context:
-      - 51d1a8094ff74f07cf18a0ed4e656380;o=0
+      - e9985161ff3a48dbc93ef6af4bf5abe3;o=0
       Strict-Transport-Security:
       - max-age=0
       Cf-Cache-Status:
       - DYNAMIC
       Cf-Ray:
-      - 956363363a4ebf92-WAW
+      - 99a6488a9c3e2d19-WAW
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: UTF-8
       string: '{"error":"Incorrect API token"}'
-  recorded_at: Fri, 27 Jun 2025 07:56:23 GMT
+  recorded_at: Thu, 06 Nov 2025 17:24:15 GMT
 recorded_with: VCR 6.2.0
