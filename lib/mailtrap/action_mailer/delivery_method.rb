@@ -14,7 +14,9 @@ module Mailtrap
       def deliver!(message)
         mail = Mailtrap::Mail.from_message(message)
 
-        client.send(mail)
+        client.send(mail).tap do |resp|
+          message['X-MT-Message-IDs'] = resp[:message_ids]
+        end
       end
 
       private
