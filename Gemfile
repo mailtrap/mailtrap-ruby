@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'appraisal'
+gem 'base64'
 gem 'mail'
 gem 'net-smtp'
 gem 'rake', '~> 13.0'

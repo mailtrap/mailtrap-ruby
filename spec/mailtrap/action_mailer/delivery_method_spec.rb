@@ -48,6 +48,7 @@ RSpec.describe Mailtrap::ActionMailer::DeliveryMethod, :vcr do
 
     it 'converts the message and sends via API' do
       expect(deliver!).to eq({ success: true, message_ids: expected_message_ids })
+      expect(message['X-MT-Message-IDs'].to_s).to eq(expected_message_ids.join(', '))
       expect(Mailtrap::Client).to have_received(:new).with(api_key: 'correct-api-key')
     end
   end
