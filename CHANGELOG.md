@@ -1,3 +1,9 @@
+## [2.5.0] - 2025-11-10
+- Add Contact Imports API
+- Add Suppressions API
+- Write the message IDs to the message when sending with Action Mailer
+- Fix versioning :)
+
 ## [2.4.1] - 2025-08-21
 - Set `template_uuid` and `template_variables` when building mail from `Mail::Message`
 
