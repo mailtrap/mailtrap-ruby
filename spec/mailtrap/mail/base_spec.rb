@@ -6,22 +6,24 @@ require_relative 'shared'
 RSpec.describe Mailtrap::Mail::Base do
   subject(:mail) do
     described_class.new(
-      from: from,
-      to: to,
-      cc: cc,
-      bcc: bcc,
+      from:,
+      to:,
+      reply_to:,
+      cc:,
+      bcc:,
       subject: mail_subject,
-      text: text,
-      html: html,
-      attachments: attachments,
-      headers: headers,
-      category: category,
-      custom_variables: custom_variables
+      text:,
+      html:,
+      attachments:,
+      headers:,
+      category:,
+      custom_variables:
     )
   end
 
   let(:from) { nil }
   let(:to) { [] }
+  let(:reply_to) { nil }
   let(:cc) { [] }
   let(:bcc) { [] }
   let(:mail_subject) { nil }
@@ -65,13 +67,8 @@ RSpec.describe Mailtrap::Mail::Base do
       {
         'from' => { email: 'test@example.com', name: 'Mailtrap User' },
         'to' => [{ email: 'to@example.com' }, { email: 'to2@example.com', name: 'To Two' }],
-        'cc' => [],
-        'bcc' => [],
         'subject' => 'This is subject',
-        'text' => 'This is text',
-        'headers' => {},
-        'attachments' => [],
-        'custom_variables' => {}
+        'text' => 'This is text'
       }
     end
 
@@ -80,6 +77,7 @@ RSpec.describe Mailtrap::Mail::Base do
     end
 
     context 'when all values set' do
+      let(:reply_to) { { email: 'reply-to@railsware.com' } }
       let(:cc) { [{ email: 'cc@example.com' }] }
       let(:bcc) { [{ email: 'bcc@example.com' }] }
       let(:html) { '<div>Test HTML</div>' }
@@ -91,6 +89,7 @@ RSpec.describe Mailtrap::Mail::Base do
         {
           'from' => { email: 'test@example.com', name: 'Mailtrap User' },
           'to' => [{ email: 'to@example.com' }, { email: 'to2@example.com', name: 'To Two' }],
+          'reply_to' => { email: 'reply-to@railsware.com' },
           'cc' => [{ email: 'cc@example.com' }],
           'bcc' => [{ email: 'bcc@example.com' }],
           'subject' => 'This is subject',
@@ -114,6 +113,7 @@ RSpec.describe Mailtrap::Mail::Base do
 
     let(:from) { { email: 'test@example.com', name: 'Mailtrap User' } }
     let(:to) { [{ email: 'to@example.com' }, { email: 'to2@example.com', name: 'To Two' }] }
+    let(:reply_to) { { email: 'reply-to@railsware.com', name: 'Reply To' } }
     let(:mail_subject) { 'This is subject' }
     let(:text) { 'This is text' }
     let(:cc) { [{ email: 'cc@example.com' }] }
@@ -126,6 +126,7 @@ RSpec.describe Mailtrap::Mail::Base do
       '{' \
         '"from":{"email":"test@example.com","name":"Mailtrap User"},' \
         '"to":[{"email":"to@example.com"},{"email":"to2@example.com","name":"To Two"}],' \
+        '"reply_to":{"email":"reply-to@railsware.com","name":"Reply To"},' \
         '"cc":[{"email":"cc@example.com"}],' \
         '"bcc":[{"email":"bcc@example.com"}],' \
         '"subject":"This is subject",' \
@@ -133,7 +134,6 @@ RSpec.describe Mailtrap::Mail::Base do
         '"html":"<div>Test HTML</div>",' \
         '"attachments":[{"content":"aGVsbG8gd29ybGQ=","filename":"attachment.txt"}],' \
         '"headers":{"Category-Header":"some_category"},' \
-        '"custom_variables":{},' \
         '"category":"another_category"' \
         '}'
     end

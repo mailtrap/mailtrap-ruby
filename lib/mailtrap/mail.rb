@@ -4,57 +4,226 @@ require 'base64'
 
 require_relative 'mail/base'
 require_relative 'mail/from_template'
+require_relative 'errors'
 
 module Mailtrap
-  module Mail
+  module Mail # rubocop:disable Metrics/ModuleLength
+    SPECIAL_HEADERS = %w[
+      from
+      to
+      cc
+      bcc
+      subject
+      category
+      customvariables
+      contenttype
+    ].freeze
+    private_constant :SPECIAL_HEADERS
+
+    # ActionMailer adds these headers by calling `Mail::Message#encoded`,
+    # as if the message is to be delivered via SMTP.
+    # Since the message will actually be generated on the Mailtrap side from its components,
+    # the headers are redundant and potentially conflicting, so we remove them.
+    ACTIONMAILER_ADDED_HEADERS = %w[
+      contenttransferencoding
+      date
+      messageid
+      mimeversion
+    ].freeze
+    private_constant :ACTIONMAILER_ADDED_HEADERS
+
+    HEADERS_TO_REMOVE = (SPECIAL_HEADERS + ACTIONMAILER_ADDED_HEADERS).freeze
+    private_constant :HEADERS_TO_REMOVE
+
     class << self
-      def from_message(message) # rubocop:disable Metrics/AbcSize, Metrics/MethodLength, Metrics/CyclomaticComplexity
+      # Builds a mail object that will be sent using a pre-defined email
+      # template. The template content (subject, text, html, category) is
+      # defined in the Mailtrap dashboard and referenced by the template_uuid.
+      # Template variables can be passed to customize the template content.
+      # @example
+      #   mail = Mailtrap::Mail.from_template(
+      #     from: { email: 'mailtrap@example.com', name: 'Mailtrap Test' },
+      #     to: [
+      #       { email: 'your@email.com' }
+      #     ],
+      #     template_uuid: '2f45b0aa-bbed-432f-95e4-e145e1965ba2',
+      #     template_variables: {
+      #       'user_name' => 'John Doe'
+      #     }
+      #   )
+      def from_template( # rubocop:disable Metrics/ParameterLists
+        from: nil,
+        to: [],
+        reply_to: nil,
+        cc: [],
+        bcc: [],
+        attachments: [],
+        headers: {},
+        custom_variables: {},
+        template_uuid: nil,
+        template_variables: {}
+      )
         Mailtrap::Mail::Base.new(
-          from: prepare_address(address_list(message['from'])&.addresses&.first),
-          to: prepare_addresses(address_list(message['to'])&.addresses),
-          cc: prepare_addresses(address_list(message['cc'])&.addresses),
-          bcc: prepare_addresses(address_list(message['bcc'])&.addresses),
+          from:,
+          to:,
+          reply_to:,
+          cc:,
+          bcc:,
+          attachments:,
+          headers:,
+          custom_variables:,
+          template_uuid:,
+          template_variables:
+        )
+      end
+
+      # Builds a mail object with content including subject, text, html, and category.
+      # @example
+      #   mail = Mailtrap::Mail.from_content(
+      #     from: { email: 'mailtrap@example.com', name: 'Mailtrap Test' },
+      #     to: [
+      #       { email: 'your@email.com' }
+      #     ],
+      #     subject: 'You are awesome!',
+      #     text: 'Congrats for sending test email with Mailtrap!'
+      #   )
+      def from_content( # rubocop:disable Metrics/ParameterLists
+        from: nil,
+        to: [],
+        reply_to: nil,
+        cc: [],
+        bcc: [],
+        attachments: [],
+        headers: {},
+        custom_variables: {},
+        subject: nil,
+        text: nil,
+        html: nil,
+        category: nil
+      )
+        Mailtrap::Mail::Base.new(
+          from:,
+          to:,
+          reply_to:,
+          cc:,
+          bcc:,
+          attachments:,
+          headers:,
+          custom_variables:,
+          subject:,
+          text:,
+          html:,
+          category:
+        )
+      end
+
+      # Builds a base mail object for batch sending using a pre-defined email template.
+      # This "base" defines shared properties (such as sender, reply-to, template UUID, and template variables)
+      # that will be used as defaults for all emails in the batch. Individual batch requests can override these values.
+      # Use this method when you want to send multiple emails with similar content, leveraging a template defined in the Mailtrap dashboard. # rubocop:disable Layout/LineLength
+      # Template variables can be passed to customize the template content for all recipients, and can be overridden per request. # rubocop:disable Layout/LineLength
+      # @example
+      #   base_mail = Mailtrap::Mail.batch_base_from_template(
+      #     from: { email: 'mailtrap@example.com', name: 'Mailtrap Test' },
+      #     template_uuid: '2f45b0aa-bbed-432f-95e4-e145e1965ba2',
+      #     template_variables: {
+      #       'user_name' => 'John Doe'
+      #     }
+      #   )
+      #   # Use base_mail as the base for batch sending with Mailtrap::Client#send_batch
+      def batch_base_from_template( # rubocop:disable Metrics/ParameterLists
+        from: nil,
+        reply_to: nil,
+        attachments: [],
+        headers: {},
+        custom_variables: {},
+        template_uuid: nil,
+        template_variables: {}
+      )
+        Mailtrap::Mail::Base.new(
+          from:,
+          reply_to:,
+          attachments:,
+          headers:,
+          custom_variables:,
+          template_uuid:,
+          template_variables:
+        )
+      end
+
+      # Builds a base mail object for batch sending with custom content (subject, text, html, category).
+      # This "base" defines shared properties for all emails in the batch, such as sender, subject, and body.
+      # Individual batch requests can override these values as needed.
+      # Use this method when you want to send multiple emails with similar custom content to different recipients.
+      # @example
+      #   base_mail = Mailtrap::Mail.batch_base_from_content(
+      #     from: { email: 'mailtrap@example.com', name: 'Mailtrap Test' },
+      #     subject: 'You are awesome!',
+      #     text: 'Congrats for sending test email with Mailtrap!'
+      #   )
+      #   # Use base_mail as the base for batch sending with Mailtrap::Client#send_batch
+      def batch_base_from_content( # rubocop:disable Metrics/ParameterLists
+        from: nil,
+        reply_to: nil,
+        attachments: [],
+        headers: {},
+        custom_variables: {},
+        subject: nil,
+        text: nil,
+        html: nil,
+        category: nil
+      )
+        Mailtrap::Mail::Base.new(
+          from:,
+          reply_to:,
+          attachments:,
+          headers:,
+          custom_variables:,
+          subject:,
+          text:,
+          html:,
+          category:
+        )
+      end
+
+      # Builds a mail object from Mail::Message
+      # @param message [Mail::Message]
+      # @return [Mailtrap::Mail::Base]
+      def from_message(message)
+        Mailtrap::Mail::Base.new(
+          from: prepare_addresses(message['from']).first,
+          to: prepare_addresses(message['to']),
+          cc: prepare_addresses(message['cc']),
+          bcc: prepare_addresses(message['bcc']),
           subject: message.subject,
           text: prepare_text_part(message),
           html: prepare_html_part(message),
           headers: prepare_headers(message),
           attachments: prepare_attachments(message.attachments),
           category: message['category']&.unparsed_value,
-          custom_variables: message['custom_variables']&.unparsed_value
+          custom_variables: message['custom_variables']&.unparsed_value,
+          template_uuid: message['template_uuid']&.unparsed_value,
+          template_variables: message['template_variables']&.unparsed_value
         )
       end
 
       private
 
-      SPECIAL_HEADERS = %w[
-        from
-        to
-        cc
-        bcc
-        subject
-        category
-        customvariables
-        contenttype
-      ].freeze
-
-      # ActionMailer adds these headers by calling `Mail::Message#encoded`,
-      # as if the message is to be delivered via SMTP.
-      # Since the message will actually be generated on the Mailtrap side from its components,
-      # the headers are redundant and potentially conflicting, so we remove them.
-      ACTIONMAILER_ADDED_HEADERS = %w[
-        contenttransferencoding
-        date
-        messageid
-        mimeversion
-      ].freeze
-
-      HEADERS_TO_REMOVE = (SPECIAL_HEADERS + ACTIONMAILER_ADDED_HEADERS).freeze
-
+      # @param header [Mail::Field, nil]
+      # @return [Mail::AddressList, nil]
       def address_list(header)
-        header.respond_to?(:element) ? header.element : header&.address_list
+        return nil unless header
+
+        unless header.errors.empty?
+          raise Mailtrap::Error, ["failed to parse '#{header.name}': '#{header.unparsed_value}'"]
+        end
+
+        header.respond_to?(:element) ? header.element : header.address_list
       end
 
-      def prepare_addresses(addresses)
+      # @param header [Mail::Field, nil]
+      def prepare_addresses(header)
+        addresses = address_list(header)&.addresses
         Array(addresses).map { |address| prepare_address(address) }
       end
 
@@ -66,6 +235,7 @@ module Mailtrap
           .compact
       end
 
+      # @param address [Mail::Address]
       def prepare_address(address)
         {
           email: address.address,

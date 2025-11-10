@@ -1,3 +1,33 @@
+## [2.4.1] - 2025-08-21
+- Set `template_uuid` and `template_variables` when building mail from `Mail::Message`
+
+## [2.4.0] - 2025-08-04
+
+- Add Email Templates API
+- Add Contacts API
+- Add Contact Fields API
+- Add Contact Lists API
+- Add Batch Sending
+- Deprecate `Mailtrap::Mail::FromTemplate` in favour of `Mailtrap::Mail.from_template`
+
+## [2.3.0] - 2025-03-06
+
+- Drop Ruby 3.0 support
+- Update dependencies
+
+## [2.2.0] - 2024-12-18
+
+- Added `reply_to` parameter support
+
+## [2.1.2] - 2024-12-13
+
+- Improved handling of invalid `from`, `to`, `cc`, `bcc` headers when sending
+  with Action Mailer
+
+## [2.1.1] - 2024-12-11
+
+- Improved handling of empty `from` header when sending with Action Mailer
+
 ## [2.1.0] - 2024-07-08
 
 - Fixed extraneous headers added by ActionMailer #21

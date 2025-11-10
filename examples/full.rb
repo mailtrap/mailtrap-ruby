@@ -1,11 +1,16 @@
 require 'mailtrap'
 require 'base64'
 
-mail = Mailtrap::Mail::Base.new(
+# You can create a mail object using one of the following:
+# - Mailtrap::Mail.from_content
+# - Mailtrap::Mail.from_template
+# - Mailtrap::Mail::Base.new
+mail = Mailtrap::Mail.from_content(
   from: { email: 'mailtrap@example.com', name: 'Mailtrap Test' },
   to: [
     { email: 'your@email.com', name: 'Your name' }
   ],
+  reply_to: { email: 'support@example.com', name: 'Mailtrap Reply-To' },
   cc: [
     { email: 'cc@email.com', name: 'Copy To' }
   ],
@@ -17,7 +22,7 @@ mail = Mailtrap::Mail::Base.new(
   category: 'Integration Test',
   attachments: [
     {
-      content: Base64.encode64('Attachment content'), # base64 encoded content or IO string
+      content: Base64.strict_encode64('Attachment content'), # base64 encoded content or IO string
       filename: 'attachment.txt'
     }
   ],
@@ -36,6 +41,11 @@ mail.add_attachment(content: encoded, filename: 'image.png')
 
 client = Mailtrap::Client.new(api_key: 'your-api-key')
 
+# Set your API credentials as environment variables
+# export MAILTRAP_API_KEY='your-api-key'
+#
+# client = Mailtrap::Client.new
+
 # Custom host / port
 # client = Mailtrap::Client.new(api_key: 'your-api-key', api_host: 'alternative.host.mailtrap.io', api_port: 8080)
 
@@ -46,3 +56,13 @@ client = Mailtrap::Client.new(api_key: 'your-api-key')
 # client = Mailtrap::Client.new(api_key: 'your-api-key', sandbox: true, inbox_id: 12)
 
 client.send(mail)
+
+# You can also pass the request parameters directly
+client.send(
+  from: { email: 'mailtrap@example.com', name: 'Mailtrap Test' },
+  to: [
+    { email: 'your@email.com', name: 'Your name' }
+  ],
+  subject: 'You are awesome!',
+  text: 'Congrats for sending test email with Mailtrap!'
+)
