@@ -2,11 +2,10 @@
 http_interactions:
 - request:
     method: post
-    uri: https://mailtrap.io/api/accounts/ACCOUNT_ID/email_templates
+    uri: https://mailtrap.io/api/accounts/ACCOUNT_ID/projects
     body:
       encoding: UTF-8
-      string: '{"email_template":{"name":"","subject":"Invalid Subject","category":"Invalid
-        Category","body_html":"<div>Invalid</div>","body_text":"Invalid"}}'
+      string: '{"project":{"name":"New Project"}}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -14,21 +13,23 @@ http_interactions:
       - "*/*"
       User-Agent:
       - mailtrap-ruby (https://github.com/mailtrap/mailtrap-ruby)
+      Host:
+      - mailtrap.io
       Authorization:
       - Bearer <BEARER_TOKEN>
       Content-Type:
       - application/json
   response:
     status:
-      code: 422
-      message: Unprocessable Entity
+      code: 200
+      message: OK
     headers:
       Date:
-      - Wed, 20 Aug 2025 19:39:38 GMT
+      - Thu, 06 Nov 2025 17:22:48 GMT
       Content-Type:
       - application/json; charset=utf-8
-      Content-Length:
-      - '38'
+      Transfer-Encoding:
+      - chunked
       Connection:
       - keep-alive
       Server:
@@ -52,9 +53,11 @@ http_interactions:
       X-Ratelimit-Limit:
       - '150'
       X-Ratelimit-Remaining:
-      - '142'
+      - '143'
+      Etag:
+      - W/"555c37419991b9243a4ee4a8199dde11"
       Cache-Control:
-      - no-cache
+      - max-age=0, private, must-revalidate
       Content-Security-Policy:
       - 'default-src ''self''; style-src ''self'' data: blob: ''unsafe-inline'' assets.mailtrap.io
         www.googletagmanager.com fonts.googleapis.com; font-src ''self'' data: blob:
@@ -65,7 +68,7 @@ http_interactions:
         beacon-v2.helpscout.net js.hs-analytics.net js.hs-banner.com js.hs-scripts.com
         cdn.firstpromoter.com connect.facebook.net www.recaptcha.net www.gstatic.cn
         www.gstatic.com *.quora.com static.ads-twitter.com snap.licdn.com *.growthbook.io
-        translate.google.com ''nonce-js-nR4+rp1syRUK9PS2OAVA+Q==''; connect-src ''self''
+        translate.google.com ''nonce-js-zgTYA5BLd1wyNN7mPfj6ZA==''; connect-src ''self''
         assets.mailtrap.io wss://mailtrap.io *.google.com *.google.ad *.google.ae
         *.google.com.af *.google.com.ag *.google.al *.google.am *.google.co.ao *.google.com.ar
         *.google.as *.google.at *.google.com.au *.google.az *.google.ba *.google.com.bd
@@ -145,21 +148,21 @@ http_interactions:
         ''self''; media-src ''self'' data: blob: beacon-v2.helpscout.net ssl.gstatic.com;
         object-src ''self'' beacon-v2.helpscout.net; report-uri https://errors.rw.rw/api/37/security/?sentry_key=5a0cc8a2cb4f49a8b9043c602e4ec0ab'
       X-Request-Id:
-      - b4d251d5-31e0-4672-bbf2-7bedbb4a34d1
+      - cc4b30b1-8d31-471c-a233-b0c29a13bbc7
       X-Runtime:
-      - '0.049647'
+      - '0.203603'
       X-Cloud-Trace-Context:
-      - cb7992e38fff4e13c25d9444e1432b52;o=0
+      - 11447d3d125e4f9187fcfeb1d48a0525;o=0
       Strict-Transport-Security:
       - max-age=0
       Cf-Cache-Status:
       - DYNAMIC
       Cf-Ray:
-      - 97245b98d9ee5a41-VIE
+      - 99a64669fd1be5d6-WAW
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: UTF-8
-      string: '{"errors":{"name":["can''t be blank"]}}'
-  recorded_at: Wed, 20 Aug 2025 19:39:38 GMT
+      string: '{"id":2568507,"name":"New Project","share_links":{"admin":"https://mailtrap.io/projects/2568507/share/REDACTED","viewer":"https://mailtrap.io/projects/2568507/share/REDACTED"},"inboxes":[],"permissions":{"can_read":true,"can_update":true,"can_destroy":true,"can_leave":false}}'
+  recorded_at: Thu, 06 Nov 2025 17:22:48 GMT
 recorded_with: VCR 6.2.0

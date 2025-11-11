@@ -40,7 +40,6 @@ module Mailtrap
       validate_args!(api_key, api_port, bulk, sandbox, inbox_id)
 
       api_host ||= select_api_host(bulk:, sandbox:)
-
       @api_key = api_key
       @api_host = api_host
       @general_api_host = general_api_host

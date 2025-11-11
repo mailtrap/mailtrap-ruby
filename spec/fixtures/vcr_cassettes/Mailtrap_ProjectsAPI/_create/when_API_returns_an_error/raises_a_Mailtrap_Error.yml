@@ -2,11 +2,10 @@
 http_interactions:
 - request:
     method: post
-    uri: https://mailtrap.io/api/accounts/ACCOUNT_ID/email_templates
+    uri: https://mailtrap.io/api/accounts/ACCOUNT_ID/projects
     body:
       encoding: UTF-8
-      string: '{"email_template":{"name":"","subject":"Invalid Subject","category":"Invalid
-        Category","body_html":"<div>Invalid</div>","body_text":"Invalid"}}'
+      string: '{"project":{"name":""}}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -14,6 +13,8 @@ http_interactions:
       - "*/*"
       User-Agent:
       - mailtrap-ruby (https://github.com/mailtrap/mailtrap-ruby)
+      Host:
+      - mailtrap.io
       Authorization:
       - Bearer <BEARER_TOKEN>
       Content-Type:
@@ -24,11 +25,11 @@ http_interactions:
       message: Unprocessable Entity
     headers:
       Date:
-      - Wed, 20 Aug 2025 19:39:38 GMT
+      - Thu, 06 Nov 2025 17:22:48 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
-      - '38'
+      - '79'
       Connection:
       - keep-alive
       Server:
@@ -65,7 +66,7 @@ http_interactions:
         beacon-v2.helpscout.net js.hs-analytics.net js.hs-banner.com js.hs-scripts.com
         cdn.firstpromoter.com connect.facebook.net www.recaptcha.net www.gstatic.cn
         www.gstatic.com *.quora.com static.ads-twitter.com snap.licdn.com *.growthbook.io
-        translate.google.com ''nonce-js-nR4+rp1syRUK9PS2OAVA+Q==''; connect-src ''self''
+        translate.google.com ''nonce-js-BWGcN9hcn2TkDTEK96tpow==''; connect-src ''self''
         assets.mailtrap.io wss://mailtrap.io *.google.com *.google.ad *.google.ae
         *.google.com.af *.google.com.ag *.google.al *.google.am *.google.co.ao *.google.com.ar
         *.google.as *.google.at *.google.com.au *.google.az *.google.ba *.google.com.bd
@@ -145,21 +146,21 @@ http_interactions:
         ''self''; media-src ''self'' data: blob: beacon-v2.helpscout.net ssl.gstatic.com;
         object-src ''self'' beacon-v2.helpscout.net; report-uri https://errors.rw.rw/api/37/security/?sentry_key=5a0cc8a2cb4f49a8b9043c602e4ec0ab'
       X-Request-Id:
-      - b4d251d5-31e0-4672-bbf2-7bedbb4a34d1
+      - 67ba748d-d8b7-451b-9831-d6cf9ca60321
       X-Runtime:
-      - '0.049647'
+      - '0.019134'
       X-Cloud-Trace-Context:
-      - cb7992e38fff4e13c25d9444e1432b52;o=0
+      - 202ae565c50b43798fc2ab188e7ad5ac;o=0
       Strict-Transport-Security:
       - max-age=0
       Cf-Cache-Status:
       - DYNAMIC
       Cf-Ray:
-      - 97245b98d9ee5a41-VIE
+      - 99a6466c4ba670dc-WAW
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: UTF-8
-      string: '{"errors":{"name":["can''t be blank"]}}'
-  recorded_at: Wed, 20 Aug 2025 19:39:38 GMT
+      string: '{"errors":{"name":["can''t be blank","is too short (minimum is 2 characters)"]}}'
+  recorded_at: Thu, 06 Nov 2025 17:22:48 GMT
 recorded_with: VCR 6.2.0
