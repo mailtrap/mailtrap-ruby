@@ -3,7 +3,7 @@
 module Mailtrap
   # Data Transfer Object for Inbox
   # @see https://api-docs.mailtrap.io/docs/mailtrap-api-docs/ee252e413d78a-create-project
-  # @attr_reader id [Integer] The project ID
+  # @attr_reader id [Integer] The inbox ID
   # @attr_reader name [String] The project name
   # @attr_reader username [String] The inbox username
   # @attr_reader password [String, nil] The inbox password
@@ -13,7 +13,7 @@ module Mailtrap
   # @attr_reader email_username_enabled [Boolean] Whether the email username is enabled
   # @attr_reader sent_messages_count [Integer] The count of sent messages
   # @attr_reader forwarded_messages_count [Integer] The count of forwarded messages
-  # @attr_reader used [Boolean] The used inbox size in MB
+  # @attr_reader used [Integer] The used inbox size in MB
   # @attr_reader forward_from_email_address [String] The forwarding email address
   # @attr_reader project_id [Integer] The associated project ID
   # @attr_reader domain [String] The inbox domain

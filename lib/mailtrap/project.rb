@@ -12,7 +12,7 @@ module Mailtrap
     attr_reader :id, :name, :share_links, :inboxes, :permissions
 
     def self.members
-      [:id, :name, :share_links, :inboxes, :permissions]
+      %i[id name share_links inboxes permissions]
     end
 
     # @param args [Hash] The project attributes
@@ -24,10 +24,8 @@ module Mailtrap
 
       raw_inboxes = args[:inboxes]
       @inboxes =
-        if raw_inboxes
-          raw_inboxes.map do |inbox|
-            inbox.is_a?(Mailtrap::Inbox) ? inbox : Mailtrap::Inbox.new(**inbox)
-          end
+        raw_inboxes&.map do |inbox|
+          inbox.is_a?(Mailtrap::Inbox) ? inbox : Mailtrap::Inbox.new(**inbox)
         end
     end
 

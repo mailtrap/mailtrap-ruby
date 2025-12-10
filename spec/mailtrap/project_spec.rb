@@ -51,12 +51,12 @@ RSpec.describe Mailtrap::Project do
       )
 
       expect(project.inboxes.map(&:to_h)).to eq([
-        {
-          id: 456,
-          name: 'Test Inbox',
-          username: 'test@inbox.mailtrap.io'
-        }
-      ])
+                                                  {
+                                                    id: 456,
+                                                    name: 'Test Inbox',
+                                                    username: 'test@inbox.mailtrap.io'
+                                                  }
+                                                ])
     end
   end
 

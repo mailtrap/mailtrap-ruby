@@ -39,9 +39,9 @@ RSpec.describe Mailtrap::ProjectsAPI, :vcr do
     it 'maps response data to Project object' do
       expect(get).to be_a(Mailtrap::Project)
       expect(get).to have_attributes(
-                       id: project_id,
-                       name: 'Test Project'
-                     )
+        id: project_id,
+        name: 'Test Project'
+      )
     end
 
     context 'when project does not exist' do
@@ -69,8 +69,8 @@ RSpec.describe Mailtrap::ProjectsAPI, :vcr do
     it 'maps response data to Project object' do
       expect(create).to be_a(Mailtrap::Project)
       expect(create).to have_attributes(
-                          name: 'New Project'
-                        )
+        name: 'New Project'
+      )
     end
 
     context 'with hash request' do
@@ -83,8 +83,8 @@ RSpec.describe Mailtrap::ProjectsAPI, :vcr do
       it 'maps response data to Project object' do
         expect(create).to be_a(Mailtrap::Project)
         expect(create).to have_attributes(
-                            name: 'New Project'
-                          )
+          name: 'New Project'
+        )
       end
     end
 
@@ -122,8 +122,8 @@ RSpec.describe Mailtrap::ProjectsAPI, :vcr do
     it 'maps response data to Project object' do
       expect(update).to be_a(Mailtrap::Project)
       expect(update).to have_attributes(
-                          name: 'Updated Project'
-                        )
+        name: 'Updated Project'
+      )
     end
 
     context 'with hash request' do
@@ -136,8 +136,8 @@ RSpec.describe Mailtrap::ProjectsAPI, :vcr do
       it 'maps response data to Project object' do
         expect(update).to be_a(Mailtrap::Project)
         expect(update).to have_attributes(
-                            name: 'Updated Project'
-                          )
+          name: 'Updated Project'
+        )
       end
     end
 
@@ -147,8 +147,8 @@ RSpec.describe Mailtrap::ProjectsAPI, :vcr do
       it 'updates only the name field' do
         expect(update).to be_a(Mailtrap::Project)
         expect(update).to have_attributes(
-                            name: 'New Name Only'
-                          )
+          name: 'New Name Only'
+        )
       end
     end
 
