@@ -4,7 +4,7 @@ module Mailtrap
   # Data Transfer Object for Inbox
   # @see https://api-docs.mailtrap.io/docs/mailtrap-api-docs/ee252e413d78a-create-project
   # @attr_reader id [Integer] The inbox ID
-  # @attr_reader name [String] The project name
+  # @attr_reader name [String] The inbox name
   # @attr_reader username [String] The inbox username
   # @attr_reader password [String, nil] The inbox password
   # @attr_reader max_size [Integer] The maximum inbox size in MB
@@ -54,7 +54,7 @@ module Mailtrap
     :permissions,
     keyword_init: true
   ) do
-    # @return [Hash] The project attributes as a hash
+    # @return [Hash] The inbox attributes as a hash
     def to_h
       super.compact
     end
