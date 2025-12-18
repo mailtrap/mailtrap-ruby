@@ -1,17 +1,19 @@
+# Mailtrap Ruby client - Official
+
+![Ruby](https://img.shields.io/badge/Ruby-CC342D)
 [![test](https://github.com/mailtrap/mailtrap-ruby/actions/workflows/main.yml/badge.svg)](https://github.com/mailtrap/mailtrap-ruby/actions/workflows/main.yml)
 [![docs](https://shields.io/badge/docs-rubydoc.info-blue)](https://rubydoc.info/gems/mailtrap)
 [![gem](https://shields.io/gem/v/mailtrap)](https://rubygems.org/gems/mailtrap)
 [![downloads](https://shields.io/gem/dt/mailtrap)](https://rubygems.org/gems/mailtrap)
 
 
+## Prerequisites
 
-# Official Mailtrap Ruby client
+To get the most out of this official Mailtrap.io Ruby SDK:
 
-This Ruby gem offers integration with the [official API](https://api-docs.mailtrap.io/) for [Mailtrap](https://mailtrap.io).
+- [Create a Mailtrap account](https://mailtrap.io/signup)
 
-Quickly add email sending functionality to your Ruby application with Mailtrap.
-
-(This client uses API v2, for v1 refer to [this documentation](https://mailtrap.docs.apiary.io/))
+- [Verify your domain](https://mailtrap.io/sending/domains)
 
 ## Installation
 
@@ -105,60 +107,38 @@ client.send_batch(
 )
 ```
 
-### Usage Examples
+## Supported functionality & Examples
 
 Refer to the [`examples`](examples) folder for more examples:
 
-- [Full](examples/full.rb)
-- [Email template](examples/email_template.rb)
-- [Batch Sending](examples/batch.rb)
-- [ActionMailer](examples/action_mailer.rb)
-- [Email Templates API](examples/email_templates_api.rb)
-- [Projects API](examples/projects_api.rb)
+Email API:
+- Full email sending – [`full.rb`](examples/full.rb)
 
-### Content-Transfer-Encoding
+- Batch sending – [`batch.rb`](examples/batch.rb)
 
-`mailtrap` gem uses Mailtrap API to send emails. Mailtrap API does not try to
-replicate SMTP. That is why you should expect some limitations when it comes to
-sending. For example, `/api/send` endpoint ignores `Content-Transfer-Encoding`
-(see `headers` in the [API documentation](https://railsware.stoplight.io/docs/mailtrap-api-docs/67f1d70aeb62c-send-email)).
-Meaning your recipients will receive emails only in the default encoding which
-is `quoted-printable`, if you send with Mailtrap API.
+Email Sandbox (Testing):
 
-For those who need to use `7bit` or any other encoding, SMTP provides
-better flexibility in that regard. Go to your _Mailtrap account_ → _Email Sending_
-→ _Sending Domains_ → _Your domain_ → _SMTP/API Settings_ to find the SMTP
-configuration example.
+- Project management CRUD – [`projects_api.rb`](examples/projects_api.rb)
 
-### Multiple Mailtrap Clients
+Contact management:
 
-You can configure two Mailtrap clients to operate simultaneously. This setup is
-particularly useful when you need to send emails using both the transactional
-and bulk APIs. Refer to the configuration example below:
+- Contacts CRUD & listing – [`contacts_api.rb`](examples/contacts_api.rb)
 
-```ruby
-# config/application.rb
-ActionMailer::Base.add_delivery_method :mailtrap_bulk, Mailtrap::ActionMailer::DeliveryMethod
+General API:
 
-# config/environments/production.rb
-config.action_mailer.delivery_method = :mailtrap
-config.action_mailer.mailtrap_settings = {
-  api_key: 'your-api-key'
-}
-config.action_mailer.mailtrap_bulk_settings = {
-  api_key: 'your-api-key',
-  bulk: true
-}
+- Templates CRUD – [`email_templates_api.rb`](examples/email_templates_api.rb)
 
-# app/mailers/foo_mailer.rb
-mail(delivery_method: :mailtrap_bulk)
-```
+- Action Mailer – [`action_mailer.rb`](examples/action_mailer.rb)
 
 ## Migration guide v1 → v2
 
 Change `Mailtrap::Sending::Client` to `Mailtrap::Client`.
 
 If you use classes which have `Sending` namespace, remove the namespace like in the example above.
+
+## Contributing
+
+Bug reports and pull requests are welcome on [GitHub](https://github.com/railsware/mailtrap-ruby). This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](CODE_OF_CONDUCT.md).
 
 ## Development
 
@@ -168,18 +148,18 @@ To install this gem onto your local machine, run `bundle exec rake install`.
 
 To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
-## Contributing
-
-Bug reports and pull requests are welcome on [GitHub](https://github.com/mailtrap/mailtrap-ruby). This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](CODE_OF_CONDUCT.md).
-
 All contributions are required to have rspec tests covering its functionality.
 
 Please be sure to update [README](README.md) with new examples and features when applicable.
 
 ## License
 
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+The package is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
 
 ## Code of Conduct
 
-Everyone interacting in the Mailtrap project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](CODE_OF_CONDUCT.md).
+Everyone interacting in the Mailtrap project's codebases, issue trackers, chat rooms, and mailing lists is expected to follow the [code of conduct](CODE_OF_CONDUCT.md).
+
+## Compatibility with previous releases
+
+Versions of this package up to 2.0.2 were an [unofficial client](https://github.com/vchin/mailtrap-client) developed by [@vchin](https://github.com/vchin). Package version 3 is a completely new package. 
