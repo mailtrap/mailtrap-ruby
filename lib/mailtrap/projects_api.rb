@@ -55,6 +55,18 @@ module Mailtrap
       base_delete(project_id)
     end
 
+    def build_entity(options, response_class)
+      response_class.new(
+        **options
+          .slice(*(response_class.members - [:inboxes]))
+          .merge(
+            inboxes: options[:inboxes]&.map do |inbox|
+              inbox.is_a?(Mailtrap::Inbox) ? inbox : Mailtrap::Inbox.new(**inbox)
+            end
+          )
+      )
+    end
+
     private
 
     def base_path
