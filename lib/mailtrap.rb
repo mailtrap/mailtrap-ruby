@@ -11,6 +11,7 @@ require_relative 'mailtrap/contact_fields_api'
 require_relative 'mailtrap/contact_imports_api'
 require_relative 'mailtrap/suppressions_api'
 require_relative 'mailtrap/projects_api'
+require_relative 'mailtrap/inboxes_api'
 
 module Mailtrap
   # @!macro api_errors
