@@ -107,6 +107,47 @@ client.send_batch(
 )
 ```
 
+### Sandbox Sending
+
+Send emails to your Sandbox inbox for testing purposes:
+
+```ruby
+require 'mailtrap'
+
+client = Mailtrap::Client.new(api_key: 'your-api-key', sandbox: true, inbox_id: YOUR_INBOX_ID)
+client.send(mail)
+
+# You can also pass the request parameters directly
+client.send(
+  from: { email: 'mailtrap@example.com', name: 'Mailtrap Test' },
+  to: [
+    { email: 'your@email.com' }
+  ],
+  subject: 'You are awesome!',
+  text: 'Congrats for sending test email with Mailtrap!'
+)
+```
+
+### Content-Transfer-Encoding
+
+`mailtrap` gem uses Mailtrap API to send emails. Mailtrap API does not try to
+replicate SMTP. That is why you should expect some limitations when it comes to
+sending. For example, `/api/send` endpoint ignores `Content-Transfer-Encoding`
+(see `headers` in the [API documentation](https://railsware.stoplight.io/docs/mailtrap-api-docs/67f1d70aeb62c-send-email)).
+Meaning your recipients will receive emails only in the default encoding which
+is `quoted-printable`, if you send with Mailtrap API.
+
+For those who need to use `7bit` or any other encoding, SMTP provides
+better flexibility in that regard. Go to your _Mailtrap account_ → _Email Sending_
+→ _Sending Domains_ → _Your domain_ → _SMTP/API Settings_ to find the SMTP
+configuration example.
+
+### Multiple Mailtrap Clients
+
+You can configure two Mailtrap clients to operate simultaneously. This setup is
+particularly useful when you need to send emails using both the transactional
+and bulk APIs. Refer to the configuration examples above.
+
 ## Supported functionality & Examples
 
 Refer to the [`examples`](examples) folder for more examples:
