@@ -6,6 +6,8 @@
 [![gem](https://shields.io/gem/v/mailtrap)](https://rubygems.org/gems/mailtrap)
 [![downloads](https://shields.io/gem/dt/mailtrap)](https://rubygems.org/gems/mailtrap)
 
+This client uses API v2, for v1 refer to [this documentation](https://mailtrap.docs.apiary.io/)
+
 
 ## Prerequisites
 
@@ -109,7 +111,7 @@ client.send_batch(
 
 ### Sandbox Sending
 
-Send emails to your Sandbox inbox for testing purposes:
+Send emails to your Sandbox for testing purposes:
 
 ```ruby
 require 'mailtrap'
@@ -146,7 +148,25 @@ configuration example.
 
 You can configure two Mailtrap clients to operate simultaneously. This setup is
 particularly useful when you need to send emails using both the transactional
-and bulk APIs. Refer to the configuration examples above.
+and bulk APIs. Refer to the configuration examples below.
+
+```ruby
+# config/application.rb
+ActionMailer::Base.add_delivery_method :mailtrap_bulk, Mailtrap::ActionMailer::DeliveryMethod
+
+# config/environments/production.rb
+config.action_mailer.delivery_method = :mailtrap
+config.action_mailer.mailtrap_settings = {
+  api_key: 'your-api-key'
+}
+config.action_mailer.mailtrap_bulk_settings = {
+  api_key: 'your-api-key',
+  bulk: true
+}
+
+# app/mailers/foo_mailer.rb
+mail(delivery_method: :mailtrap_bulk)
+```
 
 ## Supported functionality & Examples
 
