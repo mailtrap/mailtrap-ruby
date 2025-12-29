@@ -38,7 +38,7 @@ RSpec.describe Mailtrap::Inbox do
   describe '#initialize' do
     subject(:inbox) { described_class.new(attributes) }
 
-    it 'creates a project with all attributes' do
+    it 'creates an Inbox with all attributes' do
       expect(inbox).to have_attributes(
         id: 123,
         name: 'Example Inbox',

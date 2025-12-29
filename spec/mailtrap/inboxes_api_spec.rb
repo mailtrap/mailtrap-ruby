@@ -9,7 +9,7 @@ RSpec.describe Mailtrap::InboxesAPI, :vcr do
   describe '#list' do
     subject(:list) { inboxes_api.list }
 
-    it 'maps response data to Inboxe objects' do
+    it 'maps response data to Inboxes objects' do
       expect(list).to all(be_a(Mailtrap::Inbox))
     end
 
@@ -139,7 +139,7 @@ RSpec.describe Mailtrap::InboxesAPI, :vcr do
 
     let(:inbox_id) { 4_278_175 }
 
-    it 'returns nil' do
+    it 'cleans Inbox and returns Inbox object' do
       expect(clean).to have_attributes(
         id: inbox_id,
         name: 'Updated Inbox'
