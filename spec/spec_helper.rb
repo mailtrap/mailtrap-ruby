@@ -11,6 +11,10 @@ VCR.configure do |config|
   config.hook_into :webmock
   config.configure_rspec_metadata!
 
+  config.before_record do |interaction|
+    interaction.response.headers.delete('Content-Security-Policy')
+  end
+
   config.filter_sensitive_data('<BEARER_TOKEN>') do |interaction|
     next if interaction.request.uri =~ /localhost/
 
@@ -45,5 +49,21 @@ RSpec.configure do |config|
 
   config.expect_with :rspec do |c|
     c.syntax = :expect
+  end
+end
+
+RSpec::Matchers.define :match_struct do |expected_attributes|
+  match do |actual_struct|
+    expected_attributes.all? do |key, expected_value|
+      actual_struct.respond_to?(key) && actual_struct[key] == expected_value
+    end
+  end
+
+  failure_message do |actual_struct|
+    "expected #{actual_struct.inspect} to match #{expected_attributes}, but did not match"
+  end
+
+  failure_message_when_negated do |actual_struct|
+    "expected #{actual_struct.inspect} not to match #{expected_attributes}, but it did match"
   end
 end
