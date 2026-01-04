@@ -43,7 +43,7 @@ RSpec.describe Mailtrap::SendingDomainsAPI, :vcr do
       )
     end
 
-    context 'when inbox does not exist' do
+    context 'when sending domain does not exist' do
       let(:sending_domain_id) { -1 }
 
       it 'raises not found error' do
@@ -65,7 +65,7 @@ RSpec.describe Mailtrap::SendingDomainsAPI, :vcr do
       }
     end
 
-    it 'maps response data to Inbox object' do
+    it 'maps response data to sending domain object' do
       expect(create).to be_a(Mailtrap::SendingDomain)
       expect(create).to match_struct(
         id: 943_758,
@@ -122,11 +122,11 @@ RSpec.describe Mailtrap::SendingDomainsAPI, :vcr do
 
     let(:sending_domain_id) { 943_758 }
 
-    it 'returns deleted inbox data' do
+    it 'returns deleted sending domain data' do
       expect(delete).to be_nil
     end
 
-    context 'when inbox does not exist' do
+    context 'when sending domain does not exist' do
       let(:sending_domain_id) { -1 }
 
       it 'raises not found error' do
