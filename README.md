@@ -115,6 +115,7 @@ Refer to the [`examples`](examples) folder for more examples:
 - [ActionMailer](examples/action_mailer.rb)
 - [Email Templates API](examples/email_templates_api.rb)
 - [Projects API](examples/projects_api.rb)
+- [Sending Domains API](examples/sending_domains_api.rb)
 
 ### Content-Transfer-Encoding
 
