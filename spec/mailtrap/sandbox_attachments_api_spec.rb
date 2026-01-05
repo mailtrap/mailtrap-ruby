@@ -30,7 +30,8 @@ RSpec.describe Mailtrap::SandboxAttachmentsAPI, :vcr do
 
   describe '#get' do
     subject(:get) { sandbox_attachments_api.get(inbox_id, message_id, attachment_id) }
-    let(:attachment_id) { 790295400 }
+
+    let(:attachment_id) { 790_295_400 }
 
     it 'maps response data to SandboxAttachment object' do
       expect(get).to be_a(Mailtrap::SandboxAttachment)
