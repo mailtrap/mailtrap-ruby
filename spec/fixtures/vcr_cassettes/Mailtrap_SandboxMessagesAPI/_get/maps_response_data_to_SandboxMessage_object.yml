@@ -1,0 +1,83 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://mailtrap.io/api/accounts/1111111/inboxes/4288340/messages/5273448410
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - mailtrap-ruby (https://github.com/mailtrap/mailtrap-ruby)
+      Host:
+      - mailtrap.io
+      Authorization:
+      - Bearer <BEARER_TOKEN>
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 30 Dec 2025 23:10:48 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - cloudflare
+      Vary:
+      - Accept
+      - Accept-Encoding
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Mailtrap-Version:
+      - v2
+      X-Ratelimit-Limit:
+      - '150'
+      X-Ratelimit-Remaining:
+      - '149'
+      Etag:
+      - W/"b0c2be2795ed16c966127414d596d40a"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 2b35d260-3a20-41b7-b286-3e4977a65257
+      X-Runtime:
+      - '0.026897'
+      X-Cloud-Trace-Context:
+      - 510e7cd5c00b45668e59e9839424f4a3;o=0
+      Strict-Transport-Security:
+      - max-age=0
+      Cf-Cache-Status:
+      - DYNAMIC
+      Cf-Ray:
+      - 9b8e695038936e15-FRA
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":5273448410,"inbox_id":4288340,"subject":"Hello from Mailtrap","sent_at":"2026-01-04T04:55:50.867-12:00","from_email":"reply@demomailtrap.co","from_name":"","to_email":"alex.b@railsware.com","to_name":"","email_size":691,"is_read":true,"created_at":"2026-01-04T04:55:50.871-12:00","updated_at":"2026-01-04T04:55:56.618-12:00","template_id":0,"template_variables":null,"html_body_size":29,"text_body_size":20,"human_size":"691
+        Bytes","html_path":"/api/testing_message_parts/QEVuQwFAEABC6ODCerNYpR2yAx7xrEH6%2Ftn5yHfn6zIHYoQ9Ce0V5e9PB+Fy64WrVklr1BTc8WNmeft20TH7pytYbFWIzBx61dHgATF0KMjaFS1whA7iqWor%2FinVxeyLbZbskDsXojw=/body.html","txt_path":"/api/testing_message_parts/QEVuQwFAEABC6ODCerNYpR2yAx7xrEH6%2Ftn5yHfn6zIHYoQ9Ce0V5e9PB+Fy64WrVklr1BTc8WNmeft20TH7pytYbFWIzBx61dHgATF0KMjaFS1whA7iqWor%2FinVxeyLbZbskDsXojw=/body.txt","raw_path":"/api/testing_message_parts/QEVuQwFAEABC6ODCerNYpR2yAx7xrEH6%2Ftn5yHfn6zIHYoQ9Ce0V5e9PB+Fy64WrVklr1BTc8WNmeft20TH7pytYbFWIzBx61dHgATF0KMjaFS1whA7iqWor%2FinVxeyLbZbskDsXojw=/body.raw","download_path":"/api/testing_message_parts/QEVuQwFAEABC6ODCerNYpR2yAx7xrEH6%2Ftn5yHfn6zIHYoQ9Ce0V5e9PB+Fy64WrVklr1BTc8WNmeft20TH7pytYbFWIzBx61dHgATF0KMjaFS1whA7iqWor%2FinVxeyLbZbskDsXojw=/body.eml","html_source_path":"/api/testing_message_parts/QEVuQwFAEABC6ODCerNYpR2yAx7xrEH6%2Ftn5yHfn6zIHYoQ9Ce0V5e9PB+Fy64WrVklr1BTc8WNmeft20TH7pytYbFWIzBx61dHgATF0KMjaFS1whA7iqWor%2FinVxeyLbZbskDsXojw=/body.htmlsource","blacklists_report_info":{"result":"success","domain":"demomailtrap.co","ip":"172.67.134.80","report":[{"name":"BACKSCATTERER","url":"http://www.backscatterer.org/index.php","in_black_list":false},{"name":"BARRACUDA","url":"http://barracudacentral.org/rbl","in_black_list":false},{"name":"Spamrbl
+        IMP-SPAM","url":"http://antispam.imp.ch/?lng=1","in_black_list":false},{"name":"Wormrbl
+        IMP-SPAM","url":"http://antispam.imp.ch/?lng=1","in_black_list":false},{"name":"LASHBACK","url":"http://blacklist.lashback.com/","in_black_list":false},{"name":"NIXSPAM","url":"https://www.heise.de/ix/NiX-Spam-DNSBL-and-blacklist-for-download-499637.html","in_black_list":false},{"name":"PSBL","url":"https://psbl.org/","in_black_list":false},{"name":"SORBS-SPAM","url":"http://www.sorbs.net/lookup.shtml","in_black_list":false},{"name":"SPAMCOP","url":"http://spamcop.net/bl.shtml","in_black_list":false},{"name":"TRUNCATE","url":"http://www.gbudb.com/truncate/index.jsp","in_black_list":false}]},"smtp_information":{"ok":false}}'
+  recorded_at: Tue, 30 Dec 2025 23:10:48 GMT
+recorded_with: VCR 6.2.0

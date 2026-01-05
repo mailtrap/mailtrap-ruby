@@ -168,14 +168,16 @@ module Mailtrap
     # Performs a GET request to the specified path
     # @param path [String] The request path
     # @param query_params [Hash] Query parameters to append to the URL (optional)
+    # @param custom_parser [Proc] custom parsing function for the response body (optional)
     # @return [Hash, nil] The JSON response
     # @!macro api_errors
-    def get(path, query_params = {})
+    def get(path, query_params = {}, custom_parser: nil)
       perform_request(
         method: :get,
         host: general_api_host,
         path:,
-        query_params:
+        query_params:,
+        custom_parser:
       )
     end
 
@@ -243,7 +245,7 @@ module Mailtrap
       "/api/batch#{"/#{inbox_id}" if sandbox}"
     end
 
-    def perform_request(method:, host:, path:, query_params: {}, body: nil)
+    def perform_request(method:, host:, path:, query_params: {}, body: nil, custom_parser: nil)
       http_client = http_client_for(host)
 
       uri = URI::HTTPS.build(host:, path:)
@@ -251,7 +253,7 @@ module Mailtrap
 
       request = setup_request(method, uri, body)
       response = http_client.request(request)
-      handle_response(response)
+      handle_response(response, custom_parser:)
     end
 
     def setup_request(method, uri_or_path, body = nil)
@@ -276,10 +278,10 @@ module Mailtrap
       request
     end
 
-    def handle_response(response) # rubocop:disable Metrics/CyclomaticComplexity, Metrics/MethodLength
+    def handle_response(response, custom_parser: nil) # rubocop:disable Metrics/CyclomaticComplexity, Metrics/MethodLength
       case response
       when Net::HTTPOK, Net::HTTPCreated
-        json_response(response.body)
+        custom_parser.nil? ? json_response(response.body) : custom_parser.call(response.body)
       when Net::HTTPNoContent
         nil
       when Net::HTTPBadRequest
