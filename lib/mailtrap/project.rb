@@ -16,10 +16,5 @@ module Mailtrap
     :inboxes,
     :permissions,
     keyword_init: true
-  ) do
-    # @return [Hash] The Project attributes as a hash
-    def to_h
-      super.compact
-    end
-  end
+  )
 end

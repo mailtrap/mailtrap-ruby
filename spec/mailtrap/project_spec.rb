@@ -32,7 +32,7 @@ RSpec.describe Mailtrap::Project do
     end
 
     it 'creates a project with all attributes' do
-      expect(project).to have_attributes(
+      expect(project).to match_struct(
         id: '123456',
         name: 'My Project',
         share_links: [
@@ -115,25 +115,6 @@ RSpec.describe Mailtrap::Project do
           can_leave: true
         }
       )
-    end
-
-    context 'when some attributes are nil' do
-      let(:project) do
-        described_class.new(
-          id: '123456',
-          name: 'My Project',
-          share_links: nil,
-          inboxes: nil,
-          permissions: nil
-        )
-      end
-
-      it 'returns a hash with only non-nil attributes' do
-        expect(hash).to eq(
-          id: '123456',
-          name: 'My Project'
-        )
-      end
     end
   end
 end

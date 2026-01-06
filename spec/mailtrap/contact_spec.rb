@@ -46,11 +46,6 @@ RSpec.describe Mailtrap::Contact do
                                  })
     end
 
-    it 'omits nil values' do
-      attributes[:fields] = nil
-      expect(described_class.new(attributes).to_h).not_to have_key(:fields)
-    end
-
     it 'returns without action' do
       expect(contact.to_h).not_to have_key(:action)
     end

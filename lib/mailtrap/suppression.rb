@@ -37,10 +37,5 @@ module Mailtrap
     :message_sender_email,
     :message_subject,
     keyword_init: true
-  ) do
-    # @return [Hash] The suppression attributes as a hash
-    def to_h
-      super.compact
-    end
-  end
+  )
 end
