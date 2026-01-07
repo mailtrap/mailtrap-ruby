@@ -55,6 +55,8 @@ module Mailtrap
       base_delete(project_id)
     end
 
+    private
+
     def handle_response(response)
       build_entity(
         response.merge(
@@ -63,8 +65,6 @@ module Mailtrap
         response_class
       )
     end
-
-    private
 
     def base_path
       "/api/accounts/#{account_id}/projects"

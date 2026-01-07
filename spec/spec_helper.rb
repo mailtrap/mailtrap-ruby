@@ -54,16 +54,30 @@ end
 
 RSpec::Matchers.define :match_struct do |expected_attributes|
   match do |actual_struct|
-    expected_attributes.all? do |key, expected_value|
+    # Making sure expected keys exist and match
+    expected_ok = expected_attributes.all? do |key, expected_value|
       actual_struct.respond_to?(key) && actual_struct[key] == expected_value
     end
+
+    # Checking if Struct does not have extra keys that are not in expected_attributes
+    struct_keys = if actual_struct.respond_to?(:members)
+                    actual_struct.members.map(&:to_sym)
+                  else
+                    actual_struct.to_h.keys
+                  end
+
+    expected_keys = expected_attributes.keys.map(&:to_sym)
+
+    keys_ok = struct_keys.sort == expected_keys.sort
+
+    expected_ok && keys_ok
   end
 
   failure_message do |actual_struct|
-    "expected #{actual_struct.inspect} to match #{expected_attributes}, but did not match"
+    "expected #{actual_struct.inspect} to exactly match attributes #{expected_attributes}, but it did not"
   end
 
   failure_message_when_negated do |actual_struct|
-    "expected #{actual_struct.inspect} not to match #{expected_attributes}, but it did match"
+    "expected #{actual_struct.inspect} not to exactly match attributes #{expected_attributes}, but it did"
   end
 end
