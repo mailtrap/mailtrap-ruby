@@ -25,7 +25,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 07 Jan 2026 11:28:48 GMT
+      - Thu, 08 Jan 2026 12:03:32 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -56,27 +56,27 @@ http_interactions:
       X-Ratelimit-Remaining:
       - '149'
       Etag:
-      - W/"52981283c5b643774690cc1fa55b5f5e"
+      - W/"fc00102f1afba8f3847a1f4cfa69620d"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - f3869fe7-6ce6-48ae-94ba-3f8ddfe535ac
+      - 8e01b765-cf37-4046-bad3-24dc1332fc4e
       X-Runtime:
-      - '0.099796'
+      - '0.084465'
       X-Cloud-Trace-Context:
-      - 33f163b6e47d42c8c60b60d004aac15f;o=3
+      - 3dcde4068289406bc20705c4a460484a;o=0
       Strict-Transport-Security:
       - max-age=0
       Cf-Cache-Status:
       - DYNAMIC
       Cf-Ray:
-      - 9ba31d1bd9cae854-FRA
+      - 9bab8d5b6f30d36c-FRA
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
-      string: '{"id":2379735,"name":"Ruby SDK Project","share_links":{"admin":"https://mailtrap.io/projects/2379735/share/QEVuQwEA4L8h5hP_6bzwo0asWC1hzsSRHJJPQujPwhAhI961iBL7hn64PK1h6oHx6mD8UqHFkk29lPOrF8sLi6g6Hp1-qnHlCHM_80E4g-lzsGuxm9lJJYBxUFvyHTb9JxQ_xjua","viewer":"https://mailtrap.io/projects/2379735/share/QEVuQwEA4L8h5hP_6bzwo0asWC1hzsSRHJJPQujPwhAhI961iBL7hn64PK1h6oHx6mD8UqHFveri5ZpxVpC5y8XZGL4dCVGQTEAb7XXpm-EuVLFIEJimnAuJzsZ1-PJfrU2Y8CjM"},"inboxes":[{"id":4288340,"name":"main
-        sandbox","username":"bd18922c6cb70d","status":"active","email_username":"0c45dfcf78-45ee5d","email_username_enabled":true,"used":true,"forward_from_email_address":"a2326475-i4288340@forward.mailtrap.info","project_id":2379735,"password":"8a0b5f0ce91239","domain":"sandbox.smtp.mailtrap.io","pop3_domain":"pop3.mailtrap.io","email_domain":"inbox.mailtrap.io","smtp_ports":[25,465,587,2525],"pop3_ports":[1100,9950],"api_domain":"sandbox.api.mailtrap.io","sent_messages_count":0,"forwarded_messages_count":0,"emails_count":5,"emails_unread_count":5,"last_message_sent_at":"2026-01-05T10:44:19.839Z","max_size":200,"max_message_size":10485760,"permissions":{"can_read":true,"can_update":true,"can_destroy":true,"can_leave":false}},{"id":4293932,"name":"New
-        sandbox","username":"2b45dff67b6866","status":"active","email_username":"00132ba2e5-9b4e10","email_username_enabled":true,"used":false,"forward_from_email_address":"a2326475-i4293932@forward.mailtrap.info","project_id":2379735,"password":"3591c64992eda0","domain":"sandbox.smtp.mailtrap.io","pop3_domain":"pop3.mailtrap.io","email_domain":"inbox.mailtrap.io","smtp_ports":[25,465,587,2525],"pop3_ports":[1100,9950],"api_domain":"sandbox.api.mailtrap.io","sent_messages_count":0,"forwarded_messages_count":0,"emails_count":0,"emails_unread_count":0,"last_message_sent_at":null,"max_size":200,"max_message_size":10485760,"permissions":{"can_read":true,"can_update":true,"can_destroy":true,"can_leave":false}}],"permissions":{"can_read":true,"can_update":true,"can_destroy":true,"can_leave":false}}'
-  recorded_at: Wed, 07 Jan 2026 11:28:48 GMT
+      string: '{"id":2379735,"name":"Ruby SDK Project","share_links":{"admin":"https://mailtrap.io/projects/2379735/share/QEVuQwEA4L8h5hP_6bzwo0asWC1hzsSRHJJPQujPwhAhI961iBL7hn64PK1h6oHx6mD8UqHFkk29lPOrF8sLi6g6Hp1-qnHlCHM_80E4g-lzsGuxm9lJJYBxUFvyHTb9JxQ_xjua","viewer":"https://mailtrap.io/projects/2379735/share/QEVuQwEA4L8h5hP_6bzwo0asWC1hzsSRHJJPQujPwhAhI961iBL7hn64PK1h6oHx6mD8UqHFveri5ZpxVpC5y8XZGL4dCVGQTEAb7XXpm-EuVLFIEJimnAuJzsZ1-PJfrU2Y8CjM"},"inboxes":[{"id":4294015,"name":"Main
+        sandbox","username": "railsware","status":"active","email_username":"7e24d4e21f-d92640","email_username_enabled":true,"used":false,"forward_from_email_address":"a2326475-i4294015@forward.mailtrap.info","project_id":2379735,"password":
+        "xxxxxxxx","domain":"sandbox.smtp.mailtrap.io","pop3_domain":"pop3.mailtrap.io","email_domain":"inbox.mailtrap.io","smtp_ports":[25,465,587,2525],"pop3_ports":[1100,9950],"api_domain":"sandbox.api.mailtrap.io","sent_messages_count":0,"forwarded_messages_count":0,"emails_count":0,"emails_unread_count":0,"last_message_sent_at":null,"max_size":200,"max_message_size":10485760,"permissions":{"can_read":true,"can_update":true,"can_destroy":true,"can_leave":false}}],"permissions":{"can_read":true,"can_update":true,"can_destroy":true,"can_leave":false}}'
+  recorded_at: Thu, 08 Jan 2026 12:03:32 GMT
 recorded_with: VCR 6.2.0
