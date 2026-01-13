@@ -1,0 +1,155 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://mailtrap.io/api/accounts/1111111/projects
+    body:
+      encoding: UTF-8
+      string: '{"project":{"name":"Project to Delete"}}'
+    headers:
+      Accept-Encoding:
+        - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+        - "*/*"
+      User-Agent:
+        - mailtrap-ruby (https://github.com/mailtrap/mailtrap-ruby)
+      Host:
+        - mailtrap.io
+      Authorization:
+        - Bearer <BEARER_TOKEN>
+      Content-Type:
+        - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+        - Thu, 06 Nov 2025 17:22:50 GMT
+      Content-Type:
+        - application/json; charset=utf-8
+      Transfer-Encoding:
+        - chunked
+      Connection:
+        - keep-alive
+      Server:
+        - cloudflare
+      X-Frame-Options:
+        - SAMEORIGIN
+      X-Xss-Protection:
+        - 1; mode=block
+      X-Content-Type-Options:
+        - nosniff
+      X-Download-Options:
+        - noopen
+      X-Permitted-Cross-Domain-Policies:
+        - none
+      Referrer-Policy:
+        - strict-origin-when-cross-origin
+      Vary:
+        - Accept
+      X-Mailtrap-Version:
+        - v2
+      X-Ratelimit-Limit:
+        - '150'
+      X-Ratelimit-Remaining:
+        - '147'
+      Etag:
+        - W/"042f85c44df5dda84dd0a212a8a84067"
+      Cache-Control:
+        - max-age=0, private, must-revalidate
+      X-Request-Id:
+        - 974beb3a-da90-4154-82de-cbaa03b9eecf
+      X-Runtime:
+        - '0.072132'
+      X-Cloud-Trace-Context:
+        - e1b497c7012c49a88f7c34a4285079aa;o=0
+      Strict-Transport-Security:
+        - max-age=0
+      Cf-Cache-Status:
+        - DYNAMIC
+      Cf-Ray:
+        - 99a646799b97b813-WAW
+      Alt-Svc:
+        - h3=":443"; ma=86400
+    body:
+      encoding: UTF-8
+      string: '{"id":2568512,"name":"Project to Delete","share_links":{"admin":"https://mailtrap.io/projects/2568512/share/REDACTED","viewer":"https://mailtrap.io/projects/2568512/share/REDACTED"},"inboxes":[],"permissions":{"can_read":true,"can_update":true,"can_destroy":true,"can_leave":false}}'
+  recorded_at: Thu, 06 Nov 2025 17:22:50 GMT
+- request:
+    method: delete
+    uri: https://mailtrap.io/api/accounts/1111111/projects/2568512
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+        - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+        - "*/*"
+      User-Agent:
+        - mailtrap-ruby (https://github.com/mailtrap/mailtrap-ruby)
+      Host:
+        - mailtrap.io
+      Authorization:
+        - Bearer <BEARER_TOKEN>
+      Content-Type:
+        - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+        - Thu, 06 Nov 2025 17:22:50 GMT
+      Content-Type:
+        - application/json; charset=utf-8
+      Transfer-Encoding:
+        - chunked
+      Connection:
+        - keep-alive
+      Server:
+        - cloudflare
+      X-Frame-Options:
+        - SAMEORIGIN
+      X-Xss-Protection:
+        - 1; mode=block
+      X-Content-Type-Options:
+        - nosniff
+      X-Download-Options:
+        - noopen
+      X-Permitted-Cross-Domain-Policies:
+        - none
+      Referrer-Policy:
+        - strict-origin-when-cross-origin
+      Vary:
+        - Accept
+      X-Mailtrap-Version:
+        - v2
+      X-Ratelimit-Limit:
+        - '150'
+      X-Ratelimit-Remaining:
+        - '146'
+      Etag:
+        - W/"268931c8d55249081f5793b71c967b16"
+      Cache-Control:
+        - max-age=0, private, must-revalidate
+      X-Request-Id:
+        - 8523fef5-9a69-43fe-a889-f3134b03ca73
+      X-Runtime:
+        - '0.082012'
+      X-Cloud-Trace-Context:
+        - 29e3d8994f6b4a79831a029a0bf2af97;o=0
+      Strict-Transport-Security:
+        - max-age=0
+      Cf-Cache-Status:
+        - DYNAMIC
+      Cf-Ray:
+        - 99a6467b1875bc36-WAW
+      Alt-Svc:
+        - h3=":443"; ma=86400
+    body:
+      encoding: UTF-8
+      string: '{"id":2568512}'
+  recorded_at: Thu, 06 Nov 2025 17:22:50 GMT
+recorded_with: VCR 6.2.0

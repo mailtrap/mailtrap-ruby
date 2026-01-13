@@ -1,0 +1,77 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://mailtrap.io/api/accounts/1111111/projects
+    body:
+      encoding: UTF-8
+      string: '{"project":{"name":""}}'
+    headers:
+      Accept-Encoding:
+        - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+        - "*/*"
+      User-Agent:
+        - mailtrap-ruby (https://github.com/mailtrap/mailtrap-ruby)
+      Host:
+        - mailtrap.io
+      Authorization:
+        - Bearer <BEARER_TOKEN>
+      Content-Type:
+        - application/json
+  response:
+    status:
+      code: 422
+      message: Unprocessable Entity
+    headers:
+      Date:
+        - Thu, 06 Nov 2025 17:22:48 GMT
+      Content-Type:
+        - application/json; charset=utf-8
+      Content-Length:
+        - '79'
+      Connection:
+        - keep-alive
+      Server:
+        - cloudflare
+      X-Frame-Options:
+        - SAMEORIGIN
+      X-Xss-Protection:
+        - 1; mode=block
+      X-Content-Type-Options:
+        - nosniff
+      X-Download-Options:
+        - noopen
+      X-Permitted-Cross-Domain-Policies:
+        - none
+      Referrer-Policy:
+        - strict-origin-when-cross-origin
+      Vary:
+        - Accept
+      X-Mailtrap-Version:
+        - v2
+      X-Ratelimit-Limit:
+        - '150'
+      X-Ratelimit-Remaining:
+        - '142'
+      Cache-Control:
+        - no-cache
+      X-Request-Id:
+        - 67ba748d-d8b7-451b-9831-d6cf9ca60321
+      X-Runtime:
+        - '0.019134'
+      X-Cloud-Trace-Context:
+        - 202ae565c50b43798fc2ab188e7ad5ac;o=0
+      Strict-Transport-Security:
+        - max-age=0
+      Cf-Cache-Status:
+        - DYNAMIC
+      Cf-Ray:
+        - 99a6466c4ba670dc-WAW
+      Alt-Svc:
+        - h3=":443"; ma=86400
+    body:
+      encoding: UTF-8
+      string: '{"errors":{"name":["can''t be blank","is too short (minimum is 2 characters)"]}}'
+  recorded_at: Thu, 06 Nov 2025 17:22:48 GMT
+recorded_with: VCR 6.2.0

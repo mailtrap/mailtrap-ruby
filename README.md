@@ -105,22 +105,7 @@ client.send_batch(
 )
 ```
 
-### Email Templates API
-
-```ruby
-require 'mailtrap'
-
-client = Mailtrap::Client.new(api_key: 'your-api-key')
-templates = Mailtrap::EmailTemplatesAPI.new 3229, client
-
-templates.create(
-  name: 'Welcome Email',
-  subject: 'Welcome to Mailtrap!',
-  body_html: '<h1>Hello</h1>',
-  body_text: 'Hello',
-  category: 'welcome'
-)
-```
+### Usage Examples
 
 Refer to the [`examples`](examples) folder for more examples:
 
@@ -129,6 +114,7 @@ Refer to the [`examples`](examples) folder for more examples:
 - [Batch Sending](examples/batch.rb)
 - [ActionMailer](examples/action_mailer.rb)
 - [Email Templates API](examples/email_templates_api.rb)
+- [Projects API](examples/projects_api.rb)
 
 ### Content-Transfer-Encoding
 
@@ -178,11 +164,17 @@ If you use classes which have `Sending` namespace, remove the namespace like in 
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+To install this gem onto your local machine, run `bundle exec rake install`.
+
+To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
 ## Contributing
 
 Bug reports and pull requests are welcome on [GitHub](https://github.com/mailtrap/mailtrap-ruby). This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](CODE_OF_CONDUCT.md).
+
+All contributions are required to have rspec tests covering its functionality.
+
+Please be sure to update [README](README.md) with new examples and features when applicable.
 
 ## License
 

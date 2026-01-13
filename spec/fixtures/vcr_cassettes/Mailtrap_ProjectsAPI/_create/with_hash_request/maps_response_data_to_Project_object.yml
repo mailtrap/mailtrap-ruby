@@ -1,0 +1,79 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://mailtrap.io/api/accounts/1111111/projects
+    body:
+      encoding: UTF-8
+      string: '{"project":{"name":"New Project"}}'
+    headers:
+      Accept-Encoding:
+        - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+        - "*/*"
+      User-Agent:
+        - mailtrap-ruby (https://github.com/mailtrap/mailtrap-ruby)
+      Host:
+        - mailtrap.io
+      Authorization:
+        - Bearer <BEARER_TOKEN>
+      Content-Type:
+        - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+        - Thu, 06 Nov 2025 17:22:48 GMT
+      Content-Type:
+        - application/json; charset=utf-8
+      Transfer-Encoding:
+        - chunked
+      Connection:
+        - keep-alive
+      Server:
+        - cloudflare
+      X-Frame-Options:
+        - SAMEORIGIN
+      X-Xss-Protection:
+        - 1; mode=block
+      X-Content-Type-Options:
+        - nosniff
+      X-Download-Options:
+        - noopen
+      X-Permitted-Cross-Domain-Policies:
+        - none
+      Referrer-Policy:
+        - strict-origin-when-cross-origin
+      Vary:
+        - Accept
+      X-Mailtrap-Version:
+        - v2
+      X-Ratelimit-Limit:
+        - '150'
+      X-Ratelimit-Remaining:
+        - '143'
+      Etag:
+        - W/"555c37419991b9243a4ee4a8199dde11"
+      Cache-Control:
+        - max-age=0, private, must-revalidate
+      X-Request-Id:
+        - cc4b30b1-8d31-471c-a233-b0c29a13bbc7
+      X-Runtime:
+        - '0.203603'
+      X-Cloud-Trace-Context:
+        - 11447d3d125e4f9187fcfeb1d48a0525;o=0
+      Strict-Transport-Security:
+        - max-age=0
+      Cf-Cache-Status:
+        - DYNAMIC
+      Cf-Ray:
+        - 99a64669fd1be5d6-WAW
+      Alt-Svc:
+        - h3=":443"; ma=86400
+    body:
+      encoding: UTF-8
+      string: '{"id":2568507,"name":"New Project","share_links":{"admin":"https://mailtrap.io/projects/2568507/share/REDACTED","viewer":"https://mailtrap.io/projects/2568507/share/REDACTED"},"inboxes":[],"permissions":{"can_read":true,"can_update":true,"can_destroy":true,"can_leave":false}}'
+  recorded_at: Thu, 06 Nov 2025 17:22:48 GMT
+recorded_with: VCR 6.2.0

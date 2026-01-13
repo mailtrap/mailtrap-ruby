@@ -1,0 +1,79 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://mailtrap.io/api/accounts/1111111/projects
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+        - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+        - "*/*"
+      User-Agent:
+        - mailtrap-ruby (https://github.com/mailtrap/mailtrap-ruby)
+      Host:
+        - mailtrap.io
+      Authorization:
+        - Bearer <BEARER_TOKEN>
+      Content-Type:
+        - application/json
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+        - Thu, 06 Nov 2025 17:22:45 GMT
+      Content-Type:
+        - application/json; charset=utf-8
+      Content-Length:
+        - '31'
+      Connection:
+        - keep-alive
+      Server:
+        - cloudflare
+      X-Frame-Options:
+        - SAMEORIGIN
+      X-Xss-Protection:
+        - 1; mode=block
+      X-Content-Type-Options:
+        - nosniff
+      X-Download-Options:
+        - noopen
+      X-Permitted-Cross-Domain-Policies:
+        - none
+      Referrer-Policy:
+        - strict-origin-when-cross-origin
+      Www-Authenticate:
+        - Token realm="Application"
+      Vary:
+        - Accept
+      X-Mailtrap-Version:
+        - v2
+      X-Ratelimit-Limit:
+        - '150'
+      X-Ratelimit-Remaining:
+        - '149'
+      Cache-Control:
+        - no-cache
+      X-Request-Id:
+        - c915c8f6-0966-401b-a5c7-7b9425e41a1c
+      X-Runtime:
+        - '0.010076'
+      X-Cloud-Trace-Context:
+        - 753aadc0a1104487c20e9ea64a70697e;o=0
+      Strict-Transport-Security:
+        - max-age=0
+      Cf-Cache-Status:
+        - DYNAMIC
+      Cf-Ray:
+        - 99a64658cdd8028d-WAW
+      Alt-Svc:
+        - h3=":443"; ma=86400
+    body:
+      encoding: UTF-8
+      string: '{"error":"Incorrect API token"}'
+  recorded_at: Thu, 06 Nov 2025 17:22:45 GMT
+recorded_with: VCR 6.2.0

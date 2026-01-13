@@ -47,8 +47,14 @@ RSpec.describe Mailtrap::EmailTemplatesAPI, :vcr do
 
     it 'maps response data to EmailTemplate object' do
       expect(get).to be_a(Mailtrap::EmailTemplate)
-      expect(get).to have_attributes(
+
+      expect(get).to match_struct(
         id: template_id,
+        uuid: 'c7020fc1-f4cc-4c9b-afa8-2a9024c71665',
+        body_html: '<div>Test HTML</div>',
+        body_text: 'Test Text',
+        created_at: '2025-06-23T06:54:49.785Z',
+        updated_at: '2025-06-23T06:54:49.785Z',
         name: 'Test Template',
         subject: 'Test Subject',
         category: 'Test Category'
