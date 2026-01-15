@@ -9,10 +9,5 @@ module Mailtrap
   #   Allowed values: text, integer, float, boolean, date
   # @attr_reader merge_tag [String] Personalize your campaigns by adding a merge tag.
   #   This field will be replaced with unique contact details for each recipient (max 80 characters)
-  ContactField = Struct.new(:id, :name, :data_type, :merge_tag, keyword_init: true) do
-    # @return [Hash] The contact field attributes as a hash
-    def to_h
-      super.compact
-    end
-  end
+  ContactField = Struct.new(:id, :name, :data_type, :merge_tag, keyword_init: true)
 end

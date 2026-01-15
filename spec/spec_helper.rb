@@ -11,11 +11,23 @@ VCR.configure do |config|
   config.hook_into :webmock
   config.configure_rspec_metadata!
 
+  config.before_record do |interaction|
+    interaction.response.headers.delete('Content-Security-Policy')
+  end
+
   config.filter_sensitive_data('<BEARER_TOKEN>') do |interaction|
     next if interaction.request.uri =~ /localhost/
 
     interaction.request.uri.gsub!(%r{/accounts/\d+/}, '/accounts/1111111/')
     interaction.response.body.gsub!(/"account_id":\d+/, '"account_id": 1111111')
+    interaction.response.body.gsub!(/"username":"[^"]*"/, '"username": "railsware"')
+    interaction.response.body.gsub!(/"password":"[^"]*"/, '"password": "xxxxxxxx"')
+    interaction.response.body.gsub!(/"email":"[^"]*"/, '"email": "welcome@rw.com"')
+    interaction.response.body.gsub!(
+      /"forward_from_email_address":"[^"]*"/,
+      '"forward_from_email_address": "railsware@forward.mailtrap.info"'
+    )
+    interaction.response.body.gsub!(/"email_username":"[^"]*"/, '"email_username": "1234abcd"')
 
     auth_header = interaction.request.headers['Authorization']&.first
 
@@ -45,5 +57,35 @@ RSpec.configure do |config|
 
   config.expect_with :rspec do |c|
     c.syntax = :expect
+  end
+end
+
+RSpec::Matchers.define :match_struct do |expected_attributes|
+  match do |actual_struct|
+    # Making sure expected keys exist and match
+    expected_ok = expected_attributes.all? do |key, expected_value|
+      actual_struct.respond_to?(key) && actual_struct[key] == expected_value
+    end
+
+    # Checking if Struct does not have extra keys that are not in expected_attributes
+    struct_keys = if actual_struct.respond_to?(:members)
+                    actual_struct.members.map(&:to_sym)
+                  else
+                    actual_struct.to_h.keys
+                  end
+
+    expected_keys = expected_attributes.keys.map(&:to_sym)
+
+    keys_ok = struct_keys.sort == expected_keys.sort
+
+    expected_ok && keys_ok
+  end
+
+  failure_message do |actual_struct|
+    "expected #{actual_struct.inspect} to exactly match attributes #{expected_attributes}, but it did not"
+  end
+
+  failure_message_when_negated do |actual_struct|
+    "expected #{actual_struct.inspect} not to exactly match attributes #{expected_attributes}, but it did"
   end
 end
