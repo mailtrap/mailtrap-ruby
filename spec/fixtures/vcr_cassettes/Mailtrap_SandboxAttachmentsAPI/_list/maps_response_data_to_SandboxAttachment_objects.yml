@@ -1,0 +1,84 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://mailtrap.io/api/accounts/1111111/inboxes/4288340/messages/5274457639/attachments
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - mailtrap-ruby (https://github.com/mailtrap/mailtrap-ruby)
+      Host:
+      - mailtrap.io
+      Authorization:
+      - Bearer <BEARER_TOKEN>
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 31 Dec 2025 11:15:17 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - cloudflare
+      Vary:
+      - Accept
+      - Accept-Encoding
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Etag:
+      - W/"889e10c37e4ed6d2d20bde6038207b7a"
+      Last-Modified:
+      - Wed, 31 Dec 2025 10:44:19 GMT
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Mailtrap-Version:
+      - v2
+      X-Ratelimit-Limit:
+      - '150'
+      X-Ratelimit-Remaining:
+      - '149'
+      X-Request-Id:
+      - 415a147d-251c-4cc8-9f02-07e4ffdcd8b2
+      X-Runtime:
+      - '0.029720'
+      X-Cloud-Trace-Context:
+      - a369564f2e084d0c866eb9092f1cf0d6;o=0
+      Strict-Transport-Security:
+      - max-age=0
+      Cf-Cache-Status:
+      - DYNAMIC
+      Cf-Ray:
+      - 9b928e8dcac29bd0-FRA
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"id":790295400,"message_id":5274457639,"filename":"example_2.txt","attachment_type":"attachment","content_type":"application/octet-stream","content_id":"","transfer_encoding":"base64","attachment_size":9,"created_at":"2026-01-05T10:44:19.915Z","updated_at":"2026-01-05T10:44:19.915Z","attachment_human_size":"9
+        Bytes","download_path":"/api/testing_message_parts/QEVuQwFAEACixobzUmrJNY+KT5L8UUkg+k9FAWP2RDrWZp+ZEisZmau7qFIg38B6nQdqghtYIHzGRRCKcdkqpmF+PbGGSf10PxzR8i0H3DY6k8YVWs+01%2F7nWHA10xA5zBSP7dkFpt0b4y0JihqDvAPEmvxnMyU67Tc%2FHu3HpgmfcPw1UDq3ag==/attachment_download"},{"id":790295399,"message_id":5274457639,"filename":"example.txt","attachment_type":"attachment","content_type":"application/octet-stream","content_id":"","transfer_encoding":"base64","attachment_size":9,"created_at":"2026-01-05T10:44:19.893Z","updated_at":"2026-01-05T10:44:19.893Z","attachment_human_size":"9
+        Bytes","download_path":"/api/testing_message_parts/QEVuQwFAEAAFj4E1onOmSa%2FI4FadW%2FqPUD%2F87dOIguUfn2QeMKayajWVAJMGNYg1Nhag4hP2SWbwfcBEF1hQfL2z4hE22CSUe2hjhJsWuQ1ALH6H9uExLFi2L1YNqBk3Vzff%2FM4fekaz3lVxNzqiTCTked69gOxminZi+GbmoVhabGKh2768QA==/attachment_download"}]'
+  recorded_at: Wed, 31 Dec 2025 11:15:17 GMT
+recorded_with: VCR 6.2.0
