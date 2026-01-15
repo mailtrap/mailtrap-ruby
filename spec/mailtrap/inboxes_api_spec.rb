@@ -102,7 +102,7 @@ RSpec.describe Mailtrap::InboxesAPI, :vcr do
       expect(update).to be_a(Mailtrap::Inbox)
       expect(update).to have_attributes(
         name: 'Updated Inbox',
-        email_username: 'updated_username-e9d5fb'
+        email_username: '1234abcd'
       )
     end
 

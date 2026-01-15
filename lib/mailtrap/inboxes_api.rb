@@ -7,7 +7,7 @@ module Mailtrap
   class InboxesAPI
     include BaseAPI
 
-    self.supported_options = %i[name email_username project_id]
+    self.supported_options = %i[name email_username]
     self.response_class = Inbox
 
     # Lists all Inboxes for the account
@@ -32,7 +32,7 @@ module Mailtrap
     # @!macro api_errors
     # @raise [ArgumentError] If invalid options are provided
     def create(options)
-      validate_options!(options, supported_options)
+      validate_options!(options, supported_options + [:project_id])
       response = client.post("/api/accounts/#{account_id}/projects/#{options[:project_id]}/inboxes",
                              wrap_request(options))
       handle_response(response)
