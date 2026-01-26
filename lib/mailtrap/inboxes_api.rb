@@ -7,7 +7,7 @@ module Mailtrap
   class InboxesAPI
     include BaseAPI
 
-    self.supported_options = %i[name email_username]
+    self.supported_options = %i[name]
     self.response_class = Inbox
 
     # Lists all Inboxes for the account
@@ -55,7 +55,7 @@ module Mailtrap
     # @!macro api_errors
     # @raise [ArgumentError] If invalid options are provided
     def update(inbox_id, options)
-      base_update(inbox_id, options)
+      base_update(inbox_id, options, supported_options + [:email_username])
     end
 
     # Delete all messages (emails) from Inbox

@@ -179,7 +179,7 @@ Email API:
 
 Email Sandbox (Testing):
 
-- Project management CRUD – [`projects_api.rb`](examples/projects_api.rb)
+- Projects CRUD – [`projects_api.rb`](examples/projects_api.rb)
 - Inboxes CRUD - [`inboxes_api.rb`](examples/inboxes_api.rb)
 
 Contact management:

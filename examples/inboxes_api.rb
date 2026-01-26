@@ -13,7 +13,7 @@ inboxes.list
 # => [#<struct Mailtrap::Inbox id=1, name="Test Inbox">]
 
 # Update inbox
-inboxes.update(inbox.id, name: 'Test List Updated')
+inboxes.update(inbox.id, name: 'Test Inbox Updated')
 # => #<struct Mailtrap::Inbox id=1, name="Test Inbox Updated">
 
 # Get contact list
