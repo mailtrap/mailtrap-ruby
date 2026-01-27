@@ -95,7 +95,7 @@ RSpec.describe Mailtrap::SendingDomainsAPI, :vcr do
 
   describe '#send_setup_instructions' do
     subject(:send_setup_instructions) do
-      sending_domains_api.send_setup_instructions(sending_domain_id, 'yahor.vaitsiakhouski@railsware.com')
+      sending_domains_api.send_setup_instructions(sending_domain_id, 'example@railsware.com')
     end
 
     let(:sending_domain_id) { 943_758 }

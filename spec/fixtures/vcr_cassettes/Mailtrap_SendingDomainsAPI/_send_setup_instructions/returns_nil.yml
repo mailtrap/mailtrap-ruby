@@ -5,7 +5,7 @@ http_interactions:
     uri: https://mailtrap.io/api/accounts/1111111/sending_domains/943758/send_setup_instructions
     body:
       encoding: UTF-8
-      string: '{"email":"yahor.vaitsiakhouski@railsware.com"}'
+      string: '{"email":"example@railsware.com"}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3

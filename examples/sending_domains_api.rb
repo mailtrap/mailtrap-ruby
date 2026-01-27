@@ -2,7 +2,7 @@ require 'mailtrap'
 
 account_id = 3229
 client = Mailtrap::Client.new(api_key: 'your-api-key')
-sending_domains = Mailtrap::InboxesAPI.new(account_id, client)
+sending_domains = Mailtrap::SendingDomainsAPI.new(account_id, client)
 
 # Create new Sending Domain
 sending_domain = sending_domains.create(domain_name: 'example.com')
@@ -21,7 +21,7 @@ sending_domain = sending_domains.get(sending_domain.id)
 # => #<struct Mailtrap::SendingDomain id=1, domain_name="proper.com">
 
 # Send setup email
-sending_domains.clean(sending_domain.id, 'jonathan@mail.com')
+sending_domains.send_setup_instructions(sending_domain.id, 'jonathan@mail.com')
 # => nil
 
 # Delete sending domain
