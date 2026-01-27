@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+language: en
+reviews:
+  path_instructions:
+    - path: "spec/fixtures/vcr_cassettes/**/*.yml"
+      instructions: |
+        Act as a data privacy officer. Carefully read all the vcr cassettes
+        with recorded HTTP interactions and try to identify sensitive data that
+        could potentially be recorded. It can be anything from PII to
+        credentials. Ignore obvious placeholder values.
