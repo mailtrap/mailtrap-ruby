@@ -1,0 +1,78 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://mailtrap.io/api/accounts/1111111/projects/2379735/inboxes
+    body:
+      encoding: UTF-8
+      string: '{"inbox":{"name":"","project_id":2379735}}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - mailtrap-ruby (https://github.com/mailtrap/mailtrap-ruby)
+      Host:
+      - mailtrap.io
+      Authorization:
+      - Bearer <BEARER_TOKEN>
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 422
+      message: Unprocessable Entity
+    headers:
+      Date:
+      - Fri, 26 Dec 2025 16:53:29 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '110'
+      Connection:
+      - keep-alive
+      Server:
+      - cloudflare
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Vary:
+      - Accept
+      X-Mailtrap-Version:
+      - v2
+      X-Ratelimit-Limit:
+      - '150'
+      X-Ratelimit-Remaining:
+      - '148'
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - dfdec05f-27fc-4087-8919-17d86f5f792e
+      X-Runtime:
+      - '0.038009'
+      X-Cloud-Trace-Context:
+      - 8d0bb8b5197d49bb878f253bef608125;o=0
+      Strict-Transport-Security:
+      - max-age=0
+      Cf-Cache-Status:
+      - DYNAMIC
+      Cf-Ray:
+      - 9b42183a5f0890e7-FRA
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: UTF-8
+      string: '{"errors":{"name":["You''ve reached the sandboxes limit. Please upgrade
+        your plan to create the new sandbox"]}}'
+  recorded_at: Fri, 26 Dec 2025 16:53:29 GMT
+recorded_with: VCR 6.2.0
