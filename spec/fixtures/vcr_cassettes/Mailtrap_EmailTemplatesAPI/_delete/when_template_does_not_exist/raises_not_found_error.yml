@@ -31,8 +31,6 @@ http_interactions:
       - '285'
       Connection:
       - keep-alive
-      Cf-Ray:
-      - 954213c1881c34d3-WAW
       X-Frame-Options:
       - SAMEORIGIN
       X-Xss-Protection:
@@ -57,12 +55,8 @@ http_interactions:
       - W/"cf7eeac15cd9f0c7634a09c87a694811"
       Cache-Control:
       - max-age=0, private, must-revalidate
-      X-Request-Id:
-      - dffb962b-4186-4cd7-afa4-4695a18dfcef
       X-Runtime:
       - '0.036005'
-      X-Cloud-Trace-Context:
-      - c76b54bf6c84452c81b4c736a46b52f7;o=0
       Strict-Transport-Security:
       - max-age=0
       Cf-Cache-Status:
@@ -107,8 +101,6 @@ http_interactions:
       - '21'
       Connection:
       - keep-alive
-      Cf-Ray:
-      - 954213c3082e0206-WAW
       X-Frame-Options:
       - SAMEORIGIN
       X-Xss-Protection:
@@ -131,12 +123,8 @@ http_interactions:
       - '111'
       Cache-Control:
       - no-cache
-      X-Request-Id:
-      - 4bb3216f-cc77-4380-b597-eeb7aaffe451
       X-Runtime:
       - '0.017788'
-      X-Cloud-Trace-Context:
-      - d78db21094e9415bc07198393280ba7d;o=0
       Strict-Transport-Security:
       - max-age=0
       Cf-Cache-Status:

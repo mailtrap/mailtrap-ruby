@@ -58,18 +58,12 @@ http_interactions:
         - W/"d566fd0a5d4ea9273bf4996b1cd09b27"
       Cache-Control:
         - max-age=0, private, must-revalidate
-      X-Request-Id:
-        - 39406e58-c410-4163-acc1-f60b4fb17bf1
       X-Runtime:
         - '0.044394'
-      X-Cloud-Trace-Context:
-        - 81340cc2bcdc42278670e575653ba3f8;o=0
       Strict-Transport-Security:
         - max-age=0
       Cf-Cache-Status:
         - DYNAMIC
-      Cf-Ray:
-        - 99a6466d7c75eec5-WAW
       Alt-Svc:
         - h3=":443"; ma=86400
     body:
@@ -134,18 +128,12 @@ http_interactions:
         - W/"e5d96aea05b630c9b62174918e0948ba"
       Cache-Control:
         - max-age=0, private, must-revalidate
-      X-Request-Id:
-        - 72f3a1d2-ae91-4130-b60d-8fcb0cc92a55
       X-Runtime:
         - '0.062113'
-      X-Cloud-Trace-Context:
-        - f82a659ca1b4437cc04a10fa42f9604b;o=0
       Strict-Transport-Security:
         - max-age=0
       Cf-Cache-Status:
         - DYNAMIC
-      Cf-Ray:
-        - 99a6466eda44b576-WAW
       Alt-Svc:
         - h3=":443"; ma=86400
     body:

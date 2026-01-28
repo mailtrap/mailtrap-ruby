@@ -30,8 +30,6 @@ http_interactions:
       - chunked
       Connection:
       - keep-alive
-      Cf-Ray:
-      - 954213815efc3bbb-WAW
       Vary:
       - Accept
       - Accept-Encoding
@@ -57,12 +55,8 @@ http_interactions:
       - W/"67f72cadb48b63652fc60ad28a7f1dc9"
       Cache-Control:
       - max-age=0, private, must-revalidate
-      X-Request-Id:
-      - 160c3a50-e147-4952-9c03-c0e531d01cf5
       X-Runtime:
       - '0.021037'
-      X-Cloud-Trace-Context:
-      - 38e92a5e6015409ec7221e96b1123f74;o=0
       Strict-Transport-Security:
       - max-age=0
       Cf-Cache-Status:
