@@ -7,4 +7,4 @@ reviews:
         Act as a data privacy officer. Carefully read all the vcr cassettes
         with recorded HTTP interactions and try to identify sensitive data that
         could potentially be recorded. It can be anything from PII to
-        credentials. Ignore obvious placeholder values.
+        credentials. Ignore obvious placeholder values and real IDs in URLs.
