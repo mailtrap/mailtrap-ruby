@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    mailtrap (2.5.0)
+    mailtrap (2.6.0)
       base64
 
 GEM
