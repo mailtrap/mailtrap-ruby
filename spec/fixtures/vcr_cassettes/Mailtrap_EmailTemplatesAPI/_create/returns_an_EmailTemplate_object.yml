@@ -59,8 +59,6 @@ http_interactions:
       - max-age=0, private, must-revalidate
       X-Runtime:
       - '0.032709'
-      X-Cloud-Trace-Context:
-      - 32e4136a26b94c6d8f5b1d95cc4d11a1;o=0
       Strict-Transport-Security:
       - max-age=0
       Cf-Cache-Status:

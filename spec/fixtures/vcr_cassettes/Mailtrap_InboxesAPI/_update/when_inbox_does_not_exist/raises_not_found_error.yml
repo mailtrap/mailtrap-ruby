@@ -58,8 +58,6 @@ http_interactions:
       - no-cache
       X-Runtime:
       - '0.009525'
-      X-Cloud-Trace-Context:
-      - abec98fdb6ef4e5285b4b3d107c90003;o=0
       Strict-Transport-Security:
       - max-age=0
       Cf-Cache-Status:
