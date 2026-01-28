@@ -57,8 +57,6 @@ http_interactions:
       - W/"2bbf04ce511ec598d582fc6c302ae664"
       Cache-Control:
       - max-age=0, private, must-revalidate
-      X-Request-Id:
-      - ad87c815-25b0-4b2c-b15c-b96169c03cfe
       X-Runtime:
       - '0.024380'
       X-Cloud-Trace-Context:
@@ -125,8 +123,6 @@ http_interactions:
       - '113'
       Cache-Control:
       - no-cache
-      X-Request-Id:
-      - aa426f49-e8f7-4266-95ab-82feab678cfa
       X-Runtime:
       - '0.028050'
       X-Cloud-Trace-Context:

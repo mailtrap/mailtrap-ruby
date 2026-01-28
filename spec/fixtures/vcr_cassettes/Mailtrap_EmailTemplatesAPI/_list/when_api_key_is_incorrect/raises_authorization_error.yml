@@ -56,8 +56,6 @@ http_interactions:
       - '149'
       Cache-Control:
       - no-cache
-      X-Request-Id:
-      - 2921d71f-91cf-47e1-a60b-bf02e0d9a1ce
       X-Runtime:
       - '0.010186'
       X-Cloud-Trace-Context:
