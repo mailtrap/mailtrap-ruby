@@ -31,8 +31,6 @@ http_interactions:
       - '292'
       Connection:
       - keep-alive
-      Cf-Ray:
-      - 954213bbedf634b0-WAW
       X-Frame-Options:
       - SAMEORIGIN
       X-Xss-Protection:
@@ -104,8 +102,6 @@ http_interactions:
       - '21'
       Connection:
       - keep-alive
-      Cf-Ray:
-      - 954213bd6a58ee40-WAW
       X-Frame-Options:
       - SAMEORIGIN
       X-Xss-Protection:

@@ -31,8 +31,6 @@ http_interactions:
       - '285'
       Connection:
       - keep-alive
-      Cf-Ray:
-      - 954213bebf653540-WAW
       X-Frame-Options:
       - SAMEORIGIN
       X-Xss-Protection:
@@ -99,8 +97,6 @@ http_interactions:
       - Mon, 23 Jun 2025 06:54:58 GMT
       Connection:
       - keep-alive
-      Cf-Ray:
-      - 954213c01ae4025c-WAW
       X-Frame-Options:
       - SAMEORIGIN
       X-Xss-Protection:

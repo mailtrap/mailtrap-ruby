@@ -62,8 +62,6 @@ http_interactions:
         - max-age=0
       Cf-Cache-Status:
         - DYNAMIC
-      Cf-Ray:
-        - 99a6466c4ba670dc-WAW
       Alt-Svc:
         - h3=":443"; ma=86400
     body:

@@ -30,8 +30,6 @@ http_interactions:
       - chunked
       Connection:
       - keep-alive
-      Cf-Ray:
-      - 95421382d9eb01fa-WAW
       Vary:
       - Accept
       - Accept-Encoding

@@ -31,8 +31,6 @@ http_interactions:
       - '272'
       Connection:
       - keep-alive
-      Cf-Ray:
-      - 954213859a77ee47-WAW
       X-Frame-Options:
       - SAMEORIGIN
       X-Xss-Protection:
@@ -135,8 +133,6 @@ http_interactions:
       - DYNAMIC
       Server:
       - cloudflare
-      Cf-Ray:
-      - 954213870a17ef8b-WAW
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
