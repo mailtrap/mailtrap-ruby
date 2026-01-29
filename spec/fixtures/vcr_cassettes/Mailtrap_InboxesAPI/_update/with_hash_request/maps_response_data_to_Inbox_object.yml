@@ -58,18 +58,12 @@ http_interactions:
       - W/"b806febaa0d1508c418fc9aa248e543f"
       Cache-Control:
       - max-age=0, private, must-revalidate
-      X-Request-Id:
-      - 7468d5ca-c753-4a3f-8940-0a44990b8518
       X-Runtime:
       - '0.032751'
-      X-Cloud-Trace-Context:
-      - 14fb309a195c4fff8b2200d270f3f8c0;o=0
       Strict-Transport-Security:
       - max-age=0
       Cf-Cache-Status:
       - DYNAMIC
-      Cf-Ray:
-      - 9b422be70c87578b-FRA
       Alt-Svc:
       - h3=":443"; ma=86400
     body:

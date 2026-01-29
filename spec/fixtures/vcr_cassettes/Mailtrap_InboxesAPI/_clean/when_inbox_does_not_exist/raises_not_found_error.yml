@@ -56,18 +56,12 @@ http_interactions:
       - '148'
       Cache-Control:
       - no-cache
-      X-Request-Id:
-      - 233205dc-d166-4b73-9f17-ffe10d7922f4
       X-Runtime:
       - '0.012632'
-      X-Cloud-Trace-Context:
-      - '09dd3a8e86a84af682242d833e0ad386;o=0'
       Strict-Transport-Security:
       - max-age=0
       Cf-Cache-Status:
       - DYNAMIC
-      Cf-Ray:
-      - 9b42309e2d5fd8d6-FRA
       Alt-Svc:
       - h3=":443"; ma=86400
     body:

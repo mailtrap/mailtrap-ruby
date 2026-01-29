@@ -36,8 +36,6 @@ http_interactions:
       - max-age=0
       Server:
       - cloudflare
-      Cf-Ray:
-      - 958c9686a8ccc400-WAW
       Alt-Svc:
       - h3=":443"; ma=86400
     body:

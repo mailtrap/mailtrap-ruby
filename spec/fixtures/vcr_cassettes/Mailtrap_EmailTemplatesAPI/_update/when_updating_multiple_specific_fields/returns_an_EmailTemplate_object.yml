@@ -31,8 +31,6 @@ http_interactions:
       - '292'
       Connection:
       - keep-alive
-      Cf-Ray:
-      - 954213b34b77bf3a-WAW
       X-Frame-Options:
       - SAMEORIGIN
       X-Xss-Protection:
@@ -57,12 +55,8 @@ http_interactions:
       - W/"1d7d0e204eb570559c58c59794fcafc5"
       Cache-Control:
       - max-age=0, private, must-revalidate
-      X-Request-Id:
-      - 74e00e32-3caa-49e8-baf4-4c0c14f022a4
       X-Runtime:
       - '0.027117'
-      X-Cloud-Trace-Context:
-      - 679b1a4ee11f4c0d8b6739dc5d5d3236;o=0
       Strict-Transport-Security:
       - max-age=0
       Cf-Cache-Status:
@@ -132,20 +126,14 @@ http_interactions:
       - W/"6bd0cf8b1806d831f449773925699f13"
       Cache-Control:
       - max-age=0, private, must-revalidate
-      X-Request-Id:
-      - 678dd7b5-3803-4cf4-a6aa-e43b52761f7b
       X-Runtime:
       - '0.026053'
-      X-Cloud-Trace-Context:
-      - c0718a436fb84e1a8efd67f97d074f3f;o=0
       Strict-Transport-Security:
       - max-age=0
       Cf-Cache-Status:
       - DYNAMIC
       Server:
       - cloudflare
-      Cf-Ray:
-      - 954213b4ac18bfab-WAW
       Alt-Svc:
       - h3=":443"; ma=86400
     body:

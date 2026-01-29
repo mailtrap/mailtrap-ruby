@@ -13,6 +13,9 @@ VCR.configure do |config|
 
   config.before_record do |interaction|
     interaction.response.headers.delete('Content-Security-Policy')
+    interaction.response.headers.delete('X-Cloud-Trace-Context')
+    interaction.response.headers.delete('X-Request-Id')
+    interaction.response.headers.delete('Cf-Ray')
   end
 
   config.filter_sensitive_data('<BEARER_TOKEN>') do |interaction|

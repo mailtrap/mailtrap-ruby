@@ -31,8 +31,6 @@ http_interactions:
       - '267'
       Connection:
       - keep-alive
-      Cf-Ray:
-      - 9542138e7d4c3540-WAW
       X-Frame-Options:
       - SAMEORIGIN
       X-Xss-Protection:
@@ -57,12 +55,8 @@ http_interactions:
       - W/"95445ae9e9c5d1e9c946d658156327b6"
       Cache-Control:
       - max-age=0, private, must-revalidate
-      X-Request-Id:
-      - 025b8c80-1d55-435a-a993-c602da5e71c4
       X-Runtime:
       - '0.032709'
-      X-Cloud-Trace-Context:
-      - 32e4136a26b94c6d8f5b1d95cc4d11a1;o=0
       Strict-Transport-Security:
       - max-age=0
       Cf-Cache-Status:
