@@ -12,10 +12,6 @@ sending_domain = sending_domains.create(domain_name: 'example.com')
 sending_domains.list
 # => [#<struct Mailtrap::SendingDomain id=1, domain_name="example.com">]
 
-# Update Sending Domain
-sending_domains.update(sending_domain.id, domain_name: 'proper.com')
-# => #<struct Mailtrap::SendingDomain id=1, domain_name="proper.com">
-
 # Get sending domain
 sending_domain = sending_domains.get(sending_domain.id)
 # => #<struct Mailtrap::SendingDomain id=1, domain_name="proper.com">
