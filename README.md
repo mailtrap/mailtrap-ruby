@@ -200,7 +200,10 @@ If you use classes which have `Sending` namespace, remove the namespace like in 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on [GitHub](https://github.com/railsware/mailtrap-ruby). This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on
+[GitHub](https://github.com/railsware/mailtrap-ruby). This project is intended
+to be a safe, welcoming space for collaboration, and contributors are expected
+to adhere to the [code of conduct](CODE_OF_CONDUCT.md).
 
 ## Development
 
