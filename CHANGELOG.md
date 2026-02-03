@@ -1,3 +1,5 @@
+- Add Sending Domains API
+
 ## [2.6.0] - 2026-01-27
 - Add Inboxes API
 - Add Projects API
