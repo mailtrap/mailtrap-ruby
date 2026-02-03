@@ -14,7 +14,7 @@ sending_domains.list
 
 # Get sending domain
 sending_domain = sending_domains.get(sending_domain.id)
-# => #<struct Mailtrap::SendingDomain id=1, domain_name="proper.com">
+# => #<struct Mailtrap::SendingDomain id=1, domain_name="example.com">
 
 # Send setup email
 sending_domains.send_setup_instructions(sending_domain.id, 'jonathan@mail.com')
