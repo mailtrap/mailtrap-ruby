@@ -173,9 +173,10 @@ mail(delivery_method: :mailtrap_bulk)
 Refer to the [`examples`](examples) folder for more examples:
 
 Email API:
-- Full email sending – [`full.rb`](examples/full.rb)
 
-- Batch sending – [`batch.rb`](examples/batch.rb)
+- Full Email Sending – [`full.rb`](examples/full.rb)
+- Batch Sending – [`batch.rb`](examples/batch.rb)
+- Sending Domains API  – [`sending_domains_api.rb`](examples/sending_domains_api.rb)
 
 Email Sandbox (Testing):
 
@@ -184,7 +185,7 @@ Email Sandbox (Testing):
 
 Contact management:
 
-- Contacts CRUD & listing – [`contacts_api.rb`](examples/contacts_api.rb)
+- Contacts CRUD & Listing – [`contacts_api.rb`](examples/contacts_api.rb)
 
 General API:
 

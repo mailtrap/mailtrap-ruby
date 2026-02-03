@@ -9,6 +9,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     name: Ruby ${{ matrix.ruby }}
+    env:
+      BUNDLE_PATH: vendor/bundle
     strategy:
       matrix:
         ruby:
