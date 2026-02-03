@@ -33,11 +33,34 @@ RSpec.describe Mailtrap::SendingDomainsAPI, :vcr do
 
     it 'maps response data to SendingDomain object' do
       expect(get).to be_a(Mailtrap::SendingDomain)
+
       expect(get).to match_struct(
-        id: sending_domain_id,
+        id: 617_882,
         domain_name: 'demomailtrap.co',
-        dns_verified: true,
+        demo: true,
         compliance_status: 'demo',
+        dns_verified: true,
+        dns_verified_at: '2025-05-21T14:04:52.363Z',
+        dns_records:
+          [
+            { key: 'verification', domain: 'demo.demomailtrap.co', type: 'CNAME', value: 'smtp.mailtrap.live',
+              status: 'pass', name: 'demo' },
+            { key: 'dkim1', domain: 'rwmt1._domainkey.demomailtrap.co', type: 'CNAME',
+              value: 'rwmt1.dkim.smtp.mailtrap.live', status: 'pass', name: 'rwmt1._domainkey' },
+            { key: 'dkim2', domain: 'rwmt2._domainkey.demomailtrap.co', type: 'CNAME',
+              value: 'rwmt2.dkim.smtp.mailtrap.live', status: 'pass', name: 'rwmt2._domainkey' },
+            { key: 'dmarc', name: '_dmarc' },
+            { key: 'link_verification', domain: 'mt-link.demomailtrap.co', type: 'CNAME', value: 't.mailtrap.live',
+              status: 'pass', name: 'mt-link' }
+          ],
+        open_tracking_enabled: true,
+        click_tracking_enabled: false,
+        auto_unsubscribe_link_enabled: false,
+        custom_domain_tracking_enabled: false,
+        health_alerts_enabled: true,
+        critical_alerts_enabled: true,
+        alert_recipient_email: nil,
+        permissions: { can_read: true, can_update: true, can_destroy: true },
         created_at: nil,
         updated_at: nil
       )
@@ -67,11 +90,34 @@ RSpec.describe Mailtrap::SendingDomainsAPI, :vcr do
 
     it 'maps response data to sending domain object' do
       expect(create).to be_a(Mailtrap::SendingDomain)
+
       expect(create).to match_struct(
         id: 943_758,
         domain_name: 'mailtrappio.com',
-        dns_verified: false,
+        demo: false,
         compliance_status: 'unverified_dns',
+        dns_verified: false,
+        dns_verified_at: '',
+        dns_records:
+          [
+            { key: 'verification', domain: 'mt07.mailtrappio.com', type: 'CNAME', value: 'smtp.mailtrap.live',
+              status: 'missing', name: 'mt07' },
+            { key: 'dkim1', domain: 'rwmt1._domainkey.mailtrappio.com', type: 'CNAME',
+              value: 'rwmt1.dkim.smtp.mailtrap.live', status: 'missing', name: 'rwmt1._domainkey' },
+            { key: 'dkim2', domain: 'rwmt2._domainkey.mailtrappio.com', type: 'CNAME',
+              value: 'rwmt2.dkim.smtp.mailtrap.live', status: 'missing', name: 'rwmt2._domainkey' },
+            { key: 'dmarc', name: '_dmarc' },
+            { key: 'link_verification', domain: 'mt-link.mailtrappio.com', type: 'CNAME', value: 't.mailtrap.live',
+              status: 'missing', name: 'mt-link' }
+          ],
+        open_tracking_enabled: true,
+        click_tracking_enabled: false,
+        auto_unsubscribe_link_enabled: false,
+        custom_domain_tracking_enabled: false,
+        health_alerts_enabled: true,
+        critical_alerts_enabled: true,
+        alert_recipient_email: nil,
+        permissions: { can_read: true, can_update: true, can_destroy: true },
         created_at: nil,
         updated_at: nil
       )

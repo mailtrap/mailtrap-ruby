@@ -51,7 +51,10 @@ module Mailtrap
     # @return nil
     # @!macro api_errors
     def send_setup_instructions(domain_id, email)
-      client.post("#{base_path}/#{domain_id}/send_setup_instructions", { email: email })
+      query_params = {}
+      query_params[:email] = email if email
+
+      client.post("#{base_path}/#{domain_id}/send_setup_instructions", query_params)
     end
 
     private
