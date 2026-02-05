@@ -74,7 +74,7 @@ http_interactions:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
-      string: '{"headers":{"date":"Tue, 30 Dec 2025 16:55:50 +0000","from":"reply@demomailtrap.co","to":"yahor.vaitsiakhouski@railsware.com","subject":"Hello
+      string: '{"headers":{"date":"Tue, 30 Dec 2025 16:55:50 +0000","from":"reply@demomailtrap.co","to":"bob.s@railsware.com","subject":"Hello
         from Mailtrap","mime_version":"1.0","content_type":"multipart/alternative;
         boundary=123","bcc":"not
         available for your plan"}}'

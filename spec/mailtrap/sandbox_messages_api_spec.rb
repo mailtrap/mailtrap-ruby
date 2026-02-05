@@ -360,7 +360,7 @@ RSpec.describe Mailtrap::SandboxMessagesAPI, :vcr do
             {
               date: 'Tue, 30 Dec 2025 16:55:50 +0000',
               from: 'reply@demomailtrap.co',
-              to: 'yahor.vaitsiakhouski@railsware.com',
+              to: 'bob.s@railsware.com',
               subject: 'Hello from Mailtrap',
               mime_version: '1.0',
               content_type: 'multipart/alternative; boundary=123',

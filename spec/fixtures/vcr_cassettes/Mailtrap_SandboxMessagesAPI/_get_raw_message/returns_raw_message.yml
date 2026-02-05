@@ -72,7 +72,7 @@ http_interactions:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
-      string: "MIME-Version: 1.0\r\nDate: Tue, 30 Dec 2025 16:55:50 +0000\r\nTo: yahor.vaitsiakhouski@railsware.com\r\nSubject:
+      string: "MIME-Version: 1.0\r\nDate: Tue, 30 Dec 2025 16:55:50 +0000\r\nTo: bob.s@railsware.com\r\nSubject:
         Hello from Mailtrap\r\nFrom: reply@demomailtrap.co\r\nContent-Type: multipart/alternative;\r\n
         boundary=4f9d09de93fe15363facbecec5c2941a90a45766953c87ed7b377c1d02ad\r\n\r\n--4f9d09de93fe15363facbecec5c2941a90a45766953c87ed7b377c1d02ad\r\nContent-Transfer-Encoding:
         quoted-printable\r\nContent-Type: text/plain; charset=UTF-8\r\n\r\nWelcome
