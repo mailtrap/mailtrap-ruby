@@ -98,7 +98,7 @@ module Mailtrap
     # @return [String] text email body
     # @!macro api_errors
     def get_text_message(message_id)
-      client.get("#{base_path}/#{message_id}/body.txt", custom_parser: ->(response) { response })
+      client.get("#{base_path}/#{message_id}/body.txt")
     end
 
     # Get raw message
@@ -106,7 +106,7 @@ module Mailtrap
     # @return [String] raw email body
     # @!macro api_errors
     def get_raw_message(message_id)
-      client.get("#{base_path}/#{message_id}/body.raw", custom_parser: ->(response) { response })
+      client.get("#{base_path}/#{message_id}/body.raw")
     end
 
     # Get message source
@@ -114,7 +114,7 @@ module Mailtrap
     # @return [String] HTML source of a message.
     # @!macro api_errors
     def get_html_source(message_id)
-      client.get("#{base_path}/#{message_id}/body.htmlsource", custom_parser: ->(response) { response })
+      client.get("#{base_path}/#{message_id}/body.htmlsource")
     end
 
     # Get formatted HTML email body. Not applicable for plain text emails.
@@ -122,7 +122,7 @@ module Mailtrap
     # @return [String] message body in html format.
     # @!macro api_errors
     def get_html_message(message_id)
-      client.get("#{base_path}/#{message_id}/body.html", custom_parser: ->(response) { response })
+      client.get("#{base_path}/#{message_id}/body.html")
     end
 
     # Get mail headers
@@ -130,7 +130,7 @@ module Mailtrap
     # @return [Hash] mail headers of the message.
     # @!macro api_errors
     def get_message_as_eml(message_id)
-      client.get("#{base_path}/#{message_id}/body.eml", custom_parser: ->(response) { response })
+      client.get("#{base_path}/#{message_id}/body.eml")
     end
 
     # Get mail headers
