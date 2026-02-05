@@ -73,7 +73,7 @@ module Mailtrap
     # @param email [String] The email to forward sandbox message to
     # @return [String] Forwarded message confirmation
     # @!macro api_errors
-    def forward_message(message_id, email)
+    def forward_message(message_id:, email:)
       client.post("#{base_path}/#{message_id}/forward", { email: email })
     end
 
