@@ -1,0 +1,80 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://mailtrap.io/api/accounts/1111111/sending_domains
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - mailtrap-ruby (https://github.com/mailtrap/mailtrap-ruby)
+      Host:
+      - mailtrap.io
+      Authorization:
+      - Bearer <BEARER_TOKEN>
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 03 Jan 2026 22:53:34 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - cloudflare
+      Vary:
+      - Accept
+      - Accept-Encoding
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Mailtrap-Version:
+      - v2
+      X-Ratelimit-Limit:
+      - '150'
+      X-Ratelimit-Remaining:
+      - '149'
+      Etag:
+      - W/"4e212b2ed54fe51b05a73fd9a42b1f60"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - d11fce57-074f-4aea-84a4-68aa463f5473
+      X-Runtime:
+      - '0.035447'
+      X-Cloud-Trace-Context:
+      - fe0756e8b8cf4a058f135f0aaaaca32f;o=0
+      Strict-Transport-Security:
+      - max-age=0
+      Cf-Cache-Status:
+      - DYNAMIC
+      Cf-Ray:
+      - 9b8612b32ded4d6d-FRA
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"domain_name":"demomailtrap.co","open_tracking_enabled":true,"click_tracking_enabled":false,"auto_unsubscribe_link_enabled":false,"custom_domain_tracking_enabled":false,"health_alerts_enabled":true,"critical_alerts_enabled":true,"alert_recipient_email":null,"demo":true,"id":617882,"dns_records":[{"key":"verification","domain":"demo.demomailtrap.co","type":"CNAME","value":"smtp.mailtrap.live","status":"pass","name":"demo"},{"key":"dkim1","domain":"rwmt1._domainkey.demomailtrap.co","type":"CNAME","value":"rwmt1.dkim.smtp.mailtrap.live","status":"pass","name":"rwmt1._domainkey"},{"key":"dkim2","domain":"rwmt2._domainkey.demomailtrap.co","type":"CNAME","value":"rwmt2.dkim.smtp.mailtrap.live","status":"pass","name":"rwmt2._domainkey"},{"key":"dmarc","name":"_dmarc"},{"key":"link_verification","domain":"mt-link.demomailtrap.co","type":"CNAME","value":"t.mailtrap.live","status":"pass","name":"mt-link"}],"dns_verified":true,"dns_verified_at":"2025-05-21T14:04:52.363Z","permissions":{"can_read":true,"can_update":true,"can_destroy":true},"compliance_status":"demo"}]}'
+  recorded_at: Sat, 03 Jan 2026 22:53:34 GMT
+recorded_with: VCR 6.2.0

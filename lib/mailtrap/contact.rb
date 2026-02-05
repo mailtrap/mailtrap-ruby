@@ -29,10 +29,5 @@ module Mailtrap
     def newly_created?
       @action != 'updated'
     end
-
-    # @return [Hash] The contact attributes as a hash
-    def to_h
-      super.compact
-    end
   end
 end

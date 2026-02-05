@@ -14,10 +14,5 @@ module Mailtrap
     :updated_contacts_count,
     :contacts_over_limit_count,
     keyword_init: true
-  ) do
-    # @return [Hash] The contact attributes as a hash
-    def to_h
-      super.compact
-    end
-  end
+  )
 end
