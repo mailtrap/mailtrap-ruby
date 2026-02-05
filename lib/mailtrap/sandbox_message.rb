@@ -50,10 +50,5 @@ module Mailtrap
     :blacklists_report_info,
     :smtp_information,
     keyword_init: true
-  ) do
-    # @return [Hash] The SendingDomain attributes as a hash
-    def to_h
-      super.compact
-    end
-  end
+  )
 end

@@ -125,7 +125,7 @@ module Mailtrap
       client.get("#{base_path}/#{message_id}/body.html")
     end
 
-    # Get mail headers
+    # Get message as EML
     # @param message_id [Integer] The Sandbox message ID
     # @return [Hash] mail headers of the message.
     # @!macro api_errors

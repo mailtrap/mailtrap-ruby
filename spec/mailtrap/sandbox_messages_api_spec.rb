@@ -392,7 +392,7 @@ RSpec.describe Mailtrap::SandboxMessagesAPI, :vcr do
       expect(delete[:id]).to eq(sandbox_message_id)
     end
 
-    context 'when project does not exist' do
+    context 'when message does not exist' do
       let(:sandbox_message_id) { 999_999 }
 
       it 'raises not found error' do
