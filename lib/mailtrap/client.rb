@@ -303,18 +303,24 @@ module Mailtrap
     end
 
     def parse_response(response)
-      return json_response(response.body) if response['Content-Type']&.include?('application/json')
-
-      response.body
+      if json_response?(response)
+        json_response(response.body)
+      else
+        response.body
+      end
     end
 
     def response_errors(response)
-      if response['Content-Type']&.include?('application/json')
+      if json_response?(response)
         parsed_body = json_response(response.body)
         Array(parsed_body[:errors] || parsed_body[:error])
       else
         [response.body]
       end
+    end
+
+    def json_response?(response)
+      response.content_type == 'application/json'
     end
 
     def json_response(body)
