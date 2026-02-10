@@ -327,7 +327,7 @@ RSpec.describe Mailtrap::SandboxMessagesAPI, :vcr do
 
     let(:sandbox_message_id) { 5_273_448_410 }
 
-    it 'returns html message' do
+    it 'returns eml message' do
       expect(get_message_as_eml).to include('Welcome to Mailtrap!')
       expect(get_message_as_eml).to include('MIME-Version: 1.0')
       expect(get_message_as_eml).to include('Subject: Hello from Mailtrap')
