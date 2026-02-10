@@ -285,11 +285,11 @@ module Mailtrap
       when Net::HTTPBadRequest
         raise Mailtrap::Error, ['bad request'] if response.body.empty?
 
-        raise Mailtrap::Error, response_errors(response.body)
+        raise Mailtrap::Error, response_errors(response)
       when Net::HTTPUnauthorized
-        raise Mailtrap::AuthorizationError, response_errors(response.body)
+        raise Mailtrap::AuthorizationError, response_errors(response)
       when Net::HTTPForbidden
-        raise Mailtrap::RejectionError, response_errors(response.body)
+        raise Mailtrap::RejectionError, response_errors(response)
       when Net::HTTPPayloadTooLarge
         raise Mailtrap::MailSizeError, ['message too large']
       when Net::HTTPTooManyRequests
@@ -303,9 +303,13 @@ module Mailtrap
       end
     end
 
-    def response_errors(body)
-      parsed_body = json_response(body)
-      Array(parsed_body[:errors] || parsed_body[:error])
+    def response_errors(response)
+      if response['Content-Type']&.include?('application/json')
+        parsed_body = json_response(response.body)
+        Array(parsed_body[:errors] || parsed_body[:error])
+      else
+        [response.body]
+      end
     end
 
     def parse_response(response)
