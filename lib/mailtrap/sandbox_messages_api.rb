@@ -18,12 +18,11 @@ module Mailtrap
     # @param client [Mailtrap::Client] The client instance
     # @raise [ArgumentError] If account_id is nil
     def initialize(inbox_id, account_id = ENV.fetch('MAILTRAP_ACCOUNT_ID'), client = Mailtrap::Client.new)
-      raise ArgumentError, 'account_id is required' if account_id.nil?
       raise ArgumentError, 'inbox_id is required' if inbox_id.nil?
 
-      @account_id = account_id
       @inbox_id = inbox_id
-      @client = client
+
+      super(account_id, client)
     end
 
     # Retrieves a specific sandbox message from inbox
@@ -63,7 +62,7 @@ module Mailtrap
       query_params = {}
       query_params[:search] = search unless search.nil?
       query_params[:last_id] = last_id unless last_id.nil?
-      query_params[:page] = page unless page.nil?
+      query_params[:page] = page unless page.nil? || last_id
 
       base_list(query_params)
     end
@@ -81,7 +80,7 @@ module Mailtrap
     # @param message_id [Integer] The Sandbox message ID
     # @return [Hash] Spam report
     # @!macro api_errors
-    def get_spam_score(message_id)
+    def spam_score(message_id)
       client.get("#{base_path}/#{message_id}/spam_report")
     end
 
@@ -89,7 +88,7 @@ module Mailtrap
     # @param message_id [Integer] The Sandbox message ID
     # @return [Hash] brief HTML report
     # @!macro api_errors
-    def get_html_analysis(message_id)
+    def html_analysis(message_id)
       client.get("#{base_path}/#{message_id}/analyze")
     end
 
@@ -97,7 +96,7 @@ module Mailtrap
     # @param message_id [Integer] The Sandbox message ID
     # @return [String] text email body
     # @!macro api_errors
-    def get_text_message(message_id)
+    def text_body(message_id)
       client.get("#{base_path}/#{message_id}/body.txt")
     end
 
@@ -105,7 +104,7 @@ module Mailtrap
     # @param message_id [Integer] The Sandbox message ID
     # @return [String] raw email body
     # @!macro api_errors
-    def get_raw_message(message_id)
+    def raw_body(message_id)
       client.get("#{base_path}/#{message_id}/body.raw")
     end
 
@@ -113,7 +112,7 @@ module Mailtrap
     # @param message_id [Integer] The Sandbox message ID
     # @return [String] HTML source of a message.
     # @!macro api_errors
-    def get_html_source(message_id)
+    def html_source(message_id)
       client.get("#{base_path}/#{message_id}/body.htmlsource")
     end
 
@@ -121,7 +120,7 @@ module Mailtrap
     # @param message_id [Integer] The Sandbox message ID
     # @return [String] message body in html format.
     # @!macro api_errors
-    def get_html_message(message_id)
+    def html_body(message_id)
       client.get("#{base_path}/#{message_id}/body.html")
     end
 
@@ -129,7 +128,7 @@ module Mailtrap
     # @param message_id [Integer] The Sandbox message ID
     # @return [Hash] mail headers of the message.
     # @!macro api_errors
-    def get_message_as_eml(message_id)
+    def eml_body(message_id)
       client.get("#{base_path}/#{message_id}/body.eml")
     end
 
@@ -137,7 +136,7 @@ module Mailtrap
     # @param message_id [Integer] The Sandbox message ID
     # @return [Hash] mail headers of the message.
     # @!macro api_errors
-    def get_mail_headers(message_id)
+    def mail_headers(message_id)
       client.get("#{base_path}/#{message_id}/mail_headers")
     end
 

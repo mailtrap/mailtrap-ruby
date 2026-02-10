@@ -162,15 +162,15 @@ RSpec.describe Mailtrap::SandboxMessagesAPI, :vcr do
     end
   end
 
-  describe '#get_spam_score' do
-    subject(:get_spam_score) do
-      sandbox_messages_api.get_spam_score(sandbox_message_id)
+  describe '#spam_score' do
+    subject(:spam_score) do
+      sandbox_messages_api.spam_score(sandbox_message_id)
     end
 
     let(:sandbox_message_id) { 5_273_448_410 }
 
     it 'returns report' do
-      expect(get_spam_score).to eq(
+      expect(spam_score).to eq(
         { report:
            { ResponseCode: 0,
              ResponseMessage: 'EX_OK',
@@ -189,7 +189,7 @@ RSpec.describe Mailtrap::SandboxMessagesAPI, :vcr do
       let(:sandbox_message_id) { -1 }
 
       it 'raises not found error' do
-        expect { get_spam_score }.to raise_error do |error|
+        expect { spam_score }.to raise_error do |error|
           expect(error).to be_a(Mailtrap::Error)
           expect(error.message).to include('Not Found')
           expect(error.messages.any? { |msg| msg.include?('Not Found') }).to be true
@@ -198,22 +198,22 @@ RSpec.describe Mailtrap::SandboxMessagesAPI, :vcr do
     end
   end
 
-  describe '#get_html_analysis' do
-    subject(:get_html_analysis) do
-      sandbox_messages_api.get_html_analysis(sandbox_message_id)
+  describe '#html_analysis' do
+    subject(:html_analysis) do
+      sandbox_messages_api.html_analysis(sandbox_message_id)
     end
 
     let(:sandbox_message_id) { 5_273_448_410 }
 
     it 'returns html analysis' do
-      expect(get_html_analysis).to eq({ report: { status: 'success', errors: [] } })
+      expect(html_analysis).to eq({ report: { status: 'success', errors: [] } })
     end
 
     context 'when sandbox message does not exist' do
       let(:sandbox_message_id) { -1 }
 
       it 'raises not found error' do
-        expect { get_html_analysis }.to raise_error do |error|
+        expect { html_analysis }.to raise_error do |error|
           expect(error).to be_a(Mailtrap::Error)
           expect(error.message).to include('Not Found')
           expect(error.messages.any? { |msg| msg.include?('Not Found') }).to be true
@@ -222,22 +222,22 @@ RSpec.describe Mailtrap::SandboxMessagesAPI, :vcr do
     end
   end
 
-  describe '#get_text_message' do
-    subject(:get_text_message) do
-      sandbox_messages_api.get_text_message(sandbox_message_id)
+  describe '#text_body' do
+    subject(:text_body) do
+      sandbox_messages_api.text_body(sandbox_message_id)
     end
 
     let(:sandbox_message_id) { 5_273_448_410 }
 
     it 'returns text message' do
-      expect(get_text_message).to eq('Welcome to Mailtrap!')
+      expect(text_body).to eq('Welcome to Mailtrap!')
     end
 
     context 'when sandbox message does not exist' do
       let(:sandbox_message_id) { -1 }
 
       it 'raises not found error' do
-        expect { get_text_message }.to raise_error do |error|
+        expect { text_body }.to raise_error do |error|
           expect(error).to be_a(Mailtrap::Error)
           expect(error.message).to include('Not Found')
           expect(error.messages.any? { |msg| msg.include?('Not Found') }).to be true
@@ -246,24 +246,24 @@ RSpec.describe Mailtrap::SandboxMessagesAPI, :vcr do
     end
   end
 
-  describe '#get_raw_message' do
-    subject(:get_raw_message) do
-      sandbox_messages_api.get_raw_message(sandbox_message_id)
+  describe '#raw_body' do
+    subject(:raw_body) do
+      sandbox_messages_api.raw_body(sandbox_message_id)
     end
 
     let(:sandbox_message_id) { 5_273_448_410 }
 
     it 'returns raw message' do
-      expect(get_raw_message).to include('Welcome to Mailtrap!')
-      expect(get_raw_message).to include('MIME-Version: 1.0')
-      expect(get_raw_message).to include('Subject: Hello from Mailtrap')
+      expect(raw_body).to include('Welcome to Mailtrap!')
+      expect(raw_body).to include('MIME-Version: 1.0')
+      expect(raw_body).to include('Subject: Hello from Mailtrap')
     end
 
     context 'when sandbox message does not exist' do
       let(:sandbox_message_id) { -1 }
 
       it 'raises not found error' do
-        expect { get_raw_message }.to raise_error do |error|
+        expect { raw_body }.to raise_error do |error|
           expect(error).to be_a(Mailtrap::Error)
           expect(error.message).to include('Not Found')
           expect(error.messages.any? { |msg| msg.include?('Not Found') }).to be true
@@ -272,22 +272,22 @@ RSpec.describe Mailtrap::SandboxMessagesAPI, :vcr do
     end
   end
 
-  describe '#get_html_source' do
-    subject(:get_html_source) do
-      sandbox_messages_api.get_html_source(sandbox_message_id)
+  describe '#html_source' do
+    subject(:html_source) do
+      sandbox_messages_api.html_source(sandbox_message_id)
     end
 
     let(:sandbox_message_id) { 5_273_448_410 }
 
     it 'returns html source message' do
-      expect(get_html_source).to eq('<h1>Welcome to Mailtrap!</h1>')
+      expect(html_source).to eq('<h1>Welcome to Mailtrap!</h1>')
     end
 
     context 'when sandbox message does not exist' do
       let(:sandbox_message_id) { -1 }
 
       it 'raises not found error' do
-        expect { get_html_source }.to raise_error do |error|
+        expect { html_source }.to raise_error do |error|
           expect(error).to be_a(Mailtrap::Error)
           expect(error.message).to include('Not Found')
           expect(error.messages.any? { |msg| msg.include?('Not Found') }).to be true
@@ -296,22 +296,22 @@ RSpec.describe Mailtrap::SandboxMessagesAPI, :vcr do
     end
   end
 
-  describe '#get_html_message' do
-    subject(:get_html_message) do
-      sandbox_messages_api.get_html_message(sandbox_message_id)
+  describe '#html_body' do
+    subject(:html_body) do
+      sandbox_messages_api.html_body(sandbox_message_id)
     end
 
     let(:sandbox_message_id) { 5_273_448_410 }
 
     it 'returns html message' do
-      expect(get_html_message).to eq('<h1>Welcome to Mailtrap!</h1>')
+      expect(html_body).to eq('<h1>Welcome to Mailtrap!</h1>')
     end
 
     context 'when sandbox message does not exist' do
       let(:sandbox_message_id) { -1 }
 
       it 'raises not found error' do
-        expect { get_html_message }.to raise_error do |error|
+        expect { html_body }.to raise_error do |error|
           expect(error).to be_a(Mailtrap::Error)
           expect(error.message).to include('Not Found')
           expect(error.messages.any? { |msg| msg.include?('Not Found') }).to be true
@@ -320,24 +320,24 @@ RSpec.describe Mailtrap::SandboxMessagesAPI, :vcr do
     end
   end
 
-  describe '#get_message_as_eml' do
-    subject(:get_message_as_eml) do
-      sandbox_messages_api.get_message_as_eml(sandbox_message_id)
+  describe '#eml_body' do
+    subject(:eml_body) do
+      sandbox_messages_api.eml_body(sandbox_message_id)
     end
 
     let(:sandbox_message_id) { 5_273_448_410 }
 
     it 'returns eml message' do
-      expect(get_message_as_eml).to include('Welcome to Mailtrap!')
-      expect(get_message_as_eml).to include('MIME-Version: 1.0')
-      expect(get_message_as_eml).to include('Subject: Hello from Mailtrap')
+      expect(eml_body).to include('Welcome to Mailtrap!')
+      expect(eml_body).to include('MIME-Version: 1.0')
+      expect(eml_body).to include('Subject: Hello from Mailtrap')
     end
 
     context 'when sandbox message does not exist' do
       let(:sandbox_message_id) { -1 }
 
       it 'raises not found error' do
-        expect { get_message_as_eml }.to raise_error do |error|
+        expect { eml_body }.to raise_error do |error|
           expect(error).to be_a(Mailtrap::Error)
           expect(error.message).to include('Not Found')
           expect(error.messages.any? { |msg| msg.include?('Not Found') }).to be true
@@ -346,15 +346,15 @@ RSpec.describe Mailtrap::SandboxMessagesAPI, :vcr do
     end
   end
 
-  describe '#get_mail_headers' do
-    subject(:get_mail_headers) do
-      sandbox_messages_api.get_mail_headers(sandbox_message_id)
+  describe '#mail_headers' do
+    subject(:mail_headers) do
+      sandbox_messages_api.mail_headers(sandbox_message_id)
     end
 
     let(:sandbox_message_id) { 5_273_448_410 }
 
     it 'returns headers' do
-      expect(get_mail_headers).to eq(
+      expect(mail_headers).to eq(
         {
           headers:
             {
@@ -374,7 +374,7 @@ RSpec.describe Mailtrap::SandboxMessagesAPI, :vcr do
       let(:sandbox_message_id) { -1 }
 
       it 'raises not found error' do
-        expect { get_mail_headers }.to raise_error do |error|
+        expect { mail_headers }.to raise_error do |error|
           expect(error).to be_a(Mailtrap::Error)
           expect(error.message).to include('Not Found')
           expect(error.messages.any? { |msg| msg.include?('Not Found') }).to be true
