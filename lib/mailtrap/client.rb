@@ -221,8 +221,11 @@ module Mailtrap
 
     private
 
-    def http_client_for(host)
-      @http_clients[host] ||= Net::HTTP.new(host, api_port).tap { |client| client.use_ssl = true }
+    def validate_args!(api_key, api_port, bulk, sandbox, inbox_id)
+      raise ArgumentError, 'api_key is required' if api_key.nil?
+      raise ArgumentError, 'api_port is required' if api_port.nil?
+      raise ArgumentError, 'bulk stream is not applicable for sandbox API' if bulk && sandbox
+      raise ArgumentError, 'inbox_id is required for sandbox API' if sandbox && inbox_id.nil?
     end
 
     def select_api_host(bulk:, sandbox:)
@@ -235,14 +238,6 @@ module Mailtrap
       end
     end
 
-    def send_path
-      "/api/send#{"/#{inbox_id}" if sandbox}"
-    end
-
-    def batch_request_path
-      "/api/batch#{"/#{inbox_id}" if sandbox}"
-    end
-
     def perform_request(method:, host:, path:, query_params: {}, body: nil)
       http_client = http_client_for(host)
 
@@ -252,6 +247,10 @@ module Mailtrap
       request = setup_request(method, uri, body)
       response = http_client.request(request)
       handle_response(response)
+    end
+
+    def http_client_for(host)
+      @http_clients[host] ||= Net::HTTP.new(host, api_port).tap { |client| client.use_ssl = true }
     end
 
     def setup_request(method, uri_or_path, body = nil)
@@ -303,6 +302,12 @@ module Mailtrap
       end
     end
 
+    def parse_response(response)
+      return json_response(response.body) if response['Content-Type']&.include?('application/json')
+
+      response.body
+    end
+
     def response_errors(response)
       if response['Content-Type']&.include?('application/json')
         parsed_body = json_response(response.body)
@@ -312,21 +317,16 @@ module Mailtrap
       end
     end
 
-    def parse_response(response)
-      return json_response(response.body) if response['Content-Type']&.include?('application/json')
-
-      response.body
-    end
-
     def json_response(body)
       JSON.parse(body, symbolize_names: true)
     end
 
-    def validate_args!(api_key, api_port, bulk, sandbox, inbox_id)
-      raise ArgumentError, 'api_key is required' if api_key.nil?
-      raise ArgumentError, 'api_port is required' if api_port.nil?
-      raise ArgumentError, 'bulk stream is not applicable for sandbox API' if bulk && sandbox
-      raise ArgumentError, 'inbox_id is required for sandbox API' if sandbox && inbox_id.nil?
+    def send_path
+      "/api/send#{"/#{inbox_id}" if sandbox}"
+    end
+
+    def batch_request_path
+      "/api/batch#{"/#{inbox_id}" if sandbox}"
     end
   end
 end
