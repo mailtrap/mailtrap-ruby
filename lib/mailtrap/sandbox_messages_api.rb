@@ -59,10 +59,12 @@ module Mailtrap
     # @return [Array<SandboxMessage>] Array of sandbox message objects
     # @!macro api_errors
     def list(search: nil, last_id: nil, page: nil)
+      raise ArgumentError, 'Provide either last_id or page, not both' unless last_id.nil? || page.nil?
+
       query_params = {}
       query_params[:search] = search unless search.nil?
       query_params[:last_id] = last_id unless last_id.nil?
-      query_params[:page] = page unless page.nil? || last_id
+      query_params[:page] = page unless page.nil?
 
       base_list(query_params)
     end

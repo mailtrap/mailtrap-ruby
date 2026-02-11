@@ -99,6 +99,10 @@ RSpec.describe Mailtrap::SandboxMessagesAPI, :vcr do
   describe '#list' do
     subject(:list) { sandbox_messages_api.list }
 
+    it 'validates arguments' do
+      expect { sandbox_messages_api.list(page: 1, last_id: 1) }.to raise_error(ArgumentError)
+    end
+
     it 'maps response data to SandboxMessage objects' do
       expect(list).to all(be_a(Mailtrap::SandboxMessage))
       expect(list.size).to eq(5)
