@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe Mailtrap::SandboxMessagesAPI, :vcr do
-  subject(:sandbox_messages_api) { described_class.new(inbox_id, account_id, client) }
+  subject(:sandbox_messages_api) { described_class.new(account_id, inbox_id, client) }
 
   let(:account_id) { ENV.fetch('MAILTRAP_ACCOUNT_ID', 1_111_111) }
   let(:client) { Mailtrap::Client.new(api_key: ENV.fetch('MAILTRAP_API_KEY', 'local-api-key')) }

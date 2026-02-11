@@ -13,11 +13,11 @@ module Mailtrap
 
     self.response_class = SandboxMessage
 
-    # @param inbox_id [Integer] The inbox ID
     # @param account_id [Integer] The account ID
+    # @param inbox_id [Integer] The inbox ID
     # @param client [Mailtrap::Client] The client instance
     # @raise [ArgumentError] If account_id is nil
-    def initialize(inbox_id, account_id = ENV.fetch('MAILTRAP_ACCOUNT_ID'), client = Mailtrap::Client.new)
+    def initialize(account_id, inbox_id, client = Mailtrap::Client.new)
       raise ArgumentError, 'inbox_id is required' if inbox_id.nil?
 
       @inbox_id = inbox_id
