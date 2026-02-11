@@ -66,19 +66,13 @@ RSpec.describe Mailtrap::SandboxMessagesAPI, :vcr do
     end
   end
 
-  describe '#update' do
-    subject(:update) { sandbox_messages_api.update(sandbox_message_id, **request) }
-
+  describe '#mark_as_read' do
     let(:sandbox_message_id) { 5_273_448_410 }
-    let(:request) do
-      {
-        is_read: true
-      }
-    end
 
     it 'maps response data to SandboxMessage object' do
-      expect(update).to be_a(Mailtrap::SandboxMessage)
-      expect(update).to have_attributes(
+      message = sandbox_messages_api.mark_as_read(sandbox_message_id)
+      expect(message).to be_a(Mailtrap::SandboxMessage)
+      expect(message).to have_attributes(
         is_read: true
       )
     end
@@ -87,7 +81,7 @@ RSpec.describe Mailtrap::SandboxMessagesAPI, :vcr do
       let(:sandbox_message_id) { 999_999 }
 
       it 'raises not found error' do
-        expect { update }.to raise_error do |error|
+        expect { sandbox_messages_api.mark_as_read(sandbox_message_id, is_read: true) }.to raise_error do |error|
           expect(error).to be_a(Mailtrap::Error)
           expect(error.message).to include('Not Found')
           expect(error.messages.any? { |msg| msg.include?('Not Found') }).to be true

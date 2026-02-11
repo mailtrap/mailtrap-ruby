@@ -19,8 +19,8 @@ message_id = 123
 sandbox_messages.get(message_id)
 # => #<struct Mailtrap::SandboxMessage id=123, subject="...", is_read=false, ...>
 
-# Update message (e.g. mark as read)
-sandbox_messages.update(message_id, is_read: true)
+# Mark message as read
+sandbox_messages.mark_as_read(message_id)
 # => #<struct Mailtrap::SandboxMessage id=123, is_read=true, ...>
 
 # Get message bodies and metadata

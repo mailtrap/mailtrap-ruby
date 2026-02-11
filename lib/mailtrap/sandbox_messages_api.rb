@@ -44,12 +44,11 @@ module Mailtrap
 
     # Updates an existing sandbox message
     # @param message_id [Integer] The sandbox message ID
-    # @param options [Hash] The parameters to update
+    # @param is_read [Boolean]
     # @return [SandboxMessage] Updated Sandbox message object
     # @!macro api_errors
-    # @raise [ArgumentError] If invalid options are provided
-    def update(message_id, options)
-      base_update(message_id, options)
+    def mark_as_read(message_id, is_read: true)
+      base_update(message_id, { is_read: is_read })
     end
 
     # Lists all sandbox messages for the account, limited up to 30 at once
