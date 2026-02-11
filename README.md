@@ -182,6 +182,7 @@ Email Sandbox (Testing):
 
 - Projects CRUD – [`projects_api.rb`](examples/projects_api.rb)
 - Inboxes CRUD - [`inboxes_api.rb`](examples/inboxes_api.rb)
+- Sandbox Messages CRUD - [`sandbox_messages_api.rb`](examples/sandbox_messages_api.rb)
 
 Contact management:
 
@@ -190,7 +191,6 @@ Contact management:
 General API:
 
 - Templates CRUD – [`email_templates_api.rb`](examples/email_templates_api.rb)
-
 - Action Mailer – [`action_mailer.rb`](examples/action_mailer.rb)
 
 ## Migration guide v1 → v2

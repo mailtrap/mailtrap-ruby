@@ -115,7 +115,7 @@ module Mailtrap
     #   )
     # @param base [#to_json] The base email configuration for the batch.
     # @param requests [Array<#to_json>] Array of individual email requests.
-    # @return [Hash] The JSON response from the API.
+    # @return [Hash, String, nil] JSON response or raw response body from the API.
     # @!macro api_errors
     # @raise [Mailtrap::MailSizeError] If the message is too large.
     def send_batch(base, requests)
@@ -153,7 +153,7 @@ module Mailtrap
     #     text: 'Congrats for sending test email with Mailtrap!'
     #   )
     # @param mail [#to_json] The email to send
-    # @return [Hash] The JSON response
+    # @return [Hash, String, nil] JSON response or raw response body
     # @!macro api_errors
     # @raise [Mailtrap::MailSizeError] If the message is too large
     def send(mail)
@@ -168,7 +168,7 @@ module Mailtrap
     # Performs a GET request to the specified path
     # @param path [String] The request path
     # @param query_params [Hash] Query parameters to append to the URL (optional)
-    # @return [Hash, nil] The JSON response
+    # @return [Hash, String, nil] JSON response or raw response body
     # @!macro api_errors
     def get(path, query_params = {})
       perform_request(
@@ -182,7 +182,7 @@ module Mailtrap
     # Performs a POST request to the specified path
     # @param path [String] The request path
     # @param body [Hash] The request body
-    # @return [Hash, nil] The JSON response
+    # @return [Hash, String, nil] JSON response or raw response body
     # @!macro api_errors
     def post(path, body = nil)
       perform_request(
@@ -196,7 +196,7 @@ module Mailtrap
     # Performs a PATCH request to the specified path
     # @param path [String] The request path
     # @param body [Hash] The request body
-    # @return [Hash, nil] The JSON response
+    # @return [Hash, String, nil] JSON response or raw response body
     # @!macro api_errors
     def patch(path, body = nil)
       perform_request(
@@ -209,7 +209,7 @@ module Mailtrap
 
     # Performs a DELETE request to the specified path
     # @param path [String] The request path
-    # @return [Hash, nil] The JSON response
+    # @return [Hash, String, nil] JSON response or raw response body
     # @!macro api_errors
     def delete(path)
       perform_request(
