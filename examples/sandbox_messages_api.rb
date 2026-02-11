@@ -1,9 +1,9 @@
 require 'mailtrap'
 
 account_id = 3229
-client = Mailtrap::Client.new(api_key: 'your-api-key')
 inbox_id = 12
-sandbox_messages = Mailtrap::SandboxMessagesAPI.new(inbox_id, account_id, client)
+client = Mailtrap::Client.new(api_key: 'your-api-key')
+sandbox_messages = Mailtrap::SandboxMessagesAPI.new(account_id, inbox_id, client)
 
 # List all sandbox messages in the inbox (optional: search, page, last_id)
 sandbox_messages.list
@@ -36,7 +36,7 @@ sandbox_messages.spam_score(message_id)     # => spam report hash
 sandbox_messages.html_analysis(message_id)  # => HTML analysis hash
 
 # Forward message to an email address
-sandbox_messages.forward_message(message_id: message_id, email: 'recipient@example.com')
+sandbox_messages.forward_message(message_id, email: 'recipient@example.com')
 # => forwarded message confirmation
 
 # Delete a sandbox message

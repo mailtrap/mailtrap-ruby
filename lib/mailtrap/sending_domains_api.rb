@@ -50,7 +50,7 @@ module Mailtrap
     # @param email [String] The email for instructions
     # @return nil
     # @!macro api_errors
-    def send_setup_instructions(domain_id:, email:)
+    def send_setup_instructions(domain_id, email:)
       client.post("#{base_path}/#{domain_id}/send_setup_instructions", email:)
     end
 

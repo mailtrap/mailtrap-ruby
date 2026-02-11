@@ -143,7 +143,7 @@ RSpec.describe Mailtrap::SandboxMessagesAPI, :vcr do
 
   describe '#forward_message' do
     subject(:forward_message) do
-      sandbox_messages_api.forward_message(message_id: sandbox_message_id, email: 'example@railsware.com')
+      sandbox_messages_api.forward_message(sandbox_message_id, email: 'example@railsware.com')
     end
 
     let(:sandbox_message_id) { 5_273_448_410 }
