@@ -1,3 +1,4 @@
+- Add Sandbox Messages API
 - Add Sending Domains API
 
 ## [2.6.0] - 2026-01-27
