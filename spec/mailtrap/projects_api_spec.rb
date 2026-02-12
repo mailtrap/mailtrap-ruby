@@ -29,18 +29,41 @@ RSpec.describe Mailtrap::ProjectsAPI, :vcr do
   describe '#get' do
     subject(:get) { project_api.get(project_id) }
 
-    let!(:created_project) do
-      project_api.create(
-        name: 'Test Project'
-      )
-    end
-    let(:project_id) { created_project.id }
+    let(:project_id) { 2_379_735 }
 
     it 'maps response data to Project object' do
       expect(get).to be_a(Mailtrap::Project)
       expect(get).to have_attributes(
         id: project_id,
-        name: 'Test Project'
+        name: 'Ruby SDK Project'
+      )
+
+      expect(get.inboxes).to all(be_a(Mailtrap::Inbox))
+      expect(get.inboxes.first).to match_struct(
+        id: 4_294_015,
+        name: 'Main sandbox',
+        username: 'railsware',
+        status: 'active',
+        email_username: '1234abcd',
+        email_username_enabled: true,
+        used: true,
+        forward_from_email_address: 'railsware@forward.mailtrap.info',
+        project_id: 2_379_735,
+        password: 'xxxxxxxx',
+        domain: 'sandbox.smtp.mailtrap.io',
+        pop3_domain: 'pop3.mailtrap.io',
+        email_domain: 'inbox.mailtrap.io',
+        smtp_ports: [25, 465, 587, 2525],
+        pop3_ports: [1100, 9950],
+        api_domain: 'sandbox.api.mailtrap.io',
+        sent_messages_count: 1,
+        forwarded_messages_count: 0,
+        emails_count: 1,
+        emails_unread_count: 1,
+        last_message_sent_at: '2026-01-08T12:41:49.000Z',
+        max_size: 200,
+        max_message_size: 10_485_760,
+        permissions: { can_read: true, can_update: true, can_destroy: true, can_leave: false }
       )
     end
 

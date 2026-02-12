@@ -1,0 +1,87 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://mailtrap.io/api/accounts/1111111/inboxes/4288340/messages/5273448410/body.eml
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - mailtrap-ruby (https://github.com/mailtrap/mailtrap-ruby)
+      Host:
+      - mailtrap.io
+      Authorization:
+      - Bearer <BEARER_TOKEN>
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 30 Dec 2025 23:48:06 GMT
+      Content-Type:
+      - message/rfc822
+      Content-Length:
+      - '691'
+      Connection:
+      - keep-alive
+      Server:
+      - cloudflare
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Content-Disposition:
+      - attachment; filename="Hello from Mailtrap.eml"; filename*=UTF-8''Hello%20from%20Mailtrap.eml
+      Content-Transfer-Encoding:
+      - binary
+      X-Mailtrap-Version:
+      - v2
+      X-Ratelimit-Limit:
+      - '150'
+      X-Ratelimit-Remaining:
+      - '149'
+      Etag:
+      - W/"26112163b7041555e048aa32da30ec37"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 6083269b-f04a-42eb-9915-1aedc9c18ac8
+      X-Runtime:
+      - '0.037645'
+      X-Cloud-Trace-Context:
+      - 63e02802d7dd4d45c9b8965152f5a168;o=0
+      Strict-Transport-Security:
+      - max-age=0
+      Cf-Cache-Status:
+      - DYNAMIC
+      Cf-Ray:
+      - 9b8e9fef6ff15d8c-FRA
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: UTF-8
+      string: "MIME-Version: 1.0\r\nDate: Tue, 30 Dec 2025 16:55:50 +0000\r\nTo: bob.s@railsware.com\r\nSubject:
+        Hello from Mailtrap\r\nFrom: reply@demomailtrap.co\r\nContent-Type: multipart/alternative;\r\n
+        boundary=4f9d09de93fe15363facbecec5c2941a90a45766953c87ed7b377c1d02ad\r\n\r\n--4f9d09de93fe15363facbecec5c2941a90a45766953c87ed7b377c1d02ad\r\nContent-Transfer-Encoding:
+        quoted-printable\r\nContent-Type: text/plain; charset=UTF-8\r\n\r\nWelcome
+        to Mailtrap!\r\n--4f9d09de93fe15363facbecec5c2941a90a45766953c87ed7b377c1d02ad\r\nContent-Transfer-Encoding:
+        quoted-printable\r\nContent-Type: text/html; charset=UTF-8\r\n\r\n<h1>Welcome
+        to Mailtrap!</h1>\r\n--4f9d09de93fe15363facbecec5c2941a90a45766953c87ed7b377c1d02ad--\r\n"
+  recorded_at: Tue, 30 Dec 2025 23:48:06 GMT
+recorded_with: VCR 6.2.0

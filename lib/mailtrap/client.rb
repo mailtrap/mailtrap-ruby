@@ -115,7 +115,7 @@ module Mailtrap
     #   )
     # @param base [#to_json] The base email configuration for the batch.
     # @param requests [Array<#to_json>] Array of individual email requests.
-    # @return [Hash] The JSON response from the API.
+    # @return [Hash, String, nil] JSON response or raw response body from the API.
     # @!macro api_errors
     # @raise [Mailtrap::MailSizeError] If the message is too large.
     def send_batch(base, requests)
@@ -153,7 +153,7 @@ module Mailtrap
     #     text: 'Congrats for sending test email with Mailtrap!'
     #   )
     # @param mail [#to_json] The email to send
-    # @return [Hash] The JSON response
+    # @return [Hash, String, nil] JSON response or raw response body
     # @!macro api_errors
     # @raise [Mailtrap::MailSizeError] If the message is too large
     def send(mail)
@@ -168,7 +168,7 @@ module Mailtrap
     # Performs a GET request to the specified path
     # @param path [String] The request path
     # @param query_params [Hash] Query parameters to append to the URL (optional)
-    # @return [Hash, nil] The JSON response
+    # @return [Hash, String, nil] JSON response or raw response body
     # @!macro api_errors
     def get(path, query_params = {})
       perform_request(
@@ -182,7 +182,7 @@ module Mailtrap
     # Performs a POST request to the specified path
     # @param path [String] The request path
     # @param body [Hash] The request body
-    # @return [Hash, nil] The JSON response
+    # @return [Hash, String, nil] JSON response or raw response body
     # @!macro api_errors
     def post(path, body = nil)
       perform_request(
@@ -196,7 +196,7 @@ module Mailtrap
     # Performs a PATCH request to the specified path
     # @param path [String] The request path
     # @param body [Hash] The request body
-    # @return [Hash, nil] The JSON response
+    # @return [Hash, String, nil] JSON response or raw response body
     # @!macro api_errors
     def patch(path, body = nil)
       perform_request(
@@ -209,7 +209,7 @@ module Mailtrap
 
     # Performs a DELETE request to the specified path
     # @param path [String] The request path
-    # @return [Hash, nil] The JSON response
+    # @return [Hash, String, nil] JSON response or raw response body
     # @!macro api_errors
     def delete(path)
       perform_request(
@@ -221,8 +221,11 @@ module Mailtrap
 
     private
 
-    def http_client_for(host)
-      @http_clients[host] ||= Net::HTTP.new(host, api_port).tap { |client| client.use_ssl = true }
+    def validate_args!(api_key, api_port, bulk, sandbox, inbox_id)
+      raise ArgumentError, 'api_key is required' if api_key.nil?
+      raise ArgumentError, 'api_port is required' if api_port.nil?
+      raise ArgumentError, 'bulk stream is not applicable for sandbox API' if bulk && sandbox
+      raise ArgumentError, 'inbox_id is required for sandbox API' if sandbox && inbox_id.nil?
     end
 
     def select_api_host(bulk:, sandbox:)
@@ -235,14 +238,6 @@ module Mailtrap
       end
     end
 
-    def send_path
-      "/api/send#{"/#{inbox_id}" if sandbox}"
-    end
-
-    def batch_request_path
-      "/api/batch#{"/#{inbox_id}" if sandbox}"
-    end
-
     def perform_request(method:, host:, path:, query_params: {}, body: nil)
       http_client = http_client_for(host)
 
@@ -252,6 +247,10 @@ module Mailtrap
       request = setup_request(method, uri, body)
       response = http_client.request(request)
       handle_response(response)
+    end
+
+    def http_client_for(host)
+      @http_clients[host] ||= Net::HTTP.new(host, api_port).tap { |client| client.use_ssl = true }
     end
 
     def setup_request(method, uri_or_path, body = nil)
@@ -279,17 +278,17 @@ module Mailtrap
     def handle_response(response) # rubocop:disable Metrics/CyclomaticComplexity, Metrics/MethodLength
       case response
       when Net::HTTPOK, Net::HTTPCreated
-        json_response(response.body)
+        parse_response(response)
       when Net::HTTPNoContent
         nil
       when Net::HTTPBadRequest
         raise Mailtrap::Error, ['bad request'] if response.body.empty?
 
-        raise Mailtrap::Error, response_errors(response.body)
+        raise Mailtrap::Error, response_errors(response)
       when Net::HTTPUnauthorized
-        raise Mailtrap::AuthorizationError, response_errors(response.body)
+        raise Mailtrap::AuthorizationError, response_errors(response)
       when Net::HTTPForbidden
-        raise Mailtrap::RejectionError, response_errors(response.body)
+        raise Mailtrap::RejectionError, response_errors(response)
       when Net::HTTPPayloadTooLarge
         raise Mailtrap::MailSizeError, ['message too large']
       when Net::HTTPTooManyRequests
@@ -303,20 +302,37 @@ module Mailtrap
       end
     end
 
-    def response_errors(body)
-      parsed_body = json_response(body)
-      Array(parsed_body[:errors] || parsed_body[:error])
+    def parse_response(response)
+      if json_response?(response)
+        json_response(response.body)
+      else
+        response.body
+      end
+    end
+
+    def response_errors(response)
+      if json_response?(response)
+        parsed_body = json_response(response.body)
+        Array(parsed_body[:errors] || parsed_body[:error])
+      else
+        [response.body]
+      end
+    end
+
+    def json_response?(response)
+      response.content_type == 'application/json'
     end
 
     def json_response(body)
       JSON.parse(body, symbolize_names: true)
     end
 
-    def validate_args!(api_key, api_port, bulk, sandbox, inbox_id)
-      raise ArgumentError, 'api_key is required' if api_key.nil?
-      raise ArgumentError, 'api_port is required' if api_port.nil?
-      raise ArgumentError, 'bulk stream is not applicable for sandbox API' if bulk && sandbox
-      raise ArgumentError, 'inbox_id is required for sandbox API' if sandbox && inbox_id.nil?
+    def send_path
+      "/api/send#{"/#{inbox_id}" if sandbox}"
+    end
+
+    def batch_request_path
+      "/api/batch#{"/#{inbox_id}" if sandbox}"
     end
   end
 end

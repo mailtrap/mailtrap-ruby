@@ -26,10 +26,5 @@ module Mailtrap
     :created_at,
     :updated_at,
     keyword_init: true
-  ) do
-    # @return [Hash] The template attributes as a hash
-    def to_h
-      super.compact
-    end
-  end
+  )
 end

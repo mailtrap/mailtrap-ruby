@@ -53,10 +53,5 @@ module Mailtrap
     :max_message_size,
     :permissions,
     keyword_init: true
-  ) do
-    # @return [Hash] The inbox attributes as a hash
-    def to_h
-      super.compact
-    end
-  end
+  )
 end

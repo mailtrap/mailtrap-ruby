@@ -1,0 +1,73 @@
+---
+http_interactions:
+- request:
+    method: patch
+    uri: https://mailtrap.io/api/accounts/1111111/inboxes/4278175
+    body:
+      encoding: UTF-8
+      string: '{"inbox":{"name":"Updated Inbox"}}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - mailtrap-ruby (https://github.com/mailtrap/mailtrap-ruby)
+      Host:
+      - mailtrap.io
+      Authorization:
+      - Bearer <BEARER_TOKEN>
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 26 Dec 2025 17:06:55 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - cloudflare
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Vary:
+      - Accept
+      X-Mailtrap-Version:
+      - v2
+      X-Ratelimit-Limit:
+      - '150'
+      X-Ratelimit-Remaining:
+      - '148'
+      Etag:
+      - W/"b806febaa0d1508c418fc9aa248e543f"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Runtime:
+      - '0.032751'
+      Strict-Transport-Security:
+      - max-age=0
+      Cf-Cache-Status:
+      - DYNAMIC
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":4278175,"name":"Updated Inbox","username":"xxxxxx","status":"active","email_username":"xxxxxx","email_username_enabled":false,"used":false,"forward_from_email_address":"xyzxyz-i4278175@forward.mailtrap.info","project_id":2379735,"password":"xxxxxxxx","domain":"sandbox.smtp.mailtrap.io","pop3_domain":"pop3.mailtrap.io","email_domain":"inbox.mailtrap.io","smtp_ports":[25,465,587,2525],"pop3_ports":[1100,9950],"api_domain":"sandbox.api.mailtrap.io","sent_messages_count":0,"forwarded_messages_count":0,"emails_count":0,"emails_unread_count":0,"last_message_sent_at":null,"max_size":10,"max_message_size":5242880,"permissions":{"can_read":true,"can_update":true,"can_destroy":true,"can_leave":false}}'
+  recorded_at: Fri, 26 Dec 2025 17:06:55 GMT
+recorded_with: VCR 6.2.0
