@@ -1,0 +1,75 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://mailtrap.io/api/accounts/1111111/account_accesses
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - mailtrap-ruby (https://github.com/mailtrap/mailtrap-ruby)
+      Host:
+      - mailtrap.io
+      Authorization:
+      - Bearer <BEARER_TOKEN>
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 12 Feb 2026 12:26:13 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - cloudflare
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Vary:
+      - Accept
+      X-Mailtrap-Version:
+      - v2
+      X-Ratelimit-Limit:
+      - '150'
+      X-Ratelimit-Remaining:
+      - '149'
+      Etag:
+      - W/"b72ac29d57b805a616175d213ebf8945"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Runtime:
+      - '0.047395'
+      Strict-Transport-Security:
+      - max-age=0
+      Cf-Cache-Status:
+      - DYNAMIC
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"id":5190393,"specifier_type":"Invite","resources":[{"resource_type":"account","resource_id":2326475,"access_level":10}],"specifier":{"id":82784,"email":
+        "welcome@rw.com"},"permissions":{"can_read":false,"can_update":true,"can_destroy":true,"can_leave":false}},{"id":4717970,"specifier_type":"User","resources":[{"resource_type":"organization","resource_id":1888116,"access_level":1000}],"specifier":{"id":2337943,"email":
+        "welcome@rw.com","name":"Random User","two_factor_authentication_enabled":true},"permissions":{"can_read":false,"can_update":false,"can_destroy":false,"can_leave":false}}]'
+  recorded_at: Thu, 12 Feb 2026 12:26:13 GMT
+recorded_with: VCR 6.4.0
