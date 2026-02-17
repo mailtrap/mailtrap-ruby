@@ -30,10 +30,5 @@ module Mailtrap
     :attachment_human_size,
     :download_path,
     keyword_init: true
-  ) do
-    # @return [Hash] The Project attributes as a hash
-    def to_h
-      super.compact
-    end
-  end
+  )
 end

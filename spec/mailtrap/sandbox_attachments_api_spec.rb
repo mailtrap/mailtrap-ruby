@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe Mailtrap::SandboxAttachmentsAPI, :vcr do
-  subject(:sandbox_attachments_api) { described_class.new(account_id, client) }
+  subject(:sandbox_attachments_api) { described_class.new(account_id, inbox_id, message_id, client) }
 
   let(:account_id) { ENV.fetch('MAILTRAP_ACCOUNT_ID', 1_111_111) }
   let(:client) { Mailtrap::Client.new(api_key: ENV.fetch('MAILTRAP_API_KEY', 'local-api-key')) }
@@ -9,7 +9,7 @@ RSpec.describe Mailtrap::SandboxAttachmentsAPI, :vcr do
   let(:message_id) { ENV.fetch('MAILTRAP_SANDBOX_MESSAGE_ID', 5_274_457_639) }
 
   describe '#list' do
-    subject(:list) { sandbox_attachments_api.list(inbox_id, message_id) }
+    subject(:list) { sandbox_attachments_api.list }
 
     it 'maps response data to SandboxAttachment objects' do
       expect(list).to all(be_a(Mailtrap::SandboxAttachment))
@@ -29,7 +29,7 @@ RSpec.describe Mailtrap::SandboxAttachmentsAPI, :vcr do
   end
 
   describe '#get' do
-    subject(:get) { sandbox_attachments_api.get(inbox_id, message_id, attachment_id) }
+    subject(:get) { sandbox_attachments_api.get(attachment_id) }
 
     let(:attachment_id) { 790_295_400 }
 
