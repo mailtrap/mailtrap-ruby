@@ -36,7 +36,7 @@ module Mailtrap
     end
 
     # Lists all sandbox attachments for a message, limited up to 30 at once
-    # @return [Array<SandboxAttachment>] Array of sandbox message objects
+    # @return [Array<SandboxAttachment>] Array of sandbox attachment objects
     # @!macro api_errors
     def list
       base_list

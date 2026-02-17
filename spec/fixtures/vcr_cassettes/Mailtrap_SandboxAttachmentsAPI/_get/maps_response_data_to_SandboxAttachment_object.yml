@@ -77,6 +77,6 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: '{"id":790295400,"message_id":5274457639,"filename":"example_2.txt","attachment_type":"attachment","content_type":"application/octet-stream","content_id":"","transfer_encoding":"base64","attachment_size":9,"created_at":"2026-01-05T10:44:19.915Z","updated_at":"2026-01-05T10:44:19.915Z","attachment_human_size":"9
-        Bytes","download_path":"/api/testing_message_parts/QEVuQwFAEADbV34oPszsE53vA%2FO6HEkR7zkAak6XtHMNostw8J7Jn4ZGVywFbPzBDyYyWrfpm9ZjSvpIGcQfj%2FfEUcM9NQXo0qUcdURrLINzsk+umUeKXdHF2vSM8n8se5cGms9onw7h+uKmi42Lt+dlI7gfyA6+D5sJgq8E%2FUnn8y+1R6PGrQ==/attachment_download"}'
+        Bytes","download_path":"/api/testing_message_parts/QEVuQwFAEADbV3gsdNostw8J7Jn4ZGVywFbPzBDyYyWrfpm9ZjSvpIGcQfj%2FfEUcM9NQXo0qUcdURrLINzsk+umUeKXdHF2vSM8n8se5cGms9onw7h+uKmi42Lt+dlI7gfyA6+D5sJgq8E%2FUnn8y+1R6PGrQ==/attachment_download"}'
   recorded_at: Wed, 31 Dec 2025 11:16:01 GMT
 recorded_with: VCR 6.2.0

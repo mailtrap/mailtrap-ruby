@@ -3,7 +3,7 @@
 module Mailtrap
   # Data Transfer Object for SandboxAttachment
   # @see https://docs.mailtrap.io/developers/email-sandbox/email-sandbox-api/attachments
-  # @attr_reader id [Integer] The project ID
+  # @attr_reader id [Integer] The attachment ID
   # @attr_reader message_id [Integer] The message ID
   # @attr_reader filename [String] The attachment filename
   # @attr_reader attachment_type [String] The attachment type

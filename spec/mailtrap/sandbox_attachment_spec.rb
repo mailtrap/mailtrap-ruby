@@ -21,7 +21,7 @@ RSpec.describe Mailtrap::SandboxAttachment do
       }
     end
 
-    it 'creates a attachment with all attributes' do
+    it 'creates an attachment with all attributes' do
       expect(sandbox_attachment).to match_struct(
         id: 1,
         message_id: 2,
