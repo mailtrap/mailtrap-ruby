@@ -191,6 +191,7 @@ Contact management:
 General API:
 
 - Templates CRUD – [`email_templates_api.rb`](examples/email_templates_api.rb)
+- Billing – [`billing_api.rb`](examples/billing_api.rb)
 - Action Mailer – [`action_mailer.rb`](examples/action_mailer.rb)
 
 ## Migration guide v1 → v2
