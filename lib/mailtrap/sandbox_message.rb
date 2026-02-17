@@ -50,5 +50,10 @@ module Mailtrap
     :blacklists_report_info,
     :smtp_information,
     keyword_init: true
-  )
+  ) do
+    # @return [Boolean] Whether the message has been read
+    def read?
+      is_read
+    end
+  end
 end

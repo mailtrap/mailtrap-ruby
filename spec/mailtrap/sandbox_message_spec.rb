@@ -36,6 +36,13 @@ RSpec.describe Mailtrap::SandboxMessage do
     }
   end
 
+  describe '#read?' do
+    it 'returns is_read' do
+      expect(described_class.new(is_read: true)).to be_read
+      expect(described_class.new(is_read: false)).not_to be_read
+    end
+  end
+
   describe '#initialize' do
     it 'creates a sandbox_message with all attributes' do
       expect(sandbox_message).to match_struct(
