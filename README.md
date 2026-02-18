@@ -183,6 +183,7 @@ Email Sandbox (Testing):
 - Projects CRUD – [`projects_api.rb`](examples/projects_api.rb)
 - Inboxes CRUD - [`inboxes_api.rb`](examples/inboxes_api.rb)
 - Sandbox Messages CRUD - [`sandbox_messages_api.rb`](examples/sandbox_messages_api.rb)
+- Sandbox Attachments API - [`sandbox_attachments_api.rb`](examples/sandbox_attachments_api.rb)
 
 Contact management:
 

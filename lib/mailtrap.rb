@@ -14,6 +14,7 @@ require_relative 'mailtrap/sending_domains_api'
 require_relative 'mailtrap/projects_api'
 require_relative 'mailtrap/inboxes_api'
 require_relative 'mailtrap/sandbox_messages_api'
+require_relative 'mailtrap/sandbox_attachments_api'
 
 module Mailtrap
   # @!macro api_errors
