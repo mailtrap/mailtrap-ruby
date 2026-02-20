@@ -4,14 +4,18 @@ require_relative 'mailtrap/action_mailer' if defined? ActionMailer
 require_relative 'mailtrap/mail'
 require_relative 'mailtrap/errors'
 require_relative 'mailtrap/version'
-require_relative 'mailtrap/email_templates_api'
+require_relative 'mailtrap/accounts_api'
 require_relative 'mailtrap/contacts_api'
 require_relative 'mailtrap/contact_lists_api'
 require_relative 'mailtrap/contact_fields_api'
 require_relative 'mailtrap/contact_imports_api'
-require_relative 'mailtrap/suppressions_api'
+require_relative 'mailtrap/email_templates_api'
+require_relative 'mailtrap/inboxes_api'
 require_relative 'mailtrap/projects_api'
-require_relative 'mailtrap/accounts_api'
+require_relative 'mailtrap/sandbox_messages_api'
+require_relative 'mailtrap/sandbox_attachments_api'
+require_relative 'mailtrap/suppressions_api'
+require_relative 'mailtrap/sending_domains_api'
 
 module Mailtrap
   # @!macro api_errors

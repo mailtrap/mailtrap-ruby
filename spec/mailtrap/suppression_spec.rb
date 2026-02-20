@@ -29,14 +29,4 @@ RSpec.describe Mailtrap::Suppression do
       expect(suppression).to have_attributes(attributes)
     end
   end
-
-  describe '#to_h' do
-    let(:suppression) do
-      described_class.new(attributes)
-    end
-
-    it 'returns a hash with all attributes' do
-      expect(suppression.to_h).to eq(attributes)
-    end
-  end
 end

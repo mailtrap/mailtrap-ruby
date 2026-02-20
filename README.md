@@ -1,17 +1,21 @@
+# Mailtrap Ruby client - Official
+
+![Ruby](https://img.shields.io/badge/Ruby-CC342D)
 [![test](https://github.com/mailtrap/mailtrap-ruby/actions/workflows/main.yml/badge.svg)](https://github.com/mailtrap/mailtrap-ruby/actions/workflows/main.yml)
 [![docs](https://shields.io/badge/docs-rubydoc.info-blue)](https://rubydoc.info/gems/mailtrap)
 [![gem](https://shields.io/gem/v/mailtrap)](https://rubygems.org/gems/mailtrap)
 [![downloads](https://shields.io/gem/dt/mailtrap)](https://rubygems.org/gems/mailtrap)
 
+This client uses API v2, for v1 refer to [this documentation](https://mailtrap.docs.apiary.io/)
 
 
-# Official Mailtrap Ruby client
+## Prerequisites
 
-This Ruby gem offers integration with the [official API](https://api-docs.mailtrap.io/) for [Mailtrap](https://mailtrap.io).
+To get the most out of this official Mailtrap.io Ruby SDK:
 
-Quickly add email sending functionality to your Ruby application with Mailtrap.
+- [Create a Mailtrap account](https://mailtrap.io/signup)
 
-(This client uses API v2, for v1 refer to [this documentation](https://mailtrap.docs.apiary.io/))
+- [Verify your domain](https://mailtrap.io/sending/domains)
 
 ## Installation
 
@@ -105,16 +109,26 @@ client.send_batch(
 )
 ```
 
-### Usage Examples
+### Sandbox Sending
 
-Refer to the [`examples`](examples) folder for more examples:
+Send emails to your Sandbox for testing purposes:
 
-- [Full](examples/full.rb)
-- [Email template](examples/email_template.rb)
-- [Batch Sending](examples/batch.rb)
-- [ActionMailer](examples/action_mailer.rb)
-- [Email Templates API](examples/email_templates_api.rb)
-- [Projects API](examples/projects_api.rb)
+```ruby
+require 'mailtrap'
+
+client = Mailtrap::Client.new(api_key: 'your-api-key', sandbox: true, inbox_id: YOUR_INBOX_ID)
+client.send(mail)
+
+# You can also pass the request parameters directly
+client.send(
+  from: { email: 'mailtrap@example.com', name: 'Mailtrap Test' },
+  to: [
+    { email: 'your@email.com' }
+  ],
+  subject: 'You are awesome!',
+  text: 'Congrats for sending test email with Mailtrap!'
+)
+```
 
 ### Content-Transfer-Encoding
 
@@ -134,7 +148,7 @@ configuration example.
 
 You can configure two Mailtrap clients to operate simultaneously. This setup is
 particularly useful when you need to send emails using both the transactional
-and bulk APIs. Refer to the configuration example below:
+and bulk APIs. Refer to the configuration examples below.
 
 ```ruby
 # config/application.rb
@@ -154,32 +168,71 @@ config.action_mailer.mailtrap_bulk_settings = {
 mail(delivery_method: :mailtrap_bulk)
 ```
 
+## Supported functionality & Examples
+
+Refer to the [`examples`](examples) folder for more examples:
+
+Email API:
+
+- Full Email Sending – [`full.rb`](examples/full.rb)
+- Batch Sending – [`batch.rb`](examples/batch.rb)
+- Sending Domains API  – [`sending_domains_api.rb`](examples/sending_domains_api.rb)
+
+Email Sandbox (Testing):
+
+- Projects CRUD – [`projects_api.rb`](examples/projects_api.rb)
+- Inboxes CRUD - [`inboxes_api.rb`](examples/inboxes_api.rb)
+- Sandbox Messages CRUD - [`sandbox_messages_api.rb`](examples/sandbox_messages_api.rb)
+- Sandbox Attachments API - [`sandbox_attachments_api.rb`](examples/sandbox_attachments_api.rb)
+
+Contact management:
+
+- Contacts CRUD & Listing – [`contacts_api.rb`](examples/contacts_api.rb)
+
+General API:
+
+- Templates CRUD – [`email_templates_api.rb`](examples/email_templates_api.rb)
+- Action Mailer – [`action_mailer.rb`](examples/action_mailer.rb)
+
 ## Migration guide v1 → v2
 
 Change `Mailtrap::Sending::Client` to `Mailtrap::Client`.
 
 If you use classes which have `Sending` namespace, remove the namespace like in the example above.
 
+## Contributing
+
+Bug reports and pull requests are welcome on [GitHub](https://github.com/railsware/mailtrap-ruby). This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](CODE_OF_CONDUCT.md).
+
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+After checking out the repo, run `bin/setup` to install dependencies. Then, run
+`rake spec` to run the tests. You can also run `bin/console` for an interactive 
+prompt that will allow you to experiment.
 
 To install this gem onto your local machine, run `bundle exec rake install`.
 
-To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+To release a new version, update the version number in `version.rb`, and then
+run `bundle exec rake release`, which will create a git tag for the version,
+push git commits and the created tag, and push the `.gem` file to 
+[rubygems.org](https://rubygems.org).
 
-## Contributing
-
-Bug reports and pull requests are welcome on [GitHub](https://github.com/mailtrap/mailtrap-ruby). This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](CODE_OF_CONDUCT.md).
+To run the documentation server, first generate the documentation with
+`yard doc`, then run `yard server`.
 
 All contributions are required to have rspec tests covering its functionality.
 
-Please be sure to update [README](README.md) with new examples and features when applicable.
+Please be sure to update [README](README.md) with new examples and features
+when applicable.
 
 ## License
 
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+The package is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
 
 ## Code of Conduct
 
-Everyone interacting in the Mailtrap project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](CODE_OF_CONDUCT.md).
+Everyone interacting in the Mailtrap project's codebases, issue trackers, chat rooms, and mailing lists is expected to follow the [code of conduct](CODE_OF_CONDUCT.md).
+
+## Compatibility with previous releases
+
+Versions of this package up to 2.0.2 were an [unofficial client](https://github.com/vchin/mailtrap-client) developed by [@vchin](https://github.com/vchin). Package version 3 is a completely new package. 

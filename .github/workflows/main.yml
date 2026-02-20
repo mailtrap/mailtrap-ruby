@@ -1,18 +1,22 @@
 name: Ruby
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [main]
+  pull_request:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     name: Ruby ${{ matrix.ruby }}
+    env:
+      BUNDLE_PATH: vendor/bundle
     strategy:
       matrix:
         ruby:
-          - '3.1.6'
-          - '3.2.7'
-          - '3.3.7'
-          - '3.4.2'
+          - '3.3.10'
+          - '3.4.8'
+          - '4.0.1'
     steps:
       - uses: actions/checkout@v4
       - name: Set up Ruby
