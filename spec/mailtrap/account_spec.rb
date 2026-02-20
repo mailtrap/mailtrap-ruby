@@ -14,7 +14,7 @@ RSpec.describe Mailtrap::Account do
       }
     end
 
-    it 'creates a project with all attributes' do
+    it 'creates an account with all attributes' do
       expect(account).to match_struct(
         id: '123456',
         name: 'Account 1',

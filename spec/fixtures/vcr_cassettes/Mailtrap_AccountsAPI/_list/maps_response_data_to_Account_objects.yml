@@ -74,6 +74,6 @@ http_interactions:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
-      string: '[{"id":2326475,"name":"Yahor Vaitsiakhouski","access_levels":[100]}]'
+      string: '[{"id":2326475,"name":"John Doe","access_levels":[100]}]'
   recorded_at: Mon, 05 Jan 2026 12:24:36 GMT
 recorded_with: VCR 6.2.0
