@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
 RSpec.describe Mailtrap::AccountsAPI, :vcr do
-  subject(:accounts_api) { described_class.new(account_id, client) }
+  subject(:accounts_api) { described_class.new(client) }
 
-  let(:account_id) { ENV.fetch('MAILTRAP_ACCOUNT_ID', 1_111_111) }
   let(:client) { Mailtrap::Client.new(api_key: ENV.fetch('MAILTRAP_API_KEY', 'local-api-key')) }
 
   describe '#list' do
