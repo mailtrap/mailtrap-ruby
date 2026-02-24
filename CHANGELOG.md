@@ -1,6 +1,7 @@
 - Add Sandbox Messages API
 - Add Sending Domains API
 - Add Sandbox Attachments API
+- Add Accounts API
 
 ## [2.6.0] - 2026-01-27
 - Add Inboxes API
