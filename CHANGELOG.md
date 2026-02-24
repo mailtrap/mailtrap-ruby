@@ -1,3 +1,4 @@
+## [2.7.0] - 2026-02-24 
 - Add Sandbox Messages API
 - Add Sending Domains API
 - Add Sandbox Attachments API
