@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Mailtrap::Billing do
+RSpec.describe Mailtrap::BillingUsage do
   describe '#initialize' do
     subject(:billing) { described_class.new(attributes) }
 
