@@ -2,7 +2,7 @@
 
 module Mailtrap
   # Data Transfer Object for Project
-  # @see https://api-docs.mailtrap.io/docs/mailtrap-api-docs/ee252e413d78a-create-project
+  # @see https://docs.mailtrap.io/developers/email-sandbox/projects
   # @attr_reader id [Integer] The project ID
   # @attr_reader name [String] The project name
   # @attr_reader share_links [Hash] Admin and viewer share links
