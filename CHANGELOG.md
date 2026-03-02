@@ -1,4 +1,5 @@
 ## Unreleased
+- Add Account Accesses API
 - Add Billing API
 
 ## [2.7.0] - 2026-02-24 

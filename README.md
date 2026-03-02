@@ -194,6 +194,7 @@ General:
 - Templates CRUD – [`email_templates_api.rb`](examples/email_templates_api.rb)
 - Action Mailer – [`action_mailer.rb`](examples/action_mailer.rb)
 - Accounts API – [`accounts_api.rb`](examples/accounts_api.rb)
+- Account Accesses – [`account_accesses_api.rb`](examples/account_accesses_api.rb)
 - Billing API – [`billing_api.rb`](examples/billing_api.rb)
 
 ## Migration guide v1 → v2
