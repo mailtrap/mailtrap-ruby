@@ -1,0 +1,108 @@
+examples/accounts_api.rb
+  36bfb75dc856cf42 1-15
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.4",
+  "base_commit_sha": "318cdce0d3738399683b27f60ae4abf71eddfb7c",
+  "prompts": {
+    "36bfb75dc856cf42": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "e29fd7b6-64a2-43a1-bc2a-8134905a9f12",
+        "model": "claude-4.6-opus-high-thinking"
+      },
+      "human_author": "DagonWat <yahor.vaitsiakhouski@railsware.com>",
+      "messages": [
+        {
+          "type": "user",
+          "text": "@examples/accounts_api.rb add examples for this api",
+          "timestamp": "2026-02-20T11:33:54.973Z"
+        },
+        {
+          "type": "assistant",
+          "text": "Let me read the relevant files to understand the accounts API.",
+          "timestamp": "2026-02-20T11:33:59.346Z"
+        },
+        {
+          "type": "assistant",
+          "text": "Now let me find the AccountsAPI class to understand the available methods.",
+          "timestamp": "2026-02-20T11:34:03.875Z"
+        },
+        {
+          "type": "assistant",
+          "text": "Let me check how `BaseAPI` initializer works and the general client setup.",
+          "timestamp": "2026-02-20T11:34:11.630Z"
+        },
+        {
+          "type": "assistant",
+          "text": "Now I have a clear picture of the API. The `AccountsAPI` has a single `list` method that returns an array of `Account` objects. Let me write the example file following the same style as `contacts_api.rb`.",
+          "timestamp": "2026-02-20T11:34:14.372Z"
+        },
+        {
+          "type": "assistant",
+          "text": "The example file now shows how to use the `AccountsAPI`. It follows the same pattern as the contacts example:\n\n1. **Explicit client setup** -- creating a `Client` with an API key and passing it to `AccountsAPI.new`\n2. **Environment variable alternative** -- commented-out shorthand that relies on `MAILTRAP_API_KEY` and `MAILTRAP_ACCOUNT_ID` env vars\n3. **`list`** -- the only available method on the API, which returns an array of `Account` structs with `id`, `name`, and `access_levels` fields",
+          "timestamp": "2026-02-20T11:34:22.142Z"
+        }
+      ],
+      "total_additions": 15,
+      "total_deletions": 0,
+      "accepted_lines": 15,
+      "overriden_lines": 0
+    },
+    "57c87d675a88a46e": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "1a8d66b6-5c79-44c2-80de-cc27beb12fde",
+        "model": "default"
+      },
+      "human_author": "DagonWat <yahor.vaitsiakhouski@railsware.com>",
+      "messages": [
+        {
+          "type": "user",
+          "text": "@examples/contacts_api.rb  add new examples here",
+          "timestamp": "2026-02-17T16:30:28.408Z"
+        },
+        {
+          "type": "assistant",
+          "text": "Checking the Contacts API for list/search and the update_lists signature:",
+          "timestamp": "2026-02-17T16:33:53.697Z"
+        },
+        {
+          "type": "assistant",
+          "text": "Checking the Contact struct for an `unsubscribed` attribute:",
+          "timestamp": "2026-02-17T16:34:05.025Z"
+        },
+        {
+          "type": "assistant",
+          "text": "Adding new examples: get contact by email, upsert with `unsubscribed`, and import using `remove_from_lists`.",
+          "timestamp": "2026-02-17T16:34:07.786Z"
+        },
+        {
+          "type": "assistant",
+          "text": "Verifying the file and checking for linter issues:",
+          "timestamp": "2026-02-17T16:34:27.451Z"
+        },
+        {
+          "type": "assistant",
+          "text": "Checking whether `contact_imports.create` accepts the builder or only an array:",
+          "timestamp": "2026-02-17T16:34:30.285Z"
+        },
+        {
+          "type": "assistant",
+          "text": "Passing the builder directly to match the first import example:",
+          "timestamp": "2026-02-17T16:34:34.547Z"
+        },
+        {
+          "type": "assistant",
+          "text": "Summary of what was added to `examples/contacts_api.rb`:\n\n1. **Get contact by email** – Shows that `contacts.get(contact_id)` accepts an email as well as a UUID (e.g. `contacts.get('test@example.com')`).\n\n2. **Unsubscribe / re-subscribe** – Uses `contacts.upsert(contact.id, unsubscribed: true)` and then `unsubscribed: false` to toggle subscription and illustrates the resulting `status` on the contact.\n\n3. **Contact import with `remove_from_lists`** – New subsection that:\n   - Creates a second list,\n   - Uses `ContactsImportRequest` with `add_to_lists` and `remove_from_lists` so the imported contact ends up in only one list,\n   - Calls `contact_imports.create(import_with_lists)`,\n   - Deletes the temporary second list.\n\nThe file stays in the same style (comments and inline `# =>` results) and passes the linter.",
+          "timestamp": "2026-02-17T16:34:37.106Z"
+        }
+      ],
+      "total_additions": 49,
+      "total_deletions": 119,
+      "accepted_lines": 43,
+      "overriden_lines": 0
+    }
+  }
+}
