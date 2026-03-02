@@ -6,7 +6,7 @@ RSpec.describe Mailtrap::BillingAPI, :vcr do
   let(:account_id) { ENV.fetch('MAILTRAP_ACCOUNT_ID', 1_111_111) }
   let(:client) { Mailtrap::Client.new(api_key: ENV.fetch('MAILTRAP_API_KEY', 'local-api-key')) }
 
-  describe '#get' do
+  describe '#usage' do
     subject(:usage) { billing.usage }
 
     it 'maps response data to Billing object' do

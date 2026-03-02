@@ -8,7 +8,7 @@ module Mailtrap
     include BaseAPI
 
     # Get current billing cycle usage
-    # @return <BillingUsage> Billing usage data for account
+    # @return [BillingUsage] Billing usage data for account
     # @!macro api_errors
     def usage
       response = client.get("/api/accounts/#{account_id}/billing/usage")
