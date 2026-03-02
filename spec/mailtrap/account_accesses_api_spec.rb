@@ -36,8 +36,6 @@ RSpec.describe Mailtrap::AccountAccessesAPI, :vcr do
     end
 
     context 'when account access does not exist' do
-      let(:project_id) { 999_999 }
-
       it 'raises not found error' do
         expect { delete }.to raise_error do |error|
           expect(error).to be_a(Mailtrap::Error)

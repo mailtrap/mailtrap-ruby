@@ -15,7 +15,7 @@ module Mailtrap
     # @param domain_ids [Array<Integer>] Optional array of domain IDs to filter by
     # @param inbox_ids [Array<Integer>] Optional array of inbox IDs to filter by
     # @param project_ids [Array<Integer>] Optional array of project IDs to filter by
-    # @return [AccountAccess] Sandbox message object
+    # @return [Array<AccountAccess>] List of account access objects
     # @!macro api_errors
     def list(domain_ids: [], inbox_ids: [], project_ids: [])
       query_params = {}
@@ -26,9 +26,9 @@ module Mailtrap
       base_list(query_params)
     end
 
-    # Deletes a sandbox message
+    # Deletes an account access
     # @param account_access_id [Integer] The account access ID
-    # @return [AccountAccess] Deleted AccountAccess object
+    # @return [Hash]
     # @!macro api_errors
     def delete(account_access_id)
       base_delete(account_access_id)

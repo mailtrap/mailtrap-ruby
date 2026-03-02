@@ -25,7 +25,7 @@ RSpec.describe Mailtrap::AccountAccess do
   end
 
   describe '#initialize' do
-    it 'creates a account_access with all attributes' do
+    it 'creates an account_access with all attributes' do
       expect(account_access).to match_struct(
         id: 123_456,
         specifier_type: 'User',
