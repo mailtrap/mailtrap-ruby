@@ -24,6 +24,31 @@ RSpec.describe Mailtrap::StatsAPI, :vcr do
       )
     end
 
+    context 'with optional filters' do
+      subject(:stats) do
+        stats_api.get(
+          start_date: start_date,
+          end_date: end_date,
+          sending_domain_ids: [1, 2],
+          sending_streams: ['transactional'],
+          categories: ['Transactional'],
+          email_service_providers: ['Gmail']
+        )
+      end
+
+      it 'returns filtered sending stats' do
+        expect(stats).to be_a(Mailtrap::SendingStats)
+
+        expect(stats).to match_struct(
+          delivery_count: 100, delivery_rate: 0.96,
+          bounce_count: 4, bounce_rate: 0.04,
+          open_count: 80, open_rate: 0.8,
+          click_count: 40, click_rate: 0.5,
+          spam_count: 1, spam_rate: 0.01
+        )
+      end
+    end
+
     context 'when api key is incorrect' do
       let(:client) { Mailtrap::Client.new(api_key: 'incorrect-api-key') }
 
