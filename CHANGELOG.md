@@ -1,25 +1,34 @@
+## Unreleased
+
+- Add Sending Stats API
+
 ## [2.8.0] - 2026-03-03
+
 - Add Account Accesses API
 - Add Billing API
 
-## [2.7.0] - 2026-02-24 
+## [2.7.0] - 2026-02-24
+
 - Add Sandbox Messages API
 - Add Sending Domains API
 - Add Sandbox Attachments API
 - Add Accounts API
 
 ## [2.6.0] - 2026-01-27
+
 - Add Inboxes API
 - Add Projects API
 - Models' `to_h` now returns all fields without compacting
 
 ## [2.5.0] - 2025-11-10
+
 - Add Contact Imports API
 - Add Suppressions API
 - Write the message IDs to the message when sending with Action Mailer
 - Fix versioning :)
 
 ## [2.4.1] - 2025-08-21
+
 - Set `template_uuid` and `template_variables` when building mail from `Mail::Message`
 
 ## [2.4.0] - 2025-08-04
