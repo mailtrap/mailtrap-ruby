@@ -17,6 +17,7 @@ module Mailtrap
       category
       customvariables
       contenttype
+      replyto
     ].freeze
     private_constant :SPECIAL_HEADERS
 
@@ -195,6 +196,7 @@ module Mailtrap
           to: prepare_addresses(message['to']),
           cc: prepare_addresses(message['cc']),
           bcc: prepare_addresses(message['bcc']),
+          reply_to: prepare_addresses(message['reply-to']).first,
           subject: message.subject,
           text: prepare_text_part(message),
           html: prepare_html_part(message),
