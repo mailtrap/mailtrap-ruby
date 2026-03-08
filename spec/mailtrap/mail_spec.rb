@@ -208,5 +208,36 @@ RSpec.describe Mailtrap::Mail do
         end
       end
     end
+
+    context "when 'reply-to' is invalid" do
+      let(:invalid_reply_to) { 'invalid email@example.com' }
+
+      before do
+        message.header['Reply-To'] = invalid_reply_to
+      end
+
+      it 'raises an error' do
+        expect { mail }.to raise_error(
+          Mailtrap::Error,
+          "failed to parse 'Reply-To': 'invalid email@example.com'"
+        )
+      end
+
+      context 'when address contains a folded line break' do
+        let(:invalid_reply_to) do
+          encoded_name = ['메일트랩 팀'.encode('UTF-8')].pack('m0')
+          folded_domain = %w[exa mple.com].join("\r\n ")
+
+          "=?UTF-8?B?#{encoded_name}?= <no-reply@#{folded_domain}>"
+        end
+
+        it 'raises an error' do
+          expect { mail }.to raise_error(
+            Mailtrap::Error,
+            /failed to parse 'Reply-To': '.*no-reply@exa/m
+          )
+        end
+      end
+    end
   end
 end
