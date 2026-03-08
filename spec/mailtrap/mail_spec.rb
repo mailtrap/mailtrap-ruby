@@ -40,7 +40,6 @@ RSpec.describe Mailtrap::Mail do
         let(:expected_headers) do
           {
             'X-Special-Domain-Specific-Header' => 'SecretValue',
-            'Reply-To' => 'Reply To <reply-to@railsware.com>',
             'One-more-custom-header' => 'CustomValue'
           }
         end
@@ -52,6 +51,35 @@ RSpec.describe Mailtrap::Mail do
         end
 
         it { is_expected.to eq(expected_headers) }
+      end
+
+      context 'when reply-to is added in varying formats' do
+        [
+          ['"메일트랩" <support@mailtrap.io>', { email: 'support@mailtrap.io', name: '메일트랩' }],
+          ['"Mailtrap Team" <support@mailtrap.io>', { email: 'support@mailtrap.io', name: 'Mailtrap Team' }],
+          ['support@mailtrap.io', { email: 'support@mailtrap.io' }]
+        ].each do |reply_to, expected_reply_to|
+          it "maps '#{reply_to}' to structured field and excludes header copy" do
+            message.reply_to = reply_to
+
+            expect(mail.reply_to).to eq(expected_reply_to)
+            expect(headers).not_to have_key('Reply-To')
+          end
+        end
+      end
+
+      context 'when custom header and reply-to variants are present' do
+        before do
+          message.header['Reply-To'] = 'Reply To <reply-to@railsware.com>'
+          message.header['REPLY-TO'] = 'Upper Case <upper-reply-to@railsware.com>'
+          message.header['reply-to'] = 'Lower Case <lower-reply-to@railsware.com>'
+          message.header['X-Special-Domain-Specific-Header'] = 'SecretValue'
+        end
+
+        it 'keeps only custom headers and strips all reply-to header variants' do
+          expect(mail.reply_to).to eq({ email: 'lower-reply-to@railsware.com', name: 'Lower Case' })
+          expect(headers).to eq('X-Special-Domain-Specific-Header' => 'SecretValue')
+        end
       end
     end
 
@@ -163,6 +191,37 @@ RSpec.describe Mailtrap::Mail do
           expect { mail }.to raise_error(
             Mailtrap::Error,
             "failed to parse '#{header.capitalize}': 'invalid email@example.com'"
+          )
+        end
+      end
+    end
+
+    context "when 'reply-to' is invalid" do
+      let(:invalid_reply_to) { 'invalid email@example.com' }
+
+      before do
+        message.header['Reply-To'] = invalid_reply_to
+      end
+
+      it 'raises an error' do
+        expect { mail }.to raise_error(
+          Mailtrap::Error,
+          "failed to parse 'Reply-To': 'invalid email@example.com'"
+        )
+      end
+
+      context 'when address contains a folded line break' do
+        let(:invalid_reply_to) do
+          encoded_name = ['메일트랩 팀'.encode('UTF-8')].pack('m0')
+          folded_domain = %w[exa mple.com].join("\r\n ")
+
+          "=?UTF-8?B?#{encoded_name}?= <no-reply@#{folded_domain}>"
+        end
+
+        it 'raises an error' do
+          expect { mail }.to raise_error(
+            Mailtrap::Error,
+            /failed to parse 'Reply-To': '.*no-reply@exa/m
           )
         end
       end
