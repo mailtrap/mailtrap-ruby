@@ -67,7 +67,13 @@ RSpec::Matchers.define :match_struct do |expected_attributes|
   match do |actual_struct|
     # Making sure expected keys exist and match
     expected_ok = expected_attributes.all? do |key, expected_value|
-      actual_struct.respond_to?(key) && actual_struct[key] == expected_value
+      next false unless actual_struct.respond_to?(key)
+
+      if expected_value.respond_to?(:matches?)
+        expected_value.matches?(actual_struct[key])
+      else
+        actual_struct[key] == expected_value
+      end
     end
 
     # Checking if Struct does not have extra keys that are not in expected_attributes
