@@ -55,7 +55,7 @@ RSpec.describe Mailtrap::Mail do
 
       context 'when reply-to is added in varying formats' do
         before do
-          message.reply_to = '"메일트랩" <support@mailtrap.io>'
+          message.reply_to = 'Reply To <reply-to@railsware.com>'
         end
 
         it 'excludes reply-to from custom headers' do
@@ -79,11 +79,11 @@ RSpec.describe Mailtrap::Mail do
 
     describe '#reply_to' do
       before do
-        message.reply_to = '"메일트랩" <support@mailtrap.io>'
+        message.reply_to = 'Reply To <reply-to@railsware.com>'
       end
 
       it 'maps reply-to to the structured field' do
-        expect(mail.reply_to).to eq(email: 'support@mailtrap.io', name: '메일트랩')
+        expect(mail.reply_to).to eq(email: 'reply-to@railsware.com', name: 'Reply To')
       end
 
       context 'when reply-to header variants are present' do
