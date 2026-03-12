@@ -190,8 +190,7 @@ module Mailtrap
       # Builds a mail object from Mail::Message
       # @param message [Mail::Message]
       # @return [Mailtrap::Mail::Base]
-      # rubocop:disable Metrics/AbcSize
-      def from_message(message)
+      def from_message(message) # rubocop:disable Metrics/AbcSize
         Mailtrap::Mail::Base.new(
           from: prepare_addresses(message['from']).first,
           to: prepare_addresses(message['to']),
@@ -209,7 +208,6 @@ module Mailtrap
           template_variables: message['template_variables']&.unparsed_value
         )
       end
-      # rubocop:enable Metrics/AbcSize
 
       private
 
