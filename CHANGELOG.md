@@ -1,4 +1,4 @@
-## Unreleased
+## [2.9.0] - 2026-03-13
 
 - Add Sending Stats API
 
