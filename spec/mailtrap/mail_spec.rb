@@ -40,7 +40,6 @@ RSpec.describe Mailtrap::Mail do
         let(:expected_headers) do
           {
             'X-Special-Domain-Specific-Header' => 'SecretValue',
-            'Reply-To' => 'Reply To <reply-to@railsware.com>',
             'One-more-custom-header' => 'CustomValue'
           }
         end
@@ -52,6 +51,51 @@ RSpec.describe Mailtrap::Mail do
         end
 
         it { is_expected.to eq(expected_headers) }
+      end
+
+      context 'when reply-to is added in varying formats' do
+        before do
+          message.reply_to = 'Reply To <reply-to@railsware.com>'
+        end
+
+        it 'excludes reply-to from custom headers' do
+          expect(headers).not_to have_key('Reply-To')
+        end
+      end
+
+      context 'when custom header and reply-to variants are present' do
+        before do
+          message.header['Reply-To'] = 'Reply To <reply-to@railsware.com>'
+          message.header['REPLY-TO'] = 'Upper Case <upper-reply-to@railsware.com>'
+          message.header['reply-to'] = 'Lower Case <lower-reply-to@railsware.com>'
+          message.header['X-Special-Domain-Specific-Header'] = 'SecretValue'
+        end
+
+        it 'keeps only custom headers and strips all reply-to header variants' do
+          expect(headers).to eq('X-Special-Domain-Specific-Header' => 'SecretValue')
+        end
+      end
+    end
+
+    describe '#reply_to' do
+      before do
+        message.reply_to = 'Reply To <reply-to@railsware.com>'
+      end
+
+      it 'maps reply-to to the structured field' do
+        expect(mail.reply_to).to eq(email: 'reply-to@railsware.com', name: 'Reply To')
+      end
+
+      context 'when reply-to header variants are present' do
+        before do
+          message.header['Reply-To'] = 'Reply To <reply-to@railsware.com>'
+          message.header['REPLY-TO'] = 'Upper Case <upper-reply-to@railsware.com>'
+          message.header['reply-to'] = 'Lower Case <lower-reply-to@railsware.com>'
+        end
+
+        it 'maps the reply-to value to the structured field' do
+          expect(mail.reply_to).to eq({ email: 'lower-reply-to@railsware.com', name: 'Lower Case' })
+        end
       end
     end
 
@@ -165,6 +209,21 @@ RSpec.describe Mailtrap::Mail do
             "failed to parse '#{header.capitalize}': 'invalid email@example.com'"
           )
         end
+      end
+    end
+
+    context "when 'reply-to' is invalid" do
+      let(:invalid_reply_to) { 'invalid email@example.com' }
+
+      before do
+        message.header['Reply-To'] = invalid_reply_to
+      end
+
+      it 'raises an error' do
+        expect { mail }.to raise_error(
+          Mailtrap::Error,
+          "failed to parse 'Reply-To': 'invalid email@example.com'"
+        )
       end
     end
   end
