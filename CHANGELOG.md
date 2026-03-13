@@ -1,6 +1,8 @@
-## Unreleased
+## [2.9.0] - 2026-03-13
 
 - Add Sending Stats API
+- Parse `reply_to` as a structured address field instead of passing it as a raw
+  header when sending with Action Mailer
 
 ## [2.8.0] - 2026-03-03
 
