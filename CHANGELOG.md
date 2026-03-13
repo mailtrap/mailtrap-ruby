@@ -1,3 +1,7 @@
+## [Unreleased]
+
+- Add Email Logs API (list and get email sending logs with filters and cursor pagination)
+
 ## [2.9.0] - 2026-03-13
 
 - Add Sending Stats API
