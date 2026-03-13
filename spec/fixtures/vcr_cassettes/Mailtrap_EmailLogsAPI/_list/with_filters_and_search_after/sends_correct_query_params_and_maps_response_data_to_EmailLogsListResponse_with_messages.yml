@@ -1,0 +1,73 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://mailtrap.io/api/accounts/1111111/email_logs?filters%5Bcategory%5D%5Boperator%5D=equal&filters%5Bcategory%5D%5Bvalue%5D%5B0%5D=Test%20Category&filters%5Bcategory%5D%5Bvalue%5D%5B1%5D=Another%20Category&filters%5Bsent_after%5D=2025-01-01T00:00:00Z&filters%5Bsent_before%5D=2025-01-31T23:59:59Z&filters%5Bsubject%5D%5Boperator%5D=not_empty&filters%5Bto%5D%5Boperator%5D=ci_equal&filters%5Bto%5D%5Bvalue%5D=recipient@example.com&search_after=a1b2c3d4-e5f6-7890-abcd-ef1234567890
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - mailtrap-ruby (https://github.com/mailtrap/mailtrap-ruby)
+      Host:
+      - mailtrap.io
+      Authorization:
+      - Bearer <BEARER_TOKEN>
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 13 Mar 2026 13:41:12 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - cloudflare
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Vary:
+      - Accept
+      X-Mailtrap-Version:
+      - v2
+      X-Ratelimit-Limit:
+      - '150'
+      X-Ratelimit-Remaining:
+      - '149'
+      Etag:
+      - W/"56af3aa8a5f82811c9435c02d0a3af68"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Runtime:
+      - '0.055468'
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains; preload
+      Cf-Cache-Status:
+      - DYNAMIC
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '{"messages":[],"total_count":1,"next_page_cursor":null}'
+  recorded_at: Fri, 13 Mar 2026 13:41:12 GMT
+recorded_with: VCR 6.4.0
