@@ -1,0 +1,35 @@
+spec/mailtrap/email_log_event_details_spec.rb
+  93ff22ee9f447443 1-52,55-58,61-63
+lib/mailtrap/email_log_event_details.rb
+  93ff22ee9f447443 1-54,57-61
+lib/mailtrap/email_logs_api.rb
+  93ff22ee9f447443 6,28,30,52-54,56-62,68,79-82,84,86,88-89,97,110
+spec/fixtures/vcr_cassettes/Mailtrap_EmailLogsAPI/_list/with_filters_and_search_after/sends_correct_query_params_and_maps_response_data_to_EmailLogsListResponse_with_messages.yml
+  93ff22ee9f447443 5
+lib/mailtrap/email_log_event.rb
+  93ff22ee9f447443 9-11
+README.md
+  93ff22ee9f447443 181
+spec/mailtrap/email_logs_api_spec.rb
+  93ff22ee9f447443 42,54-56,87-89
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.11",
+  "base_commit_sha": "6f796841b776bcb91c8f7c8341feeda11177ff5c",
+  "prompts": {
+    "93ff22ee9f447443": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "0aa8295f-4d43-4e69-9985-b0b5fab10f65",
+        "model": "default"
+      },
+      "human_author": null,
+      "messages": [],
+      "total_additions": 274,
+      "total_deletions": 124,
+      "accepted_lines": 183,
+      "overriden_lines": 0
+    }
+  }
+}
