@@ -40,16 +40,19 @@ module Mailtrap
     # @return [Enumerator<EmailLogMessage>] if no block given; otherwise the result of the block
     # @!macro api_errors
     def list_each(filters: nil, &block)
-      return to_enum(__method__, filters: filters) unless block
+      first_page = nil
+      fetch_first_page = -> { first_page ||= list(filters: filters) }
+      enum = Enumerator.new(-> { fetch_first_page.call.total_count }) do |yielder|
+        response = fetch_first_page.call
+        loop do
+          response.messages.each { |message| yielder << message }
+          break if response.next_page_cursor.nil?
 
-      search_after = nil
-      loop do
-        response = list(filters: filters, search_after: search_after)
-        response.messages.each { |message| block.call(message) }
-        break if response.next_page_cursor.nil?
-
-        search_after = response.next_page_cursor
+          response = list(filters: filters, search_after: response.next_page_cursor)
+        end
       end
+
+      block ? enum.each(&block) : enum
     end
 
     # Fetches a single email log message by ID.

@@ -122,8 +122,17 @@ RSpec.describe Mailtrap::EmailLogsAPI, :vcr do
       expect(messages).to eq([first_page_message, second_page_message])
 
       # rubocop:disable RSpec/SubjectStub
-      expect(email_logs).to have_received(:list).with(filters: filters, search_after: nil)
+      expect(email_logs).to have_received(:list).with(filters: filters)
       expect(email_logs).to have_received(:list).with(filters: filters, search_after: 'page1-msg')
+      # rubocop:enable RSpec/SubjectStub
+    end
+
+    it 'computes enumerator size lazily without an extra API call' do
+      enum = email_logs.list_each(filters: filters)
+      enum.next
+      expect(enum.size).to eq(2)
+      # rubocop:disable RSpec/SubjectStub
+      expect(email_logs).to have_received(:list).with(filters: filters).once
       # rubocop:enable RSpec/SubjectStub
     end
 
@@ -134,7 +143,7 @@ RSpec.describe Mailtrap::EmailLogsAPI, :vcr do
       )
 
       # rubocop:disable RSpec/SubjectStub
-      expect(email_logs).to have_received(:list).with(filters: filters, search_after: nil)
+      expect(email_logs).to have_received(:list).with(filters: filters)
       expect(email_logs).to have_received(:list).with(filters: filters, search_after: 'page1-msg')
       # rubocop:enable RSpec/SubjectStub
     end
