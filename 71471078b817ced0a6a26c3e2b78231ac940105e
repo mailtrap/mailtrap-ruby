@@ -1,0 +1,25 @@
+lib/mailtrap/email_logs_api.rb
+  ff4af8bc83b24106 43,47,52
+spec/mailtrap/email_logs_api_spec.rb
+  ff4af8bc83b24106 134-136
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.12",
+  "base_commit_sha": "71471078b817ced0a6a26c3e2b78231ac940105e",
+  "prompts": {
+    "ff4af8bc83b24106": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "70f8dc54-717b-46ce-ba0f-67bb676d2ee0",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Ivan Yurchanka <vanya.yu@gmail.com>",
+      "messages": [],
+      "total_additions": 56,
+      "total_deletions": 42,
+      "accepted_lines": 14,
+      "overriden_lines": 5
+    }
+  }
+}
