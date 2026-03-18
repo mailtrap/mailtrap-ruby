@@ -178,6 +178,7 @@ Email API:
 - Batch Sending – [`batch.rb`](examples/batch.rb)
 - Sending Domains API  – [`sending_domains_api.rb`](examples/sending_domains_api.rb)
 - Sending Stats API – [`stats_api.rb`](examples/stats_api.rb)
+- Email Logs API – [`email_logs_api.rb`](examples/email_logs_api.rb)
 
 Email Sandbox (Testing):
 
