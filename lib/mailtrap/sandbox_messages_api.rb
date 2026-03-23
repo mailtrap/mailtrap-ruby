@@ -51,6 +51,26 @@ module Mailtrap
       base_update(message_id, { is_read: is_read })
     end
 
+    # Iterates over all sandbox messages, automatically fetching each page
+    # using cursor-based pagination. Use this when you want to process messages
+    # without manually handling pagination.
+    # @param search [String] Search query string. Matches subject, to_email, and to_name.
+    # @yield [SandboxMessage] Gives each message from every page when a block is given.
+    # @return [Enumerator<SandboxMessage>] if no block given; otherwise the result of the block
+    # @!macro api_errors
+    def list_each(search: nil, &block)
+      return to_enum(__method__, search: search) unless block
+
+      last_id = nil
+      loop do
+        messages = list(search: search, last_id: last_id)
+        break if messages.empty?
+
+        messages.each { |message| block.call(message) }
+        last_id = messages.last.id
+      end
+    end
+
     # Lists all sandbox messages for the account, limited up to 30 at once
     # @param search [String] Search query string. Matches subject, to_email, and to_name.
     # @param last_id [Integer] If specified, a page of records before last_id is returned.

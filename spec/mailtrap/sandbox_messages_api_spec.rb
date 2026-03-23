@@ -135,6 +135,30 @@ RSpec.describe Mailtrap::SandboxMessagesAPI, :vcr do
     end
   end
 
+  describe '#list_each' do
+    it 'returns enumerator without block' do
+      enum = sandbox_messages_api.list_each
+      expect(enum).to be_an(Enumerator)
+    end
+
+    it 'iterates over all messages across multiple pages',
+       vcr: { cassette_name: 'Mailtrap_SandboxMessagesAPI/_list_each/iterates_over_all_messages' } do
+      messages = sandbox_messages_api.list_each.to_a
+
+      expect(messages).to all(be_a(Mailtrap::SandboxMessage))
+      expect(messages.size).to be >= 50
+    end
+
+    it 'yields each message when block given',
+       vcr: { cassette_name: 'Mailtrap_SandboxMessagesAPI/_list_each/iterates_over_all_messages' } do
+      messages = []
+      sandbox_messages_api.list_each { |msg| messages << msg }
+
+      expect(messages).to all(be_a(Mailtrap::SandboxMessage))
+      expect(messages.size).to be >= 50
+    end
+  end
+
   describe '#forward_message' do
     subject(:forward_message) do
       sandbox_messages_api.forward_message(sandbox_message_id, email: 'example@railsware.com')
