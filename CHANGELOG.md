@@ -1,4 +1,4 @@
-## [Unreleased]
+## [2.10.0] - 2026-03-24
 
 - Add Email Logs API (list and get email sending logs with filters and cursor pagination)
 - Add `list_each` to Sandbox Messages API for automatic pagination over all messages
