@@ -14,6 +14,9 @@ sandbox_messages.list(search: 'welcome')
 sandbox_messages.list(page: 2)
 sandbox_messages.list(last_id: 100)
 
+# Iterate all messages with list_each (no manual pagination handling)
+sandbox_messages.list_each(search: 'welcome') { |m| puts "#{m.id} #{m.subject}" }
+
 # Get a specific message
 message_id = 123
 sandbox_messages.get(message_id)
