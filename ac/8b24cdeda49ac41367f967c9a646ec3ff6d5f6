@@ -1,0 +1,25 @@
+examples/inboxes_api.rb
+  1fec3bd451918509 35-37
+lib/mailtrap/inboxes_api.rb
+  1fec3bd451918509 97-105
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "ac8b24cdeda49ac41367f967c9a646ec3ff6d5f6",
+  "prompts": {
+    "1fec3bd451918509": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ffda66c1-4416-49f4-90d4-4ae245da6c92",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Igor Dobryn",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 24,
+      "overriden_lines": 0
+    }
+  }
+}
