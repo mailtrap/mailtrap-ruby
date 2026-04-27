@@ -85,6 +85,24 @@ module Mailtrap
       handle_response(response)
     end
 
+    # Turn the email address of the inbox on/off
+    # @param inbox_id [Integer] The Inbox identifier
+    # @return [Inbox] Updated Inbox object
+    # @!macro api_errors
+    def toggle_email_username(inbox_id)
+      response = client.patch("#{base_path}/#{inbox_id}/toggle_email_username")
+      handle_response(response)
+    end
+
+    # Reset username of email address per inbox
+    # @param inbox_id [Integer] The Inbox identifier
+    # @return [Inbox] Updated Inbox object
+    # @!macro api_errors
+    def reset_email_username(inbox_id)
+      response = client.patch("#{base_path}/#{inbox_id}/reset_email_username")
+      handle_response(response)
+    end
+
     private
 
     def wrap_request(options)

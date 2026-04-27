@@ -209,6 +209,57 @@ RSpec.describe Mailtrap::InboxesAPI, :vcr do
     end
   end
 
+  describe '#toggle_email_username' do
+    subject(:toggle_email_username) { inboxes_api.toggle_email_username(inbox_id) }
+
+    let(:inbox_id) { 4_578_672 }
+
+    it 'returns Inbox object' do
+      expect(toggle_email_username).to be_a(Mailtrap::Inbox)
+      expect(toggle_email_username).to have_attributes(
+        id: inbox_id,
+        email_username_enabled: true
+      )
+    end
+
+    context 'when inbox does not exist' do
+      let(:inbox_id) { -1 }
+
+      it 'raises not found error' do
+        expect { toggle_email_username }.to raise_error do |error|
+          expect(error).to be_a(Mailtrap::Error)
+          expect(error.message).to include('Not Found')
+          expect(error.messages.any? { |msg| msg.include?('Not Found') }).to be true
+        end
+      end
+    end
+  end
+
+  describe '#reset_email_username' do
+    subject(:reset_email_username) { inboxes_api.reset_email_username(inbox_id) }
+
+    let(:inbox_id) { 4_578_672 }
+
+    it 'returns Inbox object' do
+      expect(reset_email_username).to have_attributes(
+        id: inbox_id,
+        email_username: '1234abcd'
+      )
+    end
+
+    context 'when inbox does not exist' do
+      let(:inbox_id) { -1 }
+
+      it 'raises not found error' do
+        expect { reset_email_username }.to raise_error do |error|
+          expect(error).to be_a(Mailtrap::Error)
+          expect(error.message).to include('Not Found')
+          expect(error.messages.any? { |msg| msg.include?('Not Found') }).to be true
+        end
+      end
+    end
+  end
+
   describe '#delete' do
     subject(:delete) { inboxes_api.delete(inbox_id) }
 
