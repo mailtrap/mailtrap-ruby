@@ -32,5 +32,8 @@ inboxes.reset_credentials(inbox.id)
 # Turn the email address of the inbox on/off
 inboxes.toggle_email_username(inbox.id)
 
+# Reset username of email address per inbox
+inboxes.reset_email_username(inbox.id)
+
 # Delete unbox list
 inboxes.delete(inbox.id)
