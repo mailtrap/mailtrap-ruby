@@ -1,0 +1,73 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://mailtrap.io/api/accounts/1111111/contacts/john.smith@example.com/events
+    body:
+      encoding: UTF-8
+      string: '{"name":"UserLogin","params":{"user_id":101,"is_active":true}}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - mailtrap-ruby (https://github.com/mailtrap/mailtrap-ruby)
+      Host:
+      - mailtrap.io
+      Authorization:
+      - Bearer <BEARER_TOKEN>
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Tue, 28 Apr 2026 13:02:24 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '155'
+      Connection:
+      - keep-alive
+      Server:
+      - cloudflare
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Vary:
+      - Accept
+      X-Mailtrap-Version:
+      - v2
+      X-Ratelimit-Limit:
+      - '150'
+      X-Ratelimit-Remaining:
+      - '149'
+      Etag:
+      - W/"e77948f2f73f7c3e398437895b28c7aa"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Runtime:
+      - '0.036336'
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains; preload
+      Cf-Cache-Status:
+      - DYNAMIC
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: UTF-8
+      string: '{"contact_id":"0199090c-b5ec-7be8-b18f-1a7c8a64f9fb","contact_email":"john.smith@example.com","name":"UserLogin","params":{"user_id":101,"is_active":true}}'
+  recorded_at: Tue, 28 Apr 2026 13:02:25 GMT
+recorded_with: VCR 6.4.0
