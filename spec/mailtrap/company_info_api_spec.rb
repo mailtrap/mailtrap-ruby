@@ -73,4 +73,43 @@ RSpec.describe Mailtrap::CompanyInfoAPI, :vcr do
       end
     end
   end
+
+  describe '#update' do
+    subject(:update) { company_info_api.update(sending_domain_id, request) }
+
+    let(:request) do
+      {
+        city: 'New York',
+        zip_code: '10001'
+      }
+    end
+
+    it 'maps response data to CompanyInfo object' do
+      expect(update).to be_a(Mailtrap::CompanyInfo)
+      expect(update).to have_attributes(
+        city: 'New York',
+        zip_code: '10001'
+      )
+    end
+
+    context 'when invalid options are provided' do
+      let(:request) { { unknown_option: true } }
+
+      it 'raises ArgumentError' do
+        expect { update }.to raise_error(ArgumentError, /invalid options are given/)
+      end
+    end
+
+    context 'when sending domain does not exist' do
+      let(:sending_domain_id) { -1 }
+
+      it 'raises not found error' do
+        expect { update }.to raise_error do |error|
+          expect(error).to be_a(Mailtrap::Error)
+          expect(error.message).to include('Not Found')
+          expect(error.messages.any? { |msg| msg.include?('Not Found') }).to be true
+        end
+      end
+    end
+  end
 end

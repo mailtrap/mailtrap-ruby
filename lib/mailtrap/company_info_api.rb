@@ -44,6 +44,18 @@ module Mailtrap
       build_entity(response[:data], CompanyInfo)
     end
 
+    # Updates company information for a sending domain
+    # @param sending_domain_id [Integer] The sending domain ID
+    # @param [Hash] options The company info attributes to update
+    # @return [CompanyInfo] Updated company information
+    # @!macro api_errors
+    # @raise [ArgumentError] If invalid options are provided
+    def update(sending_domain_id, options)
+      validate_options!(options, supported_options)
+      response = client.patch(base_path(sending_domain_id), wrap_request(options))
+      build_entity(response[:data], CompanyInfo)
+    end
+
     private
 
     def base_path(sending_domain_id)
