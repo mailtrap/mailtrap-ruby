@@ -22,6 +22,15 @@ module Mailtrap
 
     self.response_class = CompanyInfo
 
+    # Gets company information for a sending domain
+    # @param sending_domain_id [Integer] The sending domain ID
+    # @return [CompanyInfo] Company information
+    # @!macro api_errors
+    def get(sending_domain_id)
+      response = client.get(base_path(sending_domain_id))
+      build_entity(response[:data], CompanyInfo)
+    end
+
     # Creates company information for a sending domain
     # @param sending_domain_id [Integer] The sending domain ID
     # @param [Hash] options The company info attributes

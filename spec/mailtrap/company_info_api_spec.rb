@@ -7,6 +7,35 @@ RSpec.describe Mailtrap::CompanyInfoAPI, :vcr do
   let(:client) { Mailtrap::Client.new(api_key: ENV.fetch('MAILTRAP_API_KEY', 'local-api-key')) }
   let(:sending_domain_id) { 122_392 }
 
+  describe '#get' do
+    subject(:get) { company_info_api.get(sending_domain_id) }
+
+    it 'maps response data to CompanyInfo object' do
+      expect(get).to be_a(Mailtrap::CompanyInfo)
+      expect(get).to have_attributes(
+        name: 'Mailtrap',
+        address: '123 Main St',
+        city: 'San Francisco',
+        country: 'US',
+        zip_code: '94105',
+        website_url: 'https://mailtrap.io',
+        info_level: 'business'
+      )
+    end
+
+    context 'when sending domain does not exist' do
+      let(:sending_domain_id) { -1 }
+
+      it 'raises not found error' do
+        expect { get }.to raise_error do |error|
+          expect(error).to be_a(Mailtrap::Error)
+          expect(error.message).to include('Not Found')
+          expect(error.messages.any? { |msg| msg.include?('Not Found') }).to be true
+        end
+      end
+    end
+  end
+
   describe '#create' do
     subject(:create) { company_info_api.create(sending_domain_id, request) }
 
