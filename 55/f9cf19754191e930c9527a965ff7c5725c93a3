@@ -1,0 +1,52 @@
+lib/mailtrap.rb
+  f40d296b3ae5848f 15
+lib/mailtrap/contact_exports_api.rb
+  f40d296b3ae5848f 1-32
+lib/mailtrap/contact_export.rb
+  f40d296b3ae5848f 1-18
+spec/mailtrap/contact_export_spec.rb
+  f40d296b3ae5848f 1-21
+spec/mailtrap/contact_exports_api_spec.rb
+  f40d296b3ae5848f 1-23,25-45
+  022c2284993618bc 24
+examples/contact_exports_api.rb
+  f40d296b3ae5848f 1-21
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "55f9cf19754191e930c9527a965ff7c5725c93a3",
+  "prompts": {
+    "022c2284993618bc": {
+      "agent_id": {
+        "tool": "github-copilot-jetbrains",
+        "id": "1777365689617",
+        "model": "unknown"
+      },
+      "human_author": "Igor Dobryn",
+      "messages": [],
+      "total_additions": 1,
+      "total_deletions": 1,
+      "accepted_lines": 1,
+      "overriden_lines": 2
+    },
+    "f40d296b3ae5848f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d108930a-02a0-42d2-a893-87cdf79432e8",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Igor Dobryn",
+      "messages": [],
+      "total_additions": 138,
+      "total_deletions": 0,
+      "accepted_lines": 137,
+      "overriden_lines": 0
+    }
+  },
+  "humans": {
+    "h_c133502bfb58a4": {
+      "author": "Igor Dobryn"
+    }
+  }
+}
