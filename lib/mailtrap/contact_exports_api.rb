@@ -11,6 +11,14 @@ module Mailtrap
 
     self.response_class = ContactExport
 
+    # Retrieves a specific contact export
+    # @param export_id [Integer] The contact export ID
+    # @return [ContactExport] Contact export object
+    # @!macro api_errors
+    def get(export_id)
+      base_get(export_id)
+    end
+
     # Creates a new contact export
     # @param [Hash] options The export parameters
     # @option options [Array<Hash>] :filters Filters to apply to the export
