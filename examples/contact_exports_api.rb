@@ -23,4 +23,3 @@ contact_exports.create(
 # Get a contact export by ID — once status is "finished", `url` is the file location
 contact_exports.get(1)
 # => #<struct Mailtrap::ContactExport id=1, status="finished", ..., url="https://...">
-
