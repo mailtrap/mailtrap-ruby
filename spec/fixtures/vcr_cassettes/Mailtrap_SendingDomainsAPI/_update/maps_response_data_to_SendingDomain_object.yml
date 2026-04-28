@@ -1,0 +1,76 @@
+---
+http_interactions:
+- request:
+    method: patch
+    uri: https://mailtrap.io/api/accounts/1111111/sending_domains/61802
+    body:
+      encoding: UTF-8
+      string: '{"sending_domain":{"open_tracking_enabled":true,"click_tracking_enabled":true,"auto_unsubscribe_link_enabled":false}}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - mailtrap-ruby (https://github.com/mailtrap/mailtrap-ruby)
+      Host:
+      - mailtrap.io
+      Authorization:
+      - Bearer <BEARER_TOKEN>
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 28 Apr 2026 09:34:49 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - cloudflare
+      Vary:
+      - Accept
+      - Accept-Encoding
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Mailtrap-Version:
+      - v2
+      X-Ratelimit-Limit:
+      - '150'
+      X-Ratelimit-Remaining:
+      - '149'
+      Etag:
+      - W/"2c87bee9e81d45fa0182a2cba94cd628"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Runtime:
+      - '0.049764'
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains; preload
+      Cf-Cache-Status:
+      - DYNAMIC
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '{"domain_name":"experiments.mailtrap.link","open_tracking_enabled":true,"click_tracking_enabled":true,"auto_unsubscribe_link_enabled":false,"custom_domain_tracking_enabled":true,"health_alerts_enabled":true,"critical_alerts_enabled":true,"alert_recipient_email":null,"demo":false,"id":61802,"dns_records":[{"key":"verification","domain":"6vdgrjnn7lt7oys6.experiments.mailtrap.link","type":"CNAME","value":"smtp.mailtrap.live","status":"pass","name":"6vdgrjnn7lt7oys6"},{"key":"dkim1","domain":"rwmt1._domainkey.experiments.mailtrap.link","type":"CNAME","value":"rwmt1.dkim.smtp.mailtrap.live","status":"pass","name":"rwmt1._domainkey"},{"key":"dkim2","domain":"rwmt2._domainkey.experiments.mailtrap.link","type":"CNAME","value":"rwmt2.dkim.smtp.mailtrap.live","status":"pass","name":"rwmt2._domainkey"},{"key":"dmarc","domain":"_dmarc.experiments.mailtrap.link","type":"TXT","value":"v=DMARC1;
+        p=none; rua=mailto:dmarc@smtp-staging.mailtrap.net; ruf=mailto:dmarc@smtp-staging.mailtrap.net;
+        rf=afrf; pct=100","status":"pass","name":"_dmarc"},{"key":"link_verification","domain":"mt-link.experiments.mailtrap.link","type":"CNAME","value":"t.mailtrap.live","status":"pass","name":"mt-link"}],"dns_verified":true,"dns_verified_at":"2026-04-28T08:19:31.769Z","permissions":{"can_read":true,"can_update":true,"can_destroy":true},"compliance_status":"compliant"}'
+  recorded_at: Tue, 28 Apr 2026 09:34:49 GMT
+recorded_with: VCR 6.4.0

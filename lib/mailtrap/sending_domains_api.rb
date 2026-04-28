@@ -7,7 +7,7 @@ module Mailtrap
   class SendingDomainsAPI
     include BaseAPI
 
-    self.supported_options = %i[domain_name]
+    self.supported_options = %i[open_tracking_enabled click_tracking_enabled auto_unsubscribe_link_enabled]
 
     self.response_class = SendingDomain
 
@@ -34,7 +34,7 @@ module Mailtrap
     # @!macro api_errors
     # @raise [ArgumentError] If invalid options are provided
     def create(options)
-      base_create(options)
+      base_create(options, %i[domain_name])
     end
 
     # Deletes a sending domain
@@ -43,6 +43,19 @@ module Mailtrap
     # @!macro api_errors
     def delete(domain_id)
       base_delete(domain_id)
+    end
+
+    # Updates configuration settings for a sending domain
+    # @param domain_id [Integer] The sending domain ID
+    # @param [Hash] options The parameters to update
+    # @option options [Boolean] :open_tracking_enabled Enable open tracking for emails sent from this domain
+    # @option options [Boolean] :click_tracking_enabled Enable click tracking for links in emails sent from this domain
+    # @option options [Boolean] :auto_unsubscribe_link_enabled Automatically add an unsubscribe link to emails
+    # @return [SendingDomain] Updated sending domain
+    # @!macro api_errors
+    # @raise [ArgumentError] If invalid options are provided
+    def update(domain_id, options)
+      base_update(domain_id, options)
     end
 
     # Email DNS configuration instructions for the sending domain
