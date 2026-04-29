@@ -9,7 +9,7 @@ RSpec.describe Mailtrap::PermissionsAPI, :vcr do
   describe '#bulk_update' do
     subject(:bulk_update) { permissions_api.bulk_update(account_access_id, permissions) }
 
-    let(:account_access_id) { 5339621 }
+    let(:account_access_id) { 5_339_621 }
     let(:permissions) do
       [
         { resource_id: '1719941', resource_type: 'account', access_level: 'viewer' }
