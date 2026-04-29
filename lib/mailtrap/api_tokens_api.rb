@@ -51,6 +51,14 @@ module Mailtrap
       handle_response(response)
     end
 
+    # Permanently deletes an API token
+    # @param token_id [Integer] The API token ID
+    # @return nil
+    # @!macro api_errors
+    def delete(token_id)
+      base_delete(token_id)
+    end
+
     private
 
     def base_path

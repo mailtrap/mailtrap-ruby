@@ -109,4 +109,26 @@ RSpec.describe Mailtrap::ApiTokensAPI, :vcr do
       end
     end
   end
+
+  describe '#delete' do
+    subject(:delete) { api_tokens_api.delete(token_id) }
+
+    let(:token_id) { 2_498_713 }
+
+    it 'returns nil on success' do
+      expect(delete).to be_nil
+    end
+
+    context 'when token does not exist' do
+      let(:token_id) { -1 }
+
+      it 'raises not found error' do
+        expect { delete }.to raise_error do |error|
+          expect(error).to be_a(Mailtrap::Error)
+          expect(error.message).to include('Not Found')
+          expect(error.messages.any? { |msg| msg.include?('Not Found') }).to be true
+        end
+      end
+    end
+  end
 end

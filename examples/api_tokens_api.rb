@@ -24,3 +24,7 @@ api_tokens.create(
 # Reset a token — expires the old value (short grace period) and returns a new value once.
 api_tokens.reset(12_345)
 # => #<struct Mailtrap::ApiToken id=12345, ..., token="new-secret-value">
+
+# Permanently delete a token
+api_tokens.delete(12_345)
+# => nil
