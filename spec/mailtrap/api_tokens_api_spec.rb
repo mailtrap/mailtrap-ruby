@@ -18,4 +18,31 @@ RSpec.describe Mailtrap::ApiTokensAPI, :vcr do
       )
     end
   end
+
+  describe '#get' do
+    subject(:get) { api_tokens_api.get(token_id) }
+
+    let(:token_id) { 2_498_561 }
+
+    it 'maps response data to ApiToken object' do
+      expect(get).to be_a(Mailtrap::ApiToken)
+      expect(get).to have_attributes(
+        id: token_id,
+        name: an_instance_of(String),
+        token: nil
+      )
+    end
+
+    context 'when token does not exist' do
+      let(:token_id) { -1 }
+
+      it 'raises not found error' do
+        expect { get }.to raise_error do |error|
+          expect(error).to be_a(Mailtrap::Error)
+          expect(error.message).to include('Not Found')
+          expect(error.messages.any? { |msg| msg.include?('Not Found') }).to be true
+        end
+      end
+    end
+  end
 end
