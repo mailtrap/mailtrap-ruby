@@ -7,6 +7,8 @@ module Mailtrap
   class ApiTokensAPI
     include BaseAPI
 
+    self.supported_options = %i[name resources].freeze
+
     self.response_class = ApiToken
 
     # Lists API tokens visible to the current API token
@@ -23,6 +25,18 @@ module Mailtrap
     # @!macro api_errors
     def get(token_id)
       base_get(token_id)
+    end
+
+    # Creates a new API token. The full `token` value is returned ONLY ONCE — store it securely.
+    # @param [Hash] options The parameters to create
+    # @option options [String] :name Display name for the token
+    # @option options [Array<Hash>] :resources Permissions to assign
+    #   - `{ resource_type:, resource_id:, access_level: }`
+    # @return [ApiToken] Created token (full `token` value populated)
+    # @!macro api_errors
+    # @raise [ArgumentError] If invalid options are provided
+    def create(options)
+      base_create(options)
     end
 
     private
