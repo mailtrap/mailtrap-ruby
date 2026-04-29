@@ -83,4 +83,30 @@ RSpec.describe Mailtrap::ApiTokensAPI, :vcr do
       end
     end
   end
+
+  describe '#reset' do
+    subject(:reset) { api_tokens_api.reset(token_id) }
+
+    let(:token_id) { 2_498_713 }
+
+    it 'maps response data to ApiToken with new token value' do
+      expect(reset).to be_a(Mailtrap::ApiToken)
+      expect(reset).to have_attributes(
+        id: an_instance_of(Integer),
+        token: an_instance_of(String)
+      )
+    end
+
+    context 'when token does not exist' do
+      let(:token_id) { -1 }
+
+      it 'raises not found error' do
+        expect { reset }.to raise_error do |error|
+          expect(error).to be_a(Mailtrap::Error)
+          expect(error.message).to include('Not Found')
+          expect(error.messages.any? { |msg| msg.include?('Not Found') }).to be true
+        end
+      end
+    end
+  end
 end

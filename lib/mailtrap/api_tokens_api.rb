@@ -39,6 +39,18 @@ module Mailtrap
       base_create(options)
     end
 
+    # Expires the requested token and returns a new one with the same permissions.
+    # The old token stops working after a short grace period. The new `token` value is
+    # returned ONLY ONCE — store it securely. Only tokens that have not already been reset
+    # can be reset.
+    # @param token_id [Integer] The API token ID
+    # @return [ApiToken] New token (full `token` value populated)
+    # @!macro api_errors
+    def reset(token_id)
+      response = client.post("#{base_path}/#{token_id}/reset")
+      handle_response(response)
+    end
+
     private
 
     def base_path
