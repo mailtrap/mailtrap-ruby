@@ -5,7 +5,7 @@ http_interactions:
     uri: https://mailtrap.io/api/accounts/1111111/api_tokens
     body:
       encoding: UTF-8
-      string: '{"name":"Ruby SDK Test Token","resources":[{"resource_type":"account","resource_id":"1719941","access_level":100}]}'
+      string: '{"name":"Ruby SDK Test Token","resources":[{"resource_type":"account","resource_id":1111111,"access_level":100}]}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
