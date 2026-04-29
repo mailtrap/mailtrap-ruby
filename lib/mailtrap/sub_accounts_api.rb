@@ -23,6 +23,13 @@ module Mailtrap
       @client = client
     end
 
+    # Lists all sub accounts under the organization
+    # @return [Array<SubAccount>] Array of sub accounts
+    # @!macro api_errors
+    def list
+      base_list
+    end
+
     # Creates a new sub account under the organization
     # @param [Hash] options The parameters to create
     # @option options [String] :name Name of the sub account
