@@ -1,0 +1,57 @@
+bin/record-vcr
+  022c2284993618bc 22,24-25
+  f40d296b3ae5848f 12-21
+  1fec3bd451918509 2-11
+  h_c133502bfb58a4 23
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "4a4fdd441f1e5a1f3c11375dc8c8747a1bd68bb7",
+  "prompts": {
+    "022c2284993618bc": {
+      "agent_id": {
+        "tool": "github-copilot-jetbrains",
+        "id": "1777365689617",
+        "model": "unknown"
+      },
+      "human_author": "Igor Dobryn",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 3,
+      "overriden_lines": 0
+    },
+    "1fec3bd451918509": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ffda66c1-4416-49f4-90d4-4ae245da6c92",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Igor Dobryn",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 8,
+      "overriden_lines": 0
+    },
+    "f40d296b3ae5848f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d108930a-02a0-42d2-a893-87cdf79432e8",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Igor Dobryn",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 6,
+      "overriden_lines": 0
+    }
+  },
+  "humans": {
+    "h_c133502bfb58a4": {
+      "author": "Igor Dobryn"
+    }
+  }
+}
