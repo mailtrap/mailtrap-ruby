@@ -1,0 +1,34 @@
+examples/sub_accounts_api.rb
+  h_c133502bfb58a4 7-10
+spec/mailtrap/sub_accounts_api_spec.rb
+  h_c133502bfb58a4 6
+spec/fixtures/vcr_cassettes/Mailtrap_SubAccountsAPI/_list/maps_response_data_to_SubAccount_objects.yml
+  h_c133502bfb58a4 1-73
+lib/mailtrap/sub_accounts_api.rb
+  h_c133502bfb58a4 26-32
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "7dbd6ff9e3724fd81b1f24d189613ab31f273903",
+  "prompts": {
+    "022c2284993618bc": {
+      "agent_id": {
+        "tool": "github-copilot-jetbrains",
+        "id": "1777365689617",
+        "model": "unknown"
+      },
+      "human_author": "Igor Dobryn",
+      "messages": [],
+      "total_additions": 7,
+      "total_deletions": 4,
+      "accepted_lines": 3,
+      "overriden_lines": 0
+    }
+  },
+  "humans": {
+    "h_c133502bfb58a4": {
+      "author": "Igor Dobryn"
+    }
+  }
+}
