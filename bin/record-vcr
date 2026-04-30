@@ -19,9 +19,9 @@
 
 set -euo pipefail
 
-export MAILTRAP_ACCOUNT_ID="op://Private/Mailtrap SDK Dev API Key/account_id"
-export MAILTRAP_ORGANIZATION_ID="op://Private/Mailtrap SDK Dev API Key/organization_id"
-export MAILTRAP_API_KEY="op://Private/Mailtrap SDK Dev API Key/account_api_token"
-export MAILTRAP_ORGANIZATION_API_KEY="op://Private/Mailtrap SDK Dev API Key/organization_api_token"
+export MAILTRAP_ACCOUNT_ID="op://Mailtrap Dev/Mailtrap SDK Dev API Key/account_id"
+export MAILTRAP_ORGANIZATION_ID="op://Mailtrap Dev/Mailtrap SDK Dev API Key/organization_id"
+export MAILTRAP_API_KEY="op://Mailtrap Dev/Mailtrap SDK Dev API Key/account_api_token"
+export MAILTRAP_ORGANIZATION_API_KEY="op://Mailtrap Dev/Mailtrap SDK Dev API Key/organization_api_token"
 
 exec op run -- bundle exec rspec "$@"
