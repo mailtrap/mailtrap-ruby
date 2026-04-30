@@ -1,0 +1,14 @@
+spec/mailtrap/permissions_api_spec.rb
+  h_c133502bfb58a4 12
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "c52c422d3bab70e6840ba79deeff6381d4985e34",
+  "prompts": {},
+  "humans": {
+    "h_c133502bfb58a4": {
+      "author": "Igor Dobryn"
+    }
+  }
+}
