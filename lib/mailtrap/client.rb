@@ -207,6 +207,20 @@ module Mailtrap
       )
     end
 
+    # Performs a PUT request to the specified path
+    # @param path [String] The request path
+    # @param body [Hash] The request body
+    # @return [Hash, String, nil] JSON response or raw response body
+    # @!macro api_errors
+    def put(path, body = nil)
+      perform_request(
+        method: :put,
+        host: general_api_host,
+        path:,
+        body:
+      )
+    end
+
     # Performs a DELETE request to the specified path
     # @param path [String] The request path
     # @return [Hash, String, nil] JSON response or raw response body
@@ -261,6 +275,8 @@ module Mailtrap
                   Net::HTTP::Post.new(uri_or_path)
                 when :patch
                   Net::HTTP::Patch.new(uri_or_path)
+                when :put
+                  Net::HTTP::Put.new(uri_or_path)
                 when :delete
                   Net::HTTP::Delete.new(uri_or_path)
                 else
