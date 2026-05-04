@@ -16,6 +16,15 @@ sending_domains.list
 sending_domain = sending_domains.get(sending_domain.id)
 # => #<struct Mailtrap::SendingDomain id=1, domain_name="example.com">
 
+# Update sending domain configuration
+sending_domains.update(
+  sending_domain.id,
+  open_tracking_enabled: true,
+  click_tracking_enabled: true,
+  auto_unsubscribe_link_enabled: false
+)
+# => #<struct Mailtrap::SendingDomain id=1, domain_name="example.com", ...>
+
 # Send setup email
 sending_domains.send_setup_instructions(sending_domain.id, email: 'jonathan@mail.com')
 # => nil

@@ -184,4 +184,48 @@ RSpec.describe Mailtrap::SendingDomainsAPI, :vcr do
       end
     end
   end
+
+  describe '#update' do
+    subject(:update) { sending_domains_api.update(sending_domain_id, **request) }
+
+    let(:sending_domain_id) { 61_802 }
+
+    let(:request) do
+      {
+        open_tracking_enabled: true,
+        click_tracking_enabled: true,
+        auto_unsubscribe_link_enabled: false
+      }
+    end
+
+    it 'maps response data to SendingDomain object' do
+      expect(update).to be_a(Mailtrap::SendingDomain)
+      expect(update).to have_attributes(
+        id: sending_domain_id,
+        open_tracking_enabled: true,
+        click_tracking_enabled: true,
+        auto_unsubscribe_link_enabled: false
+      )
+    end
+
+    context 'when invalid options are provided' do
+      let(:request) { { unknown_option: true } }
+
+      it 'raises ArgumentError' do
+        expect { update }.to raise_error(ArgumentError, /invalid options are given/)
+      end
+    end
+
+    context 'when sending domain does not exist' do
+      let(:sending_domain_id) { -1 }
+
+      it 'raises not found error' do
+        expect { update }.to raise_error do |error|
+          expect(error).to be_a(Mailtrap::Error)
+          expect(error.message).to include('Not Found')
+          expect(error.messages.any? { |msg| msg.include?('Not Found') }).to be true
+        end
+      end
+    end
+  end
 end

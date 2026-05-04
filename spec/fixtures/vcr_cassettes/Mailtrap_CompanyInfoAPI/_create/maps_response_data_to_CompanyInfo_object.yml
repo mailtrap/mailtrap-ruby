@@ -1,0 +1,74 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://mailtrap.io/api/accounts/1111111/sending_domains/122392/company_info
+    body:
+      encoding: UTF-8
+      string: '{"company_info":{"name":"Mailtrap","address":"123 Main St","city":"San
+        Francisco","country":"US","zip_code":"94105","website_url":"https://mailtrap.io","info_level":"business"}}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - mailtrap-ruby (https://github.com/mailtrap/mailtrap-ruby)
+      Host:
+      - mailtrap.io
+      Authorization:
+      - Bearer <BEARER_TOKEN>
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 28 Apr 2026 10:21:26 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - cloudflare
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Vary:
+      - Accept
+      X-Mailtrap-Version:
+      - v2
+      X-Ratelimit-Limit:
+      - '150'
+      X-Ratelimit-Remaining:
+      - '149'
+      Etag:
+      - W/"1e2463fffad24d2d13db0ef550c6bd72"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Runtime:
+      - '0.028169'
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains; preload
+      Cf-Cache-Status:
+      - DYNAMIC
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"name":"Mailtrap","address":"123 Main St","city":"San Francisco","country":"US","phone":null,"zip_code":"94105","privacy_policy_url":null,"terms_of_service_url":null,"website_url":"https://mailtrap.io","info_level":"business"}}'
+  recorded_at: Tue, 28 Apr 2026 10:21:26 GMT
+recorded_with: VCR 6.4.0
