@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# Run RSpec against the live Mailtrap API to record (or re-record) VCR cassettes.
+# Real HTTP calls are made — only run this when you intend to update the
+# cassettes under spec/fixtures/vcr_cassettes/. Credentials are injected from
+# 1Password at runtime.
+#
+# Usage:
+#   bin/record-vcr                                              # all specs
+#   bin/record-vcr spec/mailtrap/sending_domains_api_spec.rb    # single file
+#   bin/record-vcr spec/mailtrap/sending_domains_api_spec.rb:42 # single example
+#   bin/record-vcr -e "#update"                                 # filter by name
+#   bin/record-vcr --org spec/mailtrap/sub_accounts_api_spec.rb # use organization API token
+#
+# Pass --org as the first argument to authenticate with the organization-level token
+# (needed for organization-scoped endpoints like SubAccountsAPI). Default is the
+# account-level token.
+#
+# Requires the 1Password CLI (`op`) to be installed and signed in.
+
+set -euo pipefail
+
+export MAILTRAP_ACCOUNT_ID="op://Mailtrap Dev/Mailtrap SDK Dev API Key/account_id"
+export MAILTRAP_ORGANIZATION_ID="op://Mailtrap Dev/Mailtrap SDK Dev API Key/organization_id"
+export MAILTRAP_API_KEY="op://Mailtrap Dev/Mailtrap SDK Dev API Key/account_api_token"
+export MAILTRAP_ORGANIZATION_API_KEY="op://Mailtrap Dev/Mailtrap SDK Dev API Key/organization_api_token"
+
+exec op run -- bundle exec rspec "$@"
