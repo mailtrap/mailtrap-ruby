@@ -32,4 +32,19 @@ RSpec.describe Mailtrap::PermissionsAPI, :vcr do
       end
     end
   end
+
+  describe '#resources' do
+    subject(:resources) { permissions_api.resources }
+
+    it 'returns a tree of PermissionResource objects' do
+      expect(resources).to all(be_a(Mailtrap::PermissionResource))
+      expect(resources.first).to have_attributes(
+        id: an_instance_of(Integer),
+        name: an_instance_of(String),
+        type: an_instance_of(String),
+        access_level: an_instance_of(Integer)
+      )
+      expect(resources.first.resources).to all(be_a(Mailtrap::PermissionResource))
+    end
+  end
 end

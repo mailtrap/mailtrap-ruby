@@ -18,4 +18,117 @@ RSpec.describe Mailtrap::ApiTokensAPI, :vcr do
       )
     end
   end
+
+  describe '#get' do
+    subject(:get) { api_tokens_api.get(token_id) }
+
+    let(:token_id) { 2_498_561 }
+
+    it 'maps response data to ApiToken object' do
+      expect(get).to be_a(Mailtrap::ApiToken)
+      expect(get).to have_attributes(
+        id: token_id,
+        name: an_instance_of(String),
+        token: nil
+      )
+    end
+
+    context 'when token does not exist' do
+      let(:token_id) { -1 }
+
+      it 'raises not found error' do
+        expect { get }.to raise_error do |error|
+          expect(error).to be_a(Mailtrap::Error)
+          expect(error.message).to include('Not Found')
+          expect(error.messages.any? { |msg| msg.include?('Not Found') }).to be true
+        end
+      end
+    end
+  end
+
+  describe '#create' do
+    subject(:create) { api_tokens_api.create(request) }
+
+    let(:request) do
+      {
+        name: 'Ruby SDK Test Token',
+        resources: [
+          { resource_type: 'account', resource_id: account_id, access_level: 100 }
+        ]
+      }
+    end
+
+    it 'maps response data to ApiToken with full token value' do
+      expect(create).to be_a(Mailtrap::ApiToken)
+      expect(create).to have_attributes(
+        id: an_instance_of(Integer),
+        name: 'Ruby SDK Test Token',
+        token: an_instance_of(String)
+      )
+    end
+
+    context 'when invalid options are provided' do
+      let(:request) { { unknown_option: true } }
+
+      it 'raises ArgumentError' do
+        expect { create }.to raise_error(ArgumentError, /invalid options are given/)
+      end
+    end
+
+    context 'when name is missing' do
+      let(:request) { { resources: [] } }
+
+      it 'raises a Mailtrap::Error' do
+        expect { create }.to raise_error(Mailtrap::Error)
+      end
+    end
+  end
+
+  describe '#reset' do
+    subject(:reset) { api_tokens_api.reset(token_id) }
+
+    let(:token_id) { 2_498_713 }
+
+    it 'maps response data to ApiToken with new token value' do
+      expect(reset).to be_a(Mailtrap::ApiToken)
+      expect(reset).to have_attributes(
+        id: an_instance_of(Integer),
+        token: an_instance_of(String)
+      )
+    end
+
+    context 'when token does not exist' do
+      let(:token_id) { -1 }
+
+      it 'raises not found error' do
+        expect { reset }.to raise_error do |error|
+          expect(error).to be_a(Mailtrap::Error)
+          expect(error.message).to include('Not Found')
+          expect(error.messages.any? { |msg| msg.include?('Not Found') }).to be true
+        end
+      end
+    end
+  end
+
+  describe '#delete' do
+    subject(:delete) { api_tokens_api.delete(token_id) }
+
+    let(:token_id) { 2_498_713 }
+
+    it 'returns nil on success' do
+      expect(delete).to be_nil
+    end
+
+    context 'when token does not exist' do
+      let(:token_id) { -1 }
+
+      it 'raises not found error' do
+        expect { delete }.to raise_error do |error|
+          expect(error).to be_a(Mailtrap::Error)
+          expect(error.message).to include('Not Found')
+          expect(error.messages.any? { |msg| msg.include?('Not Found') }).to be true
+        end
+      end
+    end
+  end
 end
