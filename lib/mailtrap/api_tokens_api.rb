@@ -41,8 +41,7 @@ module Mailtrap
 
     # Expires the requested token and returns a new one with the same permissions.
     # The old token stops working after a short grace period. The new `token` value is
-    # returned ONLY ONCE — store it securely. Only tokens that have not already been reset
-    # can be reset.
+    # returned ONLY ONCE — store it securely
     # @param token_id [Integer] The API token ID
     # @return [ApiToken] New token (full `token` value populated)
     # @!macro api_errors
