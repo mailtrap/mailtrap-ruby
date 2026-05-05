@@ -1,0 +1,61 @@
+README.md
+  1b37e3e62200dc75 182
+spec/spec_helper.rb
+  h_c133502bfb58a4 28
+spec/fixtures/vcr_cassettes/Mailtrap_WebhooksAPI/_list/maps_response_data_to_Webhook_objects.yml
+  h_c133502bfb58a4 1-74
+spec/fixtures/vcr_cassettes/Mailtrap_WebhooksAPI/_create/maps_response_data_to_Webhook_object.yml
+  h_c133502bfb58a4 71
+spec/mailtrap/webhooks_api_spec.rb
+  1b37e3e62200dc75 1-5,7-30,32-104,106-144,146-163
+  b418ab16931f18c0 6,31,105,145
+lib/mailtrap/webhook.rb
+  1b37e3e62200dc75 1-30
+examples/webhooks_api.rb
+  1b37e3e62200dc75 1-4,6-7,9-18,20-24,26-28,30-32,34-40,42
+  h_c133502bfb58a4 5,8,19,25,29,33,41
+spec/mailtrap/webhook_spec.rb
+  1b37e3e62200dc75 1-35
+lib/mailtrap/webhooks_api.rb
+  1b37e3e62200dc75 1-87
+lib/mailtrap.rb
+  1b37e3e62200dc75 29
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "d60b2e397afba5510e9846fa001a0ac404191df6",
+  "prompts": {
+    "1b37e3e62200dc75": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "784908e3-bd15-46a9-824d-0578c1ecae51",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Igor Dobryn",
+      "messages": [],
+      "total_additions": 487,
+      "total_deletions": 128,
+      "accepted_lines": 348,
+      "overriden_lines": 7
+    },
+    "b418ab16931f18c0": {
+      "agent_id": {
+        "tool": "github-copilot-jetbrains",
+        "id": "1777883568526",
+        "model": "unknown"
+      },
+      "human_author": "Igor Dobryn",
+      "messages": [],
+      "total_additions": 9,
+      "total_deletions": 9,
+      "accepted_lines": 4,
+      "overriden_lines": 2
+    }
+  },
+  "humans": {
+    "h_c133502bfb58a4": {
+      "author": "Igor Dobryn"
+    }
+  }
+}
