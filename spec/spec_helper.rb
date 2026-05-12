@@ -25,6 +25,7 @@ VCR.configure do |config|
     interaction.request.uri.gsub!(%r{/organizations/\d+/}, '/organizations/2222222/')
     interaction.response.body.gsub!(/"account_id":\d+/, '"account_id": 1111111')
     interaction.response.body.gsub!(/"organization_id":\d+/, '"account_id": 2222222')
+    interaction.response.body.gsub!(/"signing_secret":"[^"]*"/, '"signing_secret":"my-signing-secret"')
     interaction.response.body.gsub!(/"username":"[^"]*"/, '"username": "railsware"')
     interaction.response.body.gsub!(/"password":"[^"]*"/, '"password": "xxxxxxxx"')
     interaction.response.body.gsub!(/"email":"[^"]*"/, '"email": "welcome@rw.com"')
