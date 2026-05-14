@@ -1,0 +1,17 @@
+lib/mailtrap/version.rb
+  h_32e79f74e8df76 4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.8",
+  "base_commit_sha": "57c9bbffc8a4f67e3a4db51c6e7c7a68c8d30657",
+  "prompts": {},
+  "humans": {
+    "h_32e79f74e8df76": {
+      "author": "Igor Dobryn <igor.dobryn@railsware.com>"
+    },
+    "h_c133502bfb58a4": {
+      "author": "Igor Dobryn"
+    }
+  }
+}
