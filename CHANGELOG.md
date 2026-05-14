@@ -1,3 +1,13 @@
+## [2.11.0] - 2026-05-14
+## What's Changed
+* Update sandboxes api by @IgorDobryn in https://github.com/mailtrap/mailtrap-ruby/pull/103
+* Sending domains endpoints by @IgorDobryn in https://github.com/mailtrap/mailtrap-ruby/pull/104
+* Add contact endpoints by @IgorDobryn in https://github.com/mailtrap/mailtrap-ruby/pull/105
+* Account management API by @IgorDobryn in https://github.com/mailtrap/mailtrap-ruby/pull/106
+* Add api token endpoints by @IgorDobryn in https://github.com/mailtrap/mailtrap-ruby/pull/107
+* Add webhook endpoints by @IgorDobryn in https://github.com/mailtrap/mailtrap-ruby/pull/108
+
+
 ## [2.10.0] - 2026-03-23
 
 - Add Email Logs API (list and get email sending logs with filters and cursor pagination)
