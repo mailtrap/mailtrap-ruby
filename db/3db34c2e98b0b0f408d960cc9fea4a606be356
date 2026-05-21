@@ -1,0 +1,14 @@
+examples/webhooks_signature_verification.rb
+  h_c750c91773bbc1 8,14
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.11",
+  "base_commit_sha": "db3db34c2e98b0b0f408d960cc9fea4a606be356",
+  "prompts": {},
+  "humans": {
+    "h_c750c91773bbc1": {
+      "author": "Maciej Walusiak <maciej.walusiak@railsware.com>"
+    }
+  }
+}
