@@ -5,15 +5,10 @@ payload = '{"event":"delivery","message_id":"abc-123"}'
 signing_secret = '8d9a3c0e7f5b2d4a6c1e9f8b3a7d5c2e'
 signature = OpenSSL::HMAC.hexdigest('SHA256', signing_secret, payload)
 
-Mailtrap::Webhooks.verify_signature(
+verified = Mailtrap::Webhooks.verify_signature(
   payload: payload,
   signature: signature,
   signing_secret: signing_secret
 )
 # => true
-
-# Bad input never raises — it returns false:
-Mailtrap::Webhooks.verify_signature(payload: payload, signature: 'not-hex', signing_secret: signing_secret)
-# => false
-Mailtrap::Webhooks.verify_signature(payload: payload, signature: '', signing_secret: signing_secret)
-# => false
+raise 'Signature verification failed!' unless verified
