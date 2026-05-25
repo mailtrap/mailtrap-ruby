@@ -143,30 +143,6 @@ better flexibility in that regard. Go to your _Mailtrap account_ → _Email Send
 → _Sending Domains_ → _Your domain_ → _SMTP/API Settings_ to find the SMTP
 configuration example.
 
-### Verifying webhook signatures
-
-Mailtrap signs every outbound webhook with HMAC-SHA256 and sends the
-lowercase hex digest in the `Mailtrap-Signature` header. Verify the signature
-against the raw request body using the `signing_secret` returned when you
-created the webhook:
-
-```ruby
-require 'mailtrap'
-
-# `raw_body` must be the unparsed request body bytes — do NOT re-serialize
-# the parsed JSON, as that may reorder keys and invalidate the signature.
-valid = Mailtrap::Webhooks.verify_signature(
-  payload: raw_body,
-  signature: request.headers['Mailtrap-Signature'],
-  signing_secret: ENV.fetch('MAILTRAP_WEBHOOK_SIGNING_SECRET')
-)
-
-head :unauthorized unless valid
-```
-
-The helper performs a constant-time comparison and returns `false` (rather
-than raising) for empty, missing, or malformed signatures.
-
 ### Multiple Mailtrap Clients
 
 You can configure two Mailtrap clients to operate simultaneously. This setup is
@@ -222,7 +198,7 @@ General:
 - Billing API – [`billing_api.rb`](examples/billing_api.rb)
 - Templates API – [`email_templates_api.rb`](examples/email_templates_api.rb)
 - Action Mailer – [`action_mailer.rb`](examples/action_mailer.rb)
-- Verifying webhook signatures – [`webhooks_signature_verification.rb`](examples/webhooks_signature_verification.rb)
+- Verifying webhook signatures – [`webhooks_signature_verification.ru`](examples/webhooks_signature_verification.ru)
 
 ## Migration guide v1 → v2
 
