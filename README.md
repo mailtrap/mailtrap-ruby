@@ -8,7 +8,6 @@
 
 This client uses API v2, for v1 refer to [this documentation](https://mailtrap.docs.apiary.io/)
 
-
 ## Prerequisites
 
 To get the most out of this official Mailtrap.io Ruby SDK:
@@ -176,7 +175,7 @@ Email API:
 
 - Full Email Sending – [`full.rb`](examples/full.rb)
 - Batch Sending – [`batch.rb`](examples/batch.rb)
-- Sending Domains API  – [`sending_domains_api.rb`](examples/sending_domains_api.rb)
+- Sending Domains API – [`sending_domains_api.rb`](examples/sending_domains_api.rb)
 - Sending Stats API – [`stats_api.rb`](examples/stats_api.rb)
 - Email Logs API – [`email_logs_api.rb`](examples/email_logs_api.rb)
 - Webhooks API – [`webhooks_api.rb`](examples/webhooks_api.rb)
@@ -199,6 +198,7 @@ General:
 - Billing API – [`billing_api.rb`](examples/billing_api.rb)
 - Templates API – [`email_templates_api.rb`](examples/email_templates_api.rb)
 - Action Mailer – [`action_mailer.rb`](examples/action_mailer.rb)
+- Verifying webhook signatures – [`webhooks_signature_verification.ru`](examples/webhooks_signature_verification.ru)
 
 ## Migration guide v1 → v2
 
@@ -213,14 +213,14 @@ Bug reports and pull requests are welcome on [GitHub](https://github.com/railswa
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run
-`rake spec` to run the tests. You can also run `bin/console` for an interactive 
+`rake spec` to run the tests. You can also run `bin/console` for an interactive
 prompt that will allow you to experiment.
 
 To install this gem onto your local machine, run `bundle exec rake install`.
 
 To release a new version, update the version number in `version.rb`, and then
 run `bundle exec rake release`, which will create a git tag for the version,
-push git commits and the created tag, and push the `.gem` file to 
+push git commits and the created tag, and push the `.gem` file to
 [rubygems.org](https://rubygems.org).
 
 To run the documentation server, first generate the documentation with
@@ -241,4 +241,4 @@ Everyone interacting in the Mailtrap project's codebases, issue trackers, chat r
 
 ## Compatibility with previous releases
 
-Versions of this package up to 2.0.2 were an [unofficial client](https://github.com/vchin/mailtrap-client) developed by [@vchin](https://github.com/vchin). Package version 3 is a completely new package. 
+Versions of this package up to 2.0.2 were an [unofficial client](https://github.com/vchin/mailtrap-client) developed by [@vchin](https://github.com/vchin). Package version 3 is a completely new package.
