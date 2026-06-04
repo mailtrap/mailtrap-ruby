@@ -191,6 +191,10 @@ Contact management:
 
 - Contacts CRUD & Listing – [`contacts_api.rb`](examples/contacts_api.rb)
 
+Email marketing:
+
+- Email Campaigns CRUD, Listing & Stats – [`email_campaigns_api.rb`](examples/email_campaigns_api.rb)
+
 General:
 
 - Accounts API – [`accounts_api.rb`](examples/accounts_api.rb)
