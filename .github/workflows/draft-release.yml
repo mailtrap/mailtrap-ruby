@@ -33,6 +33,11 @@ jobs:
           fetch-depth: 0
           ref: main
 
+      - name: Install Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+
       - name: Read current version
         id: read
         run: |
@@ -69,6 +74,11 @@ jobs:
             VERSION = '${NEXT}'
           end
           EOF
+
+      - name: Install dependencies
+        if: steps.notes.outputs.release_notes != ''
+        run: |
+          bundle install
 
       - name: Prepend new section to CHANGELOG.md
         if: steps.notes.outputs.release_notes != ''
