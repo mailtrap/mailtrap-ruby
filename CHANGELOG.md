@@ -1,3 +1,16 @@
+## [2.11.1] - 2026-07-02
+
+## What's Changed
+* Release v2.11.0 by @IgorDobryn in https://github.com/mailtrap/mailtrap-ruby/pull/109
+* MT-22022: Add webhook signature verification helper by @Rabsztok in https://github.com/mailtrap/mailtrap-ruby/pull/110
+* Add draft-release workflow placeholder by @IgorDobryn in https://github.com/mailtrap/mailtrap-ruby/pull/111
+* Implement draft-release workflow by @IgorDobryn in https://github.com/mailtrap/mailtrap-ruby/pull/112
+
+## New Contributors
+* @Rabsztok made their first contribution in https://github.com/mailtrap/mailtrap-ruby/pull/110
+
+**Full Changelog**: https://github.com/mailtrap/mailtrap-ruby/compare/v2.11.0...v2.11.1
+
 ## [2.11.0] - 2026-05-14
 ## What's Changed
 * Update sandboxes api by @IgorDobryn in https://github.com/mailtrap/mailtrap-ruby/pull/103
