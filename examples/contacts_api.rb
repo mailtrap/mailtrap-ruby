@@ -24,6 +24,10 @@ list = contact_lists.create(name: 'Test List')
 contact_lists.list
 # => [#<struct Mailtrap::ContactList id=1, name="Test List">]
 
+# Filter contact lists by name (case-insensitive prefix match)
+contact_lists.list(search: 'news')
+# => [#<struct Mailtrap::ContactList id=2, name="Newsletter">]
+
 # Update contact list
 contact_lists.update(list.id, name: 'Test List Updated')
 # => #<struct Mailtrap::ContactList id=1, name="Test List Updated">

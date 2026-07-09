@@ -189,7 +189,7 @@ Email Sandbox (Testing):
 
 Contact management:
 
-- Contacts CRUD & Listing – [`contacts_api.rb`](examples/contacts_api.rb)
+- Contacts CRUD & Listing – [`contacts_api.rb`](examples/contacts_api.rb) (contact lists support filtering by name via `list(search:)`)
 
 General:
 
