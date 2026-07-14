@@ -49,10 +49,14 @@ module Mailtrap
     end
 
     # Lists all contact lists for the account
+    # @param search [String] Filters contact lists by name (case-insensitive prefix match)
     # @return [Array<ContactList>] Array of contact list objects
     # @!macro api_errors
-    def list
-      base_list
+    def list(search: nil)
+      query_params = {}
+      query_params[:search] = search unless search.nil?
+
+      base_list(query_params)
     end
 
     private

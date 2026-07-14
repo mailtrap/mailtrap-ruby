@@ -25,6 +25,21 @@ RSpec.describe Mailtrap::ContactListsAPI do
       expect(response.length).to eq(2)
       expect(response.first).to have_attributes(id: 1, name: 'List 1')
     end
+
+    it 'filters contact lists by name' do
+      stub = stub_request(:get, "#{base_url}/contacts/lists")
+             .with(query: { search: 'news' })
+             .to_return(
+               status: 200,
+               body: [{ 'id' => 2, 'name' => 'Newsletter' }].to_json,
+               headers: { 'Content-Type' => 'application/json' }
+             )
+
+      response = client.list(search: 'news')
+      expect(stub).to have_been_requested
+      expect(response.length).to eq(1)
+      expect(response.first).to have_attributes(id: 2, name: 'Newsletter')
+    end
   end
 
   describe '#get' do
