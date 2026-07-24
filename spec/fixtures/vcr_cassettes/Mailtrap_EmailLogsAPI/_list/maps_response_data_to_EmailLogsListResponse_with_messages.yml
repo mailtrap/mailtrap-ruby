@@ -68,7 +68,7 @@ http_interactions:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
-      string: '{"messages":[{"message_id":"a1b2c3d4-e5f6-7890-abcd-ef1234567890","status":"delivered","subject":"Test
+      string: '{"messages":[{"message_id":"a1b2c3d4-e5f6-7890-abcd-ef1234567890","status":"delivered","rfc_message_id":"<a1b2c3d4-e5f6-7890-abcd-ef1234567890@example.com>","in_reply_to":null,"references":[],"thread_id":null,"subject":"Test
         Subject","from":"sender@example.com","to":"recipient@example.com","sent_at":"2025-01-15T10:30:00Z","client_ip":"192.0.2.1","category":"Test
         Category","custom_variables":null,"sending_stream":"transactional","sending_domain_id":3938,"template_id":null,"template_variables":null,"opens_count":0,"clicks_count":0}],"total_count":1,"next_page_cursor":null}'
   recorded_at: Fri, 13 Mar 2026 13:38:30 GMT
