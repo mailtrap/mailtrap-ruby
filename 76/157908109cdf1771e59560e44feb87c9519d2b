@@ -1,0 +1,41 @@
+lib/mailtrap/inbound_messages_list_response.rb
+  s_576b7c7847dbe9::t_38a8247cf9b7cc 1-15
+lib/mailtrap/inbound_thread_message.rb
+  s_576b7c7847dbe9::t_e587e0dbc20ca3 1-53
+lib/mailtrap/inbound_send_result.rb
+  s_576b7c7847dbe9::t_a09f0bd450c04c 1-11
+lib/mailtrap/inbound_folder.rb
+  s_576b7c7847dbe9::t_3b55ba725b9b14 1-13
+lib/mailtrap/inbound_thread.rb
+  s_576b7c7847dbe9::t_da2d7efbf4e64a 36
+  s_576b7c7847dbe9::t_34d33482035fc3 1-18,20-35,37
+  s_576b7c7847dbe9::t_c675aa4319b795 19
+lib/mailtrap/inbound_inbox.rb
+  s_576b7c7847dbe9::t_299121844fbcc1 1-17
+lib/mailtrap/inbound_attachment.rb
+  s_576b7c7847dbe9::t_147c50ce317c9e 14
+  s_576b7c7847dbe9::t_050654f0ca3595 26
+  s_576b7c7847dbe9::t_86d105cba84807 1-13,15-25,27
+lib/mailtrap/inbound_threads_list_response.rb
+  s_576b7c7847dbe9::t_9d50dba4090059 1-15
+lib/mailtrap/inbound_message.rb
+  s_576b7c7847dbe9::t_4be3aa9d56f638 1-27,29-53,55
+  s_576b7c7847dbe9::t_69a31c102a7708 28
+  s_576b7c7847dbe9::t_cd716a49018a38 54
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "76157908109cdf1771e59560e44feb87c9519d2b",
+  "prompts": {},
+  "sessions": {
+    "s_576b7c7847dbe9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "48d8b14b-0d1c-434e-b1b9-68d02404448f",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Marcin Klocek <marcin.klocek@railsware.com>"
+    }
+  }
+}
