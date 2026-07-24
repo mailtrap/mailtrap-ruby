@@ -1,8 +1,8 @@
 ---
 http_interactions:
 - request:
-    method: get
-    uri: https://mailtrap.io/api/accounts/1111111/email_logs
+    method: delete
+    uri: https://mailtrap.io/api/inbound/folders/77/inboxes/-1
     body:
       encoding: US-ASCII
       string: ''
@@ -21,15 +21,15 @@ http_interactions:
       - application/json
   response:
     status:
-      code: 200
-      message: OK
+      code: 404
+      message: Not Found
     headers:
       Date:
-      - Fri, 13 Mar 2026 13:38:30 GMT
+      - Fri, 24 Jul 2026 05:25:54 GMT
       Content-Type:
       - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
+      Content-Length:
+      - '21'
       Connection:
       - keep-alive
       Server:
@@ -53,23 +53,19 @@ http_interactions:
       X-Ratelimit-Limit:
       - '150'
       X-Ratelimit-Remaining:
-      - '149'
-      Etag:
-      - W/"5384eabf14d98cd54f79004f64855ec8"
+      - '148'
       Cache-Control:
-      - max-age=0, private, must-revalidate
+      - no-cache
       X-Runtime:
-      - '0.052557'
+      - '0.018619'
       Strict-Transport-Security:
-      - max-age=2592000; includeSubDomains; preload
+      - max-age=0
       Cf-Cache-Status:
       - DYNAMIC
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
-      encoding: ASCII-8BIT
-      string: '{"messages":[{"message_id":"a1b2c3d4-e5f6-7890-abcd-ef1234567890","status":"delivered","rfc_message_id":"<a1b2c3d4-e5f6-7890-abcd-ef1234567890@example.com>","in_reply_to":null,"references":[],"thread_id":null,"subject":"Test
-        Subject","from":"sender@example.com","to":"recipient@example.com","sent_at":"2025-01-15T10:30:00Z","client_ip":"192.0.2.1","category":"Test
-        Category","custom_variables":null,"sending_stream":"transactional","sending_domain_id":3938,"template_id":null,"template_variables":null,"opens_count":0,"clicks_count":0}],"total_count":1,"next_page_cursor":null}'
-  recorded_at: Fri, 13 Mar 2026 13:38:30 GMT
+      encoding: UTF-8
+      string: '{"error":"Not Found"}'
+  recorded_at: Fri, 24 Jul 2026 05:25:54 GMT
 recorded_with: VCR 6.4.0

@@ -60,6 +60,8 @@ RSpec.describe Mailtrap::SendingDomainsAPI, :vcr do
         health_alerts_enabled: true,
         critical_alerts_enabled: true,
         alert_recipient_email: nil,
+        inbound_enabled: false,
+        inbound_verified: false,
         permissions: { can_read: true, can_update: true, can_destroy: true },
         created_at: nil,
         updated_at: nil
@@ -117,6 +119,8 @@ RSpec.describe Mailtrap::SendingDomainsAPI, :vcr do
         health_alerts_enabled: true,
         critical_alerts_enabled: true,
         alert_recipient_email: nil,
+        inbound_enabled: false,
+        inbound_verified: false,
         permissions: { can_read: true, can_update: true, can_destroy: true },
         created_at: nil,
         updated_at: nil

@@ -1,0 +1,82 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://mailtrap.io/api/inbound/inboxes/513/messages/1871574677877796928
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - mailtrap-ruby (https://github.com/mailtrap/mailtrap-ruby)
+      Host:
+      - mailtrap.io
+      Authorization:
+      - Bearer <BEARER_TOKEN>
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 24 Jul 2026 06:01:24 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - cloudflare
+      Vary:
+      - Accept
+      - Accept-Encoding
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Mailtrap-Version:
+      - v2
+      X-Ratelimit-Limit:
+      - '150'
+      X-Ratelimit-Remaining:
+      - '149'
+      Etag:
+      - W/"0e8fb328ca23c2bb76d0154d5dea76bf"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Runtime:
+      - '0.182283'
+      Strict-Transport-Security:
+      - max-age=0
+      Cf-Cache-Status:
+      - DYNAMIC
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"1871574677877796928","inbox_id":513,"from":"Inbound Tester <sender@example.com>","to":["tickets-1a2b3c4d@inbound-mailtrap.io"],"cc":[],"bcc":[],"reply_to":null,"subject":"Inbound
+        test 2026-07-24T05:58:20Z","headers":{"mime-version":"1.0","return-path":""},"size":4210,"html_size":968,"text_size":351,"received_at":"2026-07-24T05:58:21.528Z","rfc_message_id":"<ace7a270-8724-11f1-0040-f14113a7558c@example.com>","in_reply_to":null,"references":[],"thread_id":"1871574677878845504","attachments":[],"raw_message_url":"https://mailsend-us-inbound-mail-bodies.s3.amazonaws.com/raw/c3b/292/1871574677877796928/raw.eml?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAWYSURJ3UHLCG6JQ7%2F20260724%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260724T060123Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEDUaCXVzLWVhc3QtMSJHMEUCIH9u%2BHOb4l%2B1ZFnNCLWzphITJt6I3taUKyf8nSVY4V8JAiEA4es2wKLun0kAbwWXIMleOdvbevn%2Bwzq%2FMent%2F02hcvUqggQI%2Fv%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgw0NjUxMDc1MDQ4NzIiDBxJ01lkJNHlF%2Fn7airWA7vGXuAMz2QikJKrPvdt1cA%2F%2FvhrbmmZOqDUhsUc0mw9aFKe6ZwtnsxKbZABqlNIPX7DZsxvsXzyzu2icMGAHw%2F%2FHZPdtsy7zOd7F8jyU%2BVdvTU2TNVzpm%2FReJZQ3XZaZAwhBjWgxgPQS0Mf5VErdnZFb4M73V5mHOQR8qUmLByf2YKllmnDBd0l6rP6TLxJB2sUnqZBW0kjP%2Fw1H65sfiXtJgkL%2FiYtDLKoGHLrcACiGwSWWd1WEEQWNRUCHfVD5pTGPFxDhbpU9NWPBCrXEm7lhNCjQjw8GL6a7ZYJHFOxwLRm3OSSTsLg%2FMTH69oq3mEO8JPwk3hJEBWeTTtgSCpWhVz1stj2UHQeVbr0EQpOgyrPaZ%2BVybOL1zFsVXSRCNAstDi6II3BkOCPxWw6D89DLF3XPyLh6BQrwC%2BsNd6%2BpRqbsJD3MpFZaWzasTGvRho09r9FJx2HMinqjch3uQyYkIkjQ938q9c41OYrccqrvLpSGKjSFdbLKP8syMeZJzTA%2Bxh9Wmz0aBcl0BvQgFj%2BjFSQrZpCRirxzMHcpQi%2Bumc8bE4CW%2BHTI%2BqXNkIEO%2FpuIOEkLbZ8UO0FgKUnqbEtJOPTo9Hv13jhbuUW%2BokD4DMbUHVuMLjdi9MGOqUBJzvmV5%2FoGML5LYyb6ldBzYoIpt8aFoDBxxREfwePzvEbgOXaiBcQN372D6lkL1ocvWa3%2FEWyVOmu%2FpQ%2FAwcjkvOO7R9BMiMcmw%2Bn0ko7sRbi9Nd4UbUM7CtcvR5qGfUYw2kOleqhnKO2sMwqhCG3jawnBKjBCB4rqwxZa01ZuaUeggq%2FGTYqDFsAnBubAXNafUT%2FceS%2FlNQAWoV7s8B20hLtc%2BXR&X-Amz-SignedHeaders=host&X-Amz-Signature=37287b9020f3a3357197d518c874b2b0c9aa5b713e16b07e69d79f14ae43d78b","raw_message_expires_at":"2026-07-24T07:01:23.851Z","html_body":"<p>Hello
+        from the inbound test script.</p><table style=\"font-family:Helvetica,Arial,sans-serif;font-size:12px;color:#000;width:95%;margin:32px
+        auto 24px;border:none;border-top:1px solid #eee;\" cellspacing=\"20\" cellpadding=\"0\">\r\n  <tr>\r\n    <td
+        style=\"text-align:center;\">\r\n      <a href=\"https://u3078320257.t.mailtrap.net/out/ntgNV6MS9IBzPmwVhf1_fKExno65VCmBSrdL4c5tlwH2CO9coPgYNBN3KERVdgaihvzBmS2k7E.ssfokaA1DxvdSzEJPRFJP9xyyzICbmf_vKcZxqeWCQRagJajz6iQpPCXv0W3YnCdg_mk2PeeTm_r1Oe5cT.Z3UKIou.V5wsdHbfhVJSfyZhXESOk_p5m4wUqrpFt9Hfj5fLrwi83tgWm0--k5ABeX5qcndWqpZZ--Oi0cYr28qmLNe0MqbS9i1A~~\"
+        style=\"font-weight:700;color:#000;\">Unsubscribe</a>\r\n    </td>\r\n  </tr>\r\n</table>\r\n<img
+        src=\"https://u3078320257.t.mailtrap.net/op/guTBjLEJorUAGJTKi1xOZn.ysPnvx93fOcnqfV5aLlTKKRtTF7Ov9ztc2x2u3BenuHpj1T46PSZP2d.rWDx3w4DuuQfp7Cr4s8joXgsu1BJVBCwhjkfu5h7tlQ5P1zjvu3BxQxSgQmNsniixpsb5mBW4nio.ZHZ4KvdMeAY~--aR0KP0qsZhMhvURM--6Xp0ANaGi1jyE3lCeKyi7w~~.gif\"
+        width=\"1\" height=\"1\" alt=\"\" />","text_body":"Hello from the inbound
+        test script.\r\n\r\nUnsubscribe: https://u3078320257.t.mailtrap.net/out/ntgNV6MS9IBzPmwVhf1_fKExno65VCmBSrdL4c5tlwH2CO9coPgYNBN3KERVdgaihvzBmS2k7E.ssfokaA1DxvdSzEJPRFJP9xyyzICbmf_vKcZxqeWCQRagJajz6iQpPCXv0W3YnCdg_mk2PeeTm_r1Oe5cT.Z3UKIou.V5wsdHbfhVJSfyZhXESOk_p5m4wUqrpFt9Hfj5fLrwi83tgWm0--k5ABeX5qcndWqpZZ--Oi0cYr28qmLNe0MqbS9i1A~~"}'
+  recorded_at: Fri, 24 Jul 2026 06:01:23 GMT
+recorded_with: VCR 6.4.0

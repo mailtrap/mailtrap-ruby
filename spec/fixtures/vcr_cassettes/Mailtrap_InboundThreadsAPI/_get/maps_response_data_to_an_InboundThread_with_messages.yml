@@ -1,0 +1,81 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://mailtrap.io/api/inbound/inboxes/513/threads/1871574677878845504
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - mailtrap-ruby (https://github.com/mailtrap/mailtrap-ruby)
+      Host:
+      - mailtrap.io
+      Authorization:
+      - Bearer <BEARER_TOKEN>
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 24 Jul 2026 06:03:40 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - cloudflare
+      Vary:
+      - Accept
+      - Accept-Encoding
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Mailtrap-Version:
+      - v2
+      X-Ratelimit-Limit:
+      - '150'
+      X-Ratelimit-Remaining:
+      - '149'
+      Etag:
+      - W/"028d9f60732fae8f80c27a07ce63b63e"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Runtime:
+      - '0.106065'
+      Strict-Transport-Security:
+      - max-age=0
+      Cf-Cache-Status:
+      - DYNAMIC
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"1871574677878845504","subject":"Inbound test 2026-07-24T05:58:20Z","message_count":2,"size":936,"first_message_at":"2026-07-24T05:58:21.528Z","last_received_at":"2026-07-24T05:58:21.528Z","last_sent_at":"2026-07-24T06:01:47.114Z","last_activity_at":"2026-07-24T06:01:47.114Z","last_message_id":"1871574893450792960","senders":["tickets-1a2b3c4d@inbound-mailtrap.io"],"recipients":["Inbound
+        Tester <sender@example.com>"],"attachments":[],"messages":[{"visibility_status":"available","direction":"outbound","id":"23594a30-8725-11f1-0000-f1b5e753a178","message_group_id":null,"subject":"Re:
+        Inbound test 2026-07-24T05:58:20Z","rfc_message_id":"<23594a30-8725-11f1-0000-f1b5e753a178@inbound-mailtrap.io>","in_reply_to":"<ace7a270-8724-11f1-0040-f14113a7558c@example.com>","references":["<ace7a270-8724-11f1-0040-f14113a7558c@example.com>"],"from":"tickets-1a2b3c4d@inbound-mailtrap.io","to":["Inbound
+        Tester <sender@example.com>"],"cc":[],"bcc":[],"reply_to":"","created_at":"2026-07-24T06:01:40.178Z","email_size":470,"text_body":"Thanks
+        for reaching out.","html_body":null,"attachments":[],"delivery_status":"enqueued","delivered_at":null,"bounced_at":null},{"visibility_status":"available","direction":"outbound","id":"277b7ca0-8725-11f1-0000-f12f7dc93be2","message_group_id":null,"subject":"Re:
+        Inbound test 2026-07-24T05:58:20Z","rfc_message_id":"<277b7ca0-8725-11f1-0000-f12f7dc93be2@inbound-mailtrap.io>","in_reply_to":"<ace7a270-8724-11f1-0040-f14113a7558c@example.com>","references":["<ace7a270-8724-11f1-0040-f14113a7558c@example.com>"],"from":"tickets-1a2b3c4d@inbound-mailtrap.io","to":["Inbound
+        Tester <sender@example.com>"],"cc":[],"bcc":[],"reply_to":"","created_at":"2026-07-24T06:01:47.114Z","email_size":466,"text_body":"Looping
+        everyone in.","html_body":null,"attachments":[],"delivery_status":"enqueued","delivered_at":null,"bounced_at":null}]}'
+  recorded_at: Fri, 24 Jul 2026 06:03:40 GMT
+recorded_with: VCR 6.4.0
