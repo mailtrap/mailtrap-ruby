@@ -1,0 +1,75 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://mailtrap.io/api/inbound/inboxes/513/messages
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - mailtrap-ruby (https://github.com/mailtrap/mailtrap-ruby)
+      Host:
+      - mailtrap.io
+      Authorization:
+      - Bearer <BEARER_TOKEN>
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 24 Jul 2026 06:00:18 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - cloudflare
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Vary:
+      - Accept
+      X-Mailtrap-Version:
+      - v2
+      X-Ratelimit-Limit:
+      - '150'
+      X-Ratelimit-Remaining:
+      - '149'
+      Etag:
+      - W/"837b7badb4225a3ac7deee001686574f"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Runtime:
+      - '0.052864'
+      Strict-Transport-Security:
+      - max-age=0
+      Cf-Cache-Status:
+      - DYNAMIC
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"id":"1871574677877796928","inbox_id":513,"from":"Inbound
+        Tester <sender@example.com>","to":["tickets-1a2b3c4d@inbound-mailtrap.io"],"cc":[],"bcc":[],"reply_to":null,"subject":"Inbound
+        test 2026-07-24T05:58:20Z","headers":{"mime-version":"1.0","return-path":""},"size":4210,"html_size":968,"text_size":351,"received_at":"2026-07-24T05:58:21.528Z","rfc_message_id":"<ace7a270-8724-11f1-0040-f14113a7558c@example.com>","in_reply_to":null,"references":[],"thread_id":"1871574677878845504","attachments":[]}],"total_count":1,"last_id":null}'
+  recorded_at: Fri, 24 Jul 2026 06:00:18 GMT
+recorded_with: VCR 6.4.0

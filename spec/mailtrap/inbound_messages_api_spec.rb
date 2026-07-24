@@ -4,8 +4,8 @@ RSpec.describe Mailtrap::InboundMessagesAPI, :vcr do
   subject(:messages_api) { described_class.new(client) }
 
   let(:client) { Mailtrap::Client.new(api_key: ENV.fetch('MAILTRAP_API_KEY', 'local-api-key')) }
-  let(:inbox_id) { 42 }
-  let(:message_id) { '1700000000000123' }
+  let(:inbox_id) { 513 }
+  let(:message_id) { '1871574677877796928' }
 
   describe '#list' do
     subject(:list) { messages_api.list(inbox_id) }

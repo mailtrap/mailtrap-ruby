@@ -4,7 +4,7 @@ RSpec.describe Mailtrap::InboundInboxesAPI, :vcr do
   subject(:inboxes_api) { described_class.new(client) }
 
   let(:client) { Mailtrap::Client.new(api_key: ENV.fetch('MAILTRAP_API_KEY', 'local-api-key')) }
-  let(:folder_id) { 1 }
+  let(:folder_id) { 77 }
 
   describe '#list' do
     subject(:list) { inboxes_api.list(folder_id) }
@@ -17,7 +17,7 @@ RSpec.describe Mailtrap::InboundInboxesAPI, :vcr do
   describe '#get' do
     subject(:get) { inboxes_api.get(folder_id, inbox_id) }
 
-    let(:inbox_id) { 42 }
+    let(:inbox_id) { 473 }
 
     it 'maps response data to an InboundInbox object' do
       expect(get).to be_a(Mailtrap::InboundInbox)
@@ -55,7 +55,7 @@ RSpec.describe Mailtrap::InboundInboxesAPI, :vcr do
   describe '#update' do
     subject(:update) { inboxes_api.update(folder_id, inbox_id, options) }
 
-    let(:inbox_id) { 42 }
+    let(:inbox_id) { 513 }
     let(:options) { { name: 'Tickets (renamed)' } }
 
     it 'maps response data to an InboundInbox object' do
@@ -75,7 +75,7 @@ RSpec.describe Mailtrap::InboundInboxesAPI, :vcr do
   describe '#delete' do
     subject(:delete) { inboxes_api.delete(folder_id, inbox_id) }
 
-    let(:inbox_id) { 42 }
+    let(:inbox_id) { 473 }
 
     it 'returns nil' do
       expect(delete).to be_nil
