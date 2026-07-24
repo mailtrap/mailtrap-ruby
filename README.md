@@ -187,6 +187,13 @@ Email Sandbox (Testing):
 - Sandbox Messages CRUD - [`sandbox_messages_api.rb`](examples/sandbox_messages_api.rb)
 - Sandbox Attachments API - [`sandbox_attachments_api.rb`](examples/sandbox_attachments_api.rb)
 
+Inbound Email:
+
+- Inbound Folders API – [`inbound_folders_api.rb`](examples/inbound_folders_api.rb)
+- Inbound Inboxes API – [`inbound_inboxes_api.rb`](examples/inbound_inboxes_api.rb)
+- Inbound Messages API (list, get, delete, reply, reply_all, forward) – [`inbound_messages_api.rb`](examples/inbound_messages_api.rb)
+- Inbound Threads API – [`inbound_threads_api.rb`](examples/inbound_threads_api.rb)
+
 Contact management:
 
 - Contacts CRUD & Listing – [`contacts_api.rb`](examples/contacts_api.rb)

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://mailtrap.io/api/accounts/1111111/email_logs/a1b2c3d4-e5f6-7890-abcd-ef1234567890
+    uri: https://mailtrap.io/api/inbound/inboxes/513/threads?last_id=abc123
     body:
       encoding: US-ASCII
       string: ''
@@ -25,7 +25,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 13 Mar 2026 13:44:38 GMT
+      - Fri, 24 Jul 2026 06:03:12 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -34,9 +34,6 @@ http_interactions:
       - keep-alive
       Server:
       - cloudflare
-      Vary:
-      - Accept
-      - Accept-Encoding
       X-Frame-Options:
       - SAMEORIGIN
       X-Xss-Protection:
@@ -49,29 +46,29 @@ http_interactions:
       - none
       Referrer-Policy:
       - strict-origin-when-cross-origin
+      Vary:
+      - Accept
       X-Mailtrap-Version:
       - v2
       X-Ratelimit-Limit:
       - '150'
       X-Ratelimit-Remaining:
-      - '149'
+      - '148'
       Etag:
-      - W/"ab4786cd4b173b9f94a57ac540c3dc64"
+      - W/"56ee4b8d5ffec4d9010514ca73a839e9"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Runtime:
-      - '0.038171'
+      - '0.040010'
       Strict-Transport-Security:
-      - max-age=2592000; includeSubDomains; preload
+      - max-age=0
       Cf-Cache-Status:
       - DYNAMIC
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
-      string: '{"message_id":"a1b2c3d4-e5f6-7890-abcd-ef1234567890","status":"delivered","rfc_message_id":"<a1b2c3d4-e5f6-7890-abcd-ef1234567890@example.com>","in_reply_to":null,"references":[],"thread_id":null,"subject":"Test
-        Subject","from":"sender@example.com","to":"recipient@example.com","sent_at":"2025-01-15T10:30:00Z","client_ip":"192.0.2.1","category":"Test
-        Category","custom_variables":null,"sending_stream":"transactional","sending_domain_id":3938,"template_id":null,"template_variables":null,"raw_message_url":"https://example.com/raw/test-message.eml","events":[{"event_type":"delivery","created_at":"2025-01-15T10:30:01Z","details":{"sending_ip":"192.0.2.2","recipient_mx":"mx.example.com","email_service_provider":"Example
-        Provider"}}],"opens_count":0,"clicks_count":0}'
-  recorded_at: Fri, 13 Mar 2026 13:44:38 GMT
+      string: '{"data":[{"id":"1871574677878845504","subject":"Inbound test 2026-07-24T05:58:20Z","message_count":2,"size":936,"first_message_at":"2026-07-24T05:58:21.528Z","last_received_at":"2026-07-24T05:58:21.528Z","last_sent_at":"2026-07-24T06:01:47.114Z","last_activity_at":"2026-07-24T06:01:47.114Z","last_message_id":"1871574893450792960","senders":["tickets-1a2b3c4d@inbound-mailtrap.io"],"recipients":["Inbound
+        Tester <sender@example.com>"],"attachments":[]}],"total_count":1,"last_id":null}'
+  recorded_at: Fri, 24 Jul 2026 06:03:12 GMT
 recorded_with: VCR 6.4.0

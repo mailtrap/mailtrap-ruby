@@ -6,6 +6,10 @@ module Mailtrap
   # @attr_reader message_id [String] Message UUID
   # @attr_reader status [String] delivered, not_delivered, enqueued, opted_out
   # @attr_reader subject [String, nil] Email subject
+  # @attr_reader rfc_message_id [String, nil] Value of the RFC 5322 Message-ID header
+  # @attr_reader in_reply_to [String, nil] Value of the RFC 5322 In-Reply-To header
+  # @attr_reader references [Array<String>] Values of the RFC 5322 References header
+  # @attr_reader thread_id [String, nil] ID of the inbound thread this message belongs to, if any
   # @attr_reader from [String] Sender address
   # @attr_reader to [String] Recipient address
   # @attr_reader sent_at [String] ISO 8601 timestamp
@@ -24,6 +28,10 @@ module Mailtrap
     :message_id,
     :status,
     :subject,
+    :rfc_message_id,
+    :in_reply_to,
+    :references,
+    :thread_id,
     :from,
     :to,
     :sent_at,

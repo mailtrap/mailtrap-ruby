@@ -28,6 +28,10 @@ require_relative 'mailtrap/sandbox_attachments_api'
 require_relative 'mailtrap/stats_api'
 require_relative 'mailtrap/webhooks_api'
 require_relative 'mailtrap/webhooks'
+require_relative 'mailtrap/inbound_folders_api'
+require_relative 'mailtrap/inbound_inboxes_api'
+require_relative 'mailtrap/inbound_messages_api'
+require_relative 'mailtrap/inbound_threads_api'
 
 module Mailtrap
   # @!macro api_errors

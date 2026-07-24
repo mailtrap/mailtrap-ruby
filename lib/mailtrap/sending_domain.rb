@@ -17,6 +17,8 @@ module Mailtrap
   # @attr_reader health_alerts_enabled [Boolean] Whether health alerts are enabled
   # @attr_reader critical_alerts_enabled [Boolean] Whether critical alerts are enabled
   # @attr_reader alert_recipient_email [String, nil] The email address for alert recipients
+  # @attr_reader inbound_enabled [Boolean] Whether inbound email is enabled for this domain
+  # @attr_reader inbound_verified [Boolean] Whether the domain's inbound MX records are verified
   # @attr_reader permissions [Hash] The permissions for the sending domain
   #
   SendingDomain = Struct.new(
@@ -34,6 +36,8 @@ module Mailtrap
     :health_alerts_enabled,
     :critical_alerts_enabled,
     :alert_recipient_email,
+    :inbound_enabled,
+    :inbound_verified,
     :permissions,
     :created_at,
     :updated_at,
