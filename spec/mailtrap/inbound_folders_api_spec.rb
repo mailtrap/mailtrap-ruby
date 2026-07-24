@@ -16,7 +16,7 @@ RSpec.describe Mailtrap::InboundFoldersAPI, :vcr do
   describe '#get' do
     subject(:get) { folders_api.get(folder_id) }
 
-    let(:folder_id) { 1 }
+    let(:folder_id) { 77 }
 
     it 'maps response data to an InboundFolder object' do
       expect(get).to be_a(Mailtrap::InboundFolder)
@@ -54,7 +54,7 @@ RSpec.describe Mailtrap::InboundFoldersAPI, :vcr do
   describe '#update' do
     subject(:update) { folders_api.update(folder_id, options) }
 
-    let(:folder_id) { 1 }
+    let(:folder_id) { 77 }
     let(:options) { { name: 'Customer Success' } }
 
     it 'maps response data to an InboundFolder object' do
@@ -74,7 +74,7 @@ RSpec.describe Mailtrap::InboundFoldersAPI, :vcr do
   describe '#delete' do
     subject(:delete) { folders_api.delete(folder_id) }
 
-    let(:folder_id) { 1 }
+    let(:folder_id) { 89 }
 
     it 'returns nil' do
       expect(delete).to be_nil
