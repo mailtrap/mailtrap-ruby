@@ -1,3 +1,12 @@
+## [2.12.0] - 2026-07-24
+
+## What's Changed
+* MT-22678: Add name search filter to contact lists listing by @Rabsztok in https://github.com/mailtrap/mailtrap-ruby/pull/116
+* Add Inbound Email v2 API support by @mklocek in https://github.com/mailtrap/mailtrap-ruby/pull/117
+
+
+**Full Changelog**: https://github.com/mailtrap/mailtrap-ruby/compare/v2.11.1...v2.12.0
+
 ## [2.11.1] - 2026-07-02
 
 ## What's Changed
