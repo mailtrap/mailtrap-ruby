@@ -1,0 +1,32 @@
+lib/mailtrap.rb
+  s_576b7c7847dbe9::t_154deef2f89d99 31-34
+lib/mailtrap/inbound_inboxes_api.rb
+  s_576b7c7847dbe9::t_4bd0756324361e 1-79
+lib/mailtrap/inbound_messages_api.rb
+  s_576b7c7847dbe9::t_c0840442303d4f 1-114
+lib/mailtrap/inbound_threads_api.rb
+  s_576b7c7847dbe9::t_3fe48b1d3bf089 1-84
+lib/mailtrap/inbound_folders_api.rb
+  s_576b7c7847dbe9::t_499ca61d5b3d4f 1-69
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "ce3426761f19e07e90b74eeacf1cc76fad41a823",
+  "prompts": {},
+  "humans": {
+    "h_36a957dc058c42": {
+      "author": "Marcin Klocek <marcin.klocek@railsware.com>"
+    }
+  },
+  "sessions": {
+    "s_576b7c7847dbe9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "48d8b14b-0d1c-434e-b1b9-68d02404448f",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Marcin Klocek <marcin.klocek@railsware.com>"
+    }
+  }
+}
