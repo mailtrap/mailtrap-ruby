@@ -21,6 +21,14 @@ webhooks_api.create(
   webhook_type: 'audit_log'
 )
 
+# Create an `inbound_receiving` webhook (linked to an inbound inbox)
+webhooks_api.create(
+  url: 'https://example.com/mailtrap/inbound',
+  webhook_type: 'inbound_receiving',
+  payload_format: 'json',
+  inbound_inbox_id: 42
+)
+
 # List all webhooks
 webhooks_api.list
 # => [#<struct Mailtrap::Webhook id=1, ...>, #<struct Mailtrap::Webhook id=2, ...>]

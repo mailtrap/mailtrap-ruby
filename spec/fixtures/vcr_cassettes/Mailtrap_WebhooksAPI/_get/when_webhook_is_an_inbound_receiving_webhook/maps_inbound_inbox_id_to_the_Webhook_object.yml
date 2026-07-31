@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://mailtrap.io/api/accounts/1111111/webhooks/3080
+    uri: https://mailtrap.io/api/accounts/1111111/webhooks/3081
     body:
       encoding: US-ASCII
       string: ''
@@ -68,6 +68,6 @@ http_interactions:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"id":3080,"url":"https://example.com/mailtrap/webhooks","active":false,"webhook_type":"email_sending","payload_format":"json","sending_stream":"transactional","domain_id":null,"inbound_inbox_id":null,"event_types":["delivery","bounce","unsubscribe"]}}'
+      string: '{"data":{"id":3081,"url":"https://example.com/mailtrap/inbound","active":true,"webhook_type":"inbound_receiving","payload_format":"json","sending_stream":null,"domain_id":null,"inbound_inbox_id":42,"event_types":[]}}'
   recorded_at: Tue, 05 May 2026 06:35:34 GMT
 recorded_with: VCR 6.4.0

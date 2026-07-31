@@ -13,6 +13,7 @@ RSpec.describe Mailtrap::Webhook do
         payload_format: 'json',
         sending_stream: 'transactional',
         domain_id: 435,
+        inbound_inbox_id: nil,
         event_types: %w[delivery bounce],
         signing_secret: 'a1b2c3d4e5f6'
       }
@@ -27,6 +28,7 @@ RSpec.describe Mailtrap::Webhook do
         payload_format: 'json',
         sending_stream: 'transactional',
         domain_id: 435,
+        inbound_inbox_id: nil,
         event_types: %w[delivery bounce],
         signing_secret: 'a1b2c3d4e5f6'
       )

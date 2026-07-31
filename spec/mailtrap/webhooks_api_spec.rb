@@ -34,8 +34,22 @@ RSpec.describe Mailtrap::WebhooksAPI, :vcr do
       expect(get).to be_a(Mailtrap::Webhook)
       expect(get).to have_attributes(
         id: webhook_id,
-        webhook_type: 'email_sending'
+        webhook_type: 'email_sending',
+        inbound_inbox_id: nil
       )
+    end
+
+    context 'when webhook is an inbound_receiving webhook' do
+      let(:webhook_id) { 3081 }
+
+      it 'maps inbound_inbox_id to the Webhook object' do
+        expect(get).to be_a(Mailtrap::Webhook)
+        expect(get).to have_attributes(
+          id: webhook_id,
+          webhook_type: 'inbound_receiving',
+          inbound_inbox_id: 42
+        )
+      end
     end
 
     context 'when webhook does not exist' do
@@ -73,6 +87,28 @@ RSpec.describe Mailtrap::WebhooksAPI, :vcr do
         event_types: %w[delivery bounce]
       )
       expect(create.signing_secret).not_to be_nil
+    end
+
+    context 'when creating an inbound_receiving webhook' do
+      let(:request) do
+        {
+          url: 'https://example.com/mailtrap/inbound',
+          webhook_type: 'inbound_receiving',
+          payload_format: 'json',
+          inbound_inbox_id: 42
+        }
+      end
+
+      it 'maps response data to Webhook object' do
+        expect(create).to be_a(Mailtrap::Webhook)
+        expect(create).to have_attributes(
+          url: 'https://example.com/mailtrap/inbound',
+          webhook_type: 'inbound_receiving',
+          payload_format: 'json',
+          inbound_inbox_id: 42
+        )
+        expect(create.signing_secret).not_to be_nil
+      end
     end
 
     context 'when invalid options are provided' do
