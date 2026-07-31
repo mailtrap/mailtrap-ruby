@@ -48,7 +48,8 @@ email_campaigns.update(
 # => #<struct Mailtrap::EmailCampaign id=4567, name="Spring Sale (updated)", ...>
 
 # Schedule the draft Email Campaign to start sending at a future time
-email_campaigns.schedule(email_campaign.id, '2026-06-01T09:00:00.000Z')
+schedule_at = (Time.now.utc + 86_400).strftime('%Y-%m-%dT%H:%M:%S.000Z')
+email_campaigns.schedule(email_campaign.id, schedule_at)
 # => #<struct Mailtrap::EmailCampaign id=4567, current_state="scheduled", ...>
 
 # Cancel the scheduled Email Campaign (returns it to the draft state)
@@ -67,10 +68,12 @@ email_campaigns.terminate(email_campaign.id)
 email_campaigns.reset(email_campaign.id)
 # => #<struct Mailtrap::EmailCampaign id=4567, current_state="draft", ...>
 
-# Get Email Campaign statistics (optionally narrow the aggregation window)
-email_campaigns.stats(email_campaign.id, start_date: '2026-05-01', end_date: '2026-05-31')
+# Get Email Campaign statistics (pass start_date/end_date to narrow the aggregation window)
+email_campaigns.stats(email_campaign.id)
 # => #<struct Mailtrap::EmailCampaignStats delivery_count=1450, open_count=820, delivery_rate=0.9667, ...>
 
-# Delete an Email Campaign (returns nil; the campaign must not be in a sending state)
+# Delete an Email Campaign (returns nil; the campaign must not be in a sending state,
+# so wait until termination completes first)
+sleep 1 while email_campaigns.get(email_campaign.id).current_state == 'terminating'
 email_campaigns.delete(email_campaign.id)
 # => nil

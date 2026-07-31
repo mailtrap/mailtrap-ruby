@@ -105,7 +105,7 @@ module Mailtrap
 
     # Deletes an email campaign. The campaign must not be in a sending state.
     # @param email_campaign_id [Integer] The email campaign ID
-    # @return nil
+    # @return [nil]
     # @!macro api_errors
     def delete(email_campaign_id)
       base_delete(email_campaign_id)
