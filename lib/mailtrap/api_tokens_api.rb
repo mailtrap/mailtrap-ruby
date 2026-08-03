@@ -7,7 +7,7 @@ module Mailtrap
   class ApiTokensAPI
     include BaseAPI
 
-    self.supported_options = %i[name resources].freeze
+    self.supported_options = %i[name expires_at resources].freeze
 
     self.response_class = ApiToken
 
@@ -30,6 +30,9 @@ module Mailtrap
     # Creates a new API token. The full `token` value is returned ONLY ONCE — store it securely.
     # @param [Hash] options The parameters to create
     # @option options [String] :name Display name for the token
+    # @option options [String, nil] :expires_at Optional token expiration as an ISO 8601 date-time.
+    #   Omit for the server default (a 1-year default is being rolled out). Pass explicit nil for
+    #   a token that never expires. Past or more-than-5-years-ahead values are rejected with 422
     # @option options [Array<Hash>] :resources Permissions to assign
     #   - `{ resource_type:, resource_id:, access_level: }`
     # @return [ApiToken] Created token (full `token` value populated)
