@@ -1,3 +1,11 @@
+## [2.13.0] - 2026-08-04
+
+## What's Changed
+* Add inbound_receiving webhook support by @mklocek in https://github.com/mailtrap/mailtrap-ruby/pull/120
+
+
+**Full Changelog**: https://github.com/mailtrap/mailtrap-ruby/compare/v2.12.0...v2.13.0
+
 ## [2.12.0] - 2026-07-24
 
 ## What's Changed
