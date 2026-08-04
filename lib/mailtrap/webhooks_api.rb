@@ -7,7 +7,8 @@ module Mailtrap
   class WebhooksAPI
     include BaseAPI
 
-    self.supported_options = %i[url webhook_type active payload_format sending_stream event_types domain_id]
+    self.supported_options = %i[url webhook_type active payload_format sending_stream event_types domain_id
+                                inbound_inbox_id]
 
     self.response_class = Webhook
 
@@ -30,7 +31,8 @@ module Mailtrap
     # Creates a new webhook
     # @param [Hash] options The parameters to create
     # @option options [String] :url The URL that will receive webhook payloads
-    # @option options [String] :webhook_type The type of webhook (`email_sending` or `audit_log`)
+    # @option options [String] :webhook_type The type of webhook
+    #   (`email_sending`, `campaigns`, `audit_log` or `inbound_receiving`)
     # @option options [Boolean] :active Whether the webhook is active. Defaults to true.
     # @option options [String] :payload_format Payload format (`json` or `jsonlines`). Defaults to `json`.
     # @option options [String] :sending_stream Sending stream (`transactional` or `bulk`).
@@ -39,6 +41,9 @@ module Mailtrap
     #   Required for `email_sending` webhook type.
     # @option options [Integer] :domain_id Sending domain ID to scope the webhook to.
     #   Applicable only for `email_sending` webhooks.
+    # @option options [Integer] :inbound_inbox_id Inbound inbox ID to link the webhook to.
+    #   Applicable only for `inbound_receiving` webhooks; omit to apply to all inboxes
+    #   in the account.
     # @return [Webhook] Created webhook (includes `signing_secret`)
     # @!macro api_errors
     # @raise [ArgumentError] If invalid options are provided
@@ -54,11 +59,13 @@ module Mailtrap
     # @option options [String] :payload_format Payload format (`json` or `jsonlines`)
     # @option options [Array<String>] :event_types Event types to subscribe to.
     #   Applicable only for `email_sending` webhooks.
+    # @option options [Integer] :inbound_inbox_id Inbound inbox ID to link the webhook to.
+    #   Applicable only for `inbound_receiving` webhooks.
     # @return [Webhook] Updated webhook
     # @!macro api_errors
     # @raise [ArgumentError] If invalid options are provided
     def update(webhook_id, options)
-      base_update(webhook_id, options, %i[url active payload_format event_types])
+      base_update(webhook_id, options, %i[url active payload_format event_types inbound_inbox_id])
     end
 
     # Deletes a webhook

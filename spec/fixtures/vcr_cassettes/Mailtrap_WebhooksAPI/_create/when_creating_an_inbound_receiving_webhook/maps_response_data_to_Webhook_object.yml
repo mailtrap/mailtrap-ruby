@@ -1,11 +1,11 @@
 ---
 http_interactions:
 - request:
-    method: get
-    uri: https://mailtrap.io/api/accounts/1111111/webhooks/3080
+    method: post
+    uri: https://mailtrap.io/api/accounts/1111111/webhooks
     body:
-      encoding: US-ASCII
-      string: ''
+      encoding: UTF-8
+      string: '{"webhook":{"url":"https://example.com/mailtrap/inbound","webhook_type":"inbound_receiving","payload_format":"json","inbound_inbox_id":42}}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -25,7 +25,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 05 May 2026 06:35:34 GMT
+      - Tue, 05 May 2026 06:28:51 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -55,11 +55,11 @@ http_interactions:
       X-Ratelimit-Remaining:
       - '149'
       Etag:
-      - W/"e051559f5622f3f16fe3fb0861693ff5"
+      - W/"64f2974d0941249a1cff76a9a4195937"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Runtime:
-      - '0.017956'
+      - '0.047439'
       Strict-Transport-Security:
       - max-age=2592000; includeSubDomains; preload
       Cf-Cache-Status:
@@ -68,6 +68,6 @@ http_interactions:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"id":3080,"url":"https://example.com/mailtrap/webhooks","active":false,"webhook_type":"email_sending","payload_format":"json","sending_stream":"transactional","domain_id":null,"inbound_inbox_id":null,"event_types":["delivery","bounce","unsubscribe"]}}'
-  recorded_at: Tue, 05 May 2026 06:35:34 GMT
+      string: '{"data":{"signing_secret":"my-signing-secret","id":3081,"url":"https://example.com/mailtrap/inbound","active":true,"webhook_type":"inbound_receiving","payload_format":"json","sending_stream":null,"domain_id":null,"inbound_inbox_id":42,"event_types":[]}}'
+  recorded_at: Tue, 05 May 2026 06:28:51 GMT
 recorded_with: VCR 6.4.0
