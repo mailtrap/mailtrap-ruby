@@ -1,0 +1,19 @@
+lib/mailtrap/api_tokens_api.rb
+  s_35e942bf87a8d1::t_c9890b08a4ac53 10,33-35
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.20",
+  "base_commit_sha": "0b8193efa76e5173ce2e2ccda43fdf9ccdeb08fa",
+  "prompts": {},
+  "sessions": {
+    "s_35e942bf87a8d1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "fe0c4ad9-a5e3-40ee-b534-5305c3091a31",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Alex Shchyhol <oleksandr.shchyhol@railsware.com>"
+    }
+  }
+}
