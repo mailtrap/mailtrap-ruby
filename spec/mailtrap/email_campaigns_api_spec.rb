@@ -64,7 +64,7 @@ RSpec.describe Mailtrap::EmailCampaignsAPI do
                headers: { 'Content-Type' => 'application/json' }
              )
 
-      response = email_campaigns_api.list(per_page: 10, name: 'Spring', token: 2)
+      response = email_campaigns_api.list(per_page: 10, search: 'Spring', token: 2)
       expect(stub).to have_been_requested
       expect(response.data).to eq([])
     end

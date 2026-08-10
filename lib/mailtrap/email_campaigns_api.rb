@@ -31,14 +31,14 @@ module Mailtrap
 
     # Lists email campaigns for the account, newest first
     # @param per_page [Integer, nil] Number of campaigns per page (max 100, default 50)
-    # @param name [String, nil] Filter campaigns by name
+    # @param search [String, nil] Filter campaigns by name
     # @param token [Integer, nil] Page number to retrieve (page-token pagination, default 1)
     # @return [EmailCampaignsListResponse] The page of campaigns and pagination metadata
     # @!macro api_errors
-    def list(per_page: nil, name: nil, token: nil)
+    def list(per_page: nil, search: nil, token: nil)
       query_params = {}
       query_params[:per_page] = per_page unless per_page.nil?
-      query_params[:search] = name unless name.nil?
+      query_params[:search] = search unless search.nil?
       query_params[:token] = token unless token.nil?
 
       response = client.get(base_path, query_params)

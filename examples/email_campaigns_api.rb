@@ -19,7 +19,7 @@ email_campaign = email_campaigns.create(
 # => #<struct Mailtrap::EmailCampaign id=4567, name="Spring Sale", current_state="draft", ...>
 
 # Get all Email Campaigns (paginated, newest first; filter by name)
-list = email_campaigns.list(per_page: 50, name: 'Spring')
+list = email_campaigns.list(per_page: 50, search: 'Spring')
 # => #<struct Mailtrap::EmailCampaignsListResponse data=[#<struct Mailtrap::EmailCampaign ...>], pagination={...}>
 list.data
 # => [#<struct Mailtrap::EmailCampaign id=4567, name="Spring Sale", ...>]
