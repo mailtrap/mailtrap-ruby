@@ -56,6 +56,12 @@ email_campaigns.schedule(email_campaign.id, schedule_at)
 email_campaigns.cancel(email_campaign.id)
 # => #<struct Mailtrap::EmailCampaign id=4567, current_state="draft", ...>
 
+# Reset a scheduled Email Campaign back to draft (like cancel, only a scheduled
+# campaign can be reset)
+email_campaigns.schedule(email_campaign.id, schedule_at)
+email_campaigns.reset(email_campaign.id)
+# => #<struct Mailtrap::EmailCampaign id=4567, current_state="draft", ...>
+
 # Start sending the draft Email Campaign immediately
 email_campaigns.start(email_campaign.id)
 # => #<struct Mailtrap::EmailCampaign id=4567, current_state="started", ...>
@@ -64,16 +70,17 @@ email_campaigns.start(email_campaign.id)
 email_campaigns.terminate(email_campaign.id)
 # => #<struct Mailtrap::EmailCampaign id=4567, current_state="terminating", ...>
 
-# Reset a scheduled Email Campaign back to draft
-email_campaigns.reset(email_campaign.id)
-# => #<struct Mailtrap::EmailCampaign id=4567, current_state="draft", ...>
-
 # Get Email Campaign statistics (pass start_date/end_date to narrow the aggregation window)
 email_campaigns.stats(email_campaign.id)
 # => #<struct Mailtrap::EmailCampaignStats delivery_count=1450, open_count=820, delivery_rate=0.9667, ...>
 
-# Delete an Email Campaign (returns nil; the campaign must not be in a sending state,
-# so wait until termination completes first)
-sleep 1 while email_campaigns.get(email_campaign.id).current_state == 'terminating'
-email_campaigns.delete(email_campaign.id)
+# Delete an Email Campaign (returns nil). Only a campaign in the draft state can be
+# deleted, and a started campaign never returns to draft — so delete a fresh draft.
+throwaway = email_campaigns.create(
+  name: 'Draft to delete',
+  domain_id: 4321,
+  from_local_part: 'news',
+  template_attributes: { subject: 'Draft to delete' }
+)
+email_campaigns.delete(throwaway.id)
 # => nil

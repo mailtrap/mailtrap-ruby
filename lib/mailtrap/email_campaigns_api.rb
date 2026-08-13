@@ -103,7 +103,7 @@ module Mailtrap
       base_update(email_campaign_id, options)
     end
 
-    # Deletes an email campaign. The campaign must not be in a sending state.
+    # Deletes an email campaign. Only a campaign in the +draft+ state can be deleted.
     # @param email_campaign_id [Integer] The email campaign ID
     # @return [nil]
     # @!macro api_errors
