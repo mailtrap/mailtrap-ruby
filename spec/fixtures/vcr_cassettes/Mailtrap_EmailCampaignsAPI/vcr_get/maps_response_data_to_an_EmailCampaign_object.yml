@@ -1,0 +1,74 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://mailtrap.io/api/email_campaigns/37947
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - mailtrap-ruby (https://github.com/mailtrap/mailtrap-ruby)
+      Host:
+      - mailtrap.io
+      Authorization:
+      - Bearer <BEARER_TOKEN>
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 14 Aug 2026 05:34:08 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - cloudflare
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Vary:
+      - Accept
+      X-Mailtrap-Version:
+      - v2
+      X-Ratelimit-Limit:
+      - '150'
+      X-Ratelimit-Remaining:
+      - '148'
+      Etag:
+      - W/"16e334048c07c406d0e31164bbd0234f"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Runtime:
+      - '0.054192'
+      Strict-Transport-Security:
+      - max-age=0
+      Cf-Cache-Status:
+      - DYNAMIC
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJkYXRhIjp7ImlkIjozNzk0NywibmFtZSI6IlNwcmluZyBTYWxlICh1cGRhdGVkKSIsImZyb21fbG9jYWxfcGFydCI6Im5ld3MiLCJmcm9tX2Rpc3BsYXlfbmFtZSI6bnVsbCwicmVwbHlfdG8iOnt9LCJjdXJyZW50X3N0YXRlIjoiZHJhZnQiLCJjcmVhdGVkX2F0IjoiMjAyNi0wOC0xNFQwNToyODo1My44NzdaIiwidXBkYXRlZF9hdCI6IjIwMjYtMDgtMTRUMDU6MzI6MTYuMjQ4WiIsImxhc3Rfc3RhcnRlZF9hdCI6bnVsbCwicmVjaXBpZW50X3RvdGFsX2NvdW50IjpudWxsLCJkZWxpdmVyeV9tb2RlIjoicmFwaWQiLCJkZWxpdmVyeV9vcHRpb25zIjp7fSwidGVtcGxhdGUiOnsiaWQiOjM3OTQxLCJzdWJqZWN0IjoiU3ByaW5nIGlzIGhlcmUg4oCUIDMwJSBvZmYiLCJtZXJnZV90YWdzIjpbXSwiYm9keV9odG1sIjpudWxsLCJib2R5X3RleHQiOm51bGx9LCJkb21haW5faWQiOjExMzI4OTUsImRvbWFpbl9uYW1lIjoiZGVtb21haWx0cmFwLmNvIiwiY3VycmVudF9zdGF0ZV9tZXRhZGF0YSI6e30sImNvbnRhY3RfbGlzdF9pZHMiOltdLCJjb250YWN0X3NlZ21lbnRfaWRzIjpbXX19
+  recorded_at: Fri, 14 Aug 2026 05:34:08 GMT
+recorded_with: VCR 6.4.0

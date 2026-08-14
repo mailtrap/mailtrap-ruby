@@ -1,0 +1,86 @@
+require 'mailtrap'
+
+client = Mailtrap::Client.new(api_key: 'your-api-key')
+email_campaigns = Mailtrap::EmailCampaignsAPI.new(client)
+
+# Create a new Email Campaign (always created in the draft state)
+email_campaign = email_campaigns.create(
+  name: 'Spring Sale',
+  domain_id: 4321,
+  from_display_name: 'Acme Marketing',
+  from_local_part: 'news',
+  reply_to: {
+    display_name: 'Acme Support',
+    local_part: 'support',
+    domain: 'acme.com'
+  },
+  template_attributes: { subject: 'Spring is here — 30% off' }
+)
+# => #<struct Mailtrap::EmailCampaign id=4567, name="Spring Sale", current_state="draft", ...>
+
+# Get all Email Campaigns (paginated, newest first; filter by name)
+list = email_campaigns.list(per_page: 50, search: 'Spring')
+# => #<struct Mailtrap::EmailCampaignsListResponse data=[#<struct Mailtrap::EmailCampaign ...>], pagination={...}>
+list.data
+# => [#<struct Mailtrap::EmailCampaign id=4567, name="Spring Sale", ...>]
+list.pagination
+# => {:token=>1, :prev_token=>nil, :next_token=>2, ...}
+
+# Get a single Email Campaign
+email_campaign = email_campaigns.get(email_campaign.id)
+# => #<struct Mailtrap::EmailCampaign id=4567, name="Spring Sale", ...>
+
+# Update a draft Email Campaign (partial; add the design and the audience)
+email_campaigns.update(
+  email_campaign.id,
+  name: 'Spring Sale (updated)',
+  template_attributes: {
+    subject: 'New subject',
+    body_html: '<html><body><h1>Hi {{first_name}}!</h1>' \
+               '<p><a href="__unsubscribe_url__">Unsubscribe</a></p></body></html>',
+    merge_tags: ['first_name']
+  },
+  delivery_mode: 'gradual',
+  delivery_options: { emails_per_hour: 1000 },
+  contact_list_ids: [55, 56],
+  contact_segment_ids: [12]
+)
+# => #<struct Mailtrap::EmailCampaign id=4567, name="Spring Sale (updated)", ...>
+
+# Schedule the draft Email Campaign to start sending at a future time
+schedule_at = (Time.now.utc + 86_400).strftime('%Y-%m-%dT%H:%M:%S.000Z')
+email_campaigns.schedule(email_campaign.id, schedule_at)
+# => #<struct Mailtrap::EmailCampaign id=4567, current_state="scheduled", ...>
+
+# Cancel the scheduled Email Campaign (returns it to the draft state)
+email_campaigns.cancel(email_campaign.id)
+# => #<struct Mailtrap::EmailCampaign id=4567, current_state="draft", ...>
+
+# Reset a scheduled Email Campaign back to draft (like cancel, only a scheduled
+# campaign can be reset)
+email_campaigns.schedule(email_campaign.id, schedule_at)
+email_campaigns.reset(email_campaign.id)
+# => #<struct Mailtrap::EmailCampaign id=4567, current_state="draft", ...>
+
+# Start sending the draft Email Campaign immediately
+email_campaigns.start(email_campaign.id)
+# => #<struct Mailtrap::EmailCampaign id=4567, current_state="started", ...>
+
+# Terminate a sending Email Campaign
+email_campaigns.terminate(email_campaign.id)
+# => #<struct Mailtrap::EmailCampaign id=4567, current_state="terminating", ...>
+
+# Get Email Campaign statistics (pass start_date/end_date to narrow the aggregation window)
+email_campaigns.stats(email_campaign.id)
+# => #<struct Mailtrap::EmailCampaignStats delivery_count=1450, open_count=820, delivery_rate=0.9667, ...>
+
+# Delete an Email Campaign (returns nil). Only a campaign in the draft state can be
+# deleted, and a started campaign never returns to draft — so delete a fresh draft.
+throwaway = email_campaigns.create(
+  name: 'Draft to delete',
+  domain_id: 4321,
+  from_local_part: 'news',
+  template_attributes: { subject: 'Draft to delete' }
+)
+email_campaigns.delete(throwaway.id)
+# => nil
