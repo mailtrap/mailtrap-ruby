@@ -1,3 +1,11 @@
+## [2.14.0] - 2026-08-14
+
+## What's Changed
+* MT-22401: Add Email Campaigns API by @Rabsztok in https://github.com/mailtrap/mailtrap-ruby/pull/119
+
+
+**Full Changelog**: https://github.com/mailtrap/mailtrap-ruby/compare/v2.13.0...v2.14.0
+
 ## [2.13.0] - 2026-08-04
 
 ## What's Changed
