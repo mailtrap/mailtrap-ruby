@@ -49,6 +49,7 @@ RSpec.describe Mailtrap::ApiTokensAPI, :vcr do
   describe '#create' do
     subject(:create) { api_tokens_api.create(request) }
 
+    let(:url) { "https://mailtrap.io/api/accounts/#{account_id}/api_tokens" }
     let(:request) do
       {
         name: 'Ruby SDK Test Token',
@@ -65,6 +66,61 @@ RSpec.describe Mailtrap::ApiTokensAPI, :vcr do
         name: 'Ruby SDK Test Token',
         token: an_instance_of(String)
       )
+      expect(WebMock).to(have_requested(:post, url).with { |req| !req.body.include?('expires_at') })
+    end
+
+    context 'when expires_at is given' do
+      let(:request) do
+        {
+          name: 'Ruby SDK Test Token',
+          expires_at: '2027-06-01T00:00:00Z',
+          resources: [
+            { resource_type: 'account', resource_id: account_id, access_level: 100 }
+          ]
+        }
+      end
+
+      it 'serializes expires_at in the request body' do
+        expect(create).to have_attributes(
+          expires_at: '2027-06-01T00:00:00Z',
+          token: an_instance_of(String)
+        )
+        expect(WebMock).to(have_requested(:post, url)
+          .with { |req| req.body.include?('"expires_at":"2027-06-01T00:00:00Z"') })
+      end
+    end
+
+    context 'when expires_at is nil' do
+      let(:request) do
+        {
+          name: 'Ruby SDK Test Token',
+          expires_at: nil,
+          resources: [
+            { resource_type: 'account', resource_id: account_id, access_level: 100 }
+          ]
+        }
+      end
+
+      it 'serializes expires_at as JSON null' do
+        expect(create).to have_attributes(expires_at: nil, token: an_instance_of(String))
+        expect(WebMock).to(have_requested(:post, url).with { |req| req.body.include?('"expires_at":null') })
+      end
+    end
+
+    context 'when expires_at is in the past' do
+      let(:request) do
+        {
+          name: 'Ruby SDK Test Token',
+          expires_at: '2020-01-01T00:00:00Z',
+          resources: [
+            { resource_type: 'account', resource_id: account_id, access_level: 100 }
+          ]
+        }
+      end
+
+      it 'raises a Mailtrap::Error' do
+        expect { create }.to raise_error(Mailtrap::Error)
+      end
     end
 
     context 'when invalid options are provided' do
@@ -88,6 +144,7 @@ RSpec.describe Mailtrap::ApiTokensAPI, :vcr do
     subject(:reset) { api_tokens_api.reset(token_id) }
 
     let(:token_id) { 2_498_713 }
+    let(:url) { "https://mailtrap.io/api/accounts/#{account_id}/api_tokens/#{token_id}/reset" }
 
     it 'maps response data to ApiToken with new token value' do
       expect(reset).to be_a(Mailtrap::ApiToken)
@@ -95,6 +152,44 @@ RSpec.describe Mailtrap::ApiTokensAPI, :vcr do
         id: an_instance_of(Integer),
         token: an_instance_of(String)
       )
+      expect(WebMock).to(have_requested(:post, url).with { |req| req.body.to_s.empty? })
+    end
+
+    context 'when expires_at is given' do
+      subject(:reset) { api_tokens_api.reset(token_id, expires_at: '2027-06-01T00:00:00Z') }
+
+      it 'serializes expires_at in the request body' do
+        expect(reset).to have_attributes(
+          expires_at: '2027-06-01T00:00:00Z',
+          token: an_instance_of(String)
+        )
+        expect(WebMock).to have_requested(:post, url).with(body: '{"expires_at":"2027-06-01T00:00:00Z"}')
+      end
+    end
+
+    context 'when expires_at is nil' do
+      subject(:reset) { api_tokens_api.reset(token_id, expires_at: nil) }
+
+      it 'serializes expires_at as JSON null' do
+        expect(reset).to have_attributes(expires_at: nil, token: an_instance_of(String))
+        expect(WebMock).to have_requested(:post, url).with(body: '{"expires_at":null}')
+      end
+    end
+
+    context 'when expires_at is in the past' do
+      subject(:reset) { api_tokens_api.reset(token_id, expires_at: '2020-01-01T00:00:00Z') }
+
+      it 'raises a Mailtrap::Error' do
+        expect { reset }.to raise_error(Mailtrap::Error)
+      end
+    end
+
+    context 'when invalid options are provided' do
+      subject(:reset) { api_tokens_api.reset(token_id, unknown_option: true) }
+
+      it 'raises ArgumentError' do
+        expect { reset }.to raise_error(ArgumentError, /invalid options are given/)
+      end
     end
 
     context 'when token does not exist' do
