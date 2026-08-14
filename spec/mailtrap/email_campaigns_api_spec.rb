@@ -383,4 +383,80 @@ RSpec.describe Mailtrap::EmailCampaignsAPI do
       expect { email_campaigns_api.stats(999) }.to raise_error(Mailtrap::Error, /Not Found/)
     end
   end
+
+  # Recorded coverage complementing the stubbed examples above. Lifecycle actions
+  # (start/schedule/cancel/terminate/reset) stay stubbed: recording them would mean
+  # driving a real campaign through sending states, and `start` mails a live audience.
+  describe 'vcr#list', :vcr do
+    subject(:list) { email_campaigns_api.list(search: 'Spring Sale') }
+
+    it 'maps response data to EmailCampaign objects' do
+      expect(list).to be_a(Mailtrap::EmailCampaignsListResponse)
+      expect(list.data).to all(be_a(Mailtrap::EmailCampaign))
+      expect(list.data.first).to have_attributes(
+        id: be_a(Integer),
+        name: be_a(String),
+        domain_id: be_a(Integer),
+        current_state: be_a(String)
+      )
+      expect(list.pagination).to include(:token)
+    end
+  end
+
+  describe 'vcr#get', :vcr do
+    subject(:get) { email_campaigns_api.get(37_947) }
+
+    it 'maps response data to an EmailCampaign object' do
+      expect(get).to be_a(Mailtrap::EmailCampaign)
+      expect(get).to have_attributes(
+        id: 37_947,
+        name: be_a(String),
+        domain_id: be_a(Integer),
+        current_state: be_a(String)
+      )
+    end
+  end
+
+  describe 'vcr#create', :vcr do
+    subject(:create) do
+      email_campaigns_api.create(
+        name: 'Spring Sale',
+        domain_id: 1_132_895,
+        from_local_part: 'news',
+        template_attributes: { subject: 'Spring is here — 30% off' }
+      )
+    end
+
+    it 'maps response data to the created EmailCampaign' do
+      expect(create).to be_a(Mailtrap::EmailCampaign)
+      expect(create).to have_attributes(
+        id: be_a(Integer),
+        name: 'Spring Sale',
+        current_state: 'draft'
+      )
+    end
+  end
+
+  describe 'vcr#update', :vcr do
+    subject(:update) { email_campaigns_api.update(37_947, name: 'Spring Sale (updated)') }
+
+    it 'maps response data to the updated EmailCampaign' do
+      expect(update).to be_a(Mailtrap::EmailCampaign)
+      expect(update).to have_attributes(id: 37_947, name: 'Spring Sale (updated)')
+    end
+  end
+
+  describe 'vcr#stats', :vcr do
+    subject(:stats) { email_campaigns_api.stats(37_947) }
+
+    it 'maps response data to an EmailCampaignStats object' do
+      expect(stats).to be_a(Mailtrap::EmailCampaignStats)
+      expect(stats).to have_attributes(
+        delivery_count: be_a(Integer),
+        open_count: be_a(Integer),
+        delivery_rate: be_a(Numeric),
+        open_rate: be_a(Numeric)
+      )
+    end
+  end
 end

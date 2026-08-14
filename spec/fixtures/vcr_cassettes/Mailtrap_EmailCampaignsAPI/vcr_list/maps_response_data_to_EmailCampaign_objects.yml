@@ -1,0 +1,74 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://mailtrap.io/api/email_campaigns?search=Spring%20Sale
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - mailtrap-ruby (https://github.com/mailtrap/mailtrap-ruby)
+      Host:
+      - mailtrap.io
+      Authorization:
+      - Bearer <BEARER_TOKEN>
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 14 Aug 2026 05:34:07 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - cloudflare
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Vary:
+      - Accept
+      X-Mailtrap-Version:
+      - v2
+      X-Ratelimit-Limit:
+      - '150'
+      X-Ratelimit-Remaining:
+      - '149'
+      Etag:
+      - W/"0ab936c6f5027d98f415af51f6f7137c"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Runtime:
+      - '0.032420'
+      Strict-Transport-Security:
+      - max-age=0
+      Cf-Cache-Status:
+      - DYNAMIC
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJkYXRhIjpbeyJpZCI6Mzc5NDcsIm5hbWUiOiJTcHJpbmcgU2FsZSAodXBkYXRlZCkiLCJmcm9tX2xvY2FsX3BhcnQiOiJuZXdzIiwiZnJvbV9kaXNwbGF5X25hbWUiOm51bGwsInJlcGx5X3RvIjp7fSwiY3VycmVudF9zdGF0ZSI6ImRyYWZ0IiwiY3JlYXRlZF9hdCI6IjIwMjYtMDgtMTRUMDU6Mjg6NTMuODc3WiIsInVwZGF0ZWRfYXQiOiIyMDI2LTA4LTE0VDA1OjMyOjE2LjI0OFoiLCJsYXN0X3N0YXJ0ZWRfYXQiOm51bGwsInJlY2lwaWVudF90b3RhbF9jb3VudCI6bnVsbCwiZGVsaXZlcnlfbW9kZSI6InJhcGlkIiwiZGVsaXZlcnlfb3B0aW9ucyI6e30sInRlbXBsYXRlIjp7ImlkIjozNzk0MSwic3ViamVjdCI6IlNwcmluZyBpcyBoZXJlIOKAlCAzMCUgb2ZmIiwibWVyZ2VfdGFncyI6W119LCJkb21haW5faWQiOjExMzI4OTUsImRvbWFpbl9uYW1lIjoiZGVtb21haWx0cmFwLmNvIiwiY3VycmVudF9zdGF0ZV9tZXRhZGF0YSI6e30sImNvbnRhY3RfbGlzdF9pZHMiOltdLCJjb250YWN0X3NlZ21lbnRfaWRzIjpbXX1dLCJwYWdpbmF0aW9uIjp7InRva2VuIjoxLCJwcmV2X3Rva2VuIjpudWxsLCJuZXh0X3Rva2VuIjpudWxsLCJmaXJzdF91cmwiOiJodHRwczovL21haWx0cmFwLmlvL2FwaS9lbWFpbF9jYW1wYWlnbnM/c2VhcmNoPVNwcmluZytTYWxlJnRva2VuPTEiLCJwcmV2X3VybCI6bnVsbCwiY3VycmVudF91cmwiOiJodHRwczovL21haWx0cmFwLmlvL2FwaS9lbWFpbF9jYW1wYWlnbnM/c2VhcmNoPVNwcmluZytTYWxlJnRva2VuPTEiLCJuZXh0X3VybCI6bnVsbH19
+  recorded_at: Fri, 14 Aug 2026 05:34:07 GMT
+recorded_with: VCR 6.4.0

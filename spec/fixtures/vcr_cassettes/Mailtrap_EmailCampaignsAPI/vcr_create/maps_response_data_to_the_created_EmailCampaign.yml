@@ -1,0 +1,75 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://mailtrap.io/api/email_campaigns
+    body:
+      encoding: UTF-8
+      string: '{"name":"Spring Sale","domain_id":1132895,"from_local_part":"news","template_attributes":{"subject":"Spring
+        is here — 30% off"}}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - mailtrap-ruby (https://github.com/mailtrap/mailtrap-ruby)
+      Host:
+      - mailtrap.io
+      Authorization:
+      - Bearer <BEARER_TOKEN>
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Fri, 14 Aug 2026 05:28:54 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '548'
+      Connection:
+      - keep-alive
+      Server:
+      - cloudflare
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Vary:
+      - Accept
+      X-Mailtrap-Version:
+      - v2
+      X-Ratelimit-Limit:
+      - '150'
+      X-Ratelimit-Remaining:
+      - '147'
+      Etag:
+      - W/"60f87a39aa5fd6141c05f1ace9dbb47b"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Runtime:
+      - '0.122334'
+      Strict-Transport-Security:
+      - max-age=0
+      Cf-Cache-Status:
+      - DYNAMIC
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJkYXRhIjp7ImlkIjozNzk0NywibmFtZSI6IlNwcmluZyBTYWxlIiwiZnJvbV9sb2NhbF9wYXJ0IjoibmV3cyIsImZyb21fZGlzcGxheV9uYW1lIjpudWxsLCJyZXBseV90byI6e30sImN1cnJlbnRfc3RhdGUiOiJkcmFmdCIsImNyZWF0ZWRfYXQiOiIyMDI2LTA4LTE0VDA1OjI4OjUzLjg3N1oiLCJ1cGRhdGVkX2F0IjoiMjAyNi0wOC0xNFQwNToyODo1My45MDBaIiwibGFzdF9zdGFydGVkX2F0IjpudWxsLCJyZWNpcGllbnRfdG90YWxfY291bnQiOm51bGwsImRlbGl2ZXJ5X21vZGUiOiJyYXBpZCIsImRlbGl2ZXJ5X29wdGlvbnMiOnt9LCJ0ZW1wbGF0ZSI6eyJpZCI6Mzc5NDEsInN1YmplY3QiOiJTcHJpbmcgaXMgaGVyZSDigJQgMzAlIG9mZiIsIm1lcmdlX3RhZ3MiOltdLCJib2R5X2h0bWwiOm51bGwsImJvZHlfdGV4dCI6bnVsbH0sImRvbWFpbl9pZCI6MTEzMjg5NSwiZG9tYWluX25hbWUiOiJkZW1vbWFpbHRyYXAuY28iLCJjdXJyZW50X3N0YXRlX21ldGFkYXRhIjp7fSwiY29udGFjdF9saXN0X2lkcyI6W10sImNvbnRhY3Rfc2VnbWVudF9pZHMiOltdfX0=
+  recorded_at: Fri, 14 Aug 2026 05:28:53 GMT
+recorded_with: VCR 6.4.0
