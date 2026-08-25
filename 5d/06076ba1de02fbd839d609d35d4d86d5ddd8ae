@@ -1,0 +1,20 @@
+spec/fixtures/vcr_cassettes/Mailtrap_ApiTokensAPI/_create/when_expires_at_is_given/serializes_expires_at_in_the_request_body.yml
+  h_68ae9308e52348 72
+spec/fixtures/vcr_cassettes/Mailtrap_ApiTokensAPI/_create/when_expires_at_is_nil/serializes_expires_at_as_JSON_null.yml
+  h_68ae9308e52348 72
+spec/fixtures/vcr_cassettes/Mailtrap_ApiTokensAPI/_reset/when_expires_at_is_given/serializes_expires_at_in_the_request_body.yml
+  h_68ae9308e52348 73
+spec/fixtures/vcr_cassettes/Mailtrap_ApiTokensAPI/_reset/when_expires_at_is_nil/serializes_expires_at_as_JSON_null.yml
+  h_68ae9308e52348 73
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "5d06076ba1de02fbd839d609d35d4d86d5ddd8ae",
+  "prompts": {},
+  "humans": {
+    "h_68ae9308e52348": {
+      "author": "Alex Shchyhol <oleksandr.shchyhol@railsware.com>"
+    }
+  }
+}
