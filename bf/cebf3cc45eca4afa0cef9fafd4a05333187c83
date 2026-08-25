@@ -1,0 +1,32 @@
+spec/fixtures/vcr_cassettes/Mailtrap_ApiTokensAPI/_create/when_expires_at_is_given/serializes_expires_at_in_the_request_body.yml
+  s_35e942bf87a8d1::t_6e1303acb389a1 1-71,73-74
+spec/fixtures/vcr_cassettes/Mailtrap_ApiTokensAPI/_create/when_expires_at_is_nil/serializes_expires_at_as_JSON_null.yml
+  s_35e942bf87a8d1::t_39869f942258bf 1-71,73-74
+spec/fixtures/vcr_cassettes/Mailtrap_ApiTokensAPI/_reset/when_expires_at_is_given/serializes_expires_at_in_the_request_body.yml
+  s_35e942bf87a8d1::t_eff2041fb849c2 1-72,74-75
+spec/mailtrap/api_tokens_api_spec.rb
+  s_35e942bf87a8d1::t_54dd541338cad2 52,69-123,147,155-192
+examples/api_tokens_api.rb
+  h_68ae9308e52348 16-18,21,26-36,39,43-46
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.20",
+  "base_commit_sha": "bfcebf3cc45eca4afa0cef9fafd4a05333187c83",
+  "prompts": {},
+  "humans": {
+    "h_68ae9308e52348": {
+      "author": "Alex Shchyhol <oleksandr.shchyhol@railsware.com>"
+    }
+  },
+  "sessions": {
+    "s_35e942bf87a8d1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "fe0c4ad9-a5e3-40ee-b534-5305c3091a31",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Alex Shchyhol <oleksandr.shchyhol@railsware.com>"
+    }
+  }
+}
