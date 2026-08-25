@@ -34,6 +34,7 @@ VCR.configure do |config|
       '"forward_from_email_address": "railsware@forward.mailtrap.info"'
     )
     interaction.response.body.gsub!(/"email_username":"[^"]*"/, '"email_username": "1234abcd"')
+    interaction.response.body.gsub!(/"token":"[^"]*"/, '"token":"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"')
 
     auth_header = interaction.request.headers['Authorization']&.first
 
