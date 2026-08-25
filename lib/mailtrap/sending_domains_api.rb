@@ -7,7 +7,13 @@ module Mailtrap
   class SendingDomainsAPI
     include BaseAPI
 
-    self.supported_options = %i[open_tracking_enabled click_tracking_enabled auto_unsubscribe_link_enabled]
+    self.supported_options = %i[
+      open_tracking_enabled
+      click_tracking_enabled
+      tracking_opt_out_enabled
+      auto_unsubscribe_link_enabled
+      inbound_enabled
+    ]
 
     self.response_class = SendingDomain
 
@@ -50,7 +56,9 @@ module Mailtrap
     # @param [Hash] options The parameters to update
     # @option options [Boolean] :open_tracking_enabled Enable open tracking for emails sent from this domain
     # @option options [Boolean] :click_tracking_enabled Enable click tracking for links in emails sent from this domain
+    # @option options [Boolean] :tracking_opt_out_enabled Enable the tracking opt-out link in tracked emails
     # @option options [Boolean] :auto_unsubscribe_link_enabled Automatically add an unsubscribe link to emails
+    # @option options [Boolean] :inbound_enabled Enable inbound email for this domain
     # @return [SendingDomain] Updated sending domain
     # @!macro api_errors
     # @raise [ArgumentError] If invalid options are provided

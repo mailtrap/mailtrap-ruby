@@ -21,7 +21,9 @@ sending_domains.update(
   sending_domain.id,
   open_tracking_enabled: true,
   click_tracking_enabled: true,
-  auto_unsubscribe_link_enabled: false
+  tracking_opt_out_enabled: true,
+  auto_unsubscribe_link_enabled: false,
+  inbound_enabled: false
 )
 # => #<struct Mailtrap::SendingDomain id=1, domain_name="example.com", ...>
 

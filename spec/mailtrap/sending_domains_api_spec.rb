@@ -55,6 +55,7 @@ RSpec.describe Mailtrap::SendingDomainsAPI, :vcr do
           ],
         open_tracking_enabled: true,
         click_tracking_enabled: false,
+        tracking_opt_out_enabled: false,
         auto_unsubscribe_link_enabled: false,
         custom_domain_tracking_enabled: false,
         health_alerts_enabled: true,
@@ -114,6 +115,7 @@ RSpec.describe Mailtrap::SendingDomainsAPI, :vcr do
           ],
         open_tracking_enabled: true,
         click_tracking_enabled: false,
+        tracking_opt_out_enabled: false,
         auto_unsubscribe_link_enabled: false,
         custom_domain_tracking_enabled: false,
         health_alerts_enabled: true,
@@ -198,7 +200,9 @@ RSpec.describe Mailtrap::SendingDomainsAPI, :vcr do
       {
         open_tracking_enabled: true,
         click_tracking_enabled: true,
-        auto_unsubscribe_link_enabled: false
+        tracking_opt_out_enabled: true,
+        auto_unsubscribe_link_enabled: false,
+        inbound_enabled: false
       }
     end
 
@@ -208,7 +212,9 @@ RSpec.describe Mailtrap::SendingDomainsAPI, :vcr do
         id: sending_domain_id,
         open_tracking_enabled: true,
         click_tracking_enabled: true,
-        auto_unsubscribe_link_enabled: false
+        tracking_opt_out_enabled: true,
+        auto_unsubscribe_link_enabled: false,
+        inbound_enabled: false
       )
     end
 
