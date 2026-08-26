@@ -1,0 +1,39 @@
+spec/fixtures/vcr_cassettes/Mailtrap_SuppressionsAPI/_list/with_email_filter/returns_the_matching_suppressions.yml
+  s_a416a2bbf03afd::t_158d75060117f4 5-77
+  s_a416a2bbf03afd::t_009d542e45cf8b 1-4
+spec/mailtrap/suppressions_api_spec.rb
+  s_a416a2bbf03afd::t_2f4c85d39ea88e 3,8-9,12,14-23,26-31,34-35,37-43,48-50,52-54,58-62,64,68-76,78-80,84-85,87,91-92,94-96,101,104-105,107,111-112,114-115
+spec/fixtures/vcr_cassettes/Mailtrap_SuppressionsAPI/_list/maps_response_data_to_Suppression_objects.yml
+  s_a416a2bbf03afd::t_097d3234d9cb3c 16-17,28,37-39,59,63,72-75
+spec/fixtures/vcr_cassettes/Mailtrap_SuppressionsAPI/_delete/when_suppression_does_not_exist/raises_a_Mailtrap_Error.yml
+  s_a416a2bbf03afd::t_510297a758dc7b 4-71
+  s_a416a2bbf03afd::t_cef0d5aca5cb2a 1-3
+spec/fixtures/vcr_cassettes/Mailtrap_SuppressionsAPI/_create/maps_response_data_to_Suppression_object.yml
+  s_a416a2bbf03afd::t_bb26cc26201c0b 4-74
+  s_a416a2bbf03afd::t_abdcd62b24406e 1-3
+spec/fixtures/vcr_cassettes/Mailtrap_SuppressionsAPI/_delete/returns_the_deleted_suppression.yml
+  s_a416a2bbf03afd::t_fe0c1cc6e372f6 4-73
+  s_a416a2bbf03afd::t_fcc600c25b556c 1-3
+spec/fixtures/vcr_cassettes/Mailtrap_SuppressionsAPI/_create/when_email_is_invalid/raises_a_Mailtrap_Error.yml
+  s_a416a2bbf03afd::t_c510f2fc519be9 4-71
+  s_a416a2bbf03afd::t_68623564177dd1 1-3
+spec/fixtures/vcr_cassettes/Mailtrap_SuppressionsAPI/_create/with_an_explicit_type/returns_the_suppression_with_that_type.yml
+  s_a416a2bbf03afd::t_f7976a0528d328 4-73
+  s_a416a2bbf03afd::t_1fa240656efd4f 1-3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "610f7ea3653e87b9d3454de0748902bc1b24af85",
+  "prompts": {},
+  "sessions": {
+    "s_a416a2bbf03afd": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "73aab1cf-cfd1-42b8-b656-f26905d319ee",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Marcin Klocek <marcin.klocek@railsware.com>"
+    }
+  }
+}
