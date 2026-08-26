@@ -7,6 +7,8 @@ module Mailtrap
   class SuppressionsAPI
     include BaseAPI
 
+    self.supported_options = %i[email domain_id sending_stream type].freeze
+
     self.response_class = Suppression
 
     # Lists all suppressions for the account
@@ -18,6 +20,21 @@ module Mailtrap
       query_params[:email] = email if email
 
       base_list(query_params)
+    end
+
+    # Adds an email address to the account's suppression list
+    # @param [Hash] options The suppression attributes
+    # @option options [String] :email Email address to suppress
+    # @option options [Integer] :domain_id ID of the domain to suppress this email for
+    # @option options [String] :sending_stream The sending stream to suppress for: "transactional" or "bulk"
+    # @option options [String] :type Reason for the suppression, defaults to "manual import" when omitted
+    # @return [Suppression] Created suppression
+    # @!macro api_errors
+    # @raise [ArgumentError] If invalid options are provided
+    def create(options)
+      validate_options!(options, supported_options)
+      response = client.post(base_path, options)
+      build_entity(response[:data], Suppression)
     end
 
     # Deletes a suppression

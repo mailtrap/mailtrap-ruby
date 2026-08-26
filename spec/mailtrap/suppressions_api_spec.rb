@@ -94,6 +94,72 @@ RSpec.describe Mailtrap::SuppressionsAPI do
     end
   end
 
+  describe '#create' do
+    let(:request) { { email: 'user@example.com', domain_id: 12_345, sending_stream: 'transactional' } }
+    let(:created_attributes) do
+      {
+        'id' => '123e4567-e89b-12d3-a456-426614174000',
+        'type' => 'manual import',
+        'created_at' => '2024-06-01T12:00:00Z',
+        'email' => 'user@example.com',
+        'sending_stream' => 'transactional',
+        'domain_name' => 'example.com'
+      }
+    end
+
+    it 'sends a flat body and maps the wrapped response' do
+      stub_request(:post, "#{base_url}/suppressions")
+        .with(body: request.to_json)
+        .to_return(
+          status: 201,
+          body: { 'data' => created_attributes }.to_json,
+          headers: { 'Content-Type' => 'application/json' }
+        )
+
+      suppression = suppressions.create(request)
+
+      expect(suppression).to be_a(Mailtrap::Suppression)
+      expect(suppression).to have_attributes(
+        id: '123e4567-e89b-12d3-a456-426614174000',
+        email: 'user@example.com',
+        sending_stream: 'transactional',
+        type: 'manual import'
+      )
+    end
+
+    it 'sends the optional type when provided' do
+      stub_request(:post, "#{base_url}/suppressions")
+        .with(body: request.merge(type: 'spam complaint').to_json)
+        .to_return(
+          status: 201,
+          body: { 'data' => created_attributes.merge('type' => 'spam complaint') }.to_json,
+          headers: { 'Content-Type' => 'application/json' }
+        )
+
+      suppression = suppressions.create(request.merge(type: 'spam complaint'))
+
+      expect(suppression.type).to eq('spam complaint')
+    end
+
+    context 'when invalid options are provided' do
+      it 'raises ArgumentError' do
+        expect { suppressions.create(request.merge(unknown_option: true)) }
+          .to raise_error(ArgumentError, /invalid options are given/)
+      end
+    end
+
+    it 'raises error when the request is rejected' do
+      stub_request(:post, "#{base_url}/suppressions")
+        .to_return(
+          status: 422,
+          body: { 'errors' => 'Email is invalid' }.to_json,
+          headers: { 'Content-Type' => 'application/json' }
+        )
+
+      expect { suppressions.create(request) }.to raise_error(Mailtrap::Error)
+    end
+  end
+
   describe '#delete' do
     let(:suppression_id) { 1 }
 

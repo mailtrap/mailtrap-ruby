@@ -34,7 +34,16 @@ suppressions.list
 #  ]
 
 # Get suppressions for the email
-list = suppressions.list(email: 'recipient@example.com')
+suppressions.list(email: 'recipient@example.com')
+
+# Add an email to the suppression list.
+# `type` is optional and defaults to 'manual import'.
+suppression = suppressions.create(
+  email: 'recipient@example.com',
+  domain_id: 12_345,
+  sending_stream: 'transactional'
+)
+# => #<struct Mailtrap::Suppression id="64d71bf3-1276-417b-86e1-8e66f138acfe", type="manual import", ...>
 
 # Delete a suppression
-suppressions.delete(list.first.id)
+suppressions.delete(suppression.id)
