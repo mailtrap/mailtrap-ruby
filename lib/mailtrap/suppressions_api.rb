@@ -39,10 +39,11 @@ module Mailtrap
 
     # Deletes a suppression
     # @param suppression_id [String] The suppression UUID
-    # @return nil
+    # @return [Suppression] The deleted suppression
     # @!macro api_errors
     def delete(suppression_id)
-      client.delete("#{base_path}/#{suppression_id}")
+      response = client.delete("#{base_path}/#{suppression_id}")
+      build_entity(response, Suppression)
     end
 
     private

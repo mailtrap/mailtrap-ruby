@@ -162,13 +162,32 @@ RSpec.describe Mailtrap::SuppressionsAPI do
 
   describe '#delete' do
     let(:suppression_id) { 1 }
+    let(:deleted_attributes) do
+      {
+        'id' => '123e4567-e89b-12d3-a456-426614174000',
+        'type' => 'hard bounce',
+        'created_at' => '2024-06-01T12:00:00Z',
+        'email' => 'user1@example.com',
+        'sending_stream' => 'transactional',
+        'domain_name' => 'example.com'
+      }
+    end
 
-    it 'deletes a suppression' do
+    it 'returns the deleted suppression' do
       stub_request(:delete, "#{base_url}/suppressions/#{suppression_id}")
-        .to_return(status: 204)
+        .to_return(
+          status: 200,
+          body: deleted_attributes.to_json,
+          headers: { 'Content-Type' => 'application/json' }
+        )
 
-      response = suppressions.delete(suppression_id)
-      expect(response).to be_nil
+      suppression = suppressions.delete(suppression_id)
+
+      expect(suppression).to be_a(Mailtrap::Suppression)
+      expect(suppression).to have_attributes(
+        id: '123e4567-e89b-12d3-a456-426614174000',
+        email: 'user1@example.com'
+      )
     end
 
     it 'raises error when suppression not found' do
