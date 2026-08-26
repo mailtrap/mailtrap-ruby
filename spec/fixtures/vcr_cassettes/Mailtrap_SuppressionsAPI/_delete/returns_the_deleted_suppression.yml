@@ -1,8 +1,8 @@
 ---
 http_interactions:
 - request:
-    method: get
-    uri: https://mailtrap.io/api/accounts/1111111/suppressions
+    method: delete
+    uri: https://mailtrap.io/api/accounts/1111111/suppressions/fef0c580-1086-4ede-9fea-b8f5e256ba89
     body:
       encoding: US-ASCII
       string: ''
@@ -13,6 +13,8 @@ http_interactions:
       - "*/*"
       User-Agent:
       - mailtrap-ruby (https://github.com/mailtrap/mailtrap-ruby)
+      Host:
+      - mailtrap.io
       Authorization:
       - Bearer <BEARER_TOKEN>
       Content-Type:
@@ -23,7 +25,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 27 Jun 2025 07:56:23 GMT
+      - Wed, 26 Aug 2026 14:41:43 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -51,13 +53,13 @@ http_interactions:
       X-Ratelimit-Limit:
       - '150'
       X-Ratelimit-Remaining:
-      - '149'
+      - '145'
       Etag:
-      - W/"f549768628f00ba29406ba914e08f1e4"
+      - W/"3230761a1067a7871abd18cc577d7799"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Runtime:
-      - '0.065844'
+      - '0.063299'
       Strict-Transport-Security:
       - max-age=0
       Cf-Cache-Status:
@@ -66,6 +68,6 @@ http_interactions:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
-      string: '[{"id":"af4485b5-5181-4fb5-9d41-287c78f708c1","type":"manual import","created_at":"2025-06-27T07:56:17Z","email":"asd@asd.com","sending_stream":"transactional","domain_name":"","message_bounce_category":"","message_category":"","message_client_ip":"","message_created_at":"","message_esp_response":"","message_esp_server_type":"","message_outgoing_ip":"","message_recipient_mx_name":"","message_sender_email":"","message_subject":""}]'
-  recorded_at: Fri, 27 Jun 2025 07:56:23 GMT
-recorded_with: VCR 6.2.0
+      string: '{"id":"fef0c580-1086-4ede-9fea-b8f5e256ba89","type":"unsubscription","created_at":"2026-08-20T06:49:13.000Z","email":"welcome@rw.com","sending_stream":"transactional","domain_name":"example.com","message_bounce_category":null,"message_category":"Testing","message_client_ip":"","message_esp_response":"","message_esp_server_type":"","message_outgoing_ip":"","message_recipient_mx_name":"","message_sender_email":"sender@example.com","message_subject":"","message_created_at":"2026-05-07T16:34:22Z"}'
+  recorded_at: Wed, 26 Aug 2026 14:41:43 GMT
+recorded_with: VCR 6.4.0
