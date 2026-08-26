@@ -5,7 +5,7 @@ http_interactions:
     uri: https://mailtrap.io/api/accounts/1111111/sending_domains/-1
     body:
       encoding: UTF-8
-      string: '{"sending_domain":{"open_tracking_enabled":true,"click_tracking_enabled":true,"auto_unsubscribe_link_enabled":false}}'
+      string: '{"sending_domain":{"open_tracking_enabled":true,"click_tracking_enabled":true,"tracking_opt_out_enabled":true,"auto_unsubscribe_link_enabled":false,"inbound_enabled":false}}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3

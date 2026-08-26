@@ -12,6 +12,7 @@ module Mailtrap
   # @attr_reader dns_records [Array] The DNS records for the sending domain
   # @attr_reader open_tracking_enabled [Boolean] Whether open tracking is enabled
   # @attr_reader click_tracking_enabled [Boolean] Whether click tracking is enabled
+  # @attr_reader tracking_opt_out_enabled [Boolean] Whether the tracking opt-out link is enabled
   # @attr_reader auto_unsubscribe_link_enabled [Boolean] Whether auto unsubscribe link is enabled
   # @attr_reader custom_domain_tracking_enabled [Boolean] Whether custom domain tracking is enabled
   # @attr_reader health_alerts_enabled [Boolean] Whether health alerts are enabled
@@ -31,6 +32,7 @@ module Mailtrap
     :dns_records,
     :open_tracking_enabled,
     :click_tracking_enabled,
+    :tracking_opt_out_enabled,
     :auto_unsubscribe_link_enabled,
     :custom_domain_tracking_enabled,
     :health_alerts_enabled,
