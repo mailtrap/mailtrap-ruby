@@ -7,7 +7,7 @@ module Mailtrap
   class SandboxMessagesAPI
     include BaseAPI
 
-    attr_reader :account_id, :inbox_id, :client
+    attr_reader :inbox_id
 
     self.supported_options = %i[is_read]
 

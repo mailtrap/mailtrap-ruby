@@ -7,8 +7,6 @@ module Mailtrap
   class AccountAccessesAPI
     include BaseAPI
 
-    attr_reader :account_id
-
     self.response_class = AccountAccess
 
     # Retrieves a list of account accesses with optional filtering by domain, inbox, or project IDs

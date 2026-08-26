@@ -14,7 +14,6 @@ module Mailtrap
 
     SEND_OPTIONS = %i[from to cc bcc reply_to text html category attachments headers custom_variables].freeze
 
-    # Inbound is scoped to the token's account, so no account_id is required.
     # @param client [Mailtrap::Client] The client instance
     def initialize(client = Mailtrap::Client.new)
       @client = client

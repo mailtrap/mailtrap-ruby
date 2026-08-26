@@ -22,8 +22,6 @@ module Mailtrap
 
     self.response_class = EmailCampaign
 
-    attr_reader :client
-
     # @param client [Mailtrap::Client] The client instance
     def initialize(client = Mailtrap::Client.new)
       @client = client
