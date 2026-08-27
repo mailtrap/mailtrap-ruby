@@ -1,0 +1,73 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://mailtrap.io/api/accounts/1111111/suppressions
+    body:
+      encoding: UTF-8
+      string: '{"email":"recipient.unsubscribed@example.com","domain_id":12345,"sending_stream":"transactional","type":"unsubscription"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - mailtrap-ruby (https://github.com/mailtrap/mailtrap-ruby)
+      Host:
+      - mailtrap.io
+      Authorization:
+      - Bearer <BEARER_TOKEN>
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Wed, 26 Aug 2026 14:49:58 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '512'
+      Connection:
+      - keep-alive
+      Server:
+      - cloudflare
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Vary:
+      - Accept
+      X-Mailtrap-Version:
+      - v2
+      X-Ratelimit-Limit:
+      - '150'
+      X-Ratelimit-Remaining:
+      - '149'
+      Etag:
+      - W/"15b56b947f79171a40b0535045c875f0"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Runtime:
+      - '0.044768'
+      Strict-Transport-Security:
+      - max-age=0
+      Cf-Cache-Status:
+      - DYNAMIC
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: UTF-8
+      string: '{"data":{"id":"65a839f6-babc-4b11-be04-d46d58067263","type":"unsubscription","created_at":"2026-08-26T14:49:58.740Z","email":"welcome@rw.com","sending_stream":"transactional","domain_name":"example.com","message_bounce_category":null,"message_category":null,"message_client_ip":null,"message_esp_response":null,"message_esp_server_type":null,"message_outgoing_ip":null,"message_recipient_mx_name":null,"message_sender_email":null,"message_subject":null,"message_created_at":null}}'
+  recorded_at: Wed, 26 Aug 2026 14:49:58 GMT
+recorded_with: VCR 6.4.0

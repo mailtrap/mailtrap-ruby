@@ -12,7 +12,6 @@ module Mailtrap
 
     self.response_class = InboundThread
 
-    # Inbound is scoped to the token's account, so no account_id is required.
     # @param client [Mailtrap::Client] The client instance
     def initialize(client = Mailtrap::Client.new)
       @client = client

@@ -7,7 +7,7 @@ module Mailtrap
   class SandboxAttachmentsAPI
     include BaseAPI
 
-    attr_reader :account_id, :inbox_id, :sandbox_message_id, :client
+    attr_reader :inbox_id, :sandbox_message_id
 
     self.response_class = SandboxAttachment
 

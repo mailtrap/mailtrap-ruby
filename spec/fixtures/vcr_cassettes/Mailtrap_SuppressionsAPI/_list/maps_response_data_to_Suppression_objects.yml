@@ -1,0 +1,75 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://mailtrap.io/api/accounts/1111111/suppressions
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - mailtrap-ruby (https://github.com/mailtrap/mailtrap-ruby)
+      Host:
+      - mailtrap.io
+      Authorization:
+      - Bearer <BEARER_TOKEN>
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 26 Aug 2026 14:44:51 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - cloudflare
+      Vary:
+      - Accept
+      - Accept-Encoding
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Mailtrap-Version:
+      - v2
+      X-Ratelimit-Limit:
+      - '150'
+      X-Ratelimit-Remaining:
+      - '149'
+      Etag:
+      - W/"f58b7f57bd0a5d82558e48f07c2d2080"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Runtime:
+      - '0.519590'
+      Strict-Transport-Security:
+      - max-age=0
+      Cf-Cache-Status:
+      - DYNAMIC
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"id":"c25f9252-abd0-4e61-b665-e2b26831cd88","type":"manual import","created_at":"2026-08-26T14:41:40.000Z","email":"welcome@rw.com","sending_stream":"transactional","domain_name":"example.com","message_bounce_category":null,"message_category":null,"message_client_ip":null,"message_esp_response":null,"message_esp_server_type":null,"message_outgoing_ip":null,"message_recipient_mx_name":null,"message_sender_email":null,"message_subject":null,"message_created_at":null},{"id":"1f7e1ccd-59c7-4a87-8b42-dae3e11a479b","type":"manual
+        import","created_at":"2025-12-24T08:44:21.000Z","email":"welcome@rw.com","sending_stream":"any","domain_name":null,"message_bounce_category":null,"message_category":null,"message_client_ip":null,"message_esp_response":null,"message_esp_server_type":null,"message_outgoing_ip":null,"message_recipient_mx_name":null,"message_sender_email":null,"message_subject":null,"message_created_at":null}]'
+  recorded_at: Wed, 26 Aug 2026 14:44:51 GMT
+recorded_with: VCR 6.4.0

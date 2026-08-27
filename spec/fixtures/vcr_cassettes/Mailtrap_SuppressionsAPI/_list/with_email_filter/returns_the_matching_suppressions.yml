@@ -1,0 +1,77 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://mailtrap.io/api/accounts/1111111/suppressions?email=recipient@example.com
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - mailtrap-ruby (https://github.com/mailtrap/mailtrap-ruby)
+      Host:
+      - mailtrap.io
+      Authorization:
+      - Bearer <BEARER_TOKEN>
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 26 Aug 2026 14:41:40 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - cloudflare
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Vary:
+      - Accept
+      X-Mailtrap-Version:
+      - v2
+      X-Ratelimit-Limit:
+      - '150'
+      X-Ratelimit-Remaining:
+      - '149'
+      Etag:
+      - W/"2e5b6793c947117b934b5f3f58908444"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Runtime:
+      - '0.041244'
+      Strict-Transport-Security:
+      - max-age=0
+      Cf-Cache-Status:
+      - DYNAMIC
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"id":"1efc252c-1304-4162-a312-1cfd8087568f","type":"hard bounce","created_at":"2025-03-24T13:17:20.000Z","email":"welcome@rw.com","sending_stream":"transactional","domain_name":null,"message_bounce_category":"Bad
+        recipient","message_category":"Mass Email","message_client_ip":"192.0.2.1","message_esp_response":"Requested
+        action not taken: mailbox unavailable For explanation visit https://postmaster.mail.com/en/case?c=r1601&i=ip&v=45.158.83.1&r=1MzCtZ-1tAd8d3NEh-00rxa3","message_esp_server_type":"Other
+        Providers","message_outgoing_ip":"198.51.100.1","message_recipient_mx_name":"mx.example.com","message_sender_email":"sender@example.com","message_subject":"Test
+        subject","message_created_at":"2025-03-24T13:17:20Z"}]'
+  recorded_at: Wed, 26 Aug 2026 14:41:40 GMT
+recorded_with: VCR 6.4.0

@@ -179,6 +179,8 @@ Email API:
 - Sending Stats API – [`stats_api.rb`](examples/stats_api.rb)
 - Email Logs API – [`email_logs_api.rb`](examples/email_logs_api.rb)
 - Webhooks API – [`webhooks_api.rb`](examples/webhooks_api.rb)
+- Suppressions API – [`suppressions_api.rb`](examples/suppressions_api.rb)
+- Tracking Opt-outs API – [`tracking_opt_outs_api.rb`](examples/tracking_opt_outs_api.rb)
 
 Email Sandbox (Testing):
 
