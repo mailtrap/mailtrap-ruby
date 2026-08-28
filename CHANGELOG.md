@@ -1,3 +1,12 @@
+## [2.15.0] - 2026-08-28
+
+## What's Changed
+* Accept all sending domain update options by @mklocek in https://github.com/mailtrap/mailtrap-ruby/pull/126
+* Add tracking opt-outs and create-suppression endpoints by @mklocek in https://github.com/mailtrap/mailtrap-ruby/pull/127
+
+
+**Full Changelog**: https://github.com/mailtrap/mailtrap-ruby/compare/v2.14.0...v2.15.0
+
 ## [2.14.0] - 2026-08-14
 
 ## What's Changed
