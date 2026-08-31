@@ -1,3 +1,14 @@
+## [2.16.0] - 2026-08-31
+
+## What's Changed
+* MT-23076: support expires_at for api token create and reset by @oshchyhol in https://github.com/mailtrap/mailtrap-ruby/pull/122
+* MT-23762: redact api token values from VCR cassettes by @oshchyhol in https://github.com/mailtrap/mailtrap-ruby/pull/125
+
+## New Contributors
+* @oshchyhol made their first contribution in https://github.com/mailtrap/mailtrap-ruby/pull/122
+
+**Full Changelog**: https://github.com/mailtrap/mailtrap-ruby/compare/v2.15.0...v2.16.0
+
 ## [2.15.0] - 2026-08-28
 
 ## What's Changed
