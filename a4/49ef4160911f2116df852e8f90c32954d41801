@@ -1,0 +1,21 @@
+spec/mailtrap/suppressions_api_spec.rb
+  s_a416a2bbf03afd::t_82140aaa72f6e2 165-174,176,178-184,186-190
+lib/mailtrap/suppressions_api.rb
+  s_a416a2bbf03afd::t_82140aaa72f6e2 42,45-46
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "a449ef4160911f2116df852e8f90c32954d41801",
+  "prompts": {},
+  "sessions": {
+    "s_a416a2bbf03afd": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "73aab1cf-cfd1-42b8-b656-f26905d319ee",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Marcin Klocek <marcin.klocek@railsware.com>"
+    }
+  }
+}
