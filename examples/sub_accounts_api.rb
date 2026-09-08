@@ -11,3 +11,7 @@ sub_accounts.list
 # Create a new sub account
 sub_accounts.create(name: 'New Team Account')
 # => #<struct Mailtrap::SubAccount id=12347, name="New Team Account">
+
+# Delete a sub account
+sub_accounts.delete(12_347)
+# => nil
