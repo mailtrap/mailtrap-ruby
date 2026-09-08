@@ -54,4 +54,26 @@ RSpec.describe Mailtrap::SubAccountsAPI, :vcr do
       end
     end
   end
+
+  describe '#delete' do
+    subject(:delete) { sub_accounts_api.delete(sub_account_id) }
+
+    let(:sub_account_id) { 2_704_237 }
+
+    it 'returns nil on success' do
+      expect(delete).to be_nil
+    end
+
+    context 'when sub account does not exist' do
+      let(:sub_account_id) { -1 }
+
+      it 'raises not found error' do
+        expect { delete }.to raise_error do |error|
+          expect(error).to be_a(Mailtrap::Error)
+          expect(error.message).to include('Not Found')
+          expect(error.messages.any? { |msg| msg.include?('Not Found') }).to be true
+        end
+      end
+    end
+  end
 end

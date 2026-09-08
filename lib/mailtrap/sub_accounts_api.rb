@@ -40,6 +40,19 @@ module Mailtrap
       base_create(options)
     end
 
+    # Permanently deletes a sub account under the organization
+    #
+    # Requires sub account management permissions for the organization. The deletion is permanent
+    # and removes all data of the sub account. Deleting the last sub account also deletes the organization.
+    # A repeated call for the same sub account returns a 404 error.
+    # Rate limit: 10 requests per minute per organization.
+    # @param sub_account_id [Integer] The sub account ID
+    # @return nil
+    # @!macro api_errors
+    def delete(sub_account_id)
+      base_delete(sub_account_id)
+    end
+
     private
 
     def base_path
