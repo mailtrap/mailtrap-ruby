@@ -2,7 +2,6 @@
 
 module Mailtrap
   # Data Transfer Object for Template
-  # @see https://api-docs.mailtrap.io/docs/mailtrap-api-docs/templates
   # @attr_reader id [Integer] The template ID
   # @attr_reader uuid [String] The template UUID
   # @attr_reader name [String] The template name
@@ -26,7 +25,6 @@ module Mailtrap
   )
 
   # Response from listing templates (paginated)
-  # @see https://api-docs.mailtrap.io/docs/mailtrap-api-docs/templates
   # @attr_reader data [Array<Template>] Page of templates
   # @attr_reader pagination [Hash] Page-token pagination metadata
   #   (+token+, +prev_token+, +next_token+, +first_url+, +prev_url+, +current_url+, +next_url+)
