@@ -1,11 +1,8 @@
 # frozen_string_literal: true
 
 module Mailtrap
-  # Data Transfer Object for Email Template
-  #
-  # For field descriptions and response format, see the official API documentation:
-  # @see https://api-docs.mailtrap.io/docs/mailtrap-api-docs/9e5914d89c481-email-template
-  #
+  # Data Transfer Object for Template
+  # @see https://api-docs.mailtrap.io/docs/mailtrap-api-docs/templates
   # @attr_reader id [Integer] The template ID
   # @attr_reader uuid [String] The template UUID
   # @attr_reader name [String] The template name
@@ -15,8 +12,7 @@ module Mailtrap
   # @attr_reader body_text [String] The plain text content
   # @attr_reader created_at [String] The creation timestamp
   # @attr_reader updated_at [String] The last update timestamp
-  # @deprecated Use {Mailtrap::Template}
-  EmailTemplate = Struct.new(
+  Template = Struct.new(
     :id,
     :uuid,
     :name,
@@ -26,6 +22,17 @@ module Mailtrap
     :body_text,
     :created_at,
     :updated_at,
+    keyword_init: true
+  )
+
+  # Response from listing templates (paginated)
+  # @see https://api-docs.mailtrap.io/docs/mailtrap-api-docs/templates
+  # @attr_reader data [Array<Template>] Page of templates
+  # @attr_reader pagination [Hash] Page-token pagination metadata
+  #   (+token+, +prev_token+, +next_token+, +first_url+, +prev_url+, +current_url+, +next_url+)
+  TemplatesListResponse = Struct.new(
+    :data,
+    :pagination,
     keyword_init: true
   )
 end
