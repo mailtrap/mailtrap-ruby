@@ -1,0 +1,77 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://mailtrap.io/api/inbound/inboxes/3924/threads?search=acme
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - mailtrap-ruby (https://github.com/mailtrap/mailtrap-ruby)
+      Host:
+      - mailtrap.io
+      Authorization:
+      - Bearer <BEARER_TOKEN>
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 05 Oct 2026 14:16:04 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - cloudflare
+      Vary:
+      - Accept
+      - Accept-Encoding
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Mailtrap-Version:
+      - v2
+      X-Ratelimit-Limit:
+      - '150'
+      X-Ratelimit-Remaining:
+      - '149'
+      Etag:
+      - W/"3d12e6c75bfc709bc25cd3be5da815f4"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Runtime:
+      - '0.061806'
+      Strict-Transport-Security:
+      - max-age=63072000
+      Cf-Cache-Status:
+      - DYNAMIC
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"id":"1878219290603651072","subject":"Acme order 20261005141136","message_count":5,"size":9134,"first_message_at":"2026-10-05T14:11:38.019Z","last_received_at":"2026-10-05T14:11:49.776Z","last_sent_at":"2026-10-05T14:11:50.519Z","last_activity_at":"2026-10-05T14:11:50.519Z","last_message_id":"1878219303702581248","senders":["SDK
+        VCR customer <sdk-vcr-customer@sdk-smoke-tests.mailtrap.link>","support@sdk-smoke-tests.mailtrap.link","sdk-vcr-customer@sdk-smoke-tests.mailtrap.link"],"recipients":["support@sdk-smoke-tests.mailtrap.link","SDK
+        VCR customer <sdk-vcr-customer@sdk-smoke-tests.mailtrap.link>","forwarded@example.com"],"attachments":[]},{"id":"1878219291878346816","subject":"Acme
+        order 20261005141136","message_count":1,"size":2773,"first_message_at":"2026-10-05T14:11:39.234Z","last_received_at":null,"last_sent_at":"2026-10-05T14:11:39.234Z","last_activity_at":"2026-10-05T14:11:39.234Z","last_message_id":"1878219291869958208","senders":["support@sdk-smoke-tests.mailtrap.link"],"recipients":["forwarded@example.com"],"attachments":[]}],"total_count":2,"last_id":null}'
+  recorded_at: Mon, 05 Oct 2026 14:16:04 GMT
+recorded_with: VCR 6.4.0

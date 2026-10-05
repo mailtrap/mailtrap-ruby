@@ -8,8 +8,13 @@ RSpec.describe Mailtrap::InboundThreadMessage do
         direction: 'outbound',
         id: '1700000000000125',
         subject: 'Re: Question',
-        delivery_status: 'delivered',
-        delivered_at: '2026-01-15T10:31:00Z'
+        delivery:
+      )
+    end
+
+    let(:delivery) do
+      Mailtrap::InboundThreadMessageDelivery.new(
+        to: 'customer@example.com', status: 'delivered', delivered_at: '2026-01-15T10:31:00Z', bounced_at: nil
       )
     end
 
@@ -19,8 +24,7 @@ RSpec.describe Mailtrap::InboundThreadMessage do
         direction: 'outbound',
         id: '1700000000000125',
         subject: 'Re: Question',
-        delivery_status: 'delivered',
-        delivered_at: '2026-01-15T10:31:00Z'
+        delivery: have_attributes(to: 'customer@example.com', status: 'delivered')
       )
     end
   end

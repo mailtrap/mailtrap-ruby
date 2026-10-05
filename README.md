@@ -195,6 +195,7 @@ Inbound Email:
 - Inbound Inboxes API – [`inbound_inboxes_api.rb`](examples/inbound_inboxes_api.rb)
 - Inbound Messages API (list, get, delete, reply, reply_all, forward) – [`inbound_messages_api.rb`](examples/inbound_messages_api.rb)
 - Inbound Threads API – [`inbound_threads_api.rb`](examples/inbound_threads_api.rb)
+- Inbound Forward Rules API – [`inbound_forward_rules_api.rb`](examples/inbound_forward_rules_api.rb)
 
 Contact management:
 

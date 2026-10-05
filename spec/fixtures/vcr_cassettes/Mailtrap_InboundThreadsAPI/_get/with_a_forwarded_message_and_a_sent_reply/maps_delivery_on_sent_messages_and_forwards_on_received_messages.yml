@@ -1,0 +1,92 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://mailtrap.io/api/inbound/inboxes/3924/threads/1878219290603651072
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - mailtrap-ruby (https://github.com/mailtrap/mailtrap-ruby)
+      Host:
+      - mailtrap.io
+      Authorization:
+      - Bearer <BEARER_TOKEN>
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 05 Oct 2026 14:16:04 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - cloudflare
+      Vary:
+      - Accept
+      - Accept-Encoding
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Mailtrap-Version:
+      - v2
+      X-Ratelimit-Limit:
+      - '150'
+      X-Ratelimit-Remaining:
+      - '148'
+      Etag:
+      - W/"0694dfb9ffbff7444f0e38eaf0e68fb9"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Runtime:
+      - '0.120062'
+      Strict-Transport-Security:
+      - max-age=63072000
+      Cf-Cache-Status:
+      - DYNAMIC
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"1878219290603651072","subject":"Acme order 20261005141136","message_count":5,"size":9134,"first_message_at":"2026-10-05T14:11:38.019Z","last_received_at":"2026-10-05T14:11:49.776Z","last_sent_at":"2026-10-05T14:11:50.519Z","last_activity_at":"2026-10-05T14:11:50.519Z","last_message_id":"1878219303702581248","senders":["SDK
+        VCR customer <sdk-vcr-customer@sdk-smoke-tests.mailtrap.link>","support@sdk-smoke-tests.mailtrap.link","sdk-vcr-customer@sdk-smoke-tests.mailtrap.link"],"recipients":["support@sdk-smoke-tests.mailtrap.link","SDK
+        VCR customer <sdk-vcr-customer@sdk-smoke-tests.mailtrap.link>","forwarded@example.com"],"attachments":[],"messages":[{"visibility_status":"available","direction":"outbound","id":"adfb6f30-c0c6-11f1-0000-f19ecc788a53","message_group_id":null,"subject":"Acme
+        order 20261005141136","rfc_message_id":"<adfb6f30-c0c6-11f1-0000-f19ecc788a53@sdk-smoke-tests.mailtrap.link>","in_reply_to":null,"references":[],"from":"SDK
+        VCR customer <sdk-vcr-customer@sdk-smoke-tests.mailtrap.link>","to":["support@sdk-smoke-tests.mailtrap.link"],"cc":[],"bcc":[],"reply_to":"","created_at":"2026-10-05T14:11:38.019Z","email_size":340,"text_body":"Hello,
+        I have a question about my order.","html_body":null,"attachments":[],"delivery_status":"delivered","delivered_at":"2026-10-05T14:11:38.108Z","bounced_at":null,"delivery":{"to":"support@sdk-smoke-tests.mailtrap.link","status":"delivered","delivered_at":"2026-10-05T14:11:38.108Z","bounced_at":null}},{"visibility_status":"available","direction":"inbound","id":"1878219290673225792","message_group_id":null,"subject":"Acme
+        order 20261005141136","rfc_message_id":"<adfb6f30-c0c6-11f1-0000-f19ecc788a53@sdk-smoke-tests.mailtrap.link>","in_reply_to":null,"references":[],"from":"SDK
+        VCR customer <sdk-vcr-customer@sdk-smoke-tests.mailtrap.link>","to":["support@sdk-smoke-tests.mailtrap.link"],"cc":[],"bcc":[],"reply_to":"","created_at":"2026-10-05T14:11:38.092Z","email_size":2592,"text_body":"Hello,
+        I have a question about my order.\r\n","html_body":null,"attachments":[],"forwards":[{"rule_id":1,"rule_name":"SDK
+        VCR copy everything","destination":"welcome@rw.com","status":"forwarded","reason":null,"message_id":"aeb4fb30-c0c6-11f1-0040-f1fba91def36"}]},{"visibility_status":"available","direction":"outbound","id":"b4f5a0d0-c0c6-11f1-0000-f19ecc788a53","message_group_id":null,"subject":"Re:
+        Acme order 20261005141136","rfc_message_id":"<b4f5a0d0-c0c6-11f1-0000-f19ecc788a53@sdk-smoke-tests.mailtrap.link>","in_reply_to":"<adfb6f30-c0c6-11f1-0000-f19ecc788a53@sdk-smoke-tests.mailtrap.link>","references":["<adfb6f30-c0c6-11f1-0000-f19ecc788a53@sdk-smoke-tests.mailtrap.link>"],"from":"support@sdk-smoke-tests.mailtrap.link","to":["SDK
+        VCR customer <sdk-vcr-customer@sdk-smoke-tests.mailtrap.link>"],"cc":[],"bcc":[],"reply_to":"","created_at":"2026-10-05T14:11:49.724Z","email_size":490,"text_body":"Thanks,
+        we are on it.","html_body":null,"attachments":[],"delivery_status":"delivered","delivered_at":"2026-10-05T14:11:49.792Z","bounced_at":null,"delivery":{"to":"sdk-vcr-customer@sdk-smoke-tests.mailtrap.link","status":"delivered","delivered_at":"2026-10-05T14:11:49.792Z","bounced_at":null}},{"visibility_status":"available","direction":"inbound","id":"1878219302923739200","message_group_id":null,"subject":"Re:
+        Acme order 20261005141136","rfc_message_id":"<b4f5a0d0-c0c6-11f1-0000-f19ecc788a53@sdk-smoke-tests.mailtrap.link>","in_reply_to":"<adfb6f30-c0c6-11f1-0000-f19ecc788a53@sdk-smoke-tests.mailtrap.link>","references":["<adfb6f30-c0c6-11f1-0000-f19ecc788a53@sdk-smoke-tests.mailtrap.link>"],"from":"support@sdk-smoke-tests.mailtrap.link","to":["SDK
+        VCR customer <sdk-vcr-customer@sdk-smoke-tests.mailtrap.link>"],"cc":[],"bcc":[],"reply_to":"","created_at":"2026-10-05T14:11:49.776Z","email_size":2791,"text_body":"Thanks,
+        we are on it.\r\n","html_body":null,"attachments":[],"forwards":[{"rule_id":1,"rule_name":"SDK
+        VCR copy everything","destination":"welcome@rw.com","status":"forwarded","reason":null,"message_id":"b56ec870-c0c6-11f1-0000-f173219567be"}]},{"visibility_status":"available","direction":"outbound","id":"b56ec870-c0c6-11f1-0000-f173219567be","message_group_id":null,"subject":"Re:
+        Acme order 20261005141136","rfc_message_id":"<b56ec870-c0c6-11f1-0000-f173219567be@sdk-smoke-tests.mailtrap.link>","in_reply_to":"<adfb6f30-c0c6-11f1-0000-f19ecc788a53@sdk-smoke-tests.mailtrap.link>","references":["<adfb6f30-c0c6-11f1-0000-f19ecc788a53@sdk-smoke-tests.mailtrap.link>"],"from":"sdk-vcr-customer@sdk-smoke-tests.mailtrap.link","to":["forwarded@example.com"],"cc":[],"bcc":[],"reply_to":"","created_at":"2026-10-05T14:11:50.519Z","email_size":2921,"text_body":"Thanks,
+        we are on it.\r\n","html_body":null,"attachments":[],"delivery_status":"delivered","delivered_at":"2026-10-05T14:11:51.733Z","bounced_at":null,"delivery":{"to":"forwarded@example.com","status":"delivered","delivered_at":"2026-10-05T14:11:51.733Z","bounced_at":null}}]}'
+  recorded_at: Mon, 05 Oct 2026 14:16:04 GMT
+recorded_with: VCR 6.4.0

@@ -15,6 +15,9 @@ messages.list(inbox_id, last_id: page.last_id) if page.last_id
 message = messages.get(inbox_id, page.data.first.id)
 # => #<struct Mailtrap::InboundMessage id="1700000000000123", ...>
 
+message.forwards
+# => [#<struct Mailtrap::InboundForwardOutcome rule_id=7, destination="team@example.com", status="forwarded", ...>]
+
 # Reply to the original sender
 messages.reply(inbox_id, message.id, text: 'Thanks for reaching out.')
 # => #<struct Mailtrap::InboundSendResult message_ids=["1a2b3c4d-..."]>

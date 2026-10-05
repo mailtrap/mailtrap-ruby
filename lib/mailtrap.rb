@@ -34,6 +34,7 @@ require_relative 'mailtrap/inbound_folders_api'
 require_relative 'mailtrap/inbound_inboxes_api'
 require_relative 'mailtrap/inbound_messages_api'
 require_relative 'mailtrap/inbound_threads_api'
+require_relative 'mailtrap/inbound_forward_rules_api'
 
 module Mailtrap
   # @!macro api_errors

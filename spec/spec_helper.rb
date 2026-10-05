@@ -29,6 +29,11 @@ VCR.configure do |config|
     interaction.response.body.gsub!(/"username":"[^"]*"/, '"username": "railsware"')
     interaction.response.body.gsub!(/"password":"[^"]*"/, '"password": "xxxxxxxx"')
     interaction.response.body.gsub!(/"email":"[^"]*"/, '"email": "welcome@rw.com"')
+    interaction.response.body.gsub!(/"destination":"[^"]*"/, '"destination":"welcome@rw.com"')
+    interaction.response.body.gsub!(
+      /"(raw_message_url|download_url)":"[^"]*X-Amz-[^"]*"/,
+      '"\1":"https://example.com/signed-url"'
+    )
     interaction.response.body.gsub!(
       /"forward_from_email_address":"[^"]*"/,
       '"forward_from_email_address": "railsware@forward.mailtrap.info"'

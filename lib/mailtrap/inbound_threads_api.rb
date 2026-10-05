@@ -4,6 +4,8 @@ require_relative 'base_api'
 require_relative 'inbound_thread'
 require_relative 'inbound_thread_message'
 require_relative 'inbound_attachment'
+require_relative 'inbound_forward_outcome'
+require_relative 'inbound_thread_message_delivery'
 require_relative 'inbound_threads_list_response'
 
 module Mailtrap
@@ -20,10 +22,11 @@ module Mailtrap
     # Lists threads in an inbox (cursor-paginated)
     # @param inbox_id [Integer] The inbox ID
     # @param last_id [String, nil] Cursor from the previous response's +last_id+ for the next page
+    # @param search [String, nil] Search query
     # @return [InboundThreadsListResponse] data, total_count, and last_id
     # @!macro api_errors
-    def list(inbox_id, last_id: nil)
-      query_params = last_id ? { last_id: } : {}
+    def list(inbox_id, last_id: nil, search: nil)
+      query_params = { last_id:, search: }.compact
       response = client.get(threads_path(inbox_id), query_params)
 
       InboundThreadsListResponse.new(
@@ -69,6 +72,8 @@ module Mailtrap
       Array(messages).map do |message|
         attrs = message.slice(*InboundThreadMessage.members)
         attrs[:attachments] = build_attachments(attrs[:attachments]) if attrs[:attachments]
+        attrs[:delivery] = build_delivery(attrs[:delivery]) if attrs[:delivery]
+        attrs[:forwards] = build_forwards(attrs[:forwards]) if attrs[:forwards]
 
         InboundThreadMessage.new(**attrs)
       end
@@ -77,6 +82,16 @@ module Mailtrap
     def build_attachments(attachments)
       Array(attachments).map do |attachment|
         InboundAttachment.new(**attachment.slice(*InboundAttachment.members))
+      end
+    end
+
+    def build_delivery(delivery)
+      InboundThreadMessageDelivery.new(**delivery.slice(*InboundThreadMessageDelivery.members))
+    end
+
+    def build_forwards(forwards)
+      Array(forwards).map do |forward|
+        InboundForwardOutcome.new(**forward.slice(*InboundForwardOutcome.members))
       end
     end
   end

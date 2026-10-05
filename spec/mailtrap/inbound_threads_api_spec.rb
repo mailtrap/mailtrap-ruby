@@ -23,6 +23,17 @@ RSpec.describe Mailtrap::InboundThreadsAPI, :vcr do
         expect(list).to be_a(Mailtrap::InboundThreadsListResponse)
       end
     end
+
+    context 'with search' do
+      subject(:list) { threads_api.list(inbox_id, search: 'acme') }
+
+      let(:inbox_id) { 3924 }
+
+      it 'passes search and returns the matching threads' do
+        expect(list).to be_a(Mailtrap::InboundThreadsListResponse)
+        expect(list.data).to all(be_a(Mailtrap::InboundThread))
+      end
+    end
   end
 
   describe '#get' do
@@ -32,6 +43,18 @@ RSpec.describe Mailtrap::InboundThreadsAPI, :vcr do
       expect(get).to be_a(Mailtrap::InboundThread)
       expect(get).to have_attributes(id: thread_id)
       expect(get.messages).to all(be_a(Mailtrap::InboundThreadMessage))
+    end
+
+    context 'with a forwarded message and a sent reply' do
+      let(:inbox_id) { 3924 }
+      let(:thread_id) { '1878219290603651072' }
+
+      it 'maps delivery on sent messages and forwards on received messages' do
+        sent, received = get.messages.partition { |m| m.direction == 'outbound' }
+
+        expect(sent.map(&:delivery)).to all(be_a(Mailtrap::InboundThreadMessageDelivery))
+        expect(received.flat_map(&:forwards)).to include(be_a(Mailtrap::InboundForwardOutcome))
+      end
     end
 
     context 'when the thread does not exist' do
