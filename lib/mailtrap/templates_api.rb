@@ -13,7 +13,9 @@ module Mailtrap
 
     self.response_class = Template
 
-    # Lists templates for the account, one page at a time
+    # Lists templates for the account, one page at a time. Unlike {EmailTemplatesAPI#list}, it does
+    # not return every template: pass +pagination[:next_token]+ with the same +per_page+ to get the
+    # next page.
     # @param per_page [Integer, nil] Number of templates per page (max 100, default 50)
     # @param token [Integer, nil] Page number to retrieve (page-token pagination, default 1)
     # @return [TemplatesListResponse] The page of templates and pagination metadata

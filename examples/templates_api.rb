@@ -29,7 +29,7 @@ list.pagination
 # => {:token=>1, :prev_token=>nil, :next_token=>2, ...}
 
 # Follow the pagination to the next page
-templates.list(token: list.pagination[:next_token]) if list.pagination[:next_token]
+templates.list(per_page: 50, token: list.pagination[:next_token]) if list.pagination[:next_token]
 # => #<struct Mailtrap::TemplatesListResponse data=[...], pagination={...}>
 
 # Get a single Template

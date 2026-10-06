@@ -15,7 +15,6 @@ module Mailtrap
   # @attr_reader body_text [String] The plain text content
   # @attr_reader created_at [String] The creation timestamp
   # @attr_reader updated_at [String] The last update timestamp
-  # @deprecated Use {Mailtrap::Template}
   EmailTemplate = Struct.new(
     :id,
     :uuid,

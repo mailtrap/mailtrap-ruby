@@ -4,7 +4,6 @@ require_relative 'base_api'
 require_relative 'email_template'
 
 module Mailtrap
-  # @deprecated Use {Mailtrap::TemplatesAPI}
   class EmailTemplatesAPI
     include BaseAPI
 
