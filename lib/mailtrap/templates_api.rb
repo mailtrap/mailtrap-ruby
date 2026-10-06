@@ -4,6 +4,8 @@ require_relative 'base_api'
 require_relative 'template'
 
 module Mailtrap
+  # @note Experimental: the +/api/templates+ endpoints may change their request and response
+  #   shapes before general availability.
   class TemplatesAPI
     include BaseAPI
 
@@ -39,9 +41,9 @@ module Mailtrap
 
     # Creates a new template
     # @param [Hash] options The parameters to create
-    # @option options [String] :name The template name
-    # @option options [String] :subject The email subject
-    # @option options [String] :category The template category
+    # @option options [String] :name The template name (required)
+    # @option options [String] :subject The email subject (required)
+    # @option options [String] :category The template category (required)
     # @option options [String, nil] :body_html The HTML content. Default: nil.
     # @option options [String, nil] :body_text The plain text content. Default: nil.
     # @return [Template] Created template object

@@ -55,12 +55,19 @@ RSpec.describe Mailtrap::TemplatesAPI do
       expect(response.data).to eq([])
     end
 
-    it 'raises error when the token is out of range' do
-      stub_request(:get, base_url)
-        .with(query: { token: '99' })
-        .to_return(status: 422, body: { 'errors' => 'token is out of range' }.to_json, headers: json_headers)
+    it 'returns an empty page when the token is past the last page' do
+      stub = stub_request(:get, base_url)
+             .with(query: { token: '3' })
+             .to_return(
+               status: 200,
+               body: { 'data' => [], 'pagination' => { 'token' => 3, 'prev_token' => 2, 'next_token' => nil } }.to_json,
+               headers: json_headers
+             )
 
-      expect { templates_api.list(token: 99) }.to raise_error(Mailtrap::Error, /token is out of range/)
+      response = templates_api.list(token: 3)
+      expect(stub).to have_been_requested
+      expect(response.data).to eq([])
+      expect(response.pagination).to eq(token: 3, prev_token: 2, next_token: nil)
     end
 
     it 'raises error when api key is incorrect' do

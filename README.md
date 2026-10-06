@@ -211,7 +211,7 @@ General:
 - API Tokens API – [`api_tokens_api.rb`](examples/api_tokens_api.rb)
 - Billing API – [`billing_api.rb`](examples/billing_api.rb)
 - Permissions API – [`permissions_api.rb`](examples/permissions_api.rb)
-- Templates API (paginated) – [`templates_api.rb`](examples/templates_api.rb)
+- Templates API (experimental) – [`templates_api.rb`](examples/templates_api.rb)
 - Email Templates API (deprecated) – [`email_templates_api.rb`](examples/email_templates_api.rb)
 - Action Mailer – [`action_mailer.rb`](examples/action_mailer.rb)
 - Verifying webhook signatures – [`webhooks_signature_verification.ru`](examples/webhooks_signature_verification.ru)
