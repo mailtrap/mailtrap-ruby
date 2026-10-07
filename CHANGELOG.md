@@ -1,3 +1,13 @@
+## [2.17.0] - 2026-10-07
+
+## What's Changed
+* Add TemplatesAPI for the paginated /api/templates endpoints by @izikaj in https://github.com/mailtrap/mailtrap-ruby/pull/133
+
+## New Contributors
+* @izikaj made their first contribution in https://github.com/mailtrap/mailtrap-ruby/pull/133
+
+**Full Changelog**: https://github.com/mailtrap/mailtrap-ruby/compare/v2.16.0...v2.17.0
+
 ## [2.16.0] - 2026-08-31
 
 ## What's Changed
