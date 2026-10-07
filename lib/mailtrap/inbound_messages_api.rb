@@ -3,6 +3,7 @@
 require_relative 'base_api'
 require_relative 'inbound_message'
 require_relative 'inbound_attachment'
+require_relative 'inbound_forward_outcome'
 require_relative 'inbound_messages_list_response'
 require_relative 'inbound_send_result'
 
@@ -100,6 +101,7 @@ module Mailtrap
     def build_message(hash)
       attrs = hash.slice(*InboundMessage.members)
       attrs[:attachments] = build_attachments(attrs[:attachments]) if attrs[:attachments]
+      attrs[:forwards] = build_forwards(attrs[:forwards]) if attrs[:forwards]
 
       InboundMessage.new(**attrs)
     end
@@ -107,6 +109,12 @@ module Mailtrap
     def build_attachments(attachments)
       Array(attachments).map do |attachment|
         InboundAttachment.new(**attachment.slice(*InboundAttachment.members))
+      end
+    end
+
+    def build_forwards(forwards)
+      Array(forwards).map do |forward|
+        InboundForwardOutcome.new(**forward.slice(*InboundForwardOutcome.members))
       end
     end
   end

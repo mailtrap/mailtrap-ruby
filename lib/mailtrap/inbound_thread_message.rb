@@ -2,8 +2,7 @@
 
 module Mailtrap
   # Data Transfer Object for a message inside an inbound thread.
-  # Only +visibility_status+ and +direction+ are always present; +placeholder+ entries omit the rest,
-  # and the delivery lifecycle fields are only set on available outbound messages.
+  # Only +visibility_status+ and +direction+ are always present; +placeholder+ entries omit the rest.
   # @see https://docs.mailtrap.io/developers/inbound
   # @attr_reader visibility_status [String] available or placeholder
   # @attr_reader direction [String] inbound or outbound
@@ -23,9 +22,8 @@ module Mailtrap
   # @attr_reader text_body [String, nil] Decoded text body
   # @attr_reader html_body [String, nil] Decoded HTML body
   # @attr_reader attachments [Array<InboundAttachment>, nil] The message attachments
-  # @attr_reader delivery_status [String, nil] Delivery status (outbound messages only)
-  # @attr_reader delivered_at [String, nil] Delivery timestamp (outbound messages only)
-  # @attr_reader bounced_at [String, nil] Bounce timestamp (outbound messages only)
+  # @attr_reader delivery [InboundThreadMessageDelivery, nil] Delivery outcome (outbound messages only)
+  # @attr_reader forwards [Array<InboundForwardOutcome>, nil] Forward outcomes (inbound messages only)
   InboundThreadMessage = Struct.new(
     :visibility_status,
     :direction,
@@ -45,9 +43,8 @@ module Mailtrap
     :text_body,
     :html_body,
     :attachments,
-    :delivery_status,
-    :delivered_at,
-    :bounced_at,
+    :delivery,
+    :forwards,
     keyword_init: true
   )
 end

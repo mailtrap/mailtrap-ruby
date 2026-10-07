@@ -11,9 +11,26 @@ page = threads.list(inbox_id)
 # Fetch the next page with the returned cursor
 threads.list(inbox_id, last_id: page.last_id) if page.last_id
 
+results = threads.list(inbox_id, search: 'acme')
+# => #<struct Mailtrap::InboundThreadsListResponse data=[...], total_count=1, last_id=nil>
+
+threads.list(inbox_id, search: 'acme', last_id: results.last_id) if results.last_id
+
 # Get a single thread with its messages embedded (oldest first)
-threads.get(inbox_id, page.data.first.id)
+thread = threads.get(inbox_id, page.data.first.id)
 # => #<struct Mailtrap::InboundThread id="1700000000000124", messages=[...]>
+
+thread.messages.each do |message|
+  next unless message.visibility_status == 'available'
+
+  if message.direction == 'outbound'
+    message.delivery
+    # => #<struct Mailtrap::InboundThreadMessageDelivery to="customer@example.com", status="delivered", ...>
+  else
+    message.forwards
+    # => [#<struct Mailtrap::InboundForwardOutcome rule_id=7, destination="team@example.com", status="forwarded", ...>]
+  end
+end
 
 # Delete a thread
 threads.delete(inbox_id, page.data.first.id)

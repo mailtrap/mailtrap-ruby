@@ -25,6 +25,7 @@ module Mailtrap
   # @attr_reader raw_message_expires_at [String, nil] When the raw message URL expires (only when fetched by ID)
   # @attr_reader html_body [String, nil] Decoded HTML body (only when fetched by ID)
   # @attr_reader text_body [String, nil] Decoded text body (only when fetched by ID)
+  # @attr_reader forwards [Array<InboundForwardOutcome>] The forward outcomes
   # rubocop:disable Lint/StructNewOverride -- +size+ is an API field that shadows Struct#size
   InboundMessage = Struct.new(
     :id,
@@ -49,6 +50,7 @@ module Mailtrap
     :raw_message_expires_at,
     :html_body,
     :text_body,
+    :forwards,
     keyword_init: true
   )
   # rubocop:enable Lint/StructNewOverride

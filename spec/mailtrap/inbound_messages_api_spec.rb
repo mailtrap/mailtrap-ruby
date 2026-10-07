@@ -34,6 +34,15 @@ RSpec.describe Mailtrap::InboundMessagesAPI, :vcr do
       expect(get.attachments).to all(be_a(Mailtrap::InboundAttachment))
     end
 
+    context 'with forwards' do
+      let(:inbox_id) { 3924 }
+      let(:message_id) { '1878219290673225792' }
+
+      it 'maps forwards to InboundForwardOutcome objects' do
+        expect(get.forwards).to include(be_a(Mailtrap::InboundForwardOutcome))
+      end
+    end
+
     context 'when the message does not exist' do
       let(:message_id) { 'does-not-exist' }
 

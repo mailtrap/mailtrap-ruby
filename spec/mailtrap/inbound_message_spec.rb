@@ -13,7 +13,8 @@ RSpec.describe Mailtrap::InboundMessage do
         references: ['<orig@example.com>'],
         received_at: '2026-01-15T10:30:00Z',
         thread_id: '1700000000000124',
-        attachments: []
+        attachments: [],
+        forwards: []
       )
     end
 
@@ -28,7 +29,8 @@ RSpec.describe Mailtrap::InboundMessage do
         references: ['<orig@example.com>'],
         received_at: '2026-01-15T10:30:00Z',
         thread_id: '1700000000000124',
-        attachments: []
+        attachments: [],
+        forwards: []
       )
     end
   end
