@@ -1,3 +1,11 @@
+## [2.18.0] - 2026-10-07
+
+## What's Changed
+* Add inbound forward rules, forward outcomes, thread delivery and search by @mklocek in https://github.com/mailtrap/mailtrap-ruby/pull/132
+
+
+**Full Changelog**: https://github.com/mailtrap/mailtrap-ruby/compare/v2.17.0...v2.18.0
+
 ## [2.17.0] - 2026-10-07
 
 ## What's Changed
