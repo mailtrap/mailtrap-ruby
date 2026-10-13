@@ -6,19 +6,19 @@ RSpec.describe Mailtrap::MarketingStatsAPI do
   let(:base_url) { 'https://mailtrap.io/api/marketing/stats' }
   let(:stats_attributes) do
     {
-      'delivery_count' => 1200,
-      'delivery_rate' => 0.96,
-      'bounce_count' => 50,
-      'bounce_rate' => 0.04,
-      'open_count' => 600,
-      'open_rate' => 0.5,
-      'click_count' => 240,
-      'click_rate' => 0.2,
-      'spam_count' => 3,
-      'spam_rate' => 0.0025,
-      'unsubscription_count' => 12,
-      'unsubscription_rate' => 0.01,
-      'sent_count' => 1250
+      delivery_count: 1200,
+      delivery_rate: 0.96,
+      bounce_count: 50,
+      bounce_rate: 0.04,
+      open_count: 600,
+      open_rate: 0.5,
+      click_count: 240,
+      click_rate: 0.2,
+      spam_count: 3,
+      spam_rate: 0.0025,
+      unsubscription_count: 12,
+      unsubscription_rate: 0.01,
+      sent_count: 1250
     }
   end
 
@@ -34,7 +34,7 @@ RSpec.describe Mailtrap::MarketingStatsAPI do
              )
 
       expect(stats).to be_a(Mailtrap::MarketingStats)
-      expect(stats).to match_struct(stats_attributes.transform_keys(&:to_sym))
+      expect(stats).to match_struct(stats_attributes)
       expect(stub).to have_been_requested
     end
 
@@ -64,6 +64,19 @@ RSpec.describe Mailtrap::MarketingStatsAPI do
         expect(stats).to have_attributes(delivery_count: 1200, sent_count: 1250)
         expect(stub).to have_been_requested
       end
+    end
+
+    it 'sends DateTime and Time arguments as plain dates' do
+      stub = stub_request(:get, "#{base_url}?start_date=2026-05-01&end_date=2026-05-31")
+             .to_return(
+               status: 200,
+               body: { 'data' => stats_attributes }.to_json,
+               headers: { 'Content-Type' => 'application/json' }
+             )
+
+      marketing_stats_api.get(start_date: DateTime.new(2026, 5, 1, 13, 45), end_date: Time.new(2026, 5, 31, 23, 59))
+
+      expect(stub).to have_been_requested
     end
 
     it 'raises ArgumentError for an invalid date' do
