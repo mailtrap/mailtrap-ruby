@@ -7,7 +7,7 @@ marketing_stats = Mailtrap::MarketingStatsAPI.new(client)
 today = Date.today
 
 # Get aggregated Email Marketing stats (campaigns and automations) for the last 30 days
-marketing_stats.get(start_date: today - 30, end_date: today)
+marketing_stats.get(start_date: today - 29, end_date: today)
 # => #<struct Mailtrap::MarketingStats
 #      delivery_count=1200, delivery_rate=0.96,
 #      bounce_count=50, bounce_rate=0.04,
@@ -19,7 +19,7 @@ marketing_stats.get(start_date: today - 30, end_date: today)
 
 # Narrow to campaigns only (or automations only), for some sending domains and email service providers
 marketing_stats.get(
-  start_date: today - 30,
+  start_date: today - 29,
   end_date: today,
   sending_domain_ids: [3938, 3939],
   sources: ['campaigns'],

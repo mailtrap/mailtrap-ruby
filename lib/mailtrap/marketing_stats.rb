@@ -8,17 +8,17 @@ module Mailtrap
   # when nothing matched.
   # @see https://docs.mailtrap.io/developers/email-marketing/marketing-stats
   # @attr_reader delivery_count [Integer] Number of delivered messages
-  # @attr_reader delivery_rate [Float] Share of sent messages that were delivered (0–1)
+  # @attr_reader delivery_rate [Float, Integer] Share of sent messages that were delivered (0–1)
   # @attr_reader bounce_count [Integer] Number of bounced messages
-  # @attr_reader bounce_rate [Float] Share of sent messages that bounced (0–1)
+  # @attr_reader bounce_rate [Float, Integer] Share of sent messages that bounced (0–1)
   # @attr_reader open_count [Integer] Number of opened messages
-  # @attr_reader open_rate [Float] Share of delivered messages that were opened (0–1)
+  # @attr_reader open_rate [Float, Integer] Share of delivered messages that were opened (0–1)
   # @attr_reader click_count [Integer] Number of clicked messages
-  # @attr_reader click_rate [Float] Share of delivered messages that were clicked (0–1)
+  # @attr_reader click_rate [Float, Integer] Share of delivered messages that were clicked (0–1)
   # @attr_reader spam_count [Integer] Number of spam complaints
-  # @attr_reader spam_rate [Float] Share of delivered messages marked as spam (0–1)
+  # @attr_reader spam_rate [Float, Integer] Share of delivered messages marked as spam (0–1)
   # @attr_reader unsubscription_count [Integer] Number of unsubscriptions
-  # @attr_reader unsubscription_rate [Float] Share of delivered messages that unsubscribed (0–1)
+  # @attr_reader unsubscription_rate [Float, Integer] Share of delivered messages that unsubscribed (0–1)
   # @attr_reader sent_count [Integer] Number of sent messages (delivered plus bounced)
   MarketingStats = Struct.new(
     :delivery_count,

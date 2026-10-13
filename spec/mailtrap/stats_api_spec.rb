@@ -199,6 +199,12 @@ RSpec.describe Mailtrap::StatsAPI, :vcr do
       expect(stats).to be_a(Mailtrap::SendingStats)
     end
 
+    it 'sends DateTime objects as plain dates',
+       vcr: { cassette_name: 'Mailtrap_StatsAPI/_get/returns_aggregated_sending_stats' } do
+      stats = stats_api.get(start_date: DateTime.new(2026, 1, 1, 13, 45), end_date: DateTime.new(2026, 1, 31, 23, 59))
+      expect(stats).to be_a(Mailtrap::SendingStats)
+    end
+
     it 'raises ArgumentError for invalid start_date' do
       expect { stats_api.get(start_date: 'not-a-date', end_date: end_date) }
         .to raise_error(ArgumentError, /Invalid date: "not-a-date"/)

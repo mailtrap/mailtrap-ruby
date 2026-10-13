@@ -4,16 +4,15 @@ require 'date'
 
 module Mailtrap
   # Query parameters of the sending stats and Email Marketing stats endpoints: the period as
-  # +YYYY-MM-DD+ dates and every array filter as a repeated +key[]+ parameter.
+  # +YYYY-MM-DD+ dates and every array filter as a repeated +key[]+ parameter. A +nil+ or empty
+  # filter is left out.
   module StatsQueryParams
     private
 
     def build_query_params(start_date, end_date, filters)
-      {
-        start_date: normalize_date(start_date),
-        end_date: normalize_date(end_date),
-        **filters.compact.transform_keys { |filter_key| "#{filter_key}[]" }
-      }
+      params = { start_date: normalize_date(start_date), end_date: normalize_date(end_date) }
+      filters.each { |filter_key, values| params["#{filter_key}[]"] = values unless Array(values).empty? }
+      params
     end
 
     def normalize_date(value)
