@@ -1,0 +1,23 @@
+spec/mailtrap/marketing_stats_api_spec.rb
+  s_e68226d6902161::t_c537c610381cdf 69-81
+  s_e68226d6902161::t_ce76a9f767b798 9-21,37
+lib/mailtrap/stats_query_params.rb
+  s_e68226d6902161::t_90b972ab1873f1 21
+  s_e68226d6902161::t_1bc2f7ad3059c9 12-16,22,24,26
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "e56424d96ea50ebfd93b82f229265af4b90ab4a1",
+  "prompts": {},
+  "sessions": {
+    "s_e68226d6902161": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "29f30a03-dc23-4560-937f-2bf58d2e46b4",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Maciej Walusiak <maciej.walusiak@railsware.com>"
+    }
+  }
+}
