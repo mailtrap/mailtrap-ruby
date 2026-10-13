@@ -1,0 +1,25 @@
+lib/mailtrap/sub_accounts_api.rb
+  s_84c25ad63d8c76::t_185c1d2e6c81ec 43-55
+spec/fixtures/vcr_cassettes/Mailtrap_SubAccountsAPI/_delete/returns_nil_on_success.yml
+  s_84c25ad63d8c76::t_5b99eab1084cb1 1-65
+spec/fixtures/vcr_cassettes/Mailtrap_SubAccountsAPI/_delete/when_sub_account_does_not_exist/raises_not_found_error.yml
+  s_84c25ad63d8c76::t_d9237434362724 1-71
+spec/mailtrap/sub_accounts_api_spec.rb
+  s_84c25ad63d8c76::t_23cb0e73c4f7ac 57-78
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "085ed2e18003fd917ff85732530164eafc714038",
+  "prompts": {},
+  "sessions": {
+    "s_84c25ad63d8c76": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1fbe9c4a-85b3-45c0-922e-f12aed1c5674",
+        "model": "claude-fable-5-1"
+      },
+      "human_author": "Alex Shchyhol <oleksandr.shchyhol@railsware.com>"
+    }
+  }
+}

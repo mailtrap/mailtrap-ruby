@@ -1,0 +1,95 @@
+lib/mailtrap/inbound_thread_message_delivery.rb
+  s_ea02f2a89792e1::t_897cee955f2fe7 1-17
+spec/mailtrap/inbound_forward_rules_api_spec.rb
+  s_ea02f2a89792e1::t_0a54b11d42937c 3-6,10-50,54-69,72-102
+  s_ea02f2a89792e1::t_e82bf8c2f3365d 51
+  s_ea02f2a89792e1::t_41f6cd85f3a822 8
+  s_ea02f2a89792e1::t_216a0e9f665834 7
+  s_ea02f2a89792e1::t_86ae12fd3e9664 70
+  s_ea02f2a89792e1::t_f0cc3d6859f500 1-2
+  s_ea02f2a89792e1::t_eb8c42cf652840 9
+  s_ea02f2a89792e1::t_a4f9eeaff4e58d 52-53
+  s_ea02f2a89792e1::t_490082833dcdec 71
+  s_ea02f2a89792e1::t_0b4babe6917ba9 103-105
+lib/mailtrap/inbound_forward_rule.rb
+  s_ea02f2a89792e1::t_897cee955f2fe7 1-21
+README.md
+  s_ea02f2a89792e1::t_897cee955f2fe7 198
+spec/fixtures/vcr_cassettes/Mailtrap_InboundMessagesAPI/_get/with_forwards/maps_forwards_to_InboundForwardOutcome_objects.yml
+  s_ea02f2a89792e1::t_c50d5e8a1fc749 75
+  s_ea02f2a89792e1::t_7dd1b6f9476283 1-74,76-78
+examples/inbound_threads_api.rb
+  s_ea02f2a89792e1::t_897cee955f2fe7 14-18,20,23-33
+  s_ea02f2a89792e1::t_182a36217eac2b 34
+lib/mailtrap/inbound_forward_outcome.rb
+  s_ea02f2a89792e1::t_897cee955f2fe7 1-21
+lib/mailtrap/inbound_message.rb
+  s_ea02f2a89792e1::t_897cee955f2fe7 28,53
+spec/fixtures/vcr_cassettes/Mailtrap_InboundThreadsAPI/_get/with_a_forwarded_message_and_a_sent_reply/maps_delivery_on_sent_messages_and_forwards_on_received_messages.yml
+  s_ea02f2a89792e1::t_c50d5e8a1fc749 74-90
+  s_ea02f2a89792e1::t_03b85c470b2e94 1-73,91-92
+lib/mailtrap/inbound_messages_api.rb
+  s_ea02f2a89792e1::t_897cee955f2fe7 6,104,114-117
+  s_ea02f2a89792e1::t_1de72319eba4d2 118-119
+examples/inbound_messages_api.rb
+  s_ea02f2a89792e1::t_897cee955f2fe7 18-20
+examples/inbound_forward_rules_api.rb
+  s_ea02f2a89792e1::t_897cee955f2fe7 1-34
+lib/mailtrap/inbound_forward_rule_condition.rb
+  s_ea02f2a89792e1::t_897cee955f2fe7 1-17
+spec/mailtrap/inbound_messages_api_spec.rb
+  s_ea02f2a89792e1::t_df755e5793eb0e 37-43
+  s_ea02f2a89792e1::t_70c2a3525f35df 44-45
+lib/mailtrap/inbound_threads_api.rb
+  s_ea02f2a89792e1::t_897cee955f2fe7 7-8,25,28-29,75-76,87-94,96
+  s_ea02f2a89792e1::t_8fbc912708e422 95
+spec/spec_helper.rb
+  s_ea02f2a89792e1::t_512d6d5f9af4ea 33-36
+  s_ea02f2a89792e1::t_06dbb194424d15 32
+lib/mailtrap/inbound_forward_rules_api.rb
+  s_ea02f2a89792e1::t_897cee955f2fe7 1-106
+spec/mailtrap/inbound_threads_api_spec.rb
+  s_ea02f2a89792e1::t_27f9c7fecf36d6 51,58-59
+  s_ea02f2a89792e1::t_85ed25cf6e153a 26-29,32-36
+  s_ea02f2a89792e1::t_e023bf02b8db8b 48-50,52-57
+  s_ea02f2a89792e1::t_b4cec75dc2e397 30-31
+lib/mailtrap/inbound_thread_message.rb
+  s_ea02f2a89792e1::t_897cee955f2fe7 5,25-26,46-47
+lib/mailtrap/inbound_forward_rule_destination.rb
+  s_ea02f2a89792e1::t_897cee955f2fe7 1-11
+spec/fixtures/vcr_cassettes/Mailtrap_InboundThreadsAPI/_list/with_search/passes_search_and_returns_the_matching_threads.yml
+  s_ea02f2a89792e1::t_c50d5e8a1fc749 74-75
+  s_ea02f2a89792e1::t_cbae028ec131de 1-73,76-77
+lib/mailtrap.rb
+  s_ea02f2a89792e1::t_efb0cc12a6b72f 37
+spec/mailtrap/inbound_forward_outcome_spec.rb
+  s_ea02f2a89792e1::t_9c723533ca4f69 1-27
+spec/mailtrap/inbound_forward_rule_condition_spec.rb
+  s_ea02f2a89792e1::t_ea2435fd512a66 1-18
+spec/mailtrap/inbound_forward_rule_destination_spec.rb
+  s_ea02f2a89792e1::t_2344affb4feccb 1-11
+spec/mailtrap/inbound_forward_rule_spec.rb
+  s_ea02f2a89792e1::t_ebe99e6187facb 1-34
+spec/mailtrap/inbound_message_spec.rb
+  s_ea02f2a89792e1::t_af21bbb53d5d48 16-17,32-33
+spec/mailtrap/inbound_thread_message_delivery_spec.rb
+  s_ea02f2a89792e1::t_061e779b3ac89f 1-23
+spec/mailtrap/inbound_thread_message_spec.rb
+  s_ea02f2a89792e1::t_0d9b5c69aa1064 11-17,27
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "78ff1b799c86e27e184e2d37690ee08697127623",
+  "prompts": {},
+  "sessions": {
+    "s_ea02f2a89792e1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "87ceb478-60a1-47fe-84f9-1458c02d71bf",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Marcin Klocek <marcin.klocek@railsware.com>"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+spec/spec_helper.rb
+  s_57819de84bfd24::t_01f7e0a68a7a2f 37
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "73c92b92c7b6259bf991c03a47af41d8f591ea07",
+  "prompts": {},
+  "sessions": {
+    "s_57819de84bfd24": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "eefdd6d6-eff2-46ad-a396-c5b193b65242",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Alex Shchyhol <oleksandr.shchyhol@railsware.com>"
+    }
+  }
+}
