@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 
-require 'date'
 require_relative 'base_api'
+require_relative 'stats_query_params'
 require_relative 'sending_stats'
 require_relative 'sending_stat_group'
 
 module Mailtrap
   class StatsAPI
     include BaseAPI
+    include StatsQueryParams
 
-    ARRAY_FILTERS = %i[sending_domain_ids sending_streams categories email_service_providers].freeze
     GROUP_KEYS = {
       'domains' => :sending_domain_id,
       'categories' => :category,
@@ -110,38 +110,6 @@ module Mailtrap
           stats: build_entity(item[:stats], SendingStats)
         )
       end
-    end
-
-    def build_query_params(start_date, end_date, filters)
-      params = { start_date: normalize_date(start_date), end_date: normalize_date(end_date) }
-
-      ARRAY_FILTERS.each do |filter_key|
-        values = filters[filter_key]
-        params["#{filter_key}[]"] = values if values
-      end
-
-      params
-    end
-
-    def normalize_date(value)
-      case value
-      when Date
-        value.iso8601
-      when Time
-        value.strftime('%F')
-      when String
-        unless /\A\d{4}-\d{2}-\d{2}\z/.match?(value)
-          raise ArgumentError,
-                "Invalid date: #{value.inspect}. Expected a Date, Time, or String in YYYY-MM-DD format."
-        end
-
-        Date.iso8601(value).iso8601
-      else
-        raise ArgumentError,
-              "Invalid date: #{value.inspect}. Expected a Date, Time, or String in YYYY-MM-DD format."
-      end
-    rescue Date::Error
-      raise ArgumentError, "Invalid date: #{value.inspect}. Expected a Date, Time, or String in YYYY-MM-DD format."
     end
 
     def base_path
