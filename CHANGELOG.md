@@ -1,3 +1,12 @@
+## [2.19.0] - 2026-10-29
+
+## What's Changed
+* Add MarketingStatsAPI for GET /api/marketing/stats by @Rabsztok in https://github.com/mailtrap/mailtrap-ruby/pull/136
+* Fix CI on Ubuntu 26.04 by testing Ruby series, not exact patches by @Rabsztok in https://github.com/mailtrap/mailtrap-ruby/pull/137
+
+
+**Full Changelog**: https://github.com/mailtrap/mailtrap-ruby/compare/v2.18.0...v2.19.0
+
 ## [2.18.0] - 2026-10-07
 
 ## What's Changed
