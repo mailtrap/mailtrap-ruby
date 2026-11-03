@@ -1,0 +1,42 @@
+lib/mailtrap.rb
+  s_4fd427650fec21::t_102d4d16026a9f 26,31
+spec/mailtrap/sending_domains_api_spec.rb
+  s_4fd427650fec21::t_102d4d16026a9f 1-15
+lib/mailtrap/inbox.rb
+  s_4fd427650fec21::t_102d4d16026a9f 1-9
+lib/mailtrap/sending_domains_api.rb
+  s_4fd427650fec21::t_102d4d16026a9f 1-15
+spec/mailtrap/inboxes_api_spec.rb
+  s_4fd427650fec21::t_102d4d16026a9f 1-15
+README.md
+  s_4fd427650fec21::t_102d4d16026a9f 220-239
+spec/mailtrap/domain_spec.rb
+  s_4fd427650fec21::t_102d4d16026a9f 29-38
+lib/mailtrap/base_api.rb
+  s_4fd427650fec21::t_102d4d16026a9f 13-18
+lib/mailtrap/sending_domain.rb
+  s_4fd427650fec21::t_102d4d16026a9f 1-9
+spec/spec_helper.rb
+  s_4fd427650fec21::t_102d4d16026a9f 75-82
+spec/mailtrap/sandbox_spec.rb
+  s_4fd427650fec21::t_102d4d16026a9f 75-84
+lib/mailtrap/inboxes_api.rb
+  s_4fd427650fec21::t_cc4050122872b7 3-4,8-12
+  s_4fd427650fec21::t_102d4d16026a9f 1-2,5-7,13-15
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "41033d39b5100fd8fcdf3d8e6f306b1833a9aaab",
+  "prompts": {},
+  "sessions": {
+    "s_4fd427650fec21": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "47a4107e-b7c9-47cf-a551-cf3224f28cd6",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Maciej Walusiak <maciej.walusiak@railsware.com>"
+    }
+  }
+}
