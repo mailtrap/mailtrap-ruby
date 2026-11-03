@@ -72,4 +72,14 @@ RSpec.describe Mailtrap::Sandbox do
       )
     end
   end
+
+  describe 'deprecated Mailtrap::Inbox alias', :ruby_deprecation_warnings do
+    it 'is Sandbox and warns when deprecation warnings are enabled' do
+      constant = nil
+
+      expect { constant = Mailtrap::Inbox }
+        .to output(/constant Mailtrap::Inbox is deprecated/).to_stderr
+      expect(constant).to be(described_class)
+    end
+  end
 end

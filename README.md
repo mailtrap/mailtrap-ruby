@@ -217,6 +217,26 @@ General:
 - Action Mailer – [`action_mailer.rb`](examples/action_mailer.rb)
 - Verifying webhook signatures – [`webhooks_signature_verification.ru`](examples/webhooks_signature_verification.ru)
 
+## Renamed APIs
+
+Email Sandbox inboxes are now called sandboxes, and sending domains are now called
+domains. The old names still work and call the same API endpoints, but they print a
+deprecation warning once per process and will be removed in the next major release.
+
+| Deprecated | Use instead |
+|------------|-------------|
+| `Mailtrap::InboxesAPI` | `Mailtrap::SandboxesAPI` |
+| `Mailtrap::Inbox` | `Mailtrap::Sandbox` |
+| `Mailtrap::SendingDomainsAPI` | `Mailtrap::DomainsAPI` |
+| `Mailtrap::SendingDomain` | `Mailtrap::Domain` |
+| `Mailtrap::Client.new(inbox_id:)` and the ActionMailer `inbox_id` setting | `sandbox_id` |
+| `#inbox_id` on `Client`, `SandboxMessagesAPI` and `SandboxAttachmentsAPI` | `#sandbox_id` |
+
+`Mailtrap::Inbox` and `Mailtrap::SendingDomain` warn only when Ruby's deprecation
+warnings are enabled (for example, `ruby -W:deprecated`). Attributes and filters that
+mirror API fields keep their names, such as `SandboxMessage#inbox_id`, `Project#inboxes`
+and the `sending_domain_ids:` stats filter.
+
 ## Migration guide v1 → v2
 
 Change `Mailtrap::Sending::Client` to `Mailtrap::Client`.

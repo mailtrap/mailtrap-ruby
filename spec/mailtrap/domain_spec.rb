@@ -26,4 +26,14 @@ RSpec.describe Mailtrap::Domain do
       )
     end
   end
+
+  describe 'deprecated Mailtrap::SendingDomain alias', :ruby_deprecation_warnings do
+    it 'is Domain and warns when deprecation warnings are enabled' do
+      constant = nil
+
+      expect { constant = Mailtrap::SendingDomain }
+        .to output(/constant Mailtrap::SendingDomain is deprecated/).to_stderr
+      expect(constant).to be(described_class)
+    end
+  end
 end
