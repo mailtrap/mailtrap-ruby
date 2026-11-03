@@ -59,7 +59,7 @@ RSpec.describe Mailtrap::SandboxAttachmentsAPI, :vcr do
       inbox_id = nil
 
       expect { inbox_id = sandbox_attachments_api.inbox_id }
-        .to output(/SandboxAttachmentsAPI#inbox_id is deprecated .*; use Mailtrap::SandboxAttachmentsAPI#sandbox_id/)
+        .to output(/attachments_api_spec.rb:\d+: .*SandboxAttachmentsAPI#inbox_id is deprecated .*#sandbox_id/)
         .to_stderr
       expect(inbox_id).to eq(sandbox_id)
     end

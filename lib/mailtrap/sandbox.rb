@@ -13,7 +13,7 @@ module Mailtrap
   # @attr_reader email_username_enabled [Boolean] Whether the email username is enabled
   # @attr_reader sent_messages_count [Integer] The count of sent messages
   # @attr_reader forwarded_messages_count [Integer] The count of forwarded messages
-  # @attr_reader used [Integer] The used sandbox size in MB
+  # @attr_reader used [Boolean] Whether the sandbox has been used
   # @attr_reader forward_from_email_address [String] The forwarding email address
   # @attr_reader project_id [Integer] The associated project ID
   # @attr_reader domain [String] The sandbox domain

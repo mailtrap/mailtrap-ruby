@@ -11,6 +11,7 @@ RSpec.describe Mailtrap::SandboxesAPI, :vcr do
 
     it 'maps response data to Sandbox objects' do
       expect(list).to all(be_a(Mailtrap::Sandbox))
+      expect(list).to contain_exactly(have_attributes(id: 3_715_083, name: 'My Inbox'))
     end
 
     context 'when api key is incorrect' do

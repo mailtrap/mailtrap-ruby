@@ -10,6 +10,7 @@ RSpec.describe Mailtrap::DomainsAPI, :vcr do
     subject(:list) { domains_api.list }
 
     it 'maps response data to Domain objects' do
+      expect(list).not_to be_empty
       expect(list).to all(be_a(Mailtrap::Domain))
     end
 

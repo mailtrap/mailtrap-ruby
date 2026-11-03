@@ -432,7 +432,7 @@ RSpec.describe Mailtrap::SandboxMessagesAPI, :vcr do
       inbox_id = nil
 
       expect { inbox_id = sandbox_messages_api.inbox_id }
-        .to output(/SandboxMessagesAPI#inbox_id is deprecated .*; use Mailtrap::SandboxMessagesAPI#sandbox_id/)
+        .to output(/messages_api_spec.rb:\d+: .*SandboxMessagesAPI#inbox_id is deprecated .*#sandbox_id/)
         .to_stderr
       expect(inbox_id).to eq(sandbox_id)
     end

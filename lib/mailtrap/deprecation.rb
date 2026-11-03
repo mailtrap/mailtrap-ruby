@@ -13,7 +13,6 @@ module Mailtrap
     # @param old_name [String] The deprecated name
     # @param new_name [String] The name to use instead
     def self.warn(old_name, new_name)
-      return if WARNED.include?(old_name)
       return unless MUTEX.synchronize { WARNED.add?(old_name) }
 
       Kernel.warn(

@@ -221,7 +221,7 @@ General:
 
 Email Sandbox inboxes are now called sandboxes, and sending domains are now called
 domains. The old names still work and call the same API endpoints, but they print a
-deprecation warning once per process and will be removed in the next major release.
+deprecation warning and will be removed in the next major release.
 
 | Deprecated | Use instead |
 |------------|-------------|
@@ -232,8 +232,9 @@ deprecation warning once per process and will be removed in the next major relea
 | `Mailtrap::Client.new(inbox_id:)` and the ActionMailer `inbox_id` setting | `sandbox_id` |
 | `#inbox_id` on `Client`, `SandboxMessagesAPI` and `SandboxAttachmentsAPI` | `#sandbox_id` |
 
-`Mailtrap::Inbox` and `Mailtrap::SendingDomain` warn only when Ruby's deprecation
-warnings are enabled (for example, `ruby -W:deprecated`). Attributes and filters that
+The other old names warn once per process. `Mailtrap::Inbox` and `Mailtrap::SendingDomain`
+use Ruby's `deprecate_constant`, so they warn only when Ruby's deprecation warnings are
+enabled (for example, `ruby -W:deprecated`), and they can warn more than once. Attributes and filters that
 mirror API fields keep their names, such as `SandboxMessage#inbox_id`, `Project#inboxes`
 and the `sending_domain_ids:` stats filter.
 
