@@ -427,6 +427,14 @@ RSpec.describe Mailtrap::Client do
       expect(client.sandbox_id).to eq(12)
     end
 
+    it 'accepts the same value given as a string in sandbox_id' do
+      client = nil
+
+      expect { client = described_class.new(api_key:, sandbox: true, sandbox_id: '12', inbox_id: 12) }
+        .to output.to_stderr
+      expect(client.sandbox_id).to eq('12')
+    end
+
     it 'raises when it differs from sandbox_id' do
       expect { described_class.new(api_key:, sandbox: true, sandbox_id: 12, inbox_id: 13) }
         .to raise_error(ArgumentError, 'sandbox_id and inbox_id differ; pass only sandbox_id')

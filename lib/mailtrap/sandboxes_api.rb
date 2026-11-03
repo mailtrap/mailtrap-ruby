@@ -28,6 +28,7 @@ module Mailtrap
     # Creates a new sandbox
     # @param [Hash] options The parameters to create
     # @option options [String] :name The sandbox name
+    # @option options [Integer] :project_id The project ID. Required.
     # @return [Sandbox] Created sandbox object
     # @!macro api_errors
     # @raise [ArgumentError] If invalid options are provided
@@ -40,7 +41,7 @@ module Mailtrap
 
     # Deletes a sandbox
     # @param sandbox_id [Integer] The sandbox identifier
-    # @return nil
+    # @return [Hash, nil] Deleted sandbox data, or nil when the API returns no content
     # @!macro api_errors
     def delete(sandbox_id)
       base_delete(sandbox_id)

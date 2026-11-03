@@ -250,7 +250,8 @@ module Mailtrap
     private
 
     def resolve_sandbox_id(sandbox_id, inbox_id)
-      return inbox_id if sandbox_id.nil? || sandbox_id == inbox_id
+      return inbox_id if sandbox_id.nil?
+      return sandbox_id if sandbox_id.to_s == inbox_id.to_s
 
       raise ArgumentError, 'sandbox_id and inbox_id differ; pass only sandbox_id'
     end

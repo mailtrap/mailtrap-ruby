@@ -25,7 +25,7 @@ module Mailtrap
   # @attr_reader last_message_sent_at [String, nil] The timestamp of the last sent message
   # @attr_reader smtp_ports [Array<Integer>] The list of SMTP ports
   # @attr_reader pop3_ports [Array<Integer>] The list of POP3 ports
-  # @attr_reader max_message_size [Integer] The maximum message size in MB
+  # @attr_reader max_message_size [Integer] The maximum message size in bytes
   # @attr_reader permissions [Hash] List of permissions
   Sandbox = Struct.new(
     :id,
