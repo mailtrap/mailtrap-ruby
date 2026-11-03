@@ -20,7 +20,7 @@ module Mailtrap
     # Get aggregated sending stats
     # @param start_date [String, Date, Time] Start date for the stats period (required)
     # @param end_date [String, Date, Time] End date for the stats period (required)
-    # @param sending_domain_ids [Array<Integer>] Filter by sending domain IDs
+    # @param sending_domain_ids [Array<Integer>] Filter by domain IDs
     # @param sending_streams [Array<String>] Filter by sending streams
     # @param categories [Array<String>] Filter by categories
     # @param email_service_providers [Array<String>] Filter by email service providers
@@ -39,7 +39,7 @@ module Mailtrap
     # Get sending stats grouped by domain
     # @param start_date [String, Date, Time] Start date for the stats period (required)
     # @param end_date [String, Date, Time] End date for the stats period (required)
-    # @param sending_domain_ids [Array<Integer>] Filter by sending domain IDs
+    # @param sending_domain_ids [Array<Integer>] Filter by domain IDs
     # @param sending_streams [Array<String>] Filter by sending streams
     # @param categories [Array<String>] Filter by categories
     # @param email_service_providers [Array<String>] Filter by email service providers
@@ -54,7 +54,7 @@ module Mailtrap
     # Get sending stats grouped by category
     # @param start_date [String, Date, Time] Start date for the stats period (required)
     # @param end_date [String, Date, Time] End date for the stats period (required)
-    # @param sending_domain_ids [Array<Integer>] Filter by sending domain IDs
+    # @param sending_domain_ids [Array<Integer>] Filter by domain IDs
     # @param sending_streams [Array<String>] Filter by sending streams
     # @param categories [Array<String>] Filter by categories
     # @param email_service_providers [Array<String>] Filter by email service providers
@@ -69,7 +69,7 @@ module Mailtrap
     # Get sending stats grouped by email service provider
     # @param start_date [String, Date, Time] Start date for the stats period (required)
     # @param end_date [String, Date, Time] End date for the stats period (required)
-    # @param sending_domain_ids [Array<Integer>] Filter by sending domain IDs
+    # @param sending_domain_ids [Array<Integer>] Filter by domain IDs
     # @param sending_streams [Array<String>] Filter by sending streams
     # @param categories [Array<String>] Filter by categories
     # @param email_service_providers [Array<String>] Filter by email service providers
@@ -84,7 +84,7 @@ module Mailtrap
     # Get sending stats grouped by date
     # @param start_date [String, Date, Time] Start date for the stats period (required)
     # @param end_date [String, Date, Time] End date for the stats period (required)
-    # @param sending_domain_ids [Array<Integer>] Filter by sending domain IDs
+    # @param sending_domain_ids [Array<Integer>] Filter by domain IDs
     # @param sending_streams [Array<String>] Filter by sending streams
     # @param categories [Array<String>] Filter by categories
     # @param email_service_providers [Array<String>] Filter by email service providers

@@ -70,6 +70,8 @@ RSpec.configure do |config|
   config.expect_with :rspec do |c|
     c.syntax = :expect
   end
+
+  config.before { Mailtrap::Deprecation::WARNED.clear }
 end
 
 RSpec::Matchers.define :match_struct do |expected_attributes|

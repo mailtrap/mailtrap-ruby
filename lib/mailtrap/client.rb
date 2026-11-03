@@ -3,6 +3,7 @@
 require 'json'
 require 'net/http'
 require 'uri'
+require_relative 'deprecation'
 
 module Mailtrap
   class Client
@@ -12,7 +13,7 @@ module Mailtrap
     GENERAL_API_HOST = 'mailtrap.io'
     API_PORT = 443
 
-    attr_reader :api_key, :api_host, :general_api_host, :api_port, :bulk, :sandbox, :inbox_id
+    attr_reader :api_key, :api_host, :general_api_host, :api_port, :bulk, :sandbox, :sandbox_id
 
     # Initializes a new Mailtrap::Client instance.
     #
@@ -25,8 +26,9 @@ module Mailtrap
     #   If enabled, it is incompatible with `sandbox: true`.
     # @param [Boolean] sandbox Whether to use the Mailtrap sandbox API. Default: false.
     #   If enabled, it is incompatible with `bulk: true`.
-    # @param [Integer] inbox_id The sandbox inbox ID to send to. Required if sandbox API is used.
-    # @raise [ArgumentError] If api_key or api_port is nil, or if sandbox is true but inbox_id is nil,
+    # @param [Integer] sandbox_id The sandbox ID to send to. Required if sandbox API is used.
+    # @param [Integer] inbox_id Deprecated: use `sandbox_id` instead.
+    # @raise [ArgumentError] If api_key or api_port is nil, or if sandbox is true but sandbox_id is nil,
     #   or if incompatible options are provided.
     def initialize( # rubocop:disable Metrics/ParameterLists
       api_key: ENV.fetch('MAILTRAP_API_KEY'),
@@ -35,9 +37,14 @@ module Mailtrap
       api_port: API_PORT,
       bulk: false,
       sandbox: false,
+      sandbox_id: nil,
       inbox_id: nil
     )
-      validate_args!(api_key, api_port, bulk, sandbox, inbox_id)
+      unless inbox_id.nil?
+        Deprecation.warn('Mailtrap::Client.new(inbox_id:)', 'Mailtrap::Client.new(sandbox_id:)')
+        sandbox_id = resolve_sandbox_id(sandbox_id, inbox_id)
+      end
+      validate_args!(api_key, api_port, bulk, sandbox, sandbox_id)
 
       api_host ||= select_api_host(bulk:, sandbox:)
 
@@ -47,8 +54,15 @@ module Mailtrap
       @api_port = api_port
       @bulk = bulk
       @sandbox = sandbox
-      @inbox_id = inbox_id
+      @sandbox_id = sandbox_id
       @http_clients = {}
+    end
+
+    # @deprecated Use {#sandbox_id} instead.
+    # @return [Integer, nil] The sandbox ID
+    def inbox_id
+      Deprecation.warn('Mailtrap::Client#inbox_id', 'Mailtrap::Client#sandbox_id')
+      sandbox_id
     end
 
     # Sends a batch of emails.
@@ -235,11 +249,17 @@ module Mailtrap
 
     private
 
-    def validate_args!(api_key, api_port, bulk, sandbox, inbox_id)
+    def resolve_sandbox_id(sandbox_id, inbox_id)
+      return inbox_id if sandbox_id.nil? || sandbox_id == inbox_id
+
+      raise ArgumentError, 'sandbox_id and inbox_id differ; pass only sandbox_id'
+    end
+
+    def validate_args!(api_key, api_port, bulk, sandbox, sandbox_id)
       raise ArgumentError, 'api_key is required' if api_key.nil?
       raise ArgumentError, 'api_port is required' if api_port.nil?
       raise ArgumentError, 'bulk stream is not applicable for sandbox API' if bulk && sandbox
-      raise ArgumentError, 'inbox_id is required for sandbox API' if sandbox && inbox_id.nil?
+      raise ArgumentError, 'sandbox_id is required for sandbox API' if sandbox && sandbox_id.nil?
     end
 
     def select_api_host(bulk:, sandbox:)
@@ -344,11 +364,11 @@ module Mailtrap
     end
 
     def send_path
-      "/api/send#{"/#{inbox_id}" if sandbox}"
+      "/api/send#{"/#{sandbox_id}" if sandbox}"
     end
 
     def batch_request_path
-      "/api/batch#{"/#{inbox_id}" if sandbox}"
+      "/api/batch#{"/#{sandbox_id}" if sandbox}"
     end
   end
 end

@@ -1,16 +1,16 @@
 # frozen_string_literal: true
 
-RSpec.describe Mailtrap::SendingDomainsAPI, :vcr do
-  subject(:sending_domains_api) { described_class.new(account_id, client) }
+RSpec.describe Mailtrap::DomainsAPI, :vcr do
+  subject(:domains_api) { described_class.new(account_id, client) }
 
   let(:account_id) { ENV.fetch('MAILTRAP_ACCOUNT_ID', 1_111_111) }
   let(:client) { Mailtrap::Client.new(api_key: ENV.fetch('MAILTRAP_API_KEY', 'local-api-key')) }
 
   describe '#list' do
-    subject(:list) { sending_domains_api.list }
+    subject(:list) { domains_api.list }
 
-    it 'maps response data to SendingDomain objects' do
-      expect(list).to all(be_a(Mailtrap::SendingDomain))
+    it 'maps response data to Domain objects' do
+      expect(list).to all(be_a(Mailtrap::Domain))
     end
 
     context 'when api key is incorrect' do
@@ -27,12 +27,12 @@ RSpec.describe Mailtrap::SendingDomainsAPI, :vcr do
   end
 
   describe '#get' do
-    subject(:get) { sending_domains_api.get(sending_domain_id) }
+    subject(:get) { domains_api.get(domain_id) }
 
-    let(:sending_domain_id) { 617_882 }
+    let(:domain_id) { 617_882 }
 
-    it 'maps response data to SendingDomain object' do
-      expect(get).to be_a(Mailtrap::SendingDomain)
+    it 'maps response data to Domain object' do
+      expect(get).to be_a(Mailtrap::Domain)
 
       expect(get).to match_struct(
         id: 617_882,
@@ -69,8 +69,8 @@ RSpec.describe Mailtrap::SendingDomainsAPI, :vcr do
       )
     end
 
-    context 'when sending domain does not exist' do
-      let(:sending_domain_id) { -1 }
+    context 'when domain does not exist' do
+      let(:domain_id) { -1 }
 
       it 'raises not found error' do
         expect { get }.to raise_error do |error|
@@ -83,7 +83,7 @@ RSpec.describe Mailtrap::SendingDomainsAPI, :vcr do
   end
 
   describe '#create' do
-    subject(:create) { sending_domains_api.create(**request) }
+    subject(:create) { domains_api.create(**request) }
 
     let(:request) do
       {
@@ -91,8 +91,8 @@ RSpec.describe Mailtrap::SendingDomainsAPI, :vcr do
       }
     end
 
-    it 'maps response data to sending domain object' do
-      expect(create).to be_a(Mailtrap::SendingDomain)
+    it 'maps response data to domain object' do
+      expect(create).to be_a(Mailtrap::Domain)
 
       expect(create).to match_struct(
         id: 943_758,
@@ -147,17 +147,17 @@ RSpec.describe Mailtrap::SendingDomainsAPI, :vcr do
 
   describe '#send_setup_instructions' do
     subject(:send_setup_instructions) do
-      sending_domains_api.send_setup_instructions(sending_domain_id, email: 'example@railsware.com')
+      domains_api.send_setup_instructions(domain_id, email: 'example@railsware.com')
     end
 
-    let(:sending_domain_id) { 943_758 }
+    let(:domain_id) { 943_758 }
 
     it 'returns nil' do
       expect(send_setup_instructions).to be_nil
     end
 
-    context 'when sending domain does not exist' do
-      let(:sending_domain_id) { -1 }
+    context 'when domain does not exist' do
+      let(:domain_id) { -1 }
 
       it 'raises not found error' do
         expect { send_setup_instructions }.to raise_error do |error|
@@ -170,16 +170,16 @@ RSpec.describe Mailtrap::SendingDomainsAPI, :vcr do
   end
 
   describe '#delete' do
-    subject(:delete) { sending_domains_api.delete(sending_domain_id) }
+    subject(:delete) { domains_api.delete(domain_id) }
 
-    let(:sending_domain_id) { 943_758 }
+    let(:domain_id) { 943_758 }
 
-    it 'returns deleted sending domain data' do
+    it 'returns deleted domain data' do
       expect(delete).to be_nil
     end
 
-    context 'when sending domain does not exist' do
-      let(:sending_domain_id) { -1 }
+    context 'when domain does not exist' do
+      let(:domain_id) { -1 }
 
       it 'raises not found error' do
         expect { delete }.to raise_error do |error|
@@ -192,9 +192,9 @@ RSpec.describe Mailtrap::SendingDomainsAPI, :vcr do
   end
 
   describe '#update' do
-    subject(:update) { sending_domains_api.update(sending_domain_id, **request) }
+    subject(:update) { domains_api.update(domain_id, **request) }
 
-    let(:sending_domain_id) { 61_802 }
+    let(:domain_id) { 61_802 }
 
     let(:request) do
       {
@@ -206,10 +206,10 @@ RSpec.describe Mailtrap::SendingDomainsAPI, :vcr do
       }
     end
 
-    it 'maps response data to SendingDomain object' do
-      expect(update).to be_a(Mailtrap::SendingDomain)
+    it 'maps response data to Domain object' do
+      expect(update).to be_a(Mailtrap::Domain)
       expect(update).to have_attributes(
-        id: sending_domain_id,
+        id: domain_id,
         open_tracking_enabled: true,
         click_tracking_enabled: true,
         tracking_opt_out_enabled: true,
@@ -226,8 +226,8 @@ RSpec.describe Mailtrap::SendingDomainsAPI, :vcr do
       end
     end
 
-    context 'when sending domain does not exist' do
-      let(:sending_domain_id) { -1 }
+    context 'when domain does not exist' do
+      let(:domain_id) { -1 }
 
       it 'raises not found error' do
         expect { update }.to raise_error do |error|

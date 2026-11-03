@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Mailtrap
-  # Data Transfer Object for Sending Domain Company Info
+  # Data Transfer Object for Domain Company Info
   # @see https://docs.mailtrap.io/developers/management/sending-domains
   # @attr_reader name [String, nil] Company or individual name
   # @attr_reader address [String, nil] Street address

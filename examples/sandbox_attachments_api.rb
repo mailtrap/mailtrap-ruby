@@ -1,10 +1,10 @@
 require 'mailtrap'
 
 account_id = 3229
-inbox_id = 12
+sandbox_id = 12
 message_id = 123
 client = Mailtrap::Client.new(api_key: 'your-api-key')
-sandbox_attachments = Mailtrap::SandboxAttachmentsAPI.new(account_id, inbox_id, message_id, client)
+sandbox_attachments = Mailtrap::SandboxAttachmentsAPI.new(account_id, sandbox_id, message_id, client)
 
 # List all attachments for a sandbox message (up to 30)
 sandbox_attachments.list

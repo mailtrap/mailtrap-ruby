@@ -6,7 +6,7 @@ module Mailtrap
   # @attr_reader id [Integer] The project ID
   # @attr_reader name [String] The project name
   # @attr_reader share_links [Hash] Admin and viewer share links
-  # @attr_reader inboxes [Array<Mailtrap::Inbox>] Array of inboxes
+  # @attr_reader inboxes [Array<Mailtrap::Sandbox>] Array of the project's sandboxes
   # @attr_reader permissions [Hash] List of permissions
   #
   Project = Struct.new(

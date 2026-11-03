@@ -6,8 +6,8 @@
 #
 # Usage:
 #   bin/record-vcr                                              # all specs
-#   bin/record-vcr spec/mailtrap/sending_domains_api_spec.rb    # single file
-#   bin/record-vcr spec/mailtrap/sending_domains_api_spec.rb:42 # single example
+#   bin/record-vcr spec/mailtrap/domains_api_spec.rb            # single file
+#   bin/record-vcr spec/mailtrap/domains_api_spec.rb:42         # single example
 #   bin/record-vcr -e "#update"                                 # filter by name
 #   bin/record-vcr --org spec/mailtrap/sub_accounts_api_spec.rb # use organization API token
 #

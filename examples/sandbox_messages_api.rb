@@ -1,11 +1,11 @@
 require 'mailtrap'
 
 account_id = 3229
-inbox_id = 12
+sandbox_id = 12
 client = Mailtrap::Client.new(api_key: 'your-api-key')
-sandbox_messages = Mailtrap::SandboxMessagesAPI.new(account_id, inbox_id, client)
+sandbox_messages = Mailtrap::SandboxMessagesAPI.new(account_id, sandbox_id, client)
 
-# List all sandbox messages in the inbox (optional: search, page, last_id)
+# List all messages in the sandbox (optional: search, page, last_id)
 sandbox_messages.list
 # => [#<struct Mailtrap::SandboxMessage id=1, subject="Welcome", ...>]
 

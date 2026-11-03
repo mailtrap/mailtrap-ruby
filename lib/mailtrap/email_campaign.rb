@@ -39,9 +39,9 @@ module Mailtrap
   # Data Transfer Object for Email Campaign
   # @see https://api-docs.mailtrap.io/docs/mailtrap-api-docs/email-campaigns
   # @attr_reader id [Integer] The email campaign ID
-  # @attr_reader domain_id [Integer] ID of the sending domain used for the campaign,
-  #   as returned by the Sending Domains endpoints
-  # @attr_reader domain_name [String] Name of the sending domain used for the campaign
+  # @attr_reader domain_id [Integer] ID of the domain used for the campaign,
+  #   as returned by the Domains endpoints
+  # @attr_reader domain_name [String] Name of the domain used for the campaign
   # @attr_reader name [String] Campaign name
   # @attr_reader from_local_part [String] Local part (before the @) of the From address
   # @attr_reader from_display_name [String] Display name shown in the From header

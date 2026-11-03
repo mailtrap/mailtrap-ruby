@@ -10,7 +10,7 @@ config.action_mailer.delivery_method = :mailtrap
 #   # Switch to bulk sending (@see https://help.mailtrap.io/article/113-sending-streams)
 #   bulk: true,
 #   # Switch to sandbox sending (@see https://help.mailtrap.io/article/109-getting-started-with-mailtrap-email-testing)
-#   sandbox: true, inbox_id: 12,
+#   sandbox: true, sandbox_id: 12,
 # }
 
 # Now you can use ActionMailer to deliver mail through Mailtrap.

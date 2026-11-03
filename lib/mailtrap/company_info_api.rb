@@ -22,17 +22,17 @@ module Mailtrap
 
     self.response_class = CompanyInfo
 
-    # Gets company information for a sending domain
-    # @param sending_domain_id [Integer] The sending domain ID
+    # Gets company information for a domain
+    # @param domain_id [Integer] The domain ID
     # @return [CompanyInfo] Company information
     # @!macro api_errors
-    def get(sending_domain_id)
-      response = client.get(base_path(sending_domain_id))
+    def get(domain_id)
+      response = client.get(base_path(domain_id))
       build_entity(response[:data], CompanyInfo)
     end
 
-    # Creates company information for a sending domain
-    # @param sending_domain_id [Integer] The sending domain ID
+    # Creates company information for a domain
+    # @param domain_id [Integer] The domain ID
     # @param [Hash] options The company info attributes
     # @option options [String] :name Company or individual name
     # @option options [String] :address Street address
@@ -47,28 +47,28 @@ module Mailtrap
     # @return [CompanyInfo] Created company information
     # @!macro api_errors
     # @raise [ArgumentError] If invalid options are provided
-    def create(sending_domain_id, options)
+    def create(domain_id, options)
       validate_options!(options, supported_options)
-      response = client.post(base_path(sending_domain_id), wrap_request(options))
+      response = client.post(base_path(domain_id), wrap_request(options))
       build_entity(response[:data], CompanyInfo)
     end
 
-    # Updates company information for a sending domain
-    # @param sending_domain_id [Integer] The sending domain ID
+    # Updates company information for a domain
+    # @param domain_id [Integer] The domain ID
     # @param [Hash] options The company info attributes to update
     # @return [CompanyInfo] Updated company information
     # @!macro api_errors
     # @raise [ArgumentError] If invalid options are provided
-    def update(sending_domain_id, options)
+    def update(domain_id, options)
       validate_options!(options, supported_options)
-      response = client.patch(base_path(sending_domain_id), wrap_request(options))
+      response = client.patch(base_path(domain_id), wrap_request(options))
       build_entity(response[:data], CompanyInfo)
     end
 
     private
 
-    def base_path(sending_domain_id)
-      "/api/accounts/#{account_id}/sending_domains/#{sending_domain_id}/company_info"
+    def base_path(domain_id)
+      "/api/accounts/#{account_id}/sending_domains/#{domain_id}/company_info"
     end
 
     def wrap_request(options)

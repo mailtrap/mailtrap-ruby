@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-RSpec.describe Mailtrap::Inbox do
+RSpec.describe Mailtrap::Sandbox do
   let(:attributes) do
     {
       id: 123,
-      name: 'Example Inbox',
+      name: 'Example Sandbox',
       username: 'example-username',
       password: 'example-password',
       max_size: 123,
@@ -36,12 +36,12 @@ RSpec.describe Mailtrap::Inbox do
   end
 
   describe '#initialize' do
-    subject(:inbox) { described_class.new(attributes) }
+    subject(:sandbox) { described_class.new(attributes) }
 
-    it 'creates an Inbox with all attributes' do
-      expect(inbox).to have_attributes(
+    it 'creates a Sandbox with all attributes' do
+      expect(sandbox).to have_attributes(
         id: 123,
-        name: 'Example Inbox',
+        name: 'Example Sandbox',
         username: 'example-username',
         password: 'example-password',
         max_size: 123,

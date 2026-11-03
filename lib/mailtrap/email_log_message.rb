@@ -17,7 +17,7 @@ module Mailtrap
   # @attr_reader category [String, nil] Message category
   # @attr_reader custom_variables [Hash, nil] Custom variables
   # @attr_reader sending_stream [String] transactional or bulk
-  # @attr_reader sending_domain_id [Integer] Sending domain ID
+  # @attr_reader sending_domain_id [Integer] Domain ID
   # @attr_reader template_id [Integer, nil] Template ID if sent from template
   # @attr_reader template_variables [Hash, nil] Template variables
   # @attr_reader opens_count [Integer] Number of opens

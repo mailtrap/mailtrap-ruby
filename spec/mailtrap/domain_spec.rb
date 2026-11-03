@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-RSpec.describe Mailtrap::SendingDomain do
+RSpec.describe Mailtrap::Domain do
   describe '#initialize' do
-    subject(:sending_domain) { described_class.new(attributes) }
+    subject(:domain) { described_class.new(attributes) }
 
     let(:attributes) do
       {
         id: '123456',
-        domain_name: 'My Sending Domain',
+        domain_name: 'My Domain',
         dns_verified: false,
         compliance_status: 'pending',
         created_at: '2024-01-01T00:00:00Z',
@@ -15,10 +15,10 @@ RSpec.describe Mailtrap::SendingDomain do
       }
     end
 
-    it 'creates a sending domain with all attributes' do
-      expect(sending_domain).to have_attributes(
+    it 'creates a domain with all attributes' do
+      expect(domain).to have_attributes(
         id: '123456',
-        domain_name: 'My Sending Domain',
+        domain_name: 'My Domain',
         dns_verified: false,
         compliance_status: 'pending',
         created_at: '2024-01-01T00:00:00Z',

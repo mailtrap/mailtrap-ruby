@@ -1,16 +1,16 @@
 # frozen_string_literal: true
 
-RSpec.describe Mailtrap::InboxesAPI, :vcr do
-  subject(:inboxes_api) { described_class.new(account_id, client) }
+RSpec.describe Mailtrap::SandboxesAPI, :vcr do
+  subject(:sandboxes_api) { described_class.new(account_id, client) }
 
   let(:account_id) { ENV.fetch('MAILTRAP_ACCOUNT_ID', 1_111_111) }
   let(:client) { Mailtrap::Client.new(api_key: ENV.fetch('MAILTRAP_API_KEY', 'local-api-key')) }
 
   describe '#list' do
-    subject(:list) { inboxes_api.list }
+    subject(:list) { sandboxes_api.list }
 
-    it 'maps response data to Inboxes objects' do
-      expect(list).to all(be_a(Mailtrap::Inbox))
+    it 'maps response data to Sandbox objects' do
+      expect(list).to all(be_a(Mailtrap::Sandbox))
     end
 
     context 'when api key is incorrect' do
@@ -27,20 +27,20 @@ RSpec.describe Mailtrap::InboxesAPI, :vcr do
   end
 
   describe '#get' do
-    subject(:get) { inboxes_api.get(inbox_id) }
+    subject(:get) { sandboxes_api.get(sandbox_id) }
 
-    let(:inbox_id) { 4_278_175 }
+    let(:sandbox_id) { 4_278_175 }
 
-    it 'maps response data to Inbox object' do
-      expect(get).to be_a(Mailtrap::Inbox)
+    it 'maps response data to Sandbox object' do
+      expect(get).to be_a(Mailtrap::Sandbox)
       expect(get).to have_attributes(
-        id: inbox_id,
+        id: sandbox_id,
         name: 'Test Inbox'
       )
     end
 
-    context 'when inbox does not exist' do
-      let(:inbox_id) { -1 }
+    context 'when sandbox does not exist' do
+      let(:sandbox_id) { -1 }
 
       it 'raises not found error' do
         expect { get }.to raise_error do |error|
@@ -53,7 +53,7 @@ RSpec.describe Mailtrap::InboxesAPI, :vcr do
   end
 
   describe '#create' do
-    subject(:create) { inboxes_api.create(**request) }
+    subject(:create) { sandboxes_api.create(**request) }
 
     let(:request) do
       {
@@ -62,8 +62,8 @@ RSpec.describe Mailtrap::InboxesAPI, :vcr do
       }
     end
 
-    it 'maps response data to Inbox object' do
-      expect(create).to be_a(Mailtrap::Inbox)
+    it 'maps response data to Sandbox object' do
+      expect(create).to be_a(Mailtrap::Sandbox)
       expect(create).to have_attributes(
         name: 'Test Inbox'
       )
@@ -87,9 +87,9 @@ RSpec.describe Mailtrap::InboxesAPI, :vcr do
   end
 
   describe '#update' do
-    subject(:update) { inboxes_api.update(inbox_id, **request) }
+    subject(:update) { sandboxes_api.update(sandbox_id, **request) }
 
-    let(:inbox_id) { 4_278_175 }
+    let(:sandbox_id) { 4_278_175 }
 
     let(:request) do
       {
@@ -98,8 +98,8 @@ RSpec.describe Mailtrap::InboxesAPI, :vcr do
       }
     end
 
-    it 'maps response data to Inbox object' do
-      expect(update).to be_a(Mailtrap::Inbox)
+    it 'maps response data to Sandbox object' do
+      expect(update).to be_a(Mailtrap::Sandbox)
       expect(update).to have_attributes(
         name: 'Updated Inbox',
         email_username: '1234abcd'
@@ -113,16 +113,16 @@ RSpec.describe Mailtrap::InboxesAPI, :vcr do
         }
       end
 
-      it 'maps response data to Inbox object' do
-        expect(update).to be_a(Mailtrap::Inbox)
+      it 'maps response data to Sandbox object' do
+        expect(update).to be_a(Mailtrap::Sandbox)
         expect(update).to have_attributes(
           name: 'Updated Inbox'
         )
       end
     end
 
-    context 'when inbox does not exist' do
-      let(:inbox_id) { -1 }
+    context 'when sandbox does not exist' do
+      let(:sandbox_id) { -1 }
 
       it 'raises not found error' do
         expect { update }.to raise_error do |error|
@@ -135,19 +135,19 @@ RSpec.describe Mailtrap::InboxesAPI, :vcr do
   end
 
   describe '#clean' do
-    subject(:clean) { inboxes_api.clean(inbox_id) }
+    subject(:clean) { sandboxes_api.clean(sandbox_id) }
 
-    let(:inbox_id) { 4_278_175 }
+    let(:sandbox_id) { 4_278_175 }
 
-    it 'cleans Inbox and returns Inbox object' do
+    it 'cleans Sandbox and returns Sandbox object' do
       expect(clean).to have_attributes(
-        id: inbox_id,
+        id: sandbox_id,
         name: 'Updated Inbox'
       )
     end
 
-    context 'when inbox does not exist' do
-      let(:inbox_id) { -1 }
+    context 'when sandbox does not exist' do
+      let(:sandbox_id) { -1 }
 
       it 'raises not found error' do
         expect { clean }.to raise_error do |error|
@@ -160,19 +160,19 @@ RSpec.describe Mailtrap::InboxesAPI, :vcr do
   end
 
   describe '#mark_as_read' do
-    subject(:mark_as_read) { inboxes_api.mark_as_read(inbox_id) }
+    subject(:mark_as_read) { sandboxes_api.mark_as_read(sandbox_id) }
 
-    let(:inbox_id) { 4_278_175 }
+    let(:sandbox_id) { 4_278_175 }
 
     it 'returns nil' do
       expect(mark_as_read).to have_attributes(
-        id: inbox_id,
+        id: sandbox_id,
         name: 'Updated Inbox'
       )
     end
 
-    context 'when inbox does not exist' do
-      let(:inbox_id) { -1 }
+    context 'when sandbox does not exist' do
+      let(:sandbox_id) { -1 }
 
       it 'raises not found error' do
         expect { mark_as_read }.to raise_error do |error|
@@ -185,19 +185,19 @@ RSpec.describe Mailtrap::InboxesAPI, :vcr do
   end
 
   describe '#reset_credentials' do
-    subject(:reset_credentials) { inboxes_api.reset_credentials(inbox_id) }
+    subject(:reset_credentials) { sandboxes_api.reset_credentials(sandbox_id) }
 
-    let(:inbox_id) { 4_278_175 }
+    let(:sandbox_id) { 4_278_175 }
 
     it 'returns nil' do
       expect(reset_credentials).to have_attributes(
-        id: inbox_id,
+        id: sandbox_id,
         name: 'Updated Inbox'
       )
     end
 
-    context 'when inbox does not exist' do
-      let(:inbox_id) { -1 }
+    context 'when sandbox does not exist' do
+      let(:sandbox_id) { -1 }
 
       it 'raises not found error' do
         expect { reset_credentials }.to raise_error do |error|
@@ -210,20 +210,20 @@ RSpec.describe Mailtrap::InboxesAPI, :vcr do
   end
 
   describe '#toggle_email_username' do
-    subject(:toggle_email_username) { inboxes_api.toggle_email_username(inbox_id) }
+    subject(:toggle_email_username) { sandboxes_api.toggle_email_username(sandbox_id) }
 
-    let(:inbox_id) { 4_578_672 }
+    let(:sandbox_id) { 4_578_672 }
 
-    it 'returns Inbox object' do
-      expect(toggle_email_username).to be_a(Mailtrap::Inbox)
+    it 'returns Sandbox object' do
+      expect(toggle_email_username).to be_a(Mailtrap::Sandbox)
       expect(toggle_email_username).to have_attributes(
-        id: inbox_id,
+        id: sandbox_id,
         email_username_enabled: true
       )
     end
 
-    context 'when inbox does not exist' do
-      let(:inbox_id) { -1 }
+    context 'when sandbox does not exist' do
+      let(:sandbox_id) { -1 }
 
       it 'raises not found error' do
         expect { toggle_email_username }.to raise_error do |error|
@@ -236,19 +236,19 @@ RSpec.describe Mailtrap::InboxesAPI, :vcr do
   end
 
   describe '#reset_email_username' do
-    subject(:reset_email_username) { inboxes_api.reset_email_username(inbox_id) }
+    subject(:reset_email_username) { sandboxes_api.reset_email_username(sandbox_id) }
 
-    let(:inbox_id) { 4_578_672 }
+    let(:sandbox_id) { 4_578_672 }
 
-    it 'returns Inbox object' do
+    it 'returns Sandbox object' do
       expect(reset_email_username).to have_attributes(
-        id: inbox_id,
+        id: sandbox_id,
         email_username: '1234abcd'
       )
     end
 
-    context 'when inbox does not exist' do
-      let(:inbox_id) { -1 }
+    context 'when sandbox does not exist' do
+      let(:sandbox_id) { -1 }
 
       it 'raises not found error' do
         expect { reset_email_username }.to raise_error do |error|
@@ -261,19 +261,19 @@ RSpec.describe Mailtrap::InboxesAPI, :vcr do
   end
 
   describe '#delete' do
-    subject(:delete) { inboxes_api.delete(inbox_id) }
+    subject(:delete) { sandboxes_api.delete(sandbox_id) }
 
-    let(:inbox_id) { 4_278_175 }
+    let(:sandbox_id) { 4_278_175 }
 
-    it 'returns deleted inbox data' do
+    it 'returns deleted sandbox data' do
       expect(delete).to include(
-        id: inbox_id,
+        id: sandbox_id,
         name: 'Updated Inbox'
       )
     end
 
-    context 'when inbox does not exist' do
-      let(:inbox_id) { -1 }
+    context 'when sandbox does not exist' do
+      let(:sandbox_id) { -1 }
 
       it 'raises not found error' do
         expect { delete }.to raise_error do |error|

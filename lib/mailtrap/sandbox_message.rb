@@ -4,7 +4,7 @@ module Mailtrap
   # Data Transfer Object for Sandbox Message
   # @see https://docs.mailtrap.io/developers/email-sandbox/email-sandbox-api/messages
   # @attr_reader id [Integer] The message ID
-  # @attr_reader inbox_id [Integer] The inbox ID
+  # @attr_reader inbox_id [Integer] The sandbox ID
   # @attr_reader subject [String] The message subject
   # @attr_reader sent_at [String] The timestamp when the message was sent
   # @attr_reader from_email [String] The sender's email address

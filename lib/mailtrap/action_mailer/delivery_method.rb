@@ -5,7 +5,7 @@ module Mailtrap
     class DeliveryMethod
       attr_accessor :settings
 
-      ALLOWED_PARAMS = %i[api_key api_host api_port bulk sandbox inbox_id].freeze
+      ALLOWED_PARAMS = %i[api_key api_host api_port bulk sandbox sandbox_id inbox_id].freeze
 
       def initialize(settings)
         self.settings = settings

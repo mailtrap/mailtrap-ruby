@@ -89,7 +89,7 @@ RSpec.describe Mailtrap::Client do
 
       context 'with sandbox flag' do
         let(:client) do
-          described_class.new(api_key:, sandbox: true, inbox_id: 12)
+          described_class.new(api_key:, sandbox: true, sandbox_id: 12)
         end
 
         it 'chooses host for sandbox sending' do
@@ -97,12 +97,27 @@ RSpec.describe Mailtrap::Client do
         end
       end
 
-      context 'with sandbox flag without inbox id' do
+      context 'with sandbox flag and the deprecated inbox id' do
+        let(:client) do
+          described_class.new(api_key:, sandbox: true, inbox_id: 12)
+        end
+
+        it 'chooses host for sandbox sending and warns', vcr: {
+          cassette_name: 'Mailtrap_Client/_send/when_mail/with_sandbox_flag/chooses_host_for_sandbox_sending'
+        } do
+          expect { send }
+            .to output(/client_spec.rb:\d+: .*Client.new\(inbox_id:\) is deprecated .*Client.new\(sandbox_id:\)/)
+            .to_stderr
+          expect(send).to eq({ success: true })
+        end
+      end
+
+      context 'with sandbox flag without sandbox id' do
         let(:client) do
           described_class.new(api_key:, sandbox: true)
         end
 
-        it { expect { send }.to raise_error(ArgumentError, 'inbox_id is required for sandbox API') }
+        it { expect { send }.to raise_error(ArgumentError, 'sandbox_id is required for sandbox API') }
       end
 
       context 'with bulk and sandbox flag' do
@@ -170,7 +185,7 @@ RSpec.describe Mailtrap::Client do
 
       context 'when using sandbox' do
         let(:client) do
-          described_class.new(api_key:, sandbox: true, inbox_id: 13)
+          described_class.new(api_key:, sandbox: true, sandbox_id: 13)
         end
 
         it 'sending is successful' do
@@ -333,7 +348,7 @@ RSpec.describe Mailtrap::Client do
     end
 
     context 'when in sandbox mode' do
-      let(:client) { described_class.new(api_key:, sandbox: true, inbox_id: 3_861_666) }
+      let(:client) { described_class.new(api_key:, sandbox: true, sandbox_id: 3_861_666) }
 
       it 'successfully sends a batch of emails', :vcr do
         response = client.send_batch(base_mail, recipients)
@@ -401,6 +416,31 @@ RSpec.describe Mailtrap::Client do
           )
         )
       end
+    end
+  end
+
+  describe 'deprecated inbox_id' do
+    it 'accepts the same value in sandbox_id' do
+      client = nil
+
+      expect { client = described_class.new(api_key:, sandbox: true, sandbox_id: 12, inbox_id: 12) }.to output.to_stderr
+      expect(client.sandbox_id).to eq(12)
+    end
+
+    it 'raises when it differs from sandbox_id' do
+      expect { described_class.new(api_key:, sandbox: true, sandbox_id: 12, inbox_id: 13) }
+        .to raise_error(ArgumentError, 'sandbox_id and inbox_id differ; pass only sandbox_id')
+        .and output.to_stderr
+    end
+
+    it 'is still readable and warns' do
+      client = described_class.new(api_key:, sandbox: true, sandbox_id: 12)
+      inbox_id = nil
+
+      expect { inbox_id = client.inbox_id }
+        .to output(/client_spec.rb:\d+: .*Mailtrap::Client#inbox_id is deprecated .*; use Mailtrap::Client#sandbox_id/)
+        .to_stderr
+      expect(inbox_id).to eq(12)
     end
   end
 end

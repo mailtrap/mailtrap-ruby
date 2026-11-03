@@ -38,7 +38,7 @@ RSpec.describe Mailtrap::ProjectsAPI, :vcr do
         name: 'Ruby SDK Project'
       )
 
-      expect(get.inboxes).to all(be_a(Mailtrap::Inbox))
+      expect(get.inboxes).to all(be_a(Mailtrap::Sandbox))
       expect(get.inboxes.first).to match_struct(
         id: 4_294_015,
         name: 'Main sandbox',
