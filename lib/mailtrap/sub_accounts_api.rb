@@ -42,7 +42,7 @@ module Mailtrap
 
     # Permanently deletes a sub account under the organization
     #
-    # Requires sub account management permissions for the organization. The deletion is permanent
+    # Requires organization admin permissions. The deletion is permanent
     # and removes all data of the sub account. Deleting the last sub account also deletes the organization.
     # A repeated call for the same sub account returns a 404 error.
     # Rate limit: 10 requests per minute per organization.
