@@ -58,8 +58,8 @@ module Mailtrap
     # Creates a new email campaign in the +draft+ state
     # @param [Hash] options The parameters to create
     # @option options [String] :name Campaign name (required)
-    # @option options [Integer] :domain_id ID of the verified sending domain (required),
-    #   as returned by the Sending Domains endpoints
+    # @option options [Integer] :domain_id ID of the verified domain (required),
+    #   as returned by the Domains endpoints
     # @option options [String] :from_display_name Display name shown in the From header
     # @option options [String] :from_local_part Local part (before the @) of the From address (required)
     # @option options [Hash] :reply_to Reply-To address parts (+display_name+, +local_part+, +domain+)
@@ -82,8 +82,8 @@ module Mailtrap
     # @param email_campaign_id [Integer] The email campaign ID
     # @param [Hash] options The parameters to update; accepts the same fields as {#create}
     # @option options [String] :name Campaign name
-    # @option options [Integer] :domain_id ID of the verified sending domain,
-    #   as returned by the Sending Domains endpoints
+    # @option options [Integer] :domain_id ID of the verified domain,
+    #   as returned by the Domains endpoints
     # @option options [String] :from_display_name Display name shown in the From header
     # @option options [String] :from_local_part Local part (before the @) of the From address
     # @option options [Hash] :reply_to Reply-To address parts (+display_name+, +local_part+, +domain+)

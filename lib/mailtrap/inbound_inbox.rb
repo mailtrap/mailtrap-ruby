@@ -6,7 +6,7 @@ module Mailtrap
   # @attr_reader id [Integer] The inbox ID
   # @attr_reader name [String] The inbox name
   # @attr_reader address [String] The inbox's inbound address
-  # @attr_reader domain_id [Integer] The sending domain the inbox is attached to
+  # @attr_reader domain_id [Integer] The domain the inbox is attached to
   InboundInbox = Struct.new(
     :id,
     :name,

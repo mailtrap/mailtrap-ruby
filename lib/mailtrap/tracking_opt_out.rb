@@ -6,7 +6,7 @@ module Mailtrap
   # @attr_reader id [String] The tracking opt-out UUID
   # @attr_reader email [String] The email address opted out of tracking
   # @attr_reader created_at [String] The creation timestamp
-  # @attr_reader domain_name [String, nil] Sending domain the tracking opt-out applies to
+  # @attr_reader domain_name [String, nil] Domain the tracking opt-out applies to
   TrackingOptOut = Struct.new(
     :id,
     :email,

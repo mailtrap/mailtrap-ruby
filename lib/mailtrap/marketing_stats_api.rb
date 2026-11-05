@@ -18,7 +18,7 @@ module Mailtrap
     # as Email Marketing > Stats Overview in the app. Email API/SMTP traffic is reported by {StatsAPI}.
     # @param start_date [String, Date, Time] Start of the period, inclusive (required)
     # @param end_date [String, Date, Time] End of the period, inclusive (required)
-    # @param sending_domain_ids [Array<Integer>] Filter by sending domain IDs
+    # @param sending_domain_ids [Array<Integer>] Filter by domain IDs
     # @param sources [Array<String>] Filter by source: +campaigns+ or +automations+;
     #   omit it, or pass both, to include campaigns and automations together
     # @param email_service_providers [Array<String>] Filter by recipient email service providers

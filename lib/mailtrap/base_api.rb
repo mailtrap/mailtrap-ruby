@@ -10,6 +10,12 @@ module Mailtrap
 
     module ClassMethods
       attr_accessor :supported_options, :response_class
+
+      def inherited(subclass)
+        super
+        subclass.supported_options = supported_options
+        subclass.response_class = response_class
+      end
     end
 
     # @param account_id [Integer] The account ID

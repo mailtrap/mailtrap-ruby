@@ -51,5 +51,52 @@ RSpec.describe Mailtrap::ActionMailer::DeliveryMethod, :vcr do
       expect(message['X-MT-Message-IDs'].to_s).to eq(expected_message_ids.join(', '))
       expect(Mailtrap::Client).to have_received(:new).with(api_key: 'correct-api-key')
     end
+
+    context 'with sandbox settings' do
+      let(:settings) { { api_key: 'correct-api-key', sandbox: true, sandbox_id: 12 } }
+
+      before do
+        stub_request(:post, 'https://sandbox.api.mailtrap.io/api/send/12')
+          .to_return(status: 200, body: '{"success":true,"message_ids":["1"]}',
+                     headers: { 'Content-Type' => 'application/json' })
+      end
+
+      it 'sends to the sandbox' do
+        expect(deliver!).to eq({ success: true, message_ids: ['1'] })
+        expect(Mailtrap::Client).to have_received(:new).with(api_key: 'correct-api-key', sandbox: true, sandbox_id: 12)
+      end
+
+      context 'when the deprecated inbox_id is set' do
+        let(:settings) { { api_key: 'correct-api-key', sandbox: true, inbox_id: 12 } }
+
+        it 'passes it to the client as sandbox_id and warns about the setting' do
+          expect { deliver! }
+            .to output(/ActionMailer mailtrap_settings inbox_id is deprecated .*; use sandbox_id instead/).to_stderr
+          expect(Mailtrap::Client).to have_received(:new).with(api_key: 'correct-api-key', sandbox: true,
+                                                               sandbox_id: 12)
+        end
+      end
+
+      context 'when sandbox_id and the deprecated inbox_id are both set' do
+        let(:settings) { { api_key: 'correct-api-key', sandbox: true, sandbox_id: 12, inbox_id: 12 } }
+
+        it 'passes only sandbox_id to the client and warns about the setting' do
+          expect { deliver! }
+            .to output(/ActionMailer mailtrap_settings inbox_id is deprecated .*; use sandbox_id instead/).to_stderr
+          expect(Mailtrap::Client).to have_received(:new).with(api_key: 'correct-api-key', sandbox: true,
+                                                               sandbox_id: 12)
+        end
+      end
+
+      context 'when sandbox_id and the deprecated inbox_id differ' do
+        let(:settings) { { api_key: 'correct-api-key', sandbox: true, sandbox_id: 12, inbox_id: 13 } }
+
+        it 'raises' do
+          expect { deliver! }
+            .to raise_error(ArgumentError, 'sandbox_id and inbox_id differ; pass only sandbox_id')
+            .and output.to_stderr
+        end
+      end
+    end
   end
 end

@@ -5,10 +5,10 @@ RSpec.describe Mailtrap::CompanyInfoAPI, :vcr do
 
   let(:account_id) { ENV.fetch('MAILTRAP_ACCOUNT_ID', 1_111_111) }
   let(:client) { Mailtrap::Client.new(api_key: ENV.fetch('MAILTRAP_API_KEY', 'local-api-key')) }
-  let(:sending_domain_id) { 122_392 }
+  let(:domain_id) { 122_392 }
 
   describe '#get' do
-    subject(:get) { company_info_api.get(sending_domain_id) }
+    subject(:get) { company_info_api.get(domain_id) }
 
     it 'maps response data to CompanyInfo object' do
       expect(get).to be_a(Mailtrap::CompanyInfo)
@@ -23,8 +23,8 @@ RSpec.describe Mailtrap::CompanyInfoAPI, :vcr do
       )
     end
 
-    context 'when sending domain does not exist' do
-      let(:sending_domain_id) { -1 }
+    context 'when domain does not exist' do
+      let(:domain_id) { -1 }
 
       it 'raises not found error' do
         expect { get }.to raise_error do |error|
@@ -37,7 +37,7 @@ RSpec.describe Mailtrap::CompanyInfoAPI, :vcr do
   end
 
   describe '#create' do
-    subject(:create) { company_info_api.create(sending_domain_id, request) }
+    subject(:create) { company_info_api.create(domain_id, request) }
 
     let(:request) do
       {
@@ -90,8 +90,8 @@ RSpec.describe Mailtrap::CompanyInfoAPI, :vcr do
       end
     end
 
-    context 'when sending domain does not exist' do
-      let(:sending_domain_id) { -1 }
+    context 'when domain does not exist' do
+      let(:domain_id) { -1 }
 
       it 'raises not found error' do
         expect { create }.to raise_error do |error|
@@ -104,7 +104,7 @@ RSpec.describe Mailtrap::CompanyInfoAPI, :vcr do
   end
 
   describe '#update' do
-    subject(:update) { company_info_api.update(sending_domain_id, request) }
+    subject(:update) { company_info_api.update(domain_id, request) }
 
     let(:request) do
       {
@@ -129,8 +129,8 @@ RSpec.describe Mailtrap::CompanyInfoAPI, :vcr do
       end
     end
 
-    context 'when sending domain does not exist' do
-      let(:sending_domain_id) { -1 }
+    context 'when domain does not exist' do
+      let(:domain_id) { -1 }
 
       it 'raises not found error' do
         expect { update }.to raise_error do |error|

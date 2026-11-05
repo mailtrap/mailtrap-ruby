@@ -17,7 +17,7 @@ marketing_stats.get(start_date: today - 29, end_date: today)
 #      unsubscription_count=12, unsubscription_rate=0.01,
 #      sent_count=1250>
 
-# Narrow to campaigns only (or automations only), for some sending domains and email service providers
+# Narrow to campaigns only (or automations only), for some domains and email service providers
 marketing_stats.get(
   start_date: today - 29,
   end_date: today,

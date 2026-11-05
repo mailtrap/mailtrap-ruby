@@ -9,9 +9,9 @@ module Mailtrap
 
     self.response_class = AccountAccess
 
-    # Retrieves a list of account accesses with optional filtering by domain, inbox, or project IDs
+    # Retrieves a list of account accesses with optional filtering by domain, sandbox, or project IDs
     # @param domain_ids [Array<Integer>] Optional array of domain IDs to filter by
-    # @param inbox_ids [Array<Integer>] Optional array of inbox IDs to filter by
+    # @param inbox_ids [Array<Integer>] Optional array of sandbox IDs to filter by
     # @param project_ids [Array<Integer>] Optional array of project IDs to filter by
     # @return [Array<AccountAccess>] List of account access objects
     # @!macro api_errors
