@@ -1,0 +1,14 @@
+examples/sub_accounts_api.rb
+  h_68ae9308e52348 12,15-16
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "7cf62a53a353e07d0e1604f4b3b3beede4fa9e73",
+  "prompts": {},
+  "humans": {
+    "h_68ae9308e52348": {
+      "author": "Alex Shchyhol <oleksandr.shchyhol@railsware.com>"
+    }
+  }
+}
