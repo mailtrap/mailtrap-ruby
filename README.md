@@ -221,7 +221,7 @@ General:
 
 Email Sandbox inboxes are now called sandboxes, and sending domains are now called
 domains. The old names still work and call the same API endpoints, but they print a
-deprecation warning and will be removed in the next major release.
+deprecation warning and will be removed in a future major release.
 
 | Deprecated | Use instead |
 |------------|-------------|
@@ -237,6 +237,19 @@ use Ruby's `deprecate_constant`, so they warn only when Ruby's deprecation warni
 enabled (for example, `ruby -W:deprecated`), and they can warn more than once. Attributes and filters that
 mirror API fields keep their names, such as `SandboxMessage#inbox_id`, `Project#inboxes`
 and the `sending_domain_ids:` stats filter.
+
+The once-per-process warnings print whether or not Ruby's deprecation warnings are
+enabled, so `-W:no-deprecated` doesn't hide them. To silence them, filter out the
+warnings tagged `[mailtrap]`:
+
+```ruby
+module SilenceMailtrapDeprecations
+  def warn(message, ...)
+    super unless message.include?('[mailtrap]')
+  end
+end
+Warning.extend(SilenceMailtrapDeprecations)
+```
 
 ## Migration guide v1 → v2
 

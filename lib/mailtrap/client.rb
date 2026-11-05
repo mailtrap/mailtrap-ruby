@@ -42,7 +42,7 @@ module Mailtrap
     )
       unless inbox_id.nil?
         Deprecation.warn('Mailtrap::Client.new(inbox_id:)', 'Mailtrap::Client.new(sandbox_id:)')
-        sandbox_id = resolve_sandbox_id(sandbox_id, inbox_id)
+        sandbox_id = Deprecation.resolve_sandbox_id(sandbox_id, inbox_id)
       end
       validate_args!(api_key, api_port, bulk, sandbox, sandbox_id)
 
@@ -248,13 +248,6 @@ module Mailtrap
     end
 
     private
-
-    def resolve_sandbox_id(sandbox_id, inbox_id)
-      return inbox_id if sandbox_id.nil?
-      return sandbox_id if sandbox_id.to_s == inbox_id.to_s
-
-      raise ArgumentError, 'sandbox_id and inbox_id differ; pass only sandbox_id'
-    end
 
     def validate_args!(api_key, api_port, bulk, sandbox, sandbox_id)
       raise ArgumentError, 'api_key is required' if api_key.nil?

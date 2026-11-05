@@ -76,6 +76,27 @@ RSpec.describe Mailtrap::ActionMailer::DeliveryMethod, :vcr do
                                                                sandbox_id: 12)
         end
       end
+
+      context 'when sandbox_id and the deprecated inbox_id are both set' do
+        let(:settings) { { api_key: 'correct-api-key', sandbox: true, sandbox_id: 12, inbox_id: 12 } }
+
+        it 'passes only sandbox_id to the client and warns about the setting' do
+          expect { deliver! }
+            .to output(/ActionMailer mailtrap_settings inbox_id is deprecated .*; use sandbox_id instead/).to_stderr
+          expect(Mailtrap::Client).to have_received(:new).with(api_key: 'correct-api-key', sandbox: true,
+                                                               sandbox_id: 12)
+        end
+      end
+
+      context 'when sandbox_id and the deprecated inbox_id differ' do
+        let(:settings) { { api_key: 'correct-api-key', sandbox: true, sandbox_id: 12, inbox_id: 13 } }
+
+        it 'raises' do
+          expect { deliver! }
+            .to raise_error(ArgumentError, 'sandbox_id and inbox_id differ; pass only sandbox_id')
+            .and output.to_stderr
+        end
+      end
     end
   end
 end
