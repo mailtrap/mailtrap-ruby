@@ -1,8 +1,76 @@
 ---
 http_interactions:
 - request:
+    method: post
+    uri: https://mailtrap.io/api/organizations/2222222/sub_accounts
+    body:
+      encoding: UTF-8
+      string: '{"account":{"name":"SDK Delete Test Sub Account"}}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - mailtrap-ruby (https://github.com/mailtrap/mailtrap-ruby)
+      Host:
+      - mailtrap.io
+      Authorization:
+      - Bearer <BEARER_TOKEN>
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 05 Nov 2026 10:00:00 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '51'
+      Connection:
+      - keep-alive
+      Server:
+      - cloudflare
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Vary:
+      - Accept
+      X-Mailtrap-Version:
+      - v2
+      X-Ratelimit-Limit:
+      - '150'
+      X-Ratelimit-Remaining:
+      - '149'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Runtime:
+      - '0.853483'
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains; preload
+      Cf-Cache-Status:
+      - DYNAMIC
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: UTF-8
+      string: '{"id":3333333,"name":"SDK Delete Test Sub Account"}'
+  recorded_at: Thu, 05 Nov 2026 10:00:00 GMT
+- request:
     method: delete
-    uri: https://mailtrap.io/api/organizations/2222222/sub_accounts/2704237
+    uri: https://mailtrap.io/api/organizations/2222222/sub_accounts/3333333
     body:
       encoding: US-ASCII
       string: ''
@@ -25,7 +93,7 @@ http_interactions:
       message: No Content
     headers:
       Date:
-      - Tue, 08 Sep 2026 10:00:00 GMT
+      - Thu, 05 Nov 2026 10:00:01 GMT
       Connection:
       - keep-alive
       Server:
@@ -61,5 +129,5 @@ http_interactions:
     body:
       encoding: UTF-8
       string: ''
-  recorded_at: Tue, 08 Sep 2026 10:00:00 GMT
+  recorded_at: Thu, 05 Nov 2026 10:00:01 GMT
 recorded_with: VCR 6.4.0

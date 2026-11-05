@@ -58,7 +58,9 @@ RSpec.describe Mailtrap::SubAccountsAPI, :vcr do
   describe '#delete' do
     subject(:delete) { sub_accounts_api.delete(sub_account_id) }
 
-    let(:sub_account_id) { 2_704_237 }
+    # Deletes a sub account the example creates itself. When the cassette is re-recorded against
+    # the live API, no existing sub account gets deleted, and the organization keeps its accounts.
+    let(:sub_account_id) { sub_accounts_api.create(name: 'SDK Delete Test Sub Account').id }
 
     it 'returns nil on success' do
       expect(delete).to be_nil
