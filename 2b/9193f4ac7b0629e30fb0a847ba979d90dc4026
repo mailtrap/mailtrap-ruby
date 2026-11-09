@@ -1,0 +1,33 @@
+spec/fixtures/vcr_cassettes/Mailtrap_SendingDomainsAPI/_create/maps_response_data_to_sending_domain_object.yml
+  s_576b7c7847dbe9::t_6fa22647b7b057 78
+spec/mailtrap/email_logs_api_spec.rb
+  s_576b7c7847dbe9::t_3932f74aac684e 20-23,167-170
+spec/mailtrap/sending_domains_api_spec.rb
+  s_576b7c7847dbe9::t_13afdc7621509d 63-64,122-123
+spec/fixtures/vcr_cassettes/Mailtrap_SendingDomainsAPI/_get/maps_response_data_to_SendingDomain_object.yml
+  s_576b7c7847dbe9::t_b2bf083d2b3773 78
+spec/fixtures/vcr_cassettes/Mailtrap_EmailLogsAPI/_get/maps_response_data_to_EmailLogMessage_with_events_and_raw_message_url.yml
+  s_576b7c7847dbe9::t_e366d411040ea5 72
+spec/fixtures/vcr_cassettes/Mailtrap_EmailLogsAPI/_list/maps_response_data_to_EmailLogsListResponse_with_messages.yml
+  s_576b7c7847dbe9::t_247c459a8cdb49 71
+lib/mailtrap/email_log_message.rb
+  s_576b7c7847dbe9::t_b77133df2a07a5 9-12,31-34
+lib/mailtrap/sending_domain.rb
+  s_576b7c7847dbe9::t_a52bc813add75f 20-21,39-40
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "2b9193f4ac7b0629e30fb0a847ba979d90dc4026",
+  "prompts": {},
+  "sessions": {
+    "s_576b7c7847dbe9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "48d8b14b-0d1c-434e-b1b9-68d02404448f",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Marcin Klocek <marcin.klocek@railsware.com>"
+    }
+  }
+}

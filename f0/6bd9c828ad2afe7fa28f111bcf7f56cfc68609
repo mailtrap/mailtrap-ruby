@@ -1,0 +1,14 @@
+lib/mailtrap/api_tokens_api.rb
+  h_68ae9308e52348 49-52,55-59
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.20",
+  "base_commit_sha": "f06bd9c828ad2afe7fa28f111bcf7f56cfc68609",
+  "prompts": {},
+  "humans": {
+    "h_68ae9308e52348": {
+      "author": "Alex Shchyhol <oleksandr.shchyhol@railsware.com>"
+    }
+  }
+}

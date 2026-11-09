@@ -1,0 +1,31 @@
+examples/email_campaigns_api.rb
+  s_8b9eb1b74fa672::t_72023c0c1a1df6 51-52
+  s_8b9eb1b74fa672::t_5847dc4f3be6fb 71-72
+  s_8b9eb1b74fa672::t_4c92830a3dc2c6 75-77
+lib/mailtrap/email_campaigns_api.rb
+  s_1d139e47a09853::t_539ef2a7da7758 108
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.21",
+  "base_commit_sha": "e17f8154bdbce219f70dc1625ff38836502d960e",
+  "prompts": {},
+  "sessions": {
+    "s_1d139e47a09853": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3943c4ee-a6f3-493c-aa4d-bc291df8727e",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Maciej Walusiak <maciej.walusiak@railsware.com>"
+    },
+    "s_8b9eb1b74fa672": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "95754cb3-701a-4fef-bc0a-347aa8fd1362",
+        "model": "claude-fable-5"
+      },
+      "human_author": null
+    }
+  }
+}

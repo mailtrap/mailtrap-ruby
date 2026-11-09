@@ -1,0 +1,25 @@
+README.md
+  s_d562da60dc1773::t_93a1fbb49dc718 192
+examples/contacts_api.rb
+  s_d562da60dc1773::t_f11b520b77549a 27-30
+spec/mailtrap/contact_lists_api_spec.rb
+  s_d562da60dc1773::t_efe838dce5a309 28-42
+lib/mailtrap/contact_lists_api.rb
+  s_d562da60dc1773::t_039b755b59ee81 52,55-59
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "b6bd44803e726be70d0123c84324b4e112782255",
+  "prompts": {},
+  "sessions": {
+    "s_d562da60dc1773": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0c94c3a5-75e7-49f4-ae2a-aeeef6ebf18c",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Maciej Walusiak <maciej.walusiak@railsware.com>"
+    }
+  }
+}

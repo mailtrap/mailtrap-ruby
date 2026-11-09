@@ -1,0 +1,30 @@
+lib/mailtrap/marketing_stats.rb
+  s_476b520c1d3b06::t_26983061b3221b 11,13,15,17,19,21
+examples/marketing_stats_api.rb
+  s_476b520c1d3b06::t_e381d26727782b 10,22
+spec/mailtrap/marketing_stats_api_spec.rb
+  s_476b520c1d3b06::t_26983061b3221b 73,75-78,83-84
+  s_476b520c1d3b06::t_14362b2915f3ac 24-26,33,57,66
+  s_476b520c1d3b06::t_864a5c45b8aa8b 74,79-82
+spec/mailtrap/stats_api_spec.rb
+  s_476b520c1d3b06::t_26983061b3221b 202-207
+lib/mailtrap/stats_query_params.rb
+  s_476b520c1d3b06::t_08d256543ed2da 13-15
+  s_476b520c1d3b06::t_26983061b3221b 7-8
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "7ace1f7d797065f2528129169f30b70b554b7436",
+  "prompts": {},
+  "sessions": {
+    "s_476b520c1d3b06": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d6d2531f-b3f8-46c8-b081-29188ad88d53",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Maciej Walusiak <maciej.walusiak@railsware.com>"
+    }
+  }
+}

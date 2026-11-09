@@ -1,0 +1,41 @@
+examples/webhooks_api.rb
+  s_73722281c0a0ba::t_df2b4c5bcae1e3 24-31
+spec/fixtures/vcr_cassettes/Mailtrap_WebhooksAPI/_create/when_creating_an_inbound_receiving_webhook/maps_response_data_to_Webhook_object.yml
+  s_73722281c0a0ba::t_fcd98d8c34bbe2 1-73
+spec/fixtures/vcr_cassettes/Mailtrap_WebhooksAPI/_get/when_webhook_is_an_inbound_receiving_webhook/maps_inbound_inbox_id_to_the_Webhook_object.yml
+  s_73722281c0a0ba::t_65f887b2e76375 1-73
+spec/mailtrap/webhooks_api_spec.rb
+  s_73722281c0a0ba::t_9a1b01887bdc18 37-38,42-54,92-113
+lib/mailtrap/webhook.rb
+  s_34787b63b73c5c::t_564c31bd3503d2 9-10,16-17,29
+lib/mailtrap/webhooks_api.rb
+  s_34787b63b73c5c::t_4a9036d6e25b44 10-11,34-35,44-45,61-62,67
+spec/fixtures/vcr_cassettes/Mailtrap_WebhooksAPI/_get/maps_response_data_to_Webhook_object.yml
+  s_34787b63b73c5c::t_e5f31d97675e87 71
+spec/mailtrap/webhook_spec.rb
+  s_34787b63b73c5c::t_7a1cd889d271b7 16,31
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "65825aba96a8d4bb645908555f277942a2385c1c",
+  "prompts": {},
+  "sessions": {
+    "s_34787b63b73c5c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "42c69653-b4bb-4032-afe2-6daf215bb7b9",
+        "model": "unknown"
+      },
+      "human_author": "Marcin Klocek <marcin.klocek@railsware.com>"
+    },
+    "s_73722281c0a0ba": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "00ee1996-568c-4e2f-9526-e3f01656c9db",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Marcin Klocek <marcin.klocek@railsware.com>"
+    }
+  }
+}

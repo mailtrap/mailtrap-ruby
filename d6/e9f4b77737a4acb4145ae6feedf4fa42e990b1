@@ -1,0 +1,16 @@
+spec/fixtures/vcr_cassettes/Mailtrap_ApiTokensAPI/_reset/maps_response_data_to_ApiToken_with_new_token_value.yml
+  h_68ae9308e52348 73
+spec/fixtures/vcr_cassettes/Mailtrap_ApiTokensAPI/_create/maps_response_data_to_ApiToken_with_full_token_value.yml
+  h_68ae9308e52348 72
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "d6e9f4b77737a4acb4145ae6feedf4fa42e990b1",
+  "prompts": {},
+  "humans": {
+    "h_68ae9308e52348": {
+      "author": "Alex Shchyhol <oleksandr.shchyhol@railsware.com>"
+    }
+  }
+}
