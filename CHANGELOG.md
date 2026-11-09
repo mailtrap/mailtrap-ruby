@@ -1,3 +1,12 @@
+## [2.20.0] - 2026-11-09
+
+## What's Changed
+* add sub account deletion by @oshchyhol in https://github.com/mailtrap/mailtrap-ruby/pull/130
+* Add Sandbox and Domain names; deprecate the Inbox and SendingDomain names by @Rabsztok in https://github.com/mailtrap/mailtrap-ruby/pull/139
+
+
+**Full Changelog**: https://github.com/mailtrap/mailtrap-ruby/compare/v2.19.0...v2.20.0
+
 ## [2.19.0] - 2026-10-29
 
 ## What's Changed
