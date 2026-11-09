@@ -1,32 +1,40 @@
 # frozen_string_literal: true
 
 require_relative 'base_api'
+require_relative 'deprecation'
 require_relative 'sandbox_message'
 
 module Mailtrap
   class SandboxMessagesAPI
     include BaseAPI
 
-    attr_reader :inbox_id
+    attr_reader :sandbox_id
 
     self.supported_options = %i[is_read]
 
     self.response_class = SandboxMessage
 
     # @param account_id [Integer] The account ID
-    # @param inbox_id [Integer] The inbox ID
+    # @param sandbox_id [Integer] The sandbox ID
     # @param client [Mailtrap::Client] The client instance
     # @raise [ArgumentError] If account_id is nil
-    # @raise [ArgumentError] If inbox_id is nil
-    def initialize(account_id, inbox_id, client = Mailtrap::Client.new)
-      raise ArgumentError, 'inbox_id is required' if inbox_id.nil?
+    # @raise [ArgumentError] If sandbox_id is nil
+    def initialize(account_id, sandbox_id, client = Mailtrap::Client.new)
+      raise ArgumentError, 'sandbox_id is required' if sandbox_id.nil?
 
-      @inbox_id = inbox_id
+      @sandbox_id = sandbox_id
 
       super(account_id, client)
     end
 
-    # Retrieves a specific sandbox message from inbox
+    # @deprecated Use {#sandbox_id} instead.
+    # @return [Integer] The sandbox ID
+    def inbox_id
+      Deprecation.warn('Mailtrap::SandboxMessagesAPI#inbox_id', 'Mailtrap::SandboxMessagesAPI#sandbox_id')
+      sandbox_id
+    end
+
+    # Retrieves a specific sandbox message
     # @param message_id [Integer] The sandbox message ID
     # @return [SandboxMessage] Sandbox message object
     # @!macro api_errors
@@ -165,7 +173,7 @@ module Mailtrap
     private
 
     def base_path
-      "/api/accounts/#{account_id}/inboxes/#{inbox_id}/messages"
+      "/api/accounts/#{account_id}/inboxes/#{sandbox_id}/messages"
     end
 
     def wrap_request(options)

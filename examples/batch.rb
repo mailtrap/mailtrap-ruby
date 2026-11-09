@@ -10,7 +10,7 @@ client = Mailtrap::Client.new(api_key: 'your-api-key')
 # Bulk sending (@see https://help.mailtrap.io/article/113-sending-streams)
 # client = Mailtrap::Client.new(bulk: true)
 # Sandbox sending (@see https://help.mailtrap.io/article/109-getting-started-with-mailtrap-email-testing)
-# client = Mailtrap::Client.new(sandbox: true, inbox_id: 12)
+# client = Mailtrap::Client.new(sandbox: true, sandbox_id: 12)
 
 # Batch sending with text and html content
 batch_base = Mailtrap::Mail.batch_base_from_content(

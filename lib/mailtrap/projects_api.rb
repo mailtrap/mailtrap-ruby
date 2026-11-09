@@ -2,7 +2,7 @@
 
 require_relative 'base_api'
 require_relative 'project'
-require_relative 'inbox'
+require_relative 'sandbox'
 
 module Mailtrap
   class ProjectsAPI
@@ -60,7 +60,7 @@ module Mailtrap
     def handle_response(response)
       build_entity(
         response.merge(
-          inboxes: response[:inboxes]&.map { |inbox| build_entity(inbox, Mailtrap::Inbox) }
+          inboxes: response[:inboxes]&.map { |sandbox| build_entity(sandbox, Mailtrap::Sandbox) }
         ),
         response_class
       )

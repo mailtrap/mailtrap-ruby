@@ -11,7 +11,7 @@ module Mailtrap
   # @attr_reader payload_format [String] The webhook payload format (`json` or `jsonlines`)
   # @attr_reader sending_stream [String, nil] The sending stream (`transactional` or `bulk`).
   #   Applicable only for `email_sending` webhooks.
-  # @attr_reader domain_id [Integer, nil] The sending domain ID the webhook is scoped to,
+  # @attr_reader domain_id [Integer, nil] The domain ID the webhook is scoped to,
   #   or nil for all domains. Applicable only for `email_sending` webhooks.
   # @attr_reader inbound_inbox_id [Integer, nil] The inbound inbox ID the webhook is linked to.
   #   Applicable only for `inbound_receiving` webhooks.

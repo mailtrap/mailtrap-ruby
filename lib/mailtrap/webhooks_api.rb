@@ -39,7 +39,7 @@ module Mailtrap
     #   Required for `email_sending` webhook type.
     # @option options [Array<String>] :event_types Event types to subscribe to.
     #   Required for `email_sending` webhook type.
-    # @option options [Integer] :domain_id Sending domain ID to scope the webhook to.
+    # @option options [Integer] :domain_id Domain ID to scope the webhook to.
     #   Applicable only for `email_sending` webhooks.
     # @option options [Integer] :inbound_inbox_id Inbound inbox ID to link the webhook to.
     #   Applicable only for `inbound_receiving` webhooks; omit to apply to all inboxes

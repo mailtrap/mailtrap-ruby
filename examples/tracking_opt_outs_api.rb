@@ -37,7 +37,7 @@ while page.last_id
   puts page.data.size
 end
 
-# Opt an email out of open and click tracking for a sending domain
+# Opt an email out of open and click tracking for a domain
 opt_out = tracking_opt_outs.create(email: 'tracked@example.com', domain_id: 12_345)
 # => #<struct Mailtrap::TrackingOptOut id="64d71bf3-1276-417b-86e1-8e66f138acfe", ...>
 

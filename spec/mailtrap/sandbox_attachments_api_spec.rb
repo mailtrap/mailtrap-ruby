@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 RSpec.describe Mailtrap::SandboxAttachmentsAPI, :vcr do
-  subject(:sandbox_attachments_api) { described_class.new(account_id, inbox_id, message_id, client) }
+  subject(:sandbox_attachments_api) { described_class.new(account_id, sandbox_id, message_id, client) }
 
   let(:account_id) { ENV.fetch('MAILTRAP_ACCOUNT_ID', 1_111_111) }
   let(:client) { Mailtrap::Client.new(api_key: ENV.fetch('MAILTRAP_API_KEY', 'local-api-key')) }
-  let(:inbox_id) { ENV.fetch('MAILTRAP_INBOX_ID', 4_288_340) }
+  let(:sandbox_id) { ENV.fetch('MAILTRAP_SANDBOX_ID', 4_288_340) }
   let(:message_id) { ENV.fetch('MAILTRAP_SANDBOX_MESSAGE_ID', 5_274_457_639) }
 
   describe '#list' do
@@ -51,6 +51,17 @@ RSpec.describe Mailtrap::SandboxAttachmentsAPI, :vcr do
           expect(error.messages.any? { |msg| msg.include?('Not Found') }).to be true
         end
       end
+    end
+  end
+
+  describe '#inbox_id' do
+    it 'returns the sandbox ID and warns that it is deprecated' do
+      inbox_id = nil
+
+      expect { inbox_id = sandbox_attachments_api.inbox_id }
+        .to output(/attachments_api_spec.rb:\d+: .*SandboxAttachmentsAPI#inbox_id is deprecated .*#sandbox_id/)
+        .to_stderr
+      expect(inbox_id).to eq(sandbox_id)
     end
   end
 end

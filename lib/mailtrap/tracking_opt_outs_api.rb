@@ -39,10 +39,10 @@ module Mailtrap
       )
     end
 
-    # Adds an email address to the tracking opt-out list for a sending domain
+    # Adds an email address to the tracking opt-out list for a domain
     # @param [Hash] options The tracking opt-out attributes
     # @option options [String] :email Email address to opt out of tracking
-    # @option options [Integer] :domain_id ID of the sending domain the opt-out applies to
+    # @option options [Integer] :domain_id ID of the domain the opt-out applies to
     # @return [TrackingOptOut] Created tracking opt-out
     # @!macro api_errors
     # @raise [ArgumentError] If invalid options are provided

@@ -1,13 +1,13 @@
 require 'mailtrap'
 
 account_id = 3229
-sending_domain_id = 1
+domain_id = 1
 client = Mailtrap::Client.new(api_key: 'your-api-key')
 company_info_api = Mailtrap::CompanyInfoAPI.new(account_id, client)
 
-# Create company info for a sending domain
+# Create company info for a domain
 company_info_api.create(
-  sending_domain_id,
+  domain_id,
   name: 'Mailtrap',
   address: '123 Main St',
   city: 'San Francisco',

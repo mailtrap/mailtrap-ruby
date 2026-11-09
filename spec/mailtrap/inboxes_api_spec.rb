@@ -1,287 +1,35 @@
 # frozen_string_literal: true
 
-RSpec.describe Mailtrap::InboxesAPI, :vcr do
-  subject(:inboxes_api) { described_class.new(account_id, client) }
+RSpec.describe Mailtrap::InboxesAPI do
+  let(:client) { Mailtrap::Client.new(api_key: 'local-api-key') }
 
-  let(:account_id) { ENV.fetch('MAILTRAP_ACCOUNT_ID', 1_111_111) }
-  let(:client) { Mailtrap::Client.new(api_key: ENV.fetch('MAILTRAP_API_KEY', 'local-api-key')) }
+  it 'works as SandboxesAPI and warns that it is deprecated',
+     vcr: { cassette_name: 'Mailtrap_SandboxesAPI/_list/maps_response_data_to_Sandbox_objects' } do
+    inboxes_api = nil
 
-  describe '#list' do
-    subject(:list) { inboxes_api.list }
-
-    it 'maps response data to Inboxes objects' do
-      expect(list).to all(be_a(Mailtrap::Inbox))
-    end
-
-    context 'when api key is incorrect' do
-      let(:client) { Mailtrap::Client.new(api_key: 'incorrect-api-key') }
-
-      it 'raises authorization error' do
-        expect { list }.to raise_error do |error|
-          expect(error).to be_a(Mailtrap::AuthorizationError)
-          expect(error.message).to include('Incorrect API token')
-          expect(error.messages.any? { |msg| msg.include?('Incorrect API token') }).to be true
-        end
-      end
-    end
+    expect { inboxes_api = described_class.new(1_111_111, client) }
+      .to output(/inboxes_api_spec.rb:\d+: .*Mailtrap::InboxesAPI is deprecated .*; use Mailtrap::SandboxesAPI/).to_stderr
+    expect(inboxes_api).to be_a(Mailtrap::SandboxesAPI)
+    expect(inboxes_api.list).to all(be_a(Mailtrap::Sandbox))
   end
 
-  describe '#get' do
-    subject(:get) { inboxes_api.get(inbox_id) }
+  it 'creates a sandbox with the options it inherits',
+     vcr: { cassette_name: 'Mailtrap_SandboxesAPI/_create/maps_response_data_to_Sandbox_object' } do
+    sandbox = nil
 
-    let(:inbox_id) { 4_278_175 }
-
-    it 'maps response data to Inbox object' do
-      expect(get).to be_a(Mailtrap::Inbox)
-      expect(get).to have_attributes(
-        id: inbox_id,
-        name: 'Test Inbox'
-      )
-    end
-
-    context 'when inbox does not exist' do
-      let(:inbox_id) { -1 }
-
-      it 'raises not found error' do
-        expect { get }.to raise_error do |error|
-          expect(error).to be_a(Mailtrap::Error)
-          expect(error.message).to include('Not Found')
-          expect(error.messages.any? { |msg| msg.include?('Not Found') }).to be true
-        end
-      end
-    end
+    expect { sandbox = described_class.new(1_111_111, client).create(name: 'Test Inbox', project_id: 2_379_735) }
+      .to output.to_stderr
+    expect(sandbox).to be_a(Mailtrap::Sandbox).and have_attributes(name: 'Test Inbox')
   end
 
-  describe '#create' do
-    subject(:create) { inboxes_api.create(**request) }
+  it 'updates a sandbox with the options it inherits',
+     vcr: { cassette_name: 'Mailtrap_SandboxesAPI/_update/maps_response_data_to_Sandbox_object' } do
+    sandbox = nil
 
-    let(:request) do
-      {
-        name: 'Test Inbox',
-        project_id: 2_379_735
-      }
-    end
-
-    it 'maps response data to Inbox object' do
-      expect(create).to be_a(Mailtrap::Inbox)
-      expect(create).to have_attributes(
-        name: 'Test Inbox'
-      )
-    end
-
-    context 'when API returns an error' do
-      let(:request) do
-        {
-          name: '', # Invalid value, but present
-          project_id: 2_379_735
-        }
-      end
-
-      it 'raises a Mailtrap::Error' do
-        expect { create }.to raise_error do |error|
-          expect(error).to be_a(Mailtrap::Error)
-          expect(error.message).to include('client error')
-        end
-      end
-    end
-  end
-
-  describe '#update' do
-    subject(:update) { inboxes_api.update(inbox_id, **request) }
-
-    let(:inbox_id) { 4_278_175 }
-
-    let(:request) do
-      {
-        name: 'Updated Inbox',
-        email_username: 'updated_username'
-      }
-    end
-
-    it 'maps response data to Inbox object' do
-      expect(update).to be_a(Mailtrap::Inbox)
-      expect(update).to have_attributes(
-        name: 'Updated Inbox',
-        email_username: '1234abcd'
-      )
-    end
-
-    context 'with hash request' do
-      let(:request) do
-        {
-          name: 'Updated Inbox'
-        }
-      end
-
-      it 'maps response data to Inbox object' do
-        expect(update).to be_a(Mailtrap::Inbox)
-        expect(update).to have_attributes(
-          name: 'Updated Inbox'
-        )
-      end
-    end
-
-    context 'when inbox does not exist' do
-      let(:inbox_id) { -1 }
-
-      it 'raises not found error' do
-        expect { update }.to raise_error do |error|
-          expect(error).to be_a(Mailtrap::Error)
-          expect(error.message).to include('Not Found')
-          expect(error.messages.any? { |msg| msg.include?('Not Found') }).to be true
-        end
-      end
-    end
-  end
-
-  describe '#clean' do
-    subject(:clean) { inboxes_api.clean(inbox_id) }
-
-    let(:inbox_id) { 4_278_175 }
-
-    it 'cleans Inbox and returns Inbox object' do
-      expect(clean).to have_attributes(
-        id: inbox_id,
-        name: 'Updated Inbox'
-      )
-    end
-
-    context 'when inbox does not exist' do
-      let(:inbox_id) { -1 }
-
-      it 'raises not found error' do
-        expect { clean }.to raise_error do |error|
-          expect(error).to be_a(Mailtrap::Error)
-          expect(error.message).to include('Not Found')
-          expect(error.messages.any? { |msg| msg.include?('Not Found') }).to be true
-        end
-      end
-    end
-  end
-
-  describe '#mark_as_read' do
-    subject(:mark_as_read) { inboxes_api.mark_as_read(inbox_id) }
-
-    let(:inbox_id) { 4_278_175 }
-
-    it 'returns nil' do
-      expect(mark_as_read).to have_attributes(
-        id: inbox_id,
-        name: 'Updated Inbox'
-      )
-    end
-
-    context 'when inbox does not exist' do
-      let(:inbox_id) { -1 }
-
-      it 'raises not found error' do
-        expect { mark_as_read }.to raise_error do |error|
-          expect(error).to be_a(Mailtrap::Error)
-          expect(error.message).to include('Not Found')
-          expect(error.messages.any? { |msg| msg.include?('Not Found') }).to be true
-        end
-      end
-    end
-  end
-
-  describe '#reset_credentials' do
-    subject(:reset_credentials) { inboxes_api.reset_credentials(inbox_id) }
-
-    let(:inbox_id) { 4_278_175 }
-
-    it 'returns nil' do
-      expect(reset_credentials).to have_attributes(
-        id: inbox_id,
-        name: 'Updated Inbox'
-      )
-    end
-
-    context 'when inbox does not exist' do
-      let(:inbox_id) { -1 }
-
-      it 'raises not found error' do
-        expect { reset_credentials }.to raise_error do |error|
-          expect(error).to be_a(Mailtrap::Error)
-          expect(error.message).to include('Not Found')
-          expect(error.messages.any? { |msg| msg.include?('Not Found') }).to be true
-        end
-      end
-    end
-  end
-
-  describe '#toggle_email_username' do
-    subject(:toggle_email_username) { inboxes_api.toggle_email_username(inbox_id) }
-
-    let(:inbox_id) { 4_578_672 }
-
-    it 'returns Inbox object' do
-      expect(toggle_email_username).to be_a(Mailtrap::Inbox)
-      expect(toggle_email_username).to have_attributes(
-        id: inbox_id,
-        email_username_enabled: true
-      )
-    end
-
-    context 'when inbox does not exist' do
-      let(:inbox_id) { -1 }
-
-      it 'raises not found error' do
-        expect { toggle_email_username }.to raise_error do |error|
-          expect(error).to be_a(Mailtrap::Error)
-          expect(error.message).to include('Not Found')
-          expect(error.messages.any? { |msg| msg.include?('Not Found') }).to be true
-        end
-      end
-    end
-  end
-
-  describe '#reset_email_username' do
-    subject(:reset_email_username) { inboxes_api.reset_email_username(inbox_id) }
-
-    let(:inbox_id) { 4_578_672 }
-
-    it 'returns Inbox object' do
-      expect(reset_email_username).to have_attributes(
-        id: inbox_id,
-        email_username: '1234abcd'
-      )
-    end
-
-    context 'when inbox does not exist' do
-      let(:inbox_id) { -1 }
-
-      it 'raises not found error' do
-        expect { reset_email_username }.to raise_error do |error|
-          expect(error).to be_a(Mailtrap::Error)
-          expect(error.message).to include('Not Found')
-          expect(error.messages.any? { |msg| msg.include?('Not Found') }).to be true
-        end
-      end
-    end
-  end
-
-  describe '#delete' do
-    subject(:delete) { inboxes_api.delete(inbox_id) }
-
-    let(:inbox_id) { 4_278_175 }
-
-    it 'returns deleted inbox data' do
-      expect(delete).to include(
-        id: inbox_id,
-        name: 'Updated Inbox'
-      )
-    end
-
-    context 'when inbox does not exist' do
-      let(:inbox_id) { -1 }
-
-      it 'raises not found error' do
-        expect { delete }.to raise_error do |error|
-          expect(error).to be_a(Mailtrap::Error)
-          expect(error.message).to include('Not Found')
-          expect(error.messages.any? { |msg| msg.include?('Not Found') }).to be true
-        end
-      end
-    end
+    expect do
+      sandbox = described_class.new(1_111_111, client)
+                               .update(4_278_175, name: 'Updated Inbox', email_username: 'updated_username')
+    end.to output.to_stderr
+    expect(sandbox).to be_a(Mailtrap::Sandbox).and have_attributes(name: 'Updated Inbox')
   end
 end

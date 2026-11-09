@@ -115,7 +115,7 @@ Send emails to your Sandbox for testing purposes:
 ```ruby
 require 'mailtrap'
 
-client = Mailtrap::Client.new(api_key: 'your-api-key', sandbox: true, inbox_id: YOUR_INBOX_ID)
+client = Mailtrap::Client.new(api_key: 'your-api-key', sandbox: true, sandbox_id: YOUR_SANDBOX_ID)
 client.send(mail)
 
 # You can also pass the request parameters directly
@@ -139,9 +139,8 @@ Meaning your recipients will receive emails only in the default encoding which
 is `quoted-printable`, if you send with Mailtrap API.
 
 For those who need to use `7bit` or any other encoding, SMTP provides
-better flexibility in that regard. Go to your _Mailtrap account_ → _Email Sending_
-→ _Sending Domains_ → _Your domain_ → _SMTP/API Settings_ to find the SMTP
-configuration example.
+better flexibility in that regard. Go to your _Mailtrap account_ → _Domains_
+→ _Your domain_ → _Integration_ to find the SMTP configuration example.
 
 ### Multiple Mailtrap Clients
 
@@ -175,17 +174,17 @@ Email API:
 
 - Full Email Sending – [`full.rb`](examples/full.rb)
 - Batch Sending – [`batch.rb`](examples/batch.rb)
-- Sending Domains API – [`sending_domains_api.rb`](examples/sending_domains_api.rb)
+- Domains API – [`domains_api.rb`](examples/domains_api.rb)
 - Sending Stats API – [`stats_api.rb`](examples/stats_api.rb)
 - Email Logs API – [`email_logs_api.rb`](examples/email_logs_api.rb)
 - Webhooks API – [`webhooks_api.rb`](examples/webhooks_api.rb)
 - Suppressions API – [`suppressions_api.rb`](examples/suppressions_api.rb)
 - Tracking Opt-outs API – [`tracking_opt_outs_api.rb`](examples/tracking_opt_outs_api.rb)
 
-Email Sandbox (Testing):
+Email Sandbox:
 
 - Projects CRUD – [`projects_api.rb`](examples/projects_api.rb)
-- Inboxes CRUD - [`inboxes_api.rb`](examples/inboxes_api.rb)
+- Sandboxes CRUD - [`sandboxes_api.rb`](examples/sandboxes_api.rb)
 - Sandbox Messages CRUD - [`sandbox_messages_api.rb`](examples/sandbox_messages_api.rb)
 - Sandbox Attachments API - [`sandbox_attachments_api.rb`](examples/sandbox_attachments_api.rb)
 
@@ -218,6 +217,40 @@ General:
 - Email Templates API – [`email_templates_api.rb`](examples/email_templates_api.rb)
 - Action Mailer – [`action_mailer.rb`](examples/action_mailer.rb)
 - Verifying webhook signatures – [`webhooks_signature_verification.ru`](examples/webhooks_signature_verification.ru)
+
+## Renamed APIs
+
+Email Sandbox inboxes are now called sandboxes, and sending domains are now called
+domains. The old names still work and call the same API endpoints, but they print a
+deprecation warning and will be removed in a future major release.
+
+| Deprecated | Use instead |
+|------------|-------------|
+| `Mailtrap::InboxesAPI` | `Mailtrap::SandboxesAPI` |
+| `Mailtrap::Inbox` | `Mailtrap::Sandbox` |
+| `Mailtrap::SendingDomainsAPI` | `Mailtrap::DomainsAPI` |
+| `Mailtrap::SendingDomain` | `Mailtrap::Domain` |
+| `Mailtrap::Client.new(inbox_id:)` and the ActionMailer `inbox_id` setting | `sandbox_id` |
+| `#inbox_id` on `Client`, `SandboxMessagesAPI` and `SandboxAttachmentsAPI` | `#sandbox_id` |
+
+The other old names warn once per process. `Mailtrap::Inbox` and `Mailtrap::SendingDomain`
+use Ruby's `deprecate_constant`, so they warn only when Ruby's deprecation warnings are
+enabled (for example, `ruby -W:deprecated`), and they can warn more than once. Attributes and filters that
+mirror API fields keep their names, such as `SandboxMessage#inbox_id`, `Project#inboxes`
+and the `sending_domain_ids:` stats filter.
+
+The once-per-process warnings print whether or not Ruby's deprecation warnings are
+enabled, so `-W:no-deprecated` doesn't hide them. To silence them, filter out the
+warnings tagged `[mailtrap]`:
+
+```ruby
+module SilenceMailtrapDeprecations
+  def warn(message, ...)
+    super unless message.include?('[mailtrap]')
+  end
+end
+Warning.extend(SilenceMailtrapDeprecations)
+```
 
 ## Migration guide v1 → v2
 
