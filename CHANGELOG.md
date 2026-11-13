@@ -1,3 +1,11 @@
+## [2.20.1] - 2026-11-12
+
+## What's Changed
+* Add release workflow by @IgorDobryn in https://github.com/mailtrap/mailtrap-ruby/pull/141
+
+
+**Full Changelog**: https://github.com/mailtrap/mailtrap-ruby/compare/v2.20.0...v2.20.1
+
 ## [2.20.0] - 2026-11-09
 
 ## What's Changed
