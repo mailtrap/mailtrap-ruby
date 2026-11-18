@@ -1,0 +1,24 @@
+spec/mailtrap/inbound_thread_message_delivery_spec.rb
+  s_ed71987c89f446::t_b0ce78b1f74dbe 10-11
+  s_ed71987c89f446::t_1ab0f066231c5e 24-43
+  s_ed71987c89f446::t_d65ace643e103f 20-21
+lib/mailtrap/inbound_thread_message_delivery.rb
+  s_ed71987c89f446::t_7c59473ae515ff 16
+  s_ed71987c89f446::t_43ed328ef69d25 10
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "ba53707aaa449917027a63a1b2a13c7464a8802e",
+  "prompts": {},
+  "sessions": {
+    "s_ed71987c89f446": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "28a91546-f628-4267-96df-007ba1404233",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": null
+    }
+  }
+}
