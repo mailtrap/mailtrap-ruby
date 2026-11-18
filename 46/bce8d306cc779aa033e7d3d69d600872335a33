@@ -1,0 +1,49 @@
+README.md
+  s_a416a2bbf03afd::t_6459ca6d7abb73 182-183
+lib/mailtrap/tracking_opt_out.rb
+  s_a416a2bbf03afd::t_8bceec5ae2c1a5 1-17
+spec/mailtrap/tracking_opt_outs_api_spec.rb
+  s_a416a2bbf03afd::t_0cad428b2b9a62 1-179
+lib/mailtrap/suppressions_api.rb
+  s_a416a2bbf03afd::t_ca34b7d1ff1885 10-11
+  s_a416a2bbf03afd::t_534a74289f6e90 25-37
+  s_a416a2bbf03afd::t_5a01ded3fbf655 38-39
+examples/tracking_opt_outs_api.rb
+  s_a416a2bbf03afd::t_015492340091c6 1-46
+lib/mailtrap/tracking_opt_outs_api.rb
+  s_a416a2bbf03afd::t_05419e68b1cbfb 1-70
+examples/suppressions_api.rb
+  s_a416a2bbf03afd::t_47652ef0c563c4 37
+  s_a416a2bbf03afd::t_5eab98b8dc9641 39-46,49
+  s_860d9b149e5a5b::t_b3971598bb3e40 38
+spec/mailtrap/suppressions_api_spec.rb
+  s_a416a2bbf03afd::t_32288dbcd8649d 97-162
+lib/mailtrap.rb
+  s_a416a2bbf03afd::t_9591b00b9b92d3 21
+lib/mailtrap/tracking_opt_outs_list_response.rb
+  s_a416a2bbf03afd::t_3fecb2e2fb4ead 1-13
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "46bce8d306cc779aa033e7d3d69d600872335a33",
+  "prompts": {},
+  "sessions": {
+    "s_860d9b149e5a5b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8f0cdf29-9bbd-4b83-87f2-f8a048b320dc",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Marcin Klocek <marcin.klocek@railsware.com>"
+    },
+    "s_a416a2bbf03afd": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "73aab1cf-cfd1-42b8-b656-f26905d319ee",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Marcin Klocek <marcin.klocek@railsware.com>"
+    }
+  }
+}
