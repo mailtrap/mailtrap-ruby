@@ -57,6 +57,38 @@ RSpec.describe Mailtrap::InboundThreadsAPI, :vcr do
       end
     end
 
+    context 'with a sent reply rejected before sending', vcr: false do
+      let(:delivery) do
+        {
+          to: 'suppressed@example.com',
+          status: 'not_delivered',
+          delivered_at: nil,
+          bounced_at: nil,
+          rejected_at: '2026-05-08T11:40:01.000Z'
+        }
+      end
+
+      before do
+        stub_request(:get, "https://mailtrap.io/api/inbound/inboxes/#{inbox_id}/threads/#{thread_id}")
+          .to_return(
+            status: 200,
+            body: {
+              id: thread_id,
+              messages: [{ visibility_status: 'available', direction: 'outbound', delivery: }]
+            }.to_json,
+            headers: { 'Content-Type' => 'application/json' }
+          )
+      end
+
+      it 'maps rejected_at on the delivery' do
+        expect(get.messages.first.delivery).to have_attributes(
+          status: 'not_delivered',
+          bounced_at: nil,
+          rejected_at: '2026-05-08T11:40:01.000Z'
+        )
+      end
+    end
+
     context 'when the thread does not exist' do
       let(:thread_id) { 'does-not-exist' }
 
