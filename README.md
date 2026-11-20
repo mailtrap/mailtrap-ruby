@@ -204,6 +204,7 @@ Email marketing:
 
 - Email Campaigns CRUD, Lifecycle Actions & Stats – [`email_campaigns_api.rb`](examples/email_campaigns_api.rb)
 - Email Marketing Stats API – [`marketing_stats_api.rb`](examples/marketing_stats_api.rb)
+- Subscription Topics API – [`subscription_topics_api.rb`](examples/subscription_topics_api.rb)
 
 General:
 

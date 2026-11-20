@@ -4,11 +4,13 @@ module Mailtrap
   # Data Transfer Object for Suppression
   # @see https://api-docs.mailtrap.io/docs/mailtrap-api-docs/f8144826d885a-list-and-search-suppressions
   # @attr_reader id [String] The suppression UUID
-  # @attr_reader type [String] The suppression type
+  # @attr_reader type [String] The suppression type (+hard bounce+, +spam complaint+, +unsubscription+,
+  #   +manual import+, or +topic unsubscription+ when listed with +include_topic_unsubscriptions+)
   # @attr_reader created_at [String] The creation timestamp
   # @attr_reader email [String] The email address
   # @attr_reader sending_stream [String] The sending stream
   # @attr_reader domain_name [String, nil] The domain name
+  # @attr_reader subscription_topic_id [Integer, nil] The subscription topic ID of a +topic unsubscription+
   # @attr_reader message_bounce_category [String, nil] The bounce category
   # @attr_reader message_category [String, nil] The message category
   # @attr_reader message_client_ip [String, nil] The client IP
@@ -26,6 +28,7 @@ module Mailtrap
     :email,
     :sending_stream,
     :domain_name,
+    :subscription_topic_id,
     :message_bounce_category,
     :message_category,
     :message_client_ip,

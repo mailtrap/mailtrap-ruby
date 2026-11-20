@@ -268,10 +268,43 @@ RSpec.describe Mailtrap::Client do
       end
     end
 
+    it 'handles general API 403 with empty response body' do
+      stub_post %r{/api/test}, 403, '' do
+        expect { client.post('/api/test') }.to raise_error(Mailtrap::RejectionError, 'forbidden')
+      end
+    end
+
     it 'handles server errors' do
       stub_api_send 504, '🫖' do
         expect { send_mail }.to raise_error(Mailtrap::Error, 'server error')
       end
+    end
+
+    it 'handles server errors with the errors of a JSON body' do
+      message = 'The contact was saved, but its subscription topic preferences were not.'
+      stub = stub_request(:post, %r{/api/test})
+             .to_return(
+               status: 503, body: { errors: message }.to_json, headers: { 'Content-Type' => 'application/json' }
+             )
+
+      expect { client.post('/api/test') }.to raise_error(Mailtrap::Error, message)
+      expect(stub).to have_been_requested
+    end
+
+    it 'handles server errors with a JSON body without errors' do
+      stub = stub_request(:post, %r{/api/test})
+             .to_return(status: 500, body: '[]', headers: { 'Content-Type' => 'application/json' })
+
+      expect { client.post('/api/test') }.to raise_error(Mailtrap::Error, 'server error')
+      expect(stub).to have_been_requested
+    end
+
+    it 'handles server errors with an HTML body' do
+      stub = stub_request(:post, %r{/api/test})
+             .to_return(status: 502, body: '<html>Bad Gateway</html>', headers: { 'Content-Type' => 'text/html' })
+
+      expect { client.post('/api/test') }.to raise_error(Mailtrap::Error, 'server error')
+      expect(stub).to have_been_requested
     end
 
     it 'handles unexpected response status code' do

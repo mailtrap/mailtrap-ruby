@@ -36,6 +36,13 @@ suppressions.list
 # Get suppressions for the email
 suppressions.list(email: 'recipient@example.com')
 
+# Include the contacts' subscription topic unsubscriptions. They can't be created or deleted
+# here: change them with the contact's subscription_topics (see contacts_api.rb).
+suppressions.list(include_topic_unsubscriptions: true)
+# => [..., #<struct Mailtrap::Suppression
+#      id="0b7e4f1a-...", type="topic unsubscription", email="recipient@example.com",
+#      sending_stream="bulk", domain_name="example.com", subscription_topic_id=12, ...>]
+
 # Add an email to the suppression list.
 # `type` is optional and defaults to 'manual import'.
 suppression = suppressions.create(

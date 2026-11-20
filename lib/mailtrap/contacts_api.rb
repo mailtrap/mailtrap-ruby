@@ -7,7 +7,7 @@ module Mailtrap
   class ContactsAPI
     include BaseAPI
 
-    self.supported_options = %i[email fields list_ids]
+    self.supported_options = %i[email fields list_ids subscription_topics]
     self.response_class = Contact
 
     # Retrieves a specific contact
@@ -23,9 +23,13 @@ module Mailtrap
     # @option options [String] :email The contact's email address
     # @option options [Hash] :fields The contact's fields
     # @option options [Array<Integer>] :list_ids The contact's list IDs
+    # @option options [Array<Hash>] :subscription_topics Subscription topic preferences,
+    #   see {#upsert}
     # @return [Contact] Created contact object
     # @!macro api_errors
     # @raise [ArgumentError] If invalid options are provided
+    # @raise [Mailtrap::Error] With a 503 when the contact was saved but its subscription topic
+    #   preferences were not; send them again with {#upsert}
     def create(options)
       base_create(options)
     end
@@ -44,11 +48,17 @@ module Mailtrap
     # @option options [String] :email The contact's email address
     # @option options [Hash] :fields The contact's fields
     # @option options [Boolean] :unsubscribed Whether to unsubscribe the contact
+    # @option options [Array<Hash>] :subscription_topics Subscription topic preferences to set, each
+    #   +{ subscription_topic_id:, domain_id:, status: }+ with +status+ +subscribed+ or +unsubscribed+
+    #   and +domain_id+ the sending domain it applies to; preferences left out keep their status.
+    #   Fails with a validation error on an account without subscription topics
     # @return [Contact] Updated contact object
     # @!macro api_errors
     # @raise [ArgumentError] If invalid options are provided
+    # @raise [Mailtrap::Error] With a 503 when the contact was saved but its subscription topic
+    #   preferences were not; send them again in an update of the contact
     def upsert(contact_id, options)
-      base_update(contact_id, options, %i[email fields unsubscribed])
+      base_update(contact_id, options, %i[email fields unsubscribed subscription_topics])
     end
 
     # Adds a contact to specified lists

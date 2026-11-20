@@ -89,6 +89,33 @@ RSpec.describe Mailtrap::WebhooksAPI, :vcr do
       expect(create.signing_secret).not_to be_nil
     end
 
+    context 'when creating a campaigns webhook for subscription preference updates', vcr: false do
+      let(:request) do
+        {
+          url: 'https://example.com/mailtrap/campaigns',
+          webhook_type: 'campaigns',
+          payload_format: 'json',
+          event_types: %w[unsubscribe subscription_preferences_update]
+        }
+      end
+
+      it 'sends and maps the event types' do
+        stub = stub_request(:post, "https://mailtrap.io/api/accounts/#{account_id}/webhooks")
+               .with(body: { webhook: request }.to_json)
+               .to_return(
+                 status: 201,
+                 body: { data: request.merge(id: 7, active: true, signing_secret: 'secret') }.to_json,
+                 headers: { 'Content-Type' => 'application/json' }
+               )
+
+        expect(create).to have_attributes(
+          webhook_type: 'campaigns',
+          event_types: %w[unsubscribe subscription_preferences_update]
+        )
+        expect(stub).to have_been_requested
+      end
+    end
+
     context 'when creating an inbound_receiving webhook' do
       let(:request) do
         {

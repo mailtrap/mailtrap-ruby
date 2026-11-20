@@ -18,6 +18,7 @@ module Mailtrap
       delivery_options
       contact_list_ids
       contact_segment_ids
+      subscription_topic_id
     ].freeze
 
     self.response_class = EmailCampaign
@@ -70,6 +71,9 @@ module Mailtrap
     #   applies when +delivery_mode+ is +gradual+
     # @option options [Array<Integer>] :contact_list_ids IDs of contact lists to send to
     # @option options [Array<Integer>] :contact_segment_ids IDs of contact segments to send to
+    # @option options [Integer] :subscription_topic_id ID of the subscription topic,
+    #   as returned by {SubscriptionTopicsAPI}; must cover the campaign's domain.
+    #   Ignored on an account without subscription topics
     # @return [EmailCampaign] Created email campaign
     # @!macro api_errors
     # @raise [ArgumentError] If invalid options are provided
@@ -94,6 +98,9 @@ module Mailtrap
     #   applies when +delivery_mode+ is +gradual+
     # @option options [Array<Integer>] :contact_list_ids IDs of contact lists to send to
     # @option options [Array<Integer>] :contact_segment_ids IDs of contact segments to send to
+    # @option options [Integer] :subscription_topic_id ID of the subscription topic,
+    #   as returned by {SubscriptionTopicsAPI}; it can be changed but not removed, so +nil+ is rejected.
+    #   Ignored on an account without subscription topics
     # @return [EmailCampaign] Updated email campaign
     # @!macro api_errors
     # @raise [ArgumentError] If invalid options are provided

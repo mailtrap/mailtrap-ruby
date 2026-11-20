@@ -15,6 +15,19 @@ webhook = webhooks_api.create(
 )
 # => #<struct Mailtrap::Webhook id=1, url="https://example.com/mailtrap/webhooks", ..., signing_secret="a1b2c3...">
 
+# Event types: delivery, soft_bounce, bounce, suspension, unsubscribe, open, spam_complaint, click,
+# reject and subscription_preferences_update. The last one, sent when a recipient changes their
+# subscription topic preferences, is available only on `campaigns` webhooks and on `email_sending`
+# webhooks of the `bulk` stream.
+
+# Create a `campaigns` webhook
+webhooks_api.create(
+  url: 'https://example.com/mailtrap/campaigns',
+  webhook_type: 'campaigns',
+  payload_format: 'json',
+  event_types: %w[unsubscribe subscription_preferences_update]
+)
+
 # Create an `audit_log` webhook
 webhooks_api.create(
   url: 'https://example.com/mailtrap/audit-log',

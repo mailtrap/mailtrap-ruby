@@ -15,8 +15,9 @@ module Mailtrap
   #   or nil for all domains. Applicable only for `email_sending` webhooks.
   # @attr_reader inbound_inbox_id [Integer, nil] The inbound inbox ID the webhook is linked to.
   #   Applicable only for `inbound_receiving` webhooks.
-  # @attr_reader event_types [Array<String>] The event types the webhook is subscribed to.
-  #   Applicable only for `email_sending` webhooks.
+  # @attr_reader event_types [Array<String>] The event types the webhook is subscribed to
+  #   (`delivery`, `soft_bounce`, `bounce`, `suspension`, `unsubscribe`, `open`, `spam_complaint`, `click`,
+  #   `reject`, `subscription_preferences_update`). Applicable only for `email_sending` and `campaigns` webhooks.
   # @attr_reader signing_secret [String, nil] HMAC SHA-256 signing secret. Returned only on creation.
   Webhook = Struct.new(
     :id,

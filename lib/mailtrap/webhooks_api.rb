@@ -37,8 +37,9 @@ module Mailtrap
     # @option options [String] :payload_format Payload format (`json` or `jsonlines`). Defaults to `json`.
     # @option options [String] :sending_stream Sending stream (`transactional` or `bulk`).
     #   Required for `email_sending` webhook type.
-    # @option options [Array<String>] :event_types Event types to subscribe to.
-    #   Required for `email_sending` webhook type.
+    # @option options [Array<String>] :event_types Event types to subscribe to, see {Webhook#event_types}.
+    #   Required for `email_sending` and `campaigns` webhook types. `subscription_preferences_update`
+    #   is available only for `campaigns` webhooks and `email_sending` webhooks of the `bulk` stream.
     # @option options [Integer] :domain_id Domain ID to scope the webhook to.
     #   Applicable only for `email_sending` webhooks.
     # @option options [Integer] :inbound_inbox_id Inbound inbox ID to link the webhook to.
@@ -57,8 +58,8 @@ module Mailtrap
     # @option options [String] :url The URL that will receive webhook payloads
     # @option options [Boolean] :active Whether the webhook is active
     # @option options [String] :payload_format Payload format (`json` or `jsonlines`)
-    # @option options [Array<String>] :event_types Event types to subscribe to.
-    #   Applicable only for `email_sending` webhooks.
+    # @option options [Array<String>] :event_types Event types to subscribe to, see {#create}.
+    #   Applicable only for `email_sending` and `campaigns` webhooks.
     # @option options [Integer] :inbound_inbox_id Inbound inbox ID to link the webhook to.
     #   Applicable only for `inbound_receiving` webhooks.
     # @return [Webhook] Updated webhook

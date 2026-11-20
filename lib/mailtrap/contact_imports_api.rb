@@ -7,7 +7,7 @@ module Mailtrap
   class ContactImportsAPI
     include BaseAPI
 
-    self.supported_options = %i[email fields list_ids_included list_ids_excluded]
+    self.supported_options = %i[email fields list_ids_included list_ids_excluded subscription_topics]
 
     self.response_class = ContactImport
 
@@ -29,6 +29,10 @@ module Mailtrap
     #     req.upsert(email: 'john@example.com', fields: { first_name: 'John' })
     #       .add_to_lists(email: 'john@example.com', list_ids: [1])
     #       .remove_from_lists(email: 'john@example.com', list_ids: [2])
+    #       .update_subscription_topics(
+    #         email: 'john@example.com',
+    #         subscription_topics: [{ subscription_topic_id: 3, domain_id: 4, status: 'unsubscribed' }]
+    #       )
     #   end
     #   contact_imports.create(import_request)
     #

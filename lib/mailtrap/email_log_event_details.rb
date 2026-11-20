@@ -33,6 +33,9 @@ module Mailtrap
     # For event_type = suspension or reject
     Reject = Struct.new(:reject_reason, keyword_init: true)
 
+    # For event_type = topic_unsubscribe or topic_resubscribe
+    TopicSubscription = Struct.new(:web_ip_address, :subscription_topic_id, keyword_init: true)
+
     DETAIL_STRUCTS = {
       'delivery' => Delivery,
       'open' => Open,
@@ -42,17 +45,20 @@ module Mailtrap
       'spam' => Spam,
       'unsubscribe' => Unsubscribe,
       'suspension' => Reject,
-      'reject' => Reject
+      'reject' => Reject,
+      'topic_unsubscribe' => TopicSubscription,
+      'topic_resubscribe' => TopicSubscription
     }.freeze
 
     # Builds the appropriate detail struct from API response.
-    # @param event_type [String] Known event type (delivery, open, click, etc.)
+    # @param event_type [String] Event type (delivery, open, click, etc.)
     # @param hash [Hash] Symbol-keyed details from parsed JSON
-    # @return [Delivery, Open, Click, Bounce, Spam, Unsubscribe, Reject]
-    # @raise [ArgumentError] when event_type is nil or not in DETAIL_STRUCTS
+    # @return [Delivery, Open, Click, Bounce, Spam, Unsubscribe, Reject, TopicSubscription, Hash, nil]
+    #   For an event type not in DETAIL_STRUCTS, the details as returned, so a newer event type doesn't fail
+    #   the whole message
     def self.build(event_type, hash)
       struct_class = DETAIL_STRUCTS[event_type.to_s]
-      raise ArgumentError, "Unknown event_type: #{event_type.inspect}" unless struct_class
+      return hash unless struct_class
 
       attrs = hash.slice(*struct_class.members)
       struct_class.new(**attrs)

@@ -50,5 +50,16 @@ if message_id
   #      events=[#<struct Mailtrap::EmailLogEvent event_type="delivery", ...>, ...]>
 
   puts message.raw_message_url
-  message.events&.each { |e| puts "#{e.event_type} at #{e.created_at}" }
+
+  # A recipient changing their subscription topic preferences adds topic_unsubscribe and
+  # topic_resubscribe events. An event type this version doesn't know keeps its details as a Hash.
+  message.events&.each do |e|
+    puts "#{e.event_type} at #{e.created_at}"
+    case e.details
+    when Mailtrap::EmailLogEventDetails::TopicSubscription
+      puts "#{e.event_type}: subscription topic #{e.details.subscription_topic_id}"
+    when Hash
+      puts "#{e.event_type}: #{e.details}"
+    end
+  end
 end

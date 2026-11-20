@@ -47,6 +47,21 @@ module Mailtrap
       self
     end
 
+    # Sets the contact's subscription topic preferences; preferences left out keep their status.
+    # Importing them fails on an account without subscription topics.
+    # @param email [String] The contact's email address
+    # @param subscription_topics [Array<Hash>] Preferences, each +{ subscription_topic_id:, domain_id:, status: }+
+    #   with +status+ +subscribed+ or +unsubscribed+ and +domain_id+ the sending domain it applies to
+    # @return [ContactsImportRequest] Returns self for method chaining
+    def update_subscription_topics(email:, subscription_topics:)
+      validate_email!(email)
+      raise ArgumentError, 'subscription_topics must be present' if subscription_topics.empty?
+
+      @data[email][:subscription_topics] = Array(@data[email][:subscription_topics]) | subscription_topics
+
+      self
+    end
+
     # @return [Array<Hash>] Array of contact objects ready for import
     def to_a
       @data.values
