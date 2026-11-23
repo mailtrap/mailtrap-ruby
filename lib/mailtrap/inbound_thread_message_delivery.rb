@@ -7,11 +7,13 @@ module Mailtrap
   # @attr_reader status [String] The delivery status
   # @attr_reader delivered_at [String, nil] Delivery timestamp
   # @attr_reader bounced_at [String, nil] Bounce timestamp
+  # @attr_reader rejected_at [String, nil] Rejection timestamp, e.g. a suppressed recipient
   InboundThreadMessageDelivery = Struct.new(
     :to,
     :status,
     :delivered_at,
     :bounced_at,
+    :rejected_at,
     keyword_init: true
   )
 end
