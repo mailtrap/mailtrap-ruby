@@ -11,8 +11,9 @@ module Mailtrap
   # @attr_reader created_at [Integer] The creation timestamp
   # @attr_reader updated_at [Integer] The last update timestamp
   # @attr_reader subscription_topics [Array<Hash>, nil] The contact's subscription topic preferences,
-  #   each +{ subscription_topic_id:, domain_id:, status: }+ with +status+ +subscribed+ or +unsubscribed+.
-  #   +nil+ when the account has no subscription topics, or when they could not be read (retry then)
+  #   each +{ subscription_topic_id:, domain_id:, status: }+ with +status+ +subscribed+ or +unsubscribed+;
+  #   empty when the account has no live topics. +nil+ when subscription topics are not available for the account,
+  #   or when the preferences could not be read (retry then)
   Contact = Struct.new(
     :id,
     :email,

@@ -106,6 +106,26 @@ RSpec.describe Mailtrap::ContactsImportRequest do
         { email: 'two@example.com', fields: {}, list_ids_included: [], list_ids_excluded: [] }
       )
     end
+
+    it 'keeps the latest preference for a topic and domain' do
+      request = described_class.new.tap do |req|
+        req.update_subscription_topics(email: 'one@example.com', subscription_topics: [subscribed, unsubscribed])
+           .update_subscription_topics(
+             email: 'one@example.com',
+             subscription_topics: [
+               { 'subscription_topic_id' => 12, 'domain_id' => 4321, 'status' => 'unsubscribed' },
+               subscribed.merge(domain_id: 4322)
+             ]
+           )
+      end
+      expect(request.to_a.first[:subscription_topics]).to eq(
+        [
+          { subscription_topic_id: 12, domain_id: 4321, status: 'unsubscribed' },
+          unsubscribed,
+          { subscription_topic_id: 12, domain_id: 4322, status: 'subscribed' }
+        ]
+      )
+    end
   end
 
   describe '#to_a' do

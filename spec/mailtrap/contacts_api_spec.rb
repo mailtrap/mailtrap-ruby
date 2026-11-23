@@ -121,7 +121,7 @@ RSpec.describe Mailtrap::ContactsAPI do
         expect(client.get(contact_id).subscription_topics).to be_nil
       end
 
-      it 'returns nil when the account has no subscription topics' do
+      it 'returns nil when subscription topics are not available for the account' do
         stub_contact({})
 
         expect(client.get(contact_id)).to have_attributes(email:, subscription_topics: nil)

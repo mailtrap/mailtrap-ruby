@@ -117,22 +117,22 @@ updated_contact.newly_created? # => false
 # Set the contact's subscription topic preferences, one per topic and sending domain
 # (see subscription_topics_api.rb); preferences left out keep their status.
 # A topic with a domain_id applies to that domain only; one without applies to every domain.
+# Without subscription topics, listing them raises Mailtrap::RejectionError, Contact#subscription_topics
+# is nil and setting them raises Mailtrap::Error ("are not available for this account").
 begin
   topic = Mailtrap::SubscriptionTopicsAPI.new(client).list.data.first
-  if topic
-    domain_id = topic.domain_id || Mailtrap::DomainsAPI.new(account_id, client).list.first&.id
+  topic_domain_id = topic && (topic.domain_id || Mailtrap::DomainsAPI.new(account_id, client).list.first&.id)
+  if topic_domain_id
     topic_contact = contacts.upsert(
       contact.id,
-      subscription_topics: [{ subscription_topic_id: topic.id, domain_id:, status: 'unsubscribed' }]
+      subscription_topics: [{ subscription_topic_id: topic.id, domain_id: topic_domain_id, status: 'unsubscribed' }]
     )
     topic_contact.subscription_topics
     # => [{ subscription_topic_id: 12, domain_id: 4321, status: "unsubscribed" }, ...]
   end
-rescue Mailtrap::RejectionError
-  puts 'Subscription topics are not available for this account'
+rescue Mailtrap::Error => e
+  puts "Subscription topic preferences are not available: #{e.message}"
 end
-# Without subscription topics, Contact#subscription_topics is nil and setting them raises
-# Mailtrap::Error ("are not available for this account").
 
 # Remove contact from lists
 contacts.remove_from_lists(contact.id, [list.id])
@@ -203,14 +203,17 @@ contact_imports.create(
 
 # Import subscription topic preferences, as for contacts.upsert above
 # (on an account without subscription topics, the import fails)
-if topic
-  domain_id = topic.domain_id || Mailtrap::DomainsAPI.new(account_id, client).list.first&.id
+if topic_domain_id
   topics_import = Mailtrap::ContactsImportRequest.new.tap do |req|
     req.upsert(email: 'john.doe@example.com')
        .update_subscription_topics(
          email: 'john.doe@example.com',
-         subscription_topics: [{ subscription_topic_id: topic.id, domain_id:, status: 'subscribed' }]
+         subscription_topics: [{ subscription_topic_id: topic.id, domain_id: topic_domain_id, status: 'subscribed' }]
        )
   end
-  contact_imports.create(topics_import)
+  begin
+    contact_imports.create(topics_import)
+  rescue Mailtrap::Error => e
+    puts "Subscription topic preferences are not available: #{e.message}"
+  end
 end
