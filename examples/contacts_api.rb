@@ -120,7 +120,7 @@ updated_contact.newly_created? # => false
 # Without subscription topics, listing them raises Mailtrap::RejectionError, Contact#subscription_topics
 # is nil and setting them raises Mailtrap::Error ("are not available for this account").
 begin
-  topic = Mailtrap::SubscriptionTopicsAPI.new(client).list.data.first
+  topic = Mailtrap::SubscriptionTopicsAPI.new(client).list(per_page: 1).data.first
   topic_domain_id = topic && (topic.domain_id || Mailtrap::DomainsAPI.new(account_id, client).list.first&.id)
   if topic_domain_id
     topic_contact = contacts.upsert(

@@ -58,7 +58,7 @@ module Mailtrap
     # @option options [String] :url The URL that will receive webhook payloads
     # @option options [Boolean] :active Whether the webhook is active
     # @option options [String] :payload_format Payload format (`json` or `jsonlines`)
-    # @option options [Array<String>] :event_types Event types to subscribe to, see {#create}.
+    # @option options [Array<String>] :event_types Event types to subscribe to, see {Webhook#event_types}.
     #   Applicable only for `email_sending` and `campaigns` webhooks.
     # @option options [Integer] :inbound_inbox_id Inbound inbox ID to link the webhook to.
     #   Applicable only for `inbound_receiving` webhooks.

@@ -210,8 +210,8 @@ RSpec.describe Mailtrap::Client do
       stub_post(%r{/api/send}, status, body, &block)
     end
 
-    def stub_post(path, status, body)
-      stub = stub_request(:post, path).to_return(status:, body:)
+    def stub_post(path, status, body, headers: {})
+      stub = stub_request(:post, path).to_return(status:, body:, headers:)
       yield
       expect(stub).to have_been_requested
     end
@@ -282,29 +282,21 @@ RSpec.describe Mailtrap::Client do
 
     it 'handles server errors with the errors of a JSON body' do
       message = 'The contact was saved, but its subscription topic preferences were not.'
-      stub = stub_request(:post, %r{/api/test})
-             .to_return(
-               status: 503, body: { errors: message }.to_json, headers: { 'Content-Type' => 'application/json' }
-             )
-
-      expect { client.post('/api/test') }.to raise_error(Mailtrap::Error, message)
-      expect(stub).to have_been_requested
+      stub_post %r{/api/test}, 503, { errors: message }.to_json, headers: { 'Content-Type' => 'application/json' } do
+        expect { client.post('/api/test') }.to raise_error(Mailtrap::Error, message)
+      end
     end
 
     it 'handles server errors with a JSON body without errors' do
-      stub = stub_request(:post, %r{/api/test})
-             .to_return(status: 500, body: '[]', headers: { 'Content-Type' => 'application/json' })
-
-      expect { client.post('/api/test') }.to raise_error(Mailtrap::Error, 'server error')
-      expect(stub).to have_been_requested
+      stub_post %r{/api/test}, 500, '[]', headers: { 'Content-Type' => 'application/json' } do
+        expect { client.post('/api/test') }.to raise_error(Mailtrap::Error, 'server error')
+      end
     end
 
     it 'handles server errors with an HTML body' do
-      stub = stub_request(:post, %r{/api/test})
-             .to_return(status: 502, body: '<html>Bad Gateway</html>', headers: { 'Content-Type' => 'text/html' })
-
-      expect { client.post('/api/test') }.to raise_error(Mailtrap::Error, 'server error')
-      expect(stub).to have_been_requested
+      stub_post %r{/api/test}, 502, '<html>Bad Gateway</html>', headers: { 'Content-Type' => 'text/html' } do
+        expect { client.post('/api/test') }.to raise_error(Mailtrap::Error, 'server error')
+      end
     end
 
     it 'handles unexpected response status code' do
