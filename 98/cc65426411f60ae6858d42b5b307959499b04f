@@ -1,0 +1,23 @@
+examples/contacts_api.rb
+  s_abb49d121c4963::t_5011fea0329e49 123
+lib/mailtrap/webhooks_api.rb
+  s_abb49d121c4963::t_5011fea0329e49 61
+spec/mailtrap/client_spec.rb
+  s_abb49d121c4963::t_5011fea0329e49 213-214,285-287,291-293,297-299
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "98cc65426411f60ae6858d42b5b307959499b04f",
+  "prompts": {},
+  "sessions": {
+    "s_abb49d121c4963": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "51e8a473-d72b-4501-bb0b-921018fdcec2",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Maciej Walusiak <maciej.walusiak@railsware.com>"
+    }
+  }
+}
