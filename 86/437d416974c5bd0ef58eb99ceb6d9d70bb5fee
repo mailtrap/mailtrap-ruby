@@ -1,0 +1,27 @@
+spec/mailtrap/sending_domains_api_spec.rb
+  1fec3bd451918509 187-230
+examples/sending_domains_api.rb
+  1fec3bd451918509 19-27
+lib/mailtrap/sending_domains_api.rb
+  1fec3bd451918509 48-60
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "86437d416974c5bd0ef58eb99ceb6d9d70bb5fee",
+  "prompts": {
+    "1fec3bd451918509": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ffda66c1-4416-49f4-90d4-4ae245da6c92",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Igor Dobryn",
+      "messages": [],
+      "total_additions": 73,
+      "total_deletions": 7,
+      "accepted_lines": 66,
+      "overriden_lines": 0
+    }
+  }
+}

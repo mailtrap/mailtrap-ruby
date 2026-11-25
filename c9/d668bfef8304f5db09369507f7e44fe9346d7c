@@ -1,0 +1,52 @@
+lib/mailtrap/permissions_api.rb
+  f40d296b3ae5848f 4,24-32,38-48
+spec/mailtrap/permission_resource_spec.rb
+  f40d296b3ae5848f 1-37
+spec/mailtrap/permissions_api_spec.rb
+  f40d296b3ae5848f 35-49
+examples/permissions_api.rb
+  f40d296b3ae5848f 7,9-16
+lib/mailtrap/permission_resource.rb
+  f40d296b3ae5848f 1-18
+spec/fixtures/vcr_cassettes/Mailtrap_PermissionsAPI/_resources/returns_a_tree_of_PermissionResource_objects.yml
+  h_c133502bfb58a4 1-71,73-74
+  022c2284993618bc 72
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "c9d668bfef8304f5db09369507f7e44fe9346d7c",
+  "prompts": {
+    "022c2284993618bc": {
+      "agent_id": {
+        "tool": "github-copilot-jetbrains",
+        "id": "1777365689617",
+        "model": "unknown"
+      },
+      "human_author": "Igor Dobryn",
+      "messages": [],
+      "total_additions": 2,
+      "total_deletions": 2,
+      "accepted_lines": 1,
+      "overriden_lines": 1
+    },
+    "f40d296b3ae5848f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d108930a-02a0-42d2-a893-87cdf79432e8",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Igor Dobryn",
+      "messages": [],
+      "total_additions": 102,
+      "total_deletions": 0,
+      "accepted_lines": 101,
+      "overriden_lines": 0
+    }
+  },
+  "humans": {
+    "h_c133502bfb58a4": {
+      "author": "Igor Dobryn"
+    }
+  }
+}

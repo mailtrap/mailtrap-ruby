@@ -1,0 +1,53 @@
+spec/fixtures/vcr_cassettes/Mailtrap_InboundThreadsAPI/_list/maps_response_data_to_an_InboundThreadsListResponse.yml
+  s_576b7c7847dbe9::t_7f78d49a074aab 71
+  s_576b7c7847dbe9::t_0742cb0cbe43c1 1-70,72-74
+spec/mailtrap/inbound_threads_api_spec.rb
+  h_36a957dc058c42 7-8
+spec/fixtures/vcr_cassettes/Mailtrap_InboundInboxesAPI/_update/maps_response_data_to_an_InboundInbox_object.yml
+  s_576b7c7847dbe9::t_7f78d49a074aab 1-73
+spec/fixtures/vcr_cassettes/Mailtrap_InboundInboxesAPI/_create/maps_response_data_to_an_InboundInbox_object.yml
+  s_576b7c7847dbe9::t_7f78d49a074aab 1-73
+spec/fixtures/vcr_cassettes/Mailtrap_InboundMessagesAPI/_get/maps_response_data_to_an_InboundMessage_with_attachments.yml
+  s_576b7c7847dbe9::t_7f78d49a074aab 72
+  s_576b7c7847dbe9::t_a64c383b74be6d 1-71,73-82
+spec/fixtures/vcr_cassettes/Mailtrap_InboundMessagesAPI/_list/maps_response_data_to_an_InboundMessagesListResponse.yml
+  s_576b7c7847dbe9::t_7f78d49a074aab 72
+  s_576b7c7847dbe9::t_17077e7f3cd1a7 1-71,73-75
+spec/fixtures/vcr_cassettes/Mailtrap_InboundThreadsAPI/_list/with_pagination_cursor/passes_last_id_and_returns_a_page.yml
+  s_576b7c7847dbe9::t_7f78d49a074aab 71
+  s_576b7c7847dbe9::t_14c659de908501 1-70,72-74
+spec/fixtures/vcr_cassettes/Mailtrap_InboundInboxesAPI/_get/maps_response_data_to_an_InboundInbox_object.yml
+  s_576b7c7847dbe9::t_7f78d49a074aab 1-73
+spec/mailtrap/inbound_inboxes_api_spec.rb
+  h_36a957dc058c42 7,20,58,78
+spec/mailtrap/inbound_messages_api_spec.rb
+  h_36a957dc058c42 7-8
+spec/fixtures/vcr_cassettes/Mailtrap_InboundInboxesAPI/_list/maps_response_data_to_InboundInbox_objects.yml
+  s_576b7c7847dbe9::t_7f78d49a074aab 1-73
+spec/mailtrap/inbound_folders_api_spec.rb
+  h_36a957dc058c42 19,57,77
+spec/fixtures/vcr_cassettes/Mailtrap_InboundThreadsAPI/_get/maps_response_data_to_an_InboundThread_with_messages.yml
+  s_576b7c7847dbe9::t_7f78d49a074aab 72-77
+  s_576b7c7847dbe9::t_08c917630c4a7a 1-71,78-81
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "9fa984728a6ca122d8ddfaad013c2c91512af6f3",
+  "prompts": {},
+  "humans": {
+    "h_36a957dc058c42": {
+      "author": "Marcin Klocek <marcin.klocek@railsware.com>"
+    }
+  },
+  "sessions": {
+    "s_576b7c7847dbe9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "48d8b14b-0d1c-434e-b1b9-68d02404448f",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Marcin Klocek <marcin.klocek@railsware.com>"
+    }
+  }
+}

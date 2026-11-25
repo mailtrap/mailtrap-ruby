@@ -1,0 +1,41 @@
+lib/mailtrap/api_tokens_api.rb
+  f40d296b3ae5848f 10-11,30-41
+spec/mailtrap/api_tokens_api_spec.rb
+  022c2284993618bc 65
+  f40d296b3ae5848f 48-53,55-64,66-85
+examples/api_tokens_api.rb
+  f40d296b3ae5848f 14-22
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "e816b5be0191ceec984067976e542cdb0ec0c6e0",
+  "prompts": {
+    "022c2284993618bc": {
+      "agent_id": {
+        "tool": "github-copilot-jetbrains",
+        "id": "1777365689617",
+        "model": "unknown"
+      },
+      "human_author": "Igor Dobryn",
+      "messages": [],
+      "total_additions": 1,
+      "total_deletions": 1,
+      "accepted_lines": 1,
+      "overriden_lines": 0
+    },
+    "f40d296b3ae5848f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d108930a-02a0-42d2-a893-87cdf79432e8",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Igor Dobryn",
+      "messages": [],
+      "total_additions": 61,
+      "total_deletions": 0,
+      "accepted_lines": 59,
+      "overriden_lines": 1
+    }
+  }
+}

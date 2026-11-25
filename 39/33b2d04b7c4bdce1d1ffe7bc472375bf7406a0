@@ -1,0 +1,85 @@
+spec/fixtures/vcr_cassettes/Mailtrap_StatsAPI/_get/when_api_key_is_incorrect/raises_authorization_error.yml
+  1b41c3aa05fbbf3f 1-73
+examples/stats_api.rb
+  1b41c3aa05fbbf3f 1,4-17,23,29,35-37,41-48
+  d504432b62b4f21b 18-19,24-25,30-31
+  96f5b674a596f974 20-22,26-28,32-34,38-40
+lib/mailtrap.rb
+  1b41c3aa05fbbf3f 21
+spec/mailtrap/stats_api_spec.rb
+  96f5b674a596f974 27-51,72-73,78-79,81,84-89,100,103-109,114,116-120,133-139,146-150,159,161-164,170,172,175-180
+  d504432b62b4f21b 65-66,68,95-96,98,126-127,129,186-190,192-195,197-200,202-205,207-209
+  1b41c3aa05fbbf3f 1-26,52-64,67,91-94,97,122-125,128,152-158,182,210-212
+README.md
+  1b41c3aa05fbbf3f 180
+lib/mailtrap/stats_api.rb
+  dde3eb372e7772d8 3,126-142
+  96f5b674a596f974 6,13-18,46,61,76,91,103-112
+  1b41c3aa05fbbf3f 1-2,4-5,7-12,19-20,23-38,42-45,47,49-53,57-60,62,64-68,72-75,77,79-84,87-90,92-102,113-115,117-125,147-151
+  d504432b62b4f21b 21-22,39-41,48,54-56,63,69-71,78,85-86,116,143-146
+spec/fixtures/vcr_cassettes/Mailtrap_StatsAPI/_by_date/returns_stats_grouped_by_date.yml
+  1b41c3aa05fbbf3f 1-73
+spec/fixtures/vcr_cassettes/Mailtrap_StatsAPI/_get/returns_aggregated_sending_stats.yml
+  1b41c3aa05fbbf3f 1-73
+lib/mailtrap/sending_stats.rb
+  1b41c3aa05fbbf3f 1-30
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.10",
+  "base_commit_sha": "3933b2d04b7c4bdce1d1ffe7bc472375bf7406a0",
+  "prompts": {
+    "1b41c3aa05fbbf3f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "272c6a0f-80f9-4818-8f5d-ce0f67aa4c36",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Piotr Bednarz <piotr.bednarz@railsware.com>",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 431,
+      "overriden_lines": 0
+    },
+    "96f5b674a596f974": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a3260a68-6f38-4c06-9b0c-a5dc60a50df7",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Piotr Bednarz <piotr.bednarz@railsware.com>",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 108,
+      "overriden_lines": 0
+    },
+    "d504432b62b4f21b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4181b9b4-ce81-4732-9223-f942646764c1",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Piotr Bednarz <piotr.bednarz@railsware.com>",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 56,
+      "overriden_lines": 0
+    },
+    "dde3eb372e7772d8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c248184d-2659-4411-9779-d05e9eb32ed2",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": null,
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 18,
+      "overriden_lines": 0
+    }
+  }
+}

@@ -1,0 +1,45 @@
+lib/mailtrap/stats_api.rb
+  1b41c3aa05fbbf3f 1-113
+spec/fixtures/vcr_cassettes/Mailtrap_StatsAPI/_get/returns_aggregated_sending_stats.yml
+  1b41c3aa05fbbf3f 1-73
+spec/fixtures/vcr_cassettes/Mailtrap_StatsAPI/_by_categories/returns_stats_grouped_by_categories.yml
+  1b41c3aa05fbbf3f 1-73
+examples/stats_api.rb
+  1b41c3aa05fbbf3f 1-38
+spec/fixtures/vcr_cassettes/Mailtrap_StatsAPI/_by_domains/returns_stats_grouped_by_domains.yml
+  1b41c3aa05fbbf3f 1-73
+spec/mailtrap/stats_api_spec.rb
+  1b41c3aa05fbbf3f 1-83
+lib/mailtrap/sending_stats.rb
+  1b41c3aa05fbbf3f 1-30
+spec/fixtures/vcr_cassettes/Mailtrap_StatsAPI/_get/when_api_key_is_incorrect/raises_authorization_error.yml
+  1b41c3aa05fbbf3f 1-73
+spec/fixtures/vcr_cassettes/Mailtrap_StatsAPI/_by_email_service_providers/returns_stats_grouped_by_email_service_providers.yml
+  1b41c3aa05fbbf3f 1-73
+lib/mailtrap.rb
+  1b41c3aa05fbbf3f 21-22
+README.md
+  1b41c3aa05fbbf3f 180
+spec/fixtures/vcr_cassettes/Mailtrap_StatsAPI/_by_date/returns_stats_grouped_by_date.yml
+  1b41c3aa05fbbf3f 1-73
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.7",
+  "base_commit_sha": "188aa8a3d56a490f30e9b1aa02ae033d457b72e0",
+  "prompts": {
+    "1b41c3aa05fbbf3f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "272c6a0f-80f9-4818-8f5d-ce0f67aa4c36",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Piotr Bednarz <piotr.bednarz@railsware.com>",
+      "messages": [],
+      "total_additions": 724,
+      "total_deletions": 19,
+      "accepted_lines": 705,
+      "overriden_lines": 0
+    }
+  }
+}

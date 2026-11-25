@@ -1,0 +1,19 @@
+spec/mailtrap/client_spec.rb
+  s_5b2ec83cb2eebb::t_01457348e3c766 302-307
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "19863756d2a7a25a88daaf14a4ed0f87fd55b8ab",
+  "prompts": {},
+  "sessions": {
+    "s_5b2ec83cb2eebb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7dbb72ee-2ce9-42f2-8377-5534e6db0d26",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Maciej Walusiak <maciej.walusiak@railsware.com>"
+    }
+  }
+}

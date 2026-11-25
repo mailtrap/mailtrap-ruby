@@ -1,0 +1,27 @@
+lib/mailtrap/sandbox_messages_api.rb
+  ff4af8bc83b24106 54,57-73
+CHANGELOG.md
+  ff4af8bc83b24106 4
+spec/mailtrap/sandbox_messages_api_spec.rb
+  ff4af8bc83b24106 138-161
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.12",
+  "base_commit_sha": "a8aee198801af6610d482f558a807874a2d60953",
+  "prompts": {
+    "ff4af8bc83b24106": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "70f8dc54-717b-46ce-ba0f-67bb676d2ee0",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Ivan Yurchanka <vanya.yu@gmail.com>",
+      "messages": [],
+      "total_additions": 88,
+      "total_deletions": 45,
+      "accepted_lines": 43,
+      "overriden_lines": 2
+    }
+  }
+}

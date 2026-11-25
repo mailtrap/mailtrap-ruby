@@ -1,0 +1,21 @@
+spec/fixtures/vcr_cassettes/Mailtrap_SubAccountsAPI/_delete/returns_nil_on_success.yml
+  s_0d6b51a21ac37a::t_24b819440aeb79 3-70,73,96,132
+spec/mailtrap/sub_accounts_api_spec.rb
+  s_0d6b51a21ac37a::t_72d8adcc28443e 61-63
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "623b4a8c1d3ed924df22a0268a66e94d32d17de1",
+  "prompts": {},
+  "sessions": {
+    "s_0d6b51a21ac37a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "93a9b4d7-f1e1-43c3-b467-9f8f4d7a9562",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Alex Shchyhol <oleksandr.shchyhol@railsware.com>"
+    }
+  }
+}

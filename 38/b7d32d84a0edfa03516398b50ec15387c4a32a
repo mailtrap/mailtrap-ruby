@@ -1,0 +1,23 @@
+.gitignore
+  1fec3bd451918509 14
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "38b7d32d84a0edfa03516398b50ec15387c4a32a",
+  "prompts": {
+    "1fec3bd451918509": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ffda66c1-4416-49f4-90d4-4ae245da6c92",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Igor Dobryn",
+      "messages": [],
+      "total_additions": 80,
+      "total_deletions": 5,
+      "accepted_lines": 75,
+      "overriden_lines": 0
+    }
+  }
+}

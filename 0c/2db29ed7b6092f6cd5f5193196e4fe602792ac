@@ -1,0 +1,33 @@
+spec/mailtrap/email_log_event_details_spec.rb
+  93ff22ee9f447443 1-51
+README.md
+  93ff22ee9f447443 181
+lib/mailtrap/email_log_event_details.rb
+  93ff22ee9f447443 1-58
+spec/mailtrap/email_logs_api_spec.rb
+  93ff22ee9f447443 97-99
+lib/mailtrap/email_log_event.rb
+  93ff22ee9f447443 9-11
+lib/mailtrap/email_logs_api.rb
+  93ff22ee9f447443 6,85,98,107
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.11",
+  "base_commit_sha": "0c2db29ed7b6092f6cd5f5193196e4fe602792ac",
+  "prompts": {
+    "93ff22ee9f447443": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "0aa8295f-4d43-4e69-9985-b0b5fab10f65",
+        "model": "default"
+      },
+      "human_author": "Marcin Klocek <marcin.klocek@railsware.com>",
+      "messages": [],
+      "total_additions": 137,
+      "total_deletions": 31,
+      "accepted_lines": 120,
+      "overriden_lines": 0
+    }
+  }
+}

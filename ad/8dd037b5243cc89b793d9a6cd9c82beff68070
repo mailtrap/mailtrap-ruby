@@ -1,0 +1,34 @@
+README.md
+  s_0449bc88abf963::t_58009e2384ecf7 148-151,156-162,167
+  h_c750c91773bbc1 146-147,152-155,163-166,168
+  s_0449bc88abf963::t_35c3715c4578c3 206
+spec/mailtrap/webhooks_spec.rb
+  s_0449bc88abf963::t_d77b4c583f79f4 14-22,29-31,42-43,54,58-59,69,72,74,87,89,100,102,113-114,127-128,141,143,146-148
+  s_0449bc88abf963::t_e5a12bd865c007 1-13,23-28,32-41,44-53,55-57,60-68,70-71,73,75-86,88,90-99,101,103-112,115-126,129-140,142,144-145,149-154
+lib/mailtrap.rb
+  s_0449bc88abf963::t_45f918f83cc902 30
+lib/mailtrap/webhooks.rb
+  s_0449bc88abf963::t_f5e9f6b456a8d9 1-37,39-51
+  s_0449bc88abf963::t_2f73e71f810660 38
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.8",
+  "base_commit_sha": "ad8dd037b5243cc89b793d9a6cd9c82beff68070",
+  "prompts": {},
+  "humans": {
+    "h_c750c91773bbc1": {
+      "author": "Maciej Walusiak <maciej.walusiak@railsware.com>"
+    }
+  },
+  "sessions": {
+    "s_0449bc88abf963": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "209ab809-bbe5-4b88-a3d1-6277ee8cddf5",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Maciej Walusiak <maciej.walusiak@railsware.com>"
+    }
+  }
+}

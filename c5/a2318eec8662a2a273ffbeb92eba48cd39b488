@@ -1,0 +1,62 @@
+lib/mailtrap/sending_stats.rb
+  1b41c3aa05fbbf3f 1-30
+spec/fixtures/vcr_cassettes/Mailtrap_StatsAPI/_get/when_api_key_is_incorrect/raises_authorization_error.yml
+  1b41c3aa05fbbf3f 1-73
+examples/stats_api.rb
+  1b41c3aa05fbbf3f 1-17,21-23,27-29,33-35,39-46
+  96f5b674a596f974 18-20,24-26,30-32,36-38
+spec/fixtures/vcr_cassettes/Mailtrap_StatsAPI/_by_domains/returns_stats_grouped_by_domains.yml
+  1b41c3aa05fbbf3f 1-73
+spec/fixtures/vcr_cassettes/Mailtrap_StatsAPI/_by_email_service_providers/returns_stats_grouped_by_email_service_providers.yml
+  1b41c3aa05fbbf3f 1-73
+spec/fixtures/vcr_cassettes/Mailtrap_StatsAPI/_get/returns_aggregated_sending_stats.yml
+  1b41c3aa05fbbf3f 1-73
+lib/mailtrap/stats_api.rb
+  1b41c3aa05fbbf3f 1-4,6-11,18-44,46-59,61-74,76-89,91-101,112-129
+  96f5b674a596f974 5,12-17,45,60,75,90,102-111
+spec/mailtrap/stats_api_spec.rb
+  96f5b674a596f974 46-57,68-79,90-101,112-123
+  1b41c3aa05fbbf3f 1-45,58-67,80-89,102-111,124-127
+spec/fixtures/vcr_cassettes/Mailtrap_StatsAPI/_by_date/returns_stats_grouped_by_date.yml
+  1b41c3aa05fbbf3f 1-73
+README.md
+  1b41c3aa05fbbf3f 180
+lib/mailtrap.rb
+  96f5b674a596f974 23
+  1b41c3aa05fbbf3f 21-22
+spec/fixtures/vcr_cassettes/Mailtrap_StatsAPI/_by_categories/returns_stats_grouped_by_categories.yml
+  1b41c3aa05fbbf3f 1-73
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.8",
+  "base_commit_sha": "c5a2318eec8662a2a273ffbeb92eba48cd39b488",
+  "prompts": {
+    "1b41c3aa05fbbf3f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "272c6a0f-80f9-4818-8f5d-ce0f67aa4c36",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Piotr Bednarz <piotr.bednarz@railsware.com>",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 692,
+      "overriden_lines": 0
+    },
+    "96f5b674a596f974": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a3260a68-6f38-4c06-9b0c-a5dc60a50df7",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": null,
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 82,
+      "overriden_lines": 0
+    }
+  }
+}
