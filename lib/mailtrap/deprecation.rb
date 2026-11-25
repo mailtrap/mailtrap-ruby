@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'set'
-
 module Mailtrap
   # Emits a deprecation warning once per process for each deprecated name, and maps the
   # deprecated inbox_id onto sandbox_id.
