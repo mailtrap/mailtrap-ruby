@@ -299,6 +299,12 @@ RSpec.describe Mailtrap::Client do
       end
     end
 
+    it 'handles server errors with an empty JSON body' do
+      stub_post %r{/api/test}, 500, '', headers: { 'Content-Type' => 'application/json' } do
+        expect { client.post('/api/test') }.to raise_error(Mailtrap::Error, 'server error')
+      end
+    end
+
     it 'handles unexpected response status code' do
       stub_api_send 307 do
         expect { send_mail }.to raise_error(Mailtrap::Error, 'unexpected status code=307')
