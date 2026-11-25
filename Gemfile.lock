@@ -7,7 +7,7 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    addressable (2.8.8)
+    addressable (2.10.0)
       public_suffix (>= 2.0.2, < 8.0)
     appraisal (2.5.0)
       bundler
@@ -21,25 +21,25 @@ GEM
       rexml
     date (3.5.1)
     diff-lcs (1.6.2)
-    erb (6.0.1)
+    erb (6.0.7)
     hashdiff (1.2.1)
     io-console (0.8.2)
     irb (1.16.0)
       pp (>= 0.6.0)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
-    json (2.18.0)
+    json (2.21.2)
     language_server-protocol (3.17.0.5)
     lint_roller (1.1.0)
     logger (1.7.0)
-    mail (2.9.0)
+    mail (2.9.1)
       logger
       mini_mime (>= 0.1.1)
       net-imap
       net-pop
       net-smtp
     mini_mime (1.1.5)
-    net-imap (0.6.2)
+    net-imap (0.6.8)
       date
       net-protocol
     net-pop (0.1.2)
@@ -61,7 +61,7 @@ GEM
       stringio
     public_suffix (7.0.2)
     racc (1.8.1)
-    rack (3.2.4)
+    rack (3.2.9)
     rackup (2.3.1)
       rack (>= 3)
     rainbow (3.1.1)
@@ -124,7 +124,7 @@ GEM
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
     webrick (1.9.2)
-    yard (0.9.38)
+    yard (0.9.45)
 
 PLATFORMS
   ruby
