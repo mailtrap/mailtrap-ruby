@@ -192,6 +192,51 @@ RSpec.describe Mailtrap::EmailLogsAPI, :vcr do
       )
     end
 
+    context 'with subscription topic and unknown events', vcr: false do
+      let(:events) do
+        [
+          {
+            event_type: 'topic_unsubscribe',
+            created_at: '2026-11-20T10:00:00Z',
+            details: { web_ip_address: '198.51.100.50', subscription_topic_id: 12 }
+          },
+          {
+            event_type: 'topic_resubscribe',
+            created_at: '2026-11-20T11:00:00Z',
+            details: { web_ip_address: nil, subscription_topic_id: 12 }
+          },
+          { event_type: 'future_event', created_at: '2026-11-20T12:00:00Z', details: { new_detail: 'value' } }
+        ]
+      end
+
+      before do
+        stub_request(:get, "https://mailtrap.io/api/accounts/#{account_id}/email_logs/#{message_id}")
+          .to_return(
+            status: 200,
+            body: { message_id:, status: 'delivered', events: }.to_json,
+            headers: { 'Content-Type' => 'application/json' }
+          )
+      end
+
+      it 'maps the topic events and keeps the unknown event details' do
+        expect(message.events).to contain_exactly(
+          have_attributes(
+            event_type: 'topic_unsubscribe',
+            details: Mailtrap::EmailLogEventDetails::TopicSubscription.new(
+              web_ip_address: '198.51.100.50', subscription_topic_id: 12
+            )
+          ),
+          have_attributes(
+            event_type: 'topic_resubscribe',
+            details: Mailtrap::EmailLogEventDetails::TopicSubscription.new(
+              web_ip_address: nil, subscription_topic_id: 12
+            )
+          ),
+          have_attributes(event_type: 'future_event', details: { new_detail: 'value' })
+        )
+      end
+    end
+
     context 'when message not found' do
       let(:message_id) { '00000000-0000-0000-0000-000000000000' }
 

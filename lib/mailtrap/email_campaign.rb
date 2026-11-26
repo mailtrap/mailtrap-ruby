@@ -60,6 +60,8 @@ module Mailtrap
   # @attr_reader contact_segment_ids [Array<Integer>] IDs of the contact segments included in the campaign's audience
   # @attr_reader delivery_mode [String] How the campaign is delivered (+rapid+ or +gradual+)
   # @attr_reader delivery_options [Hash, nil] Delivery throttling options (+emails_per_hour+)
+  # @attr_reader subscription_topic_id [Integer, nil] ID of the campaign's subscription topic,
+  #   as returned by {SubscriptionTopicsAPI}, or +nil+ when it has none
   # @attr_reader template [Hash, nil] The campaign template (+id+, +subject+, +merge_tags+,
   #   +body_html+, +body_text+; bodies are omitted on list responses)
   EmailCampaign = Struct.new(
@@ -81,6 +83,7 @@ module Mailtrap
     :contact_segment_ids,
     :delivery_mode,
     :delivery_options,
+    :subscription_topic_id,
     :template,
     keyword_init: true
   )

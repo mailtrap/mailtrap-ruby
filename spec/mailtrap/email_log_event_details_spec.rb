@@ -48,16 +48,22 @@ RSpec.describe Mailtrap::EmailLogEventDetails do
       )
     end
 
-    it 'raises ArgumentError for nil event_type with message referencing DETAIL_STRUCTS' do
-      expect { described_class.build(nil, {}) }.to raise_error(
-        ArgumentError, 'Unknown event_type: nil'
-      )
+    %w[topic_unsubscribe topic_resubscribe].each do |event_type|
+      it "returns TopicSubscription struct for #{event_type} event_type" do
+        details = described_class.build(event_type, { web_ip_address: '198.51.100.50', subscription_topic_id: 12 })
+        expect(details).to be_a(described_class::TopicSubscription)
+        expect(details).to have_attributes(web_ip_address: '198.51.100.50', subscription_topic_id: 12)
+      end
     end
 
-    it 'raises ArgumentError for unknown event_type with message listing known types' do
-      expect { described_class.build('unknown_type', {}) }.to raise_error(
-        ArgumentError, 'Unknown event_type: "unknown_type"'
-      )
+    it 'returns the details hash for an unknown event_type' do
+      details = { web_ip_address: '198.51.100.50', new_detail: 'value' }
+
+      expect(described_class.build('unknown_type', details)).to eq(details)
+    end
+
+    it 'returns the details for a nil event_type' do
+      expect(described_class.build(nil, nil)).to be_nil
     end
   end
 end

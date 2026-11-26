@@ -210,8 +210,8 @@ RSpec.describe Mailtrap::Client do
       stub_post(%r{/api/send}, status, body, &block)
     end
 
-    def stub_post(path, status, body)
-      stub = stub_request(:post, path).to_return(status:, body:)
+    def stub_post(path, status, body, headers: {})
+      stub = stub_request(:post, path).to_return(status:, body:, headers:)
       yield
       expect(stub).to have_been_requested
     end
@@ -268,9 +268,40 @@ RSpec.describe Mailtrap::Client do
       end
     end
 
+    it 'handles general API 403 with empty response body' do
+      stub_post %r{/api/test}, 403, '' do
+        expect { client.post('/api/test') }.to raise_error(Mailtrap::RejectionError, 'forbidden')
+      end
+    end
+
     it 'handles server errors' do
       stub_api_send 504, '🫖' do
         expect { send_mail }.to raise_error(Mailtrap::Error, 'server error')
+      end
+    end
+
+    it 'handles server errors with the errors of a JSON body' do
+      message = 'The contact was saved, but its subscription topic preferences were not.'
+      stub_post %r{/api/test}, 503, { errors: message }.to_json, headers: { 'Content-Type' => 'application/json' } do
+        expect { client.post('/api/test') }.to raise_error(Mailtrap::Error, message)
+      end
+    end
+
+    it 'handles server errors with a JSON body without errors' do
+      stub_post %r{/api/test}, 500, '[]', headers: { 'Content-Type' => 'application/json' } do
+        expect { client.post('/api/test') }.to raise_error(Mailtrap::Error, 'server error')
+      end
+    end
+
+    it 'handles server errors with an HTML body' do
+      stub_post %r{/api/test}, 502, '<html>Bad Gateway</html>', headers: { 'Content-Type' => 'text/html' } do
+        expect { client.post('/api/test') }.to raise_error(Mailtrap::Error, 'server error')
+      end
+    end
+
+    it 'handles server errors with an empty JSON body' do
+      stub_post %r{/api/test}, 500, '', headers: { 'Content-Type' => 'application/json' } do
+        expect { client.post('/api/test') }.to raise_error(Mailtrap::Error, 'server error')
       end
     end
 

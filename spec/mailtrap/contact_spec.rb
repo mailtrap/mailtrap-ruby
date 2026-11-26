@@ -13,8 +13,13 @@ RSpec.describe Mailtrap::Contact do
       list_ids: [1, 2],
       status: 'subscribed',
       created_at: 1_700_000_000,
-      updated_at: 1_700_000_100
+      updated_at: 1_700_000_100,
+      subscription_topics: [{ subscription_topic_id: 12, domain_id: 4321, status: 'unsubscribed' }]
     }
+  end
+
+  it 'creates a contact with all attributes' do
+    expect(contact).to have_attributes(attributes)
   end
 
   describe '#newly_created?' do

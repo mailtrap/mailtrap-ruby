@@ -24,6 +24,7 @@ RSpec.describe Mailtrap::EmailCampaign do
         contact_segment_ids: [12],
         delivery_mode: 'gradual',
         delivery_options: { emails_per_hour: 1000 },
+        subscription_topic_id: 12,
         template: {
           id: 789,
           subject: 'Spring is here — 30% off',
@@ -55,6 +56,7 @@ RSpec.describe Mailtrap::EmailCampaign do
           contact_list_ids: nil,
           contact_segment_ids: nil,
           recipient_total_count: nil,
+          subscription_topic_id: nil,
           template: nil
         )
       end

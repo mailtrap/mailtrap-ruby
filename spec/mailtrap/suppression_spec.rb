@@ -9,6 +9,7 @@ RSpec.describe Mailtrap::Suppression do
       email: 'test@example.com',
       sending_stream: 'main',
       domain_name: 'example.com',
+      subscription_topic_id: nil,
       message_bounce_category: 'hard_bounce',
       message_category: 'bounce',
       message_client_ip: '192.168.1.1',

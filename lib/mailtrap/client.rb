@@ -318,7 +318,7 @@ module Mailtrap
       when Net::HTTPUnauthorized
         raise Mailtrap::AuthorizationError, response_errors(response)
       when Net::HTTPForbidden
-        raise Mailtrap::RejectionError, response_errors(response)
+        raise Mailtrap::RejectionError, response.body.to_s.empty? ? ['forbidden'] : response_errors(response)
       when Net::HTTPPayloadTooLarge
         raise Mailtrap::MailSizeError, ['message too large']
       when Net::HTTPTooManyRequests
@@ -326,7 +326,7 @@ module Mailtrap
       when Net::HTTPClientError
         raise Mailtrap::Error, ["client error '#{response.body}'"]
       when Net::HTTPServerError
-        raise Mailtrap::Error, ['server error']
+        raise Mailtrap::Error, server_errors(response)
       else
         raise Mailtrap::Error, ["unexpected status code=#{response.code}"]
       end
@@ -347,6 +347,15 @@ module Mailtrap
       else
         [response.body]
       end
+    end
+
+    # The body's errors when it has them, such as the contacts 503 that names the contact to update
+    def server_errors(response)
+      body = json_response(response.body) if json_response?(response)
+      errors = body.is_a?(Hash) ? Array(body[:errors] || body[:error]).compact : []
+      errors.empty? ? ['server error'] : errors
+    rescue JSON::ParserError
+      ['server error']
     end
 
     def json_response?(response)

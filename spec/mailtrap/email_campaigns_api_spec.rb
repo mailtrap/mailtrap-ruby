@@ -19,6 +19,7 @@ RSpec.describe Mailtrap::EmailCampaignsAPI do
       'delivery_mode' => 'rapid',
       'delivery_options' => { 'emails_per_hour' => nil },
       'recipient_total_count' => nil,
+      'subscription_topic_id' => 12,
       'template' => {
         'id' => 789,
         'subject' => 'Spring is here — 30% off',
@@ -50,7 +51,8 @@ RSpec.describe Mailtrap::EmailCampaignsAPI do
         domain_id: 4321,
         contact_list_ids: [55, 56],
         contact_segment_ids: [12],
-        delivery_mode: 'rapid'
+        delivery_mode: 'rapid',
+        subscription_topic_id: 12
       )
       expect(response.pagination).to eq(token: 1, prev_token: nil, next_token: nil)
     end
@@ -95,6 +97,17 @@ RSpec.describe Mailtrap::EmailCampaignsAPI do
       expect(response).to have_attributes(id: 4567, name: 'Spring Sale', current_state: 'draft')
     end
 
+    it 'returns a campaign without a subscription topic' do
+      stub_request(:get, "#{base_url}/4567")
+        .to_return(
+          status: 200,
+          body: { 'data' => campaign_attributes.merge('subscription_topic_id' => nil) }.to_json,
+          headers: { 'Content-Type' => 'application/json' }
+        )
+
+      expect(email_campaigns_api.get(4567).subscription_topic_id).to be_nil
+    end
+
     it 'raises error when the campaign does not exist' do
       stub_request(:get, "#{base_url}/999")
         .to_return(
@@ -119,7 +132,8 @@ RSpec.describe Mailtrap::EmailCampaignsAPI do
         delivery_mode: 'gradual',
         delivery_options: { emails_per_hour: 1000 },
         contact_list_ids: [55, 56],
-        contact_segment_ids: [12]
+        contact_segment_ids: [12],
+        subscription_topic_id: 12
       }
     end
 
@@ -175,6 +189,32 @@ RSpec.describe Mailtrap::EmailCampaignsAPI do
       response = email_campaigns_api.update(4567, request)
       expect(stub).to have_been_requested
       expect(response).to have_attributes(id: 4567, name: 'Spring Sale (updated)')
+    end
+
+    it 'changes only the subscription topic' do
+      stub = stub_request(:patch, "#{base_url}/4567")
+             .with(body: { subscription_topic_id: 13 }.to_json)
+             .to_return(
+               status: 200,
+               body: { 'data' => campaign_attributes.merge('subscription_topic_id' => 13) }.to_json,
+               headers: { 'Content-Type' => 'application/json' }
+             )
+
+      response = email_campaigns_api.update(4567, subscription_topic_id: 13)
+      expect(stub).to have_been_requested
+      expect(response.subscription_topic_id).to eq(13)
+    end
+
+    it 'raises error when the subscription topic is invalid' do
+      stub_request(:patch, "#{base_url}/4567")
+        .to_return(
+          status: 422,
+          body: { 'errors' => { 'subscription_topic_id' => ['is invalid'] } }.to_json,
+          headers: { 'Content-Type' => 'application/json' }
+        )
+
+      expect { email_campaigns_api.update(4567, subscription_topic_id: 13) }
+        .to raise_error(Mailtrap::Error, /subscription_topic_id/)
     end
 
     it 'raises ArgumentError when invalid options are provided' do

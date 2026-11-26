@@ -13,11 +13,14 @@ module Mailtrap
 
     # Lists all suppressions for the account
     # @param email [String] Email address to filter suppressions (optional)
+    # @param include_topic_unsubscriptions [Boolean] Whether to include the contacts' subscription topic
+    #   unsubscriptions, of type +topic unsubscription+ (optional, default false)
     # @return [Array<Suppression>] Array of suppression objects
     # @!macro api_errors
-    def list(email: nil)
+    def list(email: nil, include_topic_unsubscriptions: false)
       query_params = {}
       query_params[:email] = email if email
+      query_params[:include_topic_unsubscriptions] = true if include_topic_unsubscriptions
 
       base_list(query_params)
     end
@@ -27,7 +30,8 @@ module Mailtrap
     # @option options [String] :email Email address to suppress
     # @option options [Integer] :domain_id ID of the domain to suppress this email for
     # @option options [String] :sending_stream The sending stream to suppress for: "transactional" or "bulk"
-    # @option options [String] :type Reason for the suppression, defaults to "manual import" when omitted
+    # @option options [String] :type Reason for the suppression, defaults to "manual import" when omitted.
+    #   A +topic unsubscription+ is only listed, not created
     # @return [Suppression] Created suppression
     # @!macro api_errors
     # @raise [ArgumentError] If invalid options are provided
@@ -37,7 +41,8 @@ module Mailtrap
       build_entity(response[:data], Suppression)
     end
 
-    # Deletes a suppression
+    # Deletes a suppression. A +topic unsubscription+ cannot be deleted: resubscribe the contact
+    # with +subscription_topics+ in {ContactsAPI#upsert} instead
     # @param suppression_id [String] The suppression UUID
     # @return [Suppression] The deleted suppression
     # @!macro api_errors

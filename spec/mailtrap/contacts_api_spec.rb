@@ -87,6 +87,47 @@ RSpec.describe Mailtrap::ContactsAPI do
       end
     end
 
+    context 'with subscription topics' do
+      let(:subscription_topics) do
+        [
+          { 'subscription_topic_id' => 12, 'domain_id' => 4321, 'status' => 'subscribed' },
+          { 'subscription_topic_id' => 12, 'domain_id' => 4322, 'status' => 'unsubscribed' }
+        ]
+      end
+
+      def stub_contact(data)
+        stub_request(:get, "#{base_url}/contacts/#{contact_id}")
+          .to_return(
+            status: 200,
+            body: { 'data' => { 'id' => contact_id, 'email' => email }.merge(data) }.to_json,
+            headers: { 'Content-Type' => 'application/json' }
+          )
+      end
+
+      it 'returns the contact preferences' do
+        stub_contact('subscription_topics' => subscription_topics)
+
+        expect(client.get(contact_id).subscription_topics).to eq(
+          [
+            { subscription_topic_id: 12, domain_id: 4321, status: 'subscribed' },
+            { subscription_topic_id: 12, domain_id: 4322, status: 'unsubscribed' }
+          ]
+        )
+      end
+
+      it 'returns nil when the preferences could not be read' do
+        stub_contact('subscription_topics' => nil)
+
+        expect(client.get(contact_id).subscription_topics).to be_nil
+      end
+
+      it 'returns nil when subscription topics are not available for the account' do
+        stub_contact({})
+
+        expect(client.get(contact_id)).to have_attributes(email:, subscription_topics: nil)
+      end
+    end
+
     context 'when contact is not found' do
       it 'raises error for non-existent UUID' do
         stub_request(:get, "#{base_url}/contacts/non-existent-uuid")
@@ -169,6 +210,50 @@ RSpec.describe Mailtrap::ContactsAPI do
 
       expect { client.create(invalid_data) }.to raise_error(Mailtrap::Error)
     end
+
+    context 'with subscription topics' do
+      let(:subscription_topics) { [{ subscription_topic_id: 12, domain_id: 4321, status: 'unsubscribed' }] }
+      let(:contact_data) { { email:, subscription_topics: } }
+
+      it 'sends them and returns the contact preferences' do
+        stub = stub_request(:post, "#{base_url}/contacts")
+               .with(body: { contact: contact_data }.to_json)
+               .to_return(
+                 status: 201,
+                 body: { 'data' => expected_response['data'].merge('subscription_topics' => subscription_topics) }
+                   .to_json,
+                 headers: { 'Content-Type' => 'application/json' }
+               )
+
+        response = client.create(contact_data)
+        expect(stub).to have_been_requested
+        expect(response.subscription_topics).to eq(subscription_topics)
+      end
+
+      it 'raises error when the account has no subscription topics' do
+        stub_request(:post, "#{base_url}/contacts")
+          .to_return(
+            status: 422,
+            body: { 'errors' => { 'subscription_topics' => ['are not available for this account'] } }.to_json,
+            headers: { 'Content-Type' => 'application/json' }
+          )
+
+        expect { client.create(contact_data) }.to raise_error(Mailtrap::Error, /are not available for this account/)
+      end
+
+      it 'raises error naming the contact when the preferences were not saved' do
+        message = 'The contact was saved, but its subscription topic preferences were not. ' \
+                  "Send them again in an update of contact #{contact_id}."
+        stub_request(:post, "#{base_url}/contacts")
+          .to_return(
+            status: 503,
+            body: { 'errors' => message }.to_json,
+            headers: { 'Content-Type' => 'application/json' }
+          )
+
+        expect { client.create(contact_data) }.to raise_error(Mailtrap::Error, message)
+      end
+    end
   end
 
   describe '#update' do
@@ -232,6 +317,23 @@ RSpec.describe Mailtrap::ContactsAPI do
       response = client.upsert(email, update_data)
       expect(response).to have_attributes(email:)
       expect(response.newly_created?).to be false
+    end
+
+    it 'changes only the subscription topic preferences' do
+      subscription_topics = [{ subscription_topic_id: 12, domain_id: 4321, status: 'subscribed' }]
+      stub = stub_request(:patch, "#{base_url}/contacts/#{contact_id}")
+             .with(body: { contact: { subscription_topics: } }.to_json)
+             .to_return(
+               status: 200,
+               body: expected_response.merge(
+                 'data' => expected_response['data'].merge('subscription_topics' => subscription_topics)
+               ).to_json,
+               headers: { 'Content-Type' => 'application/json' }
+             )
+
+      response = client.upsert(contact_id, subscription_topics:)
+      expect(stub).to have_been_requested
+      expect(response.subscription_topics).to eq(subscription_topics)
     end
   end
   # rubocop:enable RSpec/MultipleMemoizedHelpers

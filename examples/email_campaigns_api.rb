@@ -47,6 +47,18 @@ email_campaigns.update(
 )
 # => #<struct Mailtrap::EmailCampaign id=4567, name="Spring Sale (updated)", ...>
 
+# Set the campaign's subscription topic: one with no domain_id covers every domain, otherwise it
+# must be the campaign's domain (see subscription_topics_api.rb). A topic can be changed, not removed.
+begin
+  topic = Mailtrap::SubscriptionTopicsAPI.new(client).list.data.find do |t|
+    t.domain_id.nil? || t.domain_id == email_campaign.domain_id
+  end
+  email_campaigns.update(email_campaign.id, subscription_topic_id: topic.id) if topic
+  # => #<struct Mailtrap::EmailCampaign id=4567, subscription_topic_id=12, ...>
+rescue Mailtrap::RejectionError
+  puts 'Subscription topics are not available for this account'
+end
+
 # Schedule the draft Email Campaign to start sending at a future time
 schedule_at = (Time.now.utc + 86_400).strftime('%Y-%m-%dT%H:%M:%S.000Z')
 email_campaigns.schedule(email_campaign.id, schedule_at)

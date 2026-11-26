@@ -70,6 +70,25 @@ RSpec.describe Mailtrap::ContactImportsAPI do
       )
     end
 
+    it 'sends subscription topic preferences' do
+      contacts = [
+        {
+          email: 'j.doe@example.com',
+          subscription_topics: [{ subscription_topic_id: 12, domain_id: 4321, status: 'unsubscribed' }]
+        }
+      ]
+      stub = stub_request(:post, %r{/api/accounts/123/contacts/imports})
+             .with(body: { contacts: }.to_json)
+             .to_return(
+               status: 200,
+               body: { id: 1, status: 'started' }.to_json,
+               headers: { 'Content-Type' => 'application/json' }
+             )
+
+      imports_api.create(contacts)
+      expect(stub).to have_been_requested
+    end
+
     it 'validates contacts' do
       expect { imports_api.create([{ email: 'john@example.com', foo: 1 }]) }.to raise_error(ArgumentError)
     end

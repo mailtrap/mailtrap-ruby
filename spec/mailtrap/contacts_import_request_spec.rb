@@ -76,6 +76,58 @@ RSpec.describe Mailtrap::ContactsImportRequest do
     end
   end
 
+  describe '#update_subscription_topics' do
+    let(:subscribed) { { subscription_topic_id: 12, domain_id: 4321, status: 'subscribed' } }
+    let(:unsubscribed) { { subscription_topic_id: 13, domain_id: 4321, status: 'unsubscribed' } }
+
+    it 'validates email' do
+      expect { described_class.new.update_subscription_topics(email: nil, subscription_topics: [subscribed]) }
+        .to raise_error(ArgumentError)
+      expect { described_class.new.update_subscription_topics(email: '', subscription_topics: [subscribed]) }
+        .to raise_error(ArgumentError)
+    end
+
+    it 'does not allow empty list' do
+      expect { described_class.new.update_subscription_topics(email: 'one@example.com', subscription_topics: []) }
+        .to raise_error(ArgumentError)
+    end
+
+    it 'sets the contact preferences' do
+      request = described_class.new.tap do |req|
+        req.update_subscription_topics(email: 'one@example.com', subscription_topics: [subscribed])
+           .update_subscription_topics(email: 'one@example.com', subscription_topics: [subscribed, unsubscribed])
+           .upsert(email: 'two@example.com')
+      end
+      expect(request.to_a).to contain_exactly(
+        {
+          email: 'one@example.com', fields: {}, list_ids_included: [], list_ids_excluded: [],
+          subscription_topics: [subscribed, unsubscribed]
+        },
+        { email: 'two@example.com', fields: {}, list_ids_included: [], list_ids_excluded: [] }
+      )
+    end
+
+    it 'keeps the latest preference for a topic and domain' do
+      request = described_class.new.tap do |req|
+        req.update_subscription_topics(email: 'one@example.com', subscription_topics: [subscribed, unsubscribed])
+           .update_subscription_topics(
+             email: 'one@example.com',
+             subscription_topics: [
+               { 'subscription_topic_id' => 12, 'domain_id' => 4321, 'status' => 'unsubscribed' },
+               subscribed.merge(domain_id: 4322)
+             ]
+           )
+      end
+      expect(request.to_a.first[:subscription_topics]).to eq(
+        [
+          { subscription_topic_id: 12, domain_id: 4321, status: 'unsubscribed' },
+          unsubscribed,
+          { subscription_topic_id: 12, domain_id: 4322, status: 'subscribed' }
+        ]
+      )
+    end
+  end
+
   describe '#to_a' do
     it 'returns json array' do
       request = described_class.new

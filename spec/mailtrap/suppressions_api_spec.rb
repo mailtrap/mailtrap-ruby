@@ -31,6 +31,47 @@ RSpec.describe Mailtrap::SuppressionsAPI, :vcr do
       end
     end
 
+    context 'with topic unsubscriptions', vcr: false do
+      let(:topic_unsubscription) do
+        {
+          id: 'c6a2f3a8-7d6e-4b8a-9f61-0d1e2f3a4b5c',
+          type: 'topic unsubscription',
+          created_at: '2026-11-20T10:00:00Z',
+          email: 'recipient@example.com',
+          sending_stream: 'bulk',
+          domain_name: 'example.com',
+          subscription_topic_id: 12
+        }
+      end
+
+      def stub_list(query, body)
+        stub_request(:get, "https://mailtrap.io/api/accounts/#{account_id}/suppressions#{query}")
+          .to_return(status: 200, body: body.to_json, headers: { 'Content-Type' => 'application/json' })
+      end
+
+      it 'requests them and maps the topic rows' do
+        stub = stub_list('?include_topic_unsubscriptions=true', [topic_unsubscription])
+
+        list = suppressions.list(include_topic_unsubscriptions: true)
+        expect(stub).to have_been_requested
+        expect(list).to contain_exactly(have_attributes(topic_unsubscription))
+      end
+
+      it 'combines them with the email filter' do
+        stub = stub_list('?email=recipient%40example.com&include_topic_unsubscriptions=true', [])
+
+        suppressions.list(email: 'recipient@example.com', include_topic_unsubscriptions: true)
+        expect(stub).to have_been_requested
+      end
+
+      it 'does not request them by default' do
+        stub = stub_list('', [])
+
+        suppressions.list(include_topic_unsubscriptions: false)
+        expect(stub).to have_been_requested
+      end
+    end
+
     context 'when api key is incorrect' do
       let(:client) { Mailtrap::Client.new(api_key: 'incorrect-api-key') }
 
