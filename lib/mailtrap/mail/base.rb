@@ -61,10 +61,10 @@ module Mailtrap
         }.transform_values { |value| presence value }.compact
       end
 
-      def to_json(*args)
+      def to_json(*)
         JSON.generate(
           as_json,
-          *args
+          *
         )
       end
 
