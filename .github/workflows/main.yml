@@ -38,6 +38,6 @@ jobs:
         run: bundle exec rubocop
       - name: Test with Gemfile.lock
         run: bundle exec rspec
-      # Appraisal gemfiles are not committed and have no lockfile, so these runs resolve the newest versions the Gemfile allows.
+      # Appraisal gemfiles are not committed and have no lockfile, so these runs resolve the newest versions each appraisal allows.
       - name: Test with Appraisals
         run: bundle exec appraisal rspec
