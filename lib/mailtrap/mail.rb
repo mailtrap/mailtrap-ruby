@@ -18,6 +18,8 @@ module Mailtrap
       customvariables
       contenttype
       replyto
+      templateuuid
+      templatevariables
     ].freeze
     private_constant :SPECIAL_HEADERS
 

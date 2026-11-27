@@ -162,6 +162,7 @@ RSpec.describe Mailtrap::Mail do
 
       its(:template_uuid) { is_expected.to eq('c0746b78-f422-46ce-bce5-6f52ad5aab7f') }
       its(:template_variables) { is_expected.to eq('first_name' => 'John') }
+      its(:headers) { is_expected.not_to include('template-uuid', 'template-variables') }
     end
 
     %w[from to cc bcc reply-to].each do |header|
