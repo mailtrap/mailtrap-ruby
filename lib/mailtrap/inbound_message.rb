@@ -26,7 +26,7 @@ module Mailtrap
   # @attr_reader html_body [String, nil] Decoded HTML body (only when fetched by ID)
   # @attr_reader text_body [String, nil] Decoded text body (only when fetched by ID)
   # @attr_reader forwards [Array<InboundForwardOutcome>] The forward outcomes
-  # rubocop:disable Lint/StructNewOverride -- +size+ is an API field that shadows Struct#size
+  # rubocop:disable-next Lint/StructNewOverride -- +size+ is an API field that shadows Struct#size
   InboundMessage = Struct.new(
     :id,
     :inbox_id,
@@ -53,5 +53,4 @@ module Mailtrap
     :forwards,
     keyword_init: true
   )
-  # rubocop:enable Lint/StructNewOverride
 end

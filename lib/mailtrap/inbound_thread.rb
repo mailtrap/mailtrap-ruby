@@ -16,7 +16,7 @@ module Mailtrap
   # @attr_reader recipients [Array<String>] Distinct recipient addresses in the thread
   # @attr_reader attachments [Array<InboundAttachment>] Attachments across the thread
   # @attr_reader messages [Array<InboundThreadMessage>, nil] The thread's messages (only when fetched by ID)
-  # rubocop:disable Lint/StructNewOverride -- +size+ is an API field that shadows Struct#size
+  # rubocop:disable-next Lint/StructNewOverride -- +size+ is an API field that shadows Struct#size
   InboundThread = Struct.new(
     :id,
     :subject,
@@ -33,5 +33,4 @@ module Mailtrap
     :messages,
     keyword_init: true
   )
-  # rubocop:enable Lint/StructNewOverride
 end

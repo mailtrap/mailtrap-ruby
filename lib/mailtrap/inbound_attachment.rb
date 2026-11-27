@@ -11,7 +11,7 @@ module Mailtrap
   # @attr_reader content_id [String, nil] The content ID for inline attachments
   # @attr_reader download_url [String, nil] Signed URL to download the attachment (only when fetched by ID)
   # @attr_reader download_url_expires_at [String, nil] When the download URL expires (only when fetched by ID)
-  # rubocop:disable Lint/StructNewOverride -- +size+ is an API field that shadows Struct#size
+  # rubocop:disable-next Lint/StructNewOverride -- +size+ is an API field that shadows Struct#size
   InboundAttachment = Struct.new(
     :attachment_id,
     :size,
@@ -23,5 +23,4 @@ module Mailtrap
     :download_url_expires_at,
     keyword_init: true
   )
-  # rubocop:enable Lint/StructNewOverride
 end

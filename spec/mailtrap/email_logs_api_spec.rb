@@ -135,9 +135,8 @@ RSpec.describe Mailtrap::EmailLogsAPI, :vcr do
       enum = email_logs.list_each(filters: filters)
       enum.next
       expect(enum.size).to eq(2)
-      # rubocop:disable RSpec/SubjectStub
+      # rubocop:disable-next RSpec/SubjectStub
       expect(email_logs).to have_received(:list).with(filters: filters).once
-      # rubocop:enable RSpec/SubjectStub
     end
 
     it 'yields each message from all pages when block given' do
