@@ -1,0 +1,27 @@
+.github/workflows/draft-release.yml
+  s_007d991235f48e::t_fcb767417a77ff 38
+.github/workflows/main.yml
+  s_007d991235f48e::t_807b91fda4c7c9 29
+.github/workflows/release.yml
+  s_007d991235f48e::t_b5cd365ff66812 87,130
+Appraisals
+  s_007d991235f48e::t_d1c65eba7937f5 4,8
+Gemfile
+  s_007d991235f48e::t_0fd2cfd90c208c 7-23
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "5fd59f3944997da1190b6a01d5d6d97d8d34490c",
+  "prompts": {},
+  "sessions": {
+    "s_007d991235f48e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7dd1d59c-81a0-4ec1-9f3e-4048a3ca94ca",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "IzikAJ <izikaj@gmail.com>"
+    }
+  }
+}

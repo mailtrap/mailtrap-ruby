@@ -1,0 +1,19 @@
+.github/workflows/main.yml
+  s_007d991235f48e::t_f10d45b8c2a446 36-39
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "692874339c69d9179c89f8c5748059bb5d81d8b7",
+  "prompts": {},
+  "sessions": {
+    "s_007d991235f48e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7dd1d59c-81a0-4ec1-9f3e-4048a3ca94ca",
+        "model": "unknown"
+      },
+      "human_author": "IzikAJ <izikaj@gmail.com>"
+    }
+  }
+}
