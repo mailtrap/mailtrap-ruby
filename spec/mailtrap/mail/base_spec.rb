@@ -2,7 +2,7 @@
 
 require_relative 'shared'
 
-# rubocop:disable RSpec/MultipleMemoizedHelpers
+# rubocop:disable-next RSpec/MultipleMemoizedHelpers
 RSpec.describe Mailtrap::Mail::Base do
   subject(:mail) do
     described_class.new(
@@ -143,4 +143,3 @@ RSpec.describe Mailtrap::Mail::Base do
     end
   end
 end
-# rubocop:enable RSpec/MultipleMemoizedHelpers

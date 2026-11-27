@@ -2,7 +2,7 @@
 
 require 'stringio'
 
-# rubocop:disable RSpec/MultipleMemoizedHelpers
+# rubocop:disable-next RSpec/MultipleMemoizedHelpers
 RSpec.describe Mailtrap::Attachment do
   subject(:attachment) do
     described_class.new(
@@ -77,4 +77,3 @@ RSpec.describe Mailtrap::Attachment do
     end
   end
 end
-# rubocop:enable RSpec/MultipleMemoizedHelpers
